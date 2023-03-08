@@ -121,7 +121,7 @@
     pulseaudio.enable = lib.mkForce false;
 
     # Enable opentabletdriver
-    opentabletdriver.enable = true;
+    # opentabletdriver.enable = true;
   };
 
   # Enable services
@@ -219,14 +219,12 @@
     papirus-icon-theme
     nordic
     gnome.adwaita-icon-theme
-    graphite-kde-theme
-    graphite-gtk-theme
     colloid-kde
     colloid-gtk-theme
     colloid-icon-theme
     # browsers
     firefox-esr-wayland
-    librewolf-wayland
+    # librewolf-wayland
     google-chrome
     # communication
     thunderbird-wayland
@@ -240,19 +238,17 @@
     # notes
     xournalpp
     # system
-    shared-mime-info
     glib
     hplip
     easyeffects
     xsane
-    skanlite
+    # skanlite
     libimobiledevice
     ifuse
     # editors
     texlive.combined.scheme-basic
     # cli
     coreutils
-    autoconf
     lesspipe
     poppler_utils
     epr
@@ -260,7 +256,6 @@
     curl
     wget
     nnn
-    elinks
     w3m
     pandoc
     tuir
@@ -285,7 +280,7 @@
     kdenlive
     gimp
     krita
-    inkscape
+    # inkscape
     darktable
     # rawtherapee
     handbrake
