@@ -1,8 +1,12 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-
-{ inputs, lib, config, pkgs, ... }: {
-
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware), use something like:
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -24,13 +28,13 @@
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
 
-    kernelParams = [ "quiet" ];
-    
+    kernelParams = ["quiet"];
+
     # Mount NTFS drives with ntfs-3g
-    supportedFilesystems = [ "ntfs" "btrfs" "exfat" ];
-    
+    supportedFilesystems = ["ntfs" "btrfs" "exfat"];
+
     # Swappiness of the machine
-    kernel.sysctl = { "vm.swappiness" = 45; };
+    kernel.sysctl = {"vm.swappiness" = 45;};
 
     resumeDevice = "/dev/sda2";
   };
@@ -53,9 +57,21 @@
     };
   };
 
+  /*
+  programs = {
+    bash = {
+      loginShellInit = ''
+        # Add any bashrc lines here
+        bind '"\e[A":history-search-backward'
+        bind '"\e[B":history-search-forward'
+      '';
+    };
+  };
+  */
+
   powerManagement = {
     enable = true;
-    # cpuFreqGovernor = "schedutil";
+    cpuFreqGovernor = lib.mkForce "schedutil";
     # For maximum power saving, may not be the most convenient
     # powertop.enable = true;
   };
@@ -64,12 +80,12 @@
     # Replace with your username
     marmar = {
       isNormalUser = true;
-      shell = pkgs.fish;
+      shell = pkgs.bash;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-	"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFIJtCCRbvvg9o+xW0cHAIzp/euVpY1VZl1QgMvDaloP m.ameerrafiqi@gmail.com"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFIJtCCRbvvg9o+xW0cHAIzp/euVpY1VZl1QgMvDaloP m.ameerrafiqi@gmail.com"
       ];
-      extraGroups = [ "video" "input" "wheel" "networkmanager" "audio" "scanner" "lp" ];
+      extraGroups = ["video" "input" "wheel" "networkmanager" "audio" "scanner" "lp"];
     };
   };
 

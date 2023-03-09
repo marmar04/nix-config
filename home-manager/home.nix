@@ -74,17 +74,16 @@
       };
     };
 
-    /*
     starship = {
       enable = true;
     };
-    */
 
     btop = {
       enable = true;
       settings = {
         color_theme = "everforest-dark-hard";
         theme_background = false;
+        proc_tree = true;
       };
     };
 
