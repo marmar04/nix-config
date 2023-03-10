@@ -45,8 +45,8 @@ output "*" bg ./../wallpaper/latissa_otwat.jpg fill
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 # screenshots
-bindsym $mod+c exec grim  -g "$(slurp)" /tmp/$(date +'%H:%M:%S.png')
-bindsym Print+Shift exec grim
+bindsym $mod+c exec grim -g "$(slurp)" /tmp/$(date +'%H:%M:%S.png')
+bindsym Shift+Print exec grim
 bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
 
 ### Idle configuration
