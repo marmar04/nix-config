@@ -274,6 +274,7 @@
     wget
     nnn
     w3m
+    termusic
     pandoc
     tuir
     cht-sh
