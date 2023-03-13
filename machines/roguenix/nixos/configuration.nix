@@ -77,21 +77,33 @@
   };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
-  users.users = {
-    # Replace with your username
-    marmar = {
-      # TODO: You can set an initial password for your user.
-      # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-      # Be sure to change it (using passwd) after rebooting!
-      # initialPassword = "correcthorsebatterystaple";
-      isNormalUser = true;
-      shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtWU/an7RwitlGTKlRWCigWlcFPsdo5g7Wp+wKmEtRn m.ameerrafiqi@gmail.com"
-      ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["video" "input" "wheel" "networkmanager" "audio" "scanner" "lp"];
+  users = {
+    users = {
+      # Replace with your username
+      marmar = {
+        # TODO: You can set an initial password for your user.
+        # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
+        # Be sure to change it (using passwd) after rebooting!
+        # initialPassword = "correcthorsebatterystaple";
+        isNormalUser = true;
+        shell = pkgs.zsh;
+        openssh.authorizedKeys.keys = [
+          # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtWU/an7RwitlGTKlRWCigWlcFPsdo5g7Wp+wKmEtRn m.ameerrafiqi@gmail.com"
+        ];
+        # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
+        extraGroups = ["video" "input" "wheel" "networkmanager" "audio" "scanner" "lp"];
+      };
+    };
+
+    extraUsers = {
+      nixBuild = {
+        name = "nixBuild";
+        useDefaultShell = true;
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPaSOSh7eH1ekDr76+rmcmbGpvg04nYHTIGo8p7gfqfF nixBuild"
+        ];
+      };
     };
   };
 

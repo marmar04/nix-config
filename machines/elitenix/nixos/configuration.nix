@@ -47,6 +47,24 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  nix = {
+    distributedBuilds = true;
+    buildMachines = [
+      {
+        hostName = "roguenix";
+        system = "x86_64-linux";
+        maxJobs = 4;
+        speedFactor = 2;
+        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
+        sshKey = "/root/.ssh/id_nixBuild";
+        sshUser = "nixBuild";
+      }
+    ];
+    extraOptions = ''
+      builders-use-substitutes = true
+    '';
+  };
+
   systemd = {
     services.NetworkManager-wait-online.enable = false;
     tmpfiles = {
