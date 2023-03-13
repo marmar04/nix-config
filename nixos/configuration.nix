@@ -289,6 +289,7 @@
     ncdu
     inxi
     tealdeer
+    compsize
     winePackages.minimal
     exfat
     networkmanagerapplet
