@@ -13,6 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Doom emacs
     nix-doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,16 +21,33 @@
 
     # TODO: Add any other flake you might need
     hardware.url = "github:nixos/nixos-hardware";
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Remap keys
     xremap = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Nix User Repository
     nur = {
       url = "github:nix-community/NUR";
+    };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Nix Language server
+    nil = {
+      url = "github:oxalica/nil";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
     };
 
     # Shameless plug: looking for a way to nixify your themes and make
@@ -62,16 +80,15 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
       import ./pkgs {inherit pkgs;});
+
     # Devshell for bootstrapping
     # Acessible through 'nix develop' or 'nix-shell' (legacy)
-    /*
     devShells = forAllSystems (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in
         import ./shell.nix {inherit pkgs;}
     );
-    */
 
     # Your custom packages and modifications, exported as overlays
     overlays = import ./overlays;
@@ -110,22 +127,18 @@
       };
 
       elitenix = nixpkgs.lib.nixosSystem {
-        # Note that you cannot put arbitrary configuration here: the configuration must be placed in the files loaded via modules
         specialArgs = {
           inherit inputs outputs;
-        }; # Pass flake inputs to our config
+        };
         modules =
           (builtins.attrValues nixosModules)
           ++ [
             hyprland.nixosModules.default
             xremap.nixosModules.default
-            # > Our main nixos configuration file <
             ./nixos/configuration.nix
             ./machines/elitenix/nixos/configuration.nix
-            # (import ./unstable/unstable.nix inputs)
 
             ./graphical/sway-hyprland.nix
-            # ./graphical/nixos/nvidia-sway.nix
             (import ./graphical/nixos/wlroots.nix inputs)
             ./graphical/nixos/sway.nix
             (import ./graphical/nixos/hyprland.nix inputs)
@@ -136,14 +149,12 @@
       };
 
       oldnix = nixpkgs.lib.nixosSystem {
-        # Note that you cannot put arbitrary configuration here: the configuration must be placed in the files loaded via modules
         specialArgs = {
           inherit inputs outputs;
-        }; # Pass flake inputs to our config
+        };
         modules =
           (builtins.attrValues nixosModules)
           ++ [
-            # > Our main nixos configuration file <
             ./nixos/configuration.nix
             ./machines/oldnix/nixos/configuration.nix
 
@@ -177,10 +188,10 @@
 
       "marmar@elitenix" = home-manager.lib.homeManagerConfiguration {
         pkgs =
-          nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs;
-        }; # Pass flake inputs to our config
+        };
         modules =
           (builtins.attrValues homeManagerModules)
           ++ [
@@ -208,14 +219,13 @@
       };
       "marmar@oldnix" = home-manager.lib.homeManagerConfiguration {
         pkgs =
-          nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs;
-        }; # Pass flake inputs to our config
+        };
         modules =
           (builtins.attrValues homeManagerModules)
           ++ [
-            # > Our main home-manager configuration file <
             ./home-manager/home.nix
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix {inherit overlays;})
