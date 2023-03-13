@@ -13,7 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Doom emacs
     nix-doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,6 +49,12 @@
       inputs.rust-overlay.follows = "rust-overlay";
     };
 
+    # For command-not-found
+    programsdb = {
+      url = "github:wamserma/flake-programs-sqlite";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
@@ -63,6 +68,7 @@
     hyprland,
     nur,
     xremap,
+    programsdb,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -112,12 +118,11 @@
             hyprland.nixosModules.default
             xremap.nixosModules.default
             # > Our main nixos configuration file <
-            ./nixos/configuration.nix
+            (import ./nixos/configuration.nix inputs)
             ./machines/roguenix/nixos/configuration.nix
             # (import ./unstable/unstable.nix inputs)
 
             ./graphical/nvidia-sway-hyprland.nix
-            # ./graphical/nixos/nvidia-sway.nix
             (import ./graphical/nixos/wlroots.nix inputs)
             ./graphical/nixos/nvidia-sway.nix
             (import ./graphical/nixos/nvidia-hyprland.nix inputs)
@@ -135,7 +140,7 @@
           ++ [
             hyprland.nixosModules.default
             xremap.nixosModules.default
-            ./nixos/configuration.nix
+            (import ./nixos/configuration.nix inputs)
             ./machines/elitenix/nixos/configuration.nix
 
             ./graphical/sway-hyprland.nix
@@ -156,7 +161,7 @@
           (builtins.attrValues nixosModules)
           ++ [
             ./nixos/configuration.nix
-            ./machines/oldnix/nixos/configuration.nix
+            (import ./machines/oldnix/nixos/configuration.nix inputs)
 
             ./graphical/nixos/plasma.nix
             # Our common nixpkgs config (unfree, overlays, etc)

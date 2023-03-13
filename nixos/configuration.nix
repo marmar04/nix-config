@@ -1,6 +1,6 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{
+{programsdb, ...}: {
   inputs,
   lib,
   config,
@@ -343,6 +343,8 @@
       keyMode = "vi";
       customPaneNavigationAndResize = true;
     };
+
+    command-not-found.dbPath = "/etc/programs.sqlite";
   };
 
   # List environment variables:
@@ -354,6 +356,10 @@
     shells = with pkgs; [fish bash zsh];
 
     pathsToLink = ["/share/zsh"];
+
+    etc = {
+      "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
+    };
   };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
