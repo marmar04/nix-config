@@ -8,7 +8,7 @@
     "spacing": 2, // Gaps between modules (4px)
 
     // Choose the order of the modules
-    "modules-left": ["custom/logo", "custom/separator2", "sway/workspaces", "custom/separator", "sway/window"],
+    "modules-left": ["custom/search", "custom/separator2", "sway/workspaces", "custom/separator", "sway/window"],
 
     // "modules-center": ["clock"],
 
@@ -40,9 +40,10 @@
 	}
     },   
 
-    "custom/logo" : {
+    "custom/search" : {
         "tooltip" : false,
-        "format" : "  "
+        "format" : " ",
+	"on-click" : "killall rofi || rofi -show drun"
     },
 
     "custom/wmname": {

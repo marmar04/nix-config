@@ -39,9 +39,31 @@
 
   # FIXME: Add the rest of your current configuration
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "python-2.7.18.6"
-  ];
+  nixpkgs = {
+    config.permittedInsecurePackages = [
+      "python-2.7.18.6"
+    ];
+
+    # overlays for packages
+    overlays = [
+      (self: super: {
+        colloid-gtk-theme = super.colloid-gtk-theme.override {
+          themeVariants = ["green"];
+          colorVariants = ["dark"];
+          sizeVariants = ["compact"];
+          tweaks = ["rimless" "black"];
+        };
+      })
+      (self: super: {
+        catppuccin-gtk = super.catppuccin-gtk.override {
+          accents = ["green"];
+          size = "compact";
+          tweaks = ["rimless"];
+          variant = "mocha";
+        };
+      })
+    ];
+  };
 
   security = {
     # Disable sudo and enable doas
@@ -65,7 +87,7 @@
 
   networking = {
     networkmanager = {
-      enable = true; # Easiest to use and most distros use this by default.
+      enable = true;
       plugins = with pkgs; [
         pkgs.networkmanager-openvpn
         pkgs.networkmanager-openconnect
@@ -210,14 +232,8 @@
   environment.systemPackages = with pkgs; [
     # themes
     catppuccin-kde
-    (catppuccin-gtk.override {
-      size = "compact";
-      accents = ["green"];
-      tweaks = ["rimless"];
-      variant = "mocha";
-    })
+    catppuccin-gtk
     papirus-icon-theme
-    nordic
     gnome.adwaita-icon-theme
     colloid-kde
     colloid-gtk-theme
@@ -248,6 +264,7 @@
     # editors
     texlive.combined.scheme-basic
     # cli
+    dash
     coreutils
     lesspipe
     poppler_utils
@@ -272,6 +289,7 @@
     ncdu
     inxi
     tealdeer
+    compsize
     winePackages.minimal
     exfat
     networkmanagerapplet
@@ -289,8 +307,8 @@
     mpv
     freetube
     # gtk
-    gtk-engine-murrine
-    gtk_engines
+    # gtk-engine-murrine
+    # gtk_engines
     gsettings-desktop-schemas
     # coding
     zeal
@@ -300,6 +318,8 @@
     blueman
     gparted
     libreoffice-fresh
+    xmind
+    freemind
     bottles
     libsForQt5.qtstyleplugin-kvantum
     cpu-x
