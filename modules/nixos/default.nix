@@ -6,4 +6,5 @@
   # hosts = import ./hosts.nix;
   # astroNvim = import ./astroNvim.nix;
   # unstable = import ./unstable.nix;
+  mainEditors = import ./mainEditors.nix;
 }
