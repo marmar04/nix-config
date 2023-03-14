@@ -1,6 +1,10 @@
 # Module to enable the plasma session
-{ cfg, lib, pkgs, ... }: {
-
+{
+  cfg,
+  lib,
+  pkgs,
+  ...
+}: {
   services = {
     greetd = {
       enable = true;

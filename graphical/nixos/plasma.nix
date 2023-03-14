@@ -1,14 +1,18 @@
 # Module to enable the plasma session
-{ cfg, lib, pkgs, ... }: {
-
+{
+  cfg,
+  lib,
+  pkgs,
+  ...
+}: {
   services = {
     greetd = {
       enable = true;
       settings = {
-      	default_session = {
+        default_session = {
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd startplasma-wayland";
           user = "greeter";
-      	};
+        };
       };
     };
 

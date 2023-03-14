@@ -15,7 +15,7 @@
   ];
 
   services = {
-     mako = {
+    mako = {
       enable = true;
       defaultTimeout = 10000;
       backgroundColor = "#1e1e2e";

@@ -1,7 +1,4 @@
-{
-  xremap,
-  ...
-}: {
+{xremap, ...}: {
   cfg,
   lib,
   pkgs,

@@ -101,12 +101,16 @@
       enable = true;
       packageConfigurable = pkgs.vim_configurable;
       plugins = with pkgs.vimPlugins; [vim-nix YouCompleteMe vimsence catppuccin-vim yuck-vim];
-      extraConfig = /* vim */ ''
-        set number relativenumber
-        colorscheme catppuccin_mocha
-        set shiftwidth=4
-        autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-      '';
+      extraConfig =
+        /*
+        vim
+        */
+        ''
+          set number relativenumber
+          colorscheme catppuccin_mocha
+          set shiftwidth=4
+          autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+        '';
     };
 
     # astroNvim

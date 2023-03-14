@@ -3,8 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   services = {
     # To start up tuigreet and set it up to start up hyprland after loging in
     greetd = {

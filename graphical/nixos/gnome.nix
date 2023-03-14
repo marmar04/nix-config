@@ -1,6 +1,10 @@
 # Module to enable the plasma session
-{ cfg, lib, pkgs, ... }: {
-
+{
+  cfg,
+  lib,
+  pkgs,
+  ...
+}: {
   services = {
     xserver = {
       displayManager.gdm = {
@@ -21,7 +25,7 @@
       sushi.enable = true;
     };
 
-    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+    udev.packages = with pkgs; [gnome.gnome-settings-daemon];
   };
 
   environment.systemPackages = with pkgs; [
