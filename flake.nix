@@ -3,6 +3,10 @@
   description = "My nixos configuration for an optimus laptop";
 
   inputs = {
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+    };
+
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -10,7 +14,10 @@
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager/";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
+      };
     };
 
     nix-doom-emacs = {
@@ -29,7 +36,10 @@
     # Remap keys
     xremap = {
       url = "github:xremap/nix-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        hyprland.follows = "hyprland";
+      };
     };
 
     # Nix User Repository
@@ -39,20 +49,29 @@
 
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
 
     # Nix Language server
     nil = {
       url = "github:oxalica/nil";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+        flake-utils.follows = "flake-utils";
+      };
     };
 
     # For command-not-found
     programsdb = {
       url = "github:wamserma/flake-programs-sqlite";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
+      };
     };
 
     # Shameless plug: looking for a way to nixify your themes and make
@@ -86,6 +105,10 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
       import ./pkgs {inherit pkgs;});
+
+    # Formatter
+    # Can be accessed through nix fmt
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     # Devshell for bootstrapping
     # Acessible through 'nix develop' or 'nix-shell' (legacy)
@@ -200,19 +223,6 @@
         modules =
           (builtins.attrValues homeManagerModules)
           ++ [
-            /*
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.users.exampleUser = {...}: {
-                imports = [nix-doom-emacs.hmModule];
-                programs.doom-emacs = {
-                  enable = true;
-                  doomPrivateDir = ./dotfiles/config/doom.d; # Directory containing your config.el, init.el
-                  # and packages.el files
-                };
-              };
-            }
-            */
             # > Our main home-manager configuration file <
             ./home-manager/home.nix
             ./graphical/home-manager/home-wlroots.nix

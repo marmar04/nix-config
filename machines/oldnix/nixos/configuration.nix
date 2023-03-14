@@ -1,8 +1,12 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-
-{ inputs, lib, config, pkgs, ... }: {
-
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware), use something like:
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -23,12 +27,12 @@
 
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
-    
+
     # Mount NTFS drives with ntfs-3g
-    supportedFilesystems = [ "ntfs" "btrfs" "exfat" ];
-    
+    supportedFilesystems = ["ntfs" "btrfs" "exfat"];
+
     # Swappiness of the machine
-    kernel.sysctl = { "vm.swappiness" = 60; };
+    kernel.sysctl = {"vm.swappiness" = 60;};
   };
 
   # Use the GRUB 2 boot loader.
@@ -53,10 +57,10 @@
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtWU/an7RwitlGTKlRWCigWlcFPsdo5g7Wp+wKmEtRn m.ameerrafiqi@gmail.com"
-	"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFIJtCCRbvvg9o+xW0cHAIzp/euVpY1VZl1QgMvDaloP m.ameerrafiqi@gmail.com"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFIJtCCRbvvg9o+xW0cHAIzp/euVpY1VZl1QgMvDaloP m.ameerrafiqi@gmail.com"
       ];
       # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "input" "video" "wheel" "networkmanager" "audio" "scanner" "lp" ];
+      extraGroups = ["input" "video" "wheel" "networkmanager" "audio" "scanner" "lp"];
     };
   };
 
@@ -75,4 +79,3 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.05";
 }
-
