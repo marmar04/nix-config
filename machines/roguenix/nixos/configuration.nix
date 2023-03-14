@@ -100,6 +100,8 @@
       nixBuild = {
         name = "nixBuild";
         useDefaultShell = true;
+        isSystemUser = true;
+        group = "nixBuild";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPaSOSh7eH1ekDr76+rmcmbGpvg04nYHTIGo8p7gfqfF nixBuild"
         ];
