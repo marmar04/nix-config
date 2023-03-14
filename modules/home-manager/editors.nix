@@ -39,9 +39,11 @@
   ];
 
   services = {
+    /*
     emacs = {
       enable = true;
     };
+    */
   };
 
   programs = {
@@ -117,9 +119,11 @@
     # astronvim.enable = true;
 
     # Emacs
+    /*
     emacs = {
       enable = true;
     };
+    */
 
     # Visual Studio Code
     vscode = {
