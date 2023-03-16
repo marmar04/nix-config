@@ -102,7 +102,9 @@ in {
 
   environment.systemPackages = with pkgs; [
     rofi-wayland
+    wofi
     tofi
+    cliphist
     gammastep
     playerctl
     pavucontrol

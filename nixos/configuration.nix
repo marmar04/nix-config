@@ -253,7 +253,7 @@
       firefox-esr-wayland
       # librewolf-wayland
       google-chrome
-      microsoft-edge-dev
+      # microsoft-edge-dev
       # communication
       thunderbird-wayland
       tdesktop

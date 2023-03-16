@@ -74,6 +74,10 @@
         recursive = true;
         source = ./../../dotfiles/config/rofi;
       };
+      "tofi" = {
+        recursive = true;
+        source = ./../../dotfiles/config/tofi;
+      };
       "Kvantum" = {
         recursive = true;
         source = ./../../dotfiles/config/Kvantum;
