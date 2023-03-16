@@ -102,8 +102,8 @@ in {
 
   environment.systemPackages = with pkgs; [
     rofi-wayland
-    wofi
     tofi
+    fuzzel
     cliphist
     gammastep
     playerctl
