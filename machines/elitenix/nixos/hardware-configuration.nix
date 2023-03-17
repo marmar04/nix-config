@@ -26,13 +26,13 @@
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/8536d2d0-ebe2-4add-9c63-62520de0ac73";
     fsType = "btrfs";
-    options = ["compress=zstd" "subvol=home"];
+    options = ["compress=zstd:9" "subvol=home"];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/8536d2d0-ebe2-4add-9c63-62520de0ac73";
     fsType = "btrfs";
-    options = ["compress=zstd" "noatime" "subvol=nix"];
+    options = ["compress-force=zstd:9" "noatime" "subvol=nix"];
   };
 
   fileSystems."/boot" = {
