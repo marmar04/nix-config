@@ -43,7 +43,7 @@
     "custom/search" : {
         "tooltip" : false,
         "format" : " ",
-	"on-click" : "killall rofi || rofi -show drun"
+	"on-click" : "killall fuzzel || fuzzel"
     },
 
     "custom/wmname": {
