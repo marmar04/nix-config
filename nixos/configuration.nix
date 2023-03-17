@@ -253,6 +253,7 @@
       firefox-esr-wayland
       # librewolf-wayland
       google-chrome
+      # microsoft-edge-dev
       # communication
       thunderbird-wayland
       tdesktop
@@ -294,6 +295,7 @@
       unzip
       killall
       fd
+      ripgrep
       spotdl
       neofetch
       htop
@@ -318,9 +320,6 @@
       vlc
       mpv
       freetube
-      # gtk
-      # gtk-engine-murrine
-      # gtk_engines
       gsettings-desktop-schemas
       # coding
       zeal

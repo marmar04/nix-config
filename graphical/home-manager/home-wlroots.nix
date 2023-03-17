@@ -74,6 +74,13 @@
         recursive = true;
         source = ./../../dotfiles/config/rofi;
       };
+      "tofi" = {
+        recursive = true;
+        source = ./../../dotfiles/config/tofi;
+      };
+      "fuzzel/fuzzel.ini" = {
+        source = ./../../dotfiles/config/fuzzel/fuzzel.ini;
+      };
       "Kvantum" = {
         recursive = true;
         source = ./../../dotfiles/config/Kvantum;
