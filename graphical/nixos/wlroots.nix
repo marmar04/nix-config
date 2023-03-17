@@ -111,7 +111,7 @@ in {
     pavucontrol
     pamixer
     alacritty # gpu accelerated terminal
-    shotwell
+    # shotwell
     wdisplays
     wob
     wf-recorder
