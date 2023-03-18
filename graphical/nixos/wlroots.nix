@@ -72,6 +72,9 @@ in {
 
     tumbler.enable = true;
 
+    # Enable bluetooth via blueman
+    blueman.enable = true;
+
     # To remap CapsLock to Esc for easier vim navigation
     xremap = {
       userName = "marmar";

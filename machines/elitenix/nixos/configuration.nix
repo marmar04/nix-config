@@ -76,6 +76,38 @@
   };
 
   /*
+  services = {
+    services.kanata = {
+      enable = true;
+      keyboards.redox = {
+        # devices are configured in each /machines/<machine>/default.nix
+        # TODO extend kanata to automatically recognize input devices, autorestart/map devices if they connect/disconnect etc.
+        config = ''
+          (defsrc
+            esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+            tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+            caps a    s    d    f    g    h    j    k    k    l    ;    '    ret
+            lsft z    x    c    v    b    n    m    ,    .    /    rsft
+            lctl lmet lalt           spc            ralt rmet cmp rctl
+          )
+          (deflayer qwerty
+            esc   1    2    3    4    5    6    7    8    9    0    -    =    bspc
+            tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
+            @caps a    s    d    f    g    h    j    k    k    l    ;    '    ret
+            lsft  z    x    c    v    b    n    m    ,    .    /    rsft
+            lctl lmet lalt           spc            ralt rmet cmp rctl
+          )
+          (defalias xcp (tap-hold-press 300 300 tab lmet))
+          (defalias caps (tap-hold-press 300 300 esc lctrl))
+          (defalias lsft (tap-hold-press 300 300 lsft lsft))
+          (defalias metaextra (tap-hold-press 300 300 mfwd lmet))
+        '';
+      };
+    };
+  };
+  */
+
+  /*
   programs = {
     bash = {
       loginShellInit = ''
