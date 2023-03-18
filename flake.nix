@@ -145,10 +145,10 @@
             ./machines/roguenix/nixos/configuration.nix
             # (import ./unstable/unstable.nix inputs)
 
-            ./graphical/nvidia-sway-hyprland.nix
+            # ./graphical/nvidia-sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
             ./graphical/nixos/nvidia-sway.nix
-            (import ./graphical/nixos/nvidia-hyprland.nix inputs)
+            # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix {inherit overlays;})
           ];
@@ -208,7 +208,7 @@
             ./home-manager/home.nix
             ./graphical/home-manager/home-wlroots.nix
             ./graphical/home-manager/home-sway.nix
-            ./graphical/home-manager/home-hyprland.nix
+            # ./graphical/home-manager/home-hyprland.nix
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix {inherit overlays;})
           ];
