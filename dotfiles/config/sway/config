@@ -267,6 +267,7 @@ for_window [window_type="menu"] floating enable
 for_window [window_role="About"] floating enable
 for_window [window_type="Dialog"] floating enable
 
+for_window [app_id=".blueman-manager-wrapped"] floating enable
 for_window [app_id="nm-connection-editor"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="kvantummanager"] floating enable
