@@ -326,7 +326,7 @@
       yabasic
       python3Minimal
       # utilities
-      blueman
+      # blueman
       gparted
       libreoffice-fresh
       xmind
