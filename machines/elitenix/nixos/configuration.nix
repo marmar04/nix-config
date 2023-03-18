@@ -130,7 +130,7 @@
     # Replace with your username
     marmar = {
       isNormalUser = true;
-      shell = pkgs.bash;
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFIJtCCRbvvg9o+xW0cHAIzp/euVpY1VZl1QgMvDaloP m.ameerrafiqi@gmail.com"
