@@ -1,6 +1,6 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{
+{kmonad, ...}: {
   inputs,
   lib,
   config,
@@ -52,7 +52,18 @@
     xserver = {
       displayManager.gdm.enable = false;
       displayManager.lightdm.enable = false;
+
+      # xkbOptions = "compose:ralt";
+      # layout = "us";
     };
+
+    # Read the kmonad flake more properly
+    /*
+    kmonad = {
+      enable = false;
+      configfiles = [./kmonad.kbd];
+    };
+    */
 
     # tlp specifically for this device
     tlp = {
@@ -92,7 +103,7 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtWU/an7RwitlGTKlRWCigWlcFPsdo5g7Wp+wKmEtRn m.ameerrafiqi@gmail.com"
         ];
         # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-        extraGroups = ["video" "input" "wheel" "networkmanager" "audio" "scanner" "lp"];
+        extraGroups = ["video" "uinput" "input" "wheel" "networkmanager" "audio" "scanner" "lp"];
       };
     };
 

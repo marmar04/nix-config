@@ -42,6 +42,11 @@
       };
     };
 
+    kmonad = {
+      url = "github:kmonad/kmonad?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Nix User Repository
     nur = {
       url = "github:nix-community/NUR";
@@ -87,6 +92,7 @@
     hyprland,
     nur,
     xremap,
+    kmonad,
     programsdb,
     ...
   } @ inputs: let
@@ -140,9 +146,10 @@
           ++ [
             hyprland.nixosModules.default
             xremap.nixosModules.default
+            kmonad.nixosModules.default
             # > Our main nixos configuration file <
             (import ./nixos/configuration.nix inputs)
-            ./machines/roguenix/nixos/configuration.nix
+            (import ./machines/roguenix/nixos/configuration.nix inputs)
             # (import ./unstable/unstable.nix inputs)
 
             ./graphical/nvidia-sway-hyprland.nix
@@ -163,8 +170,9 @@
           ++ [
             hyprland.nixosModules.default
             xremap.nixosModules.default
+            kmonad.nixosModules.default
             (import ./nixos/configuration.nix inputs)
-            ./machines/elitenix/nixos/configuration.nix
+            (import ./machines/elitenix/nixos/configuration.nix inputs)
 
             ./graphical/sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
