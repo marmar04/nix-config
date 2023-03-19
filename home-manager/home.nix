@@ -1,5 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
+{neovim-flake, ...}:
 {
   inputs,
   lib,
@@ -10,6 +11,8 @@
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors), use something like:
     # inputs.nix-colors.homeManagerModule
+
+    # inputs.neovim-flake.nixosModules.default
 
     # Feel free to split up your configuration and import pieces of it here.
   ];
@@ -89,6 +92,36 @@
 
     newsboat = {
       enable = true;
+    };
+
+    neovim-flake = {
+      enable = true;
+      settings = {
+        vim = {
+          dashboard.dashboard-nvim.enable = true;
+          viAlias = false;
+          vimAlias = true;
+          autocomplete.enable = true;
+          autopairs.enable = true;
+          markdown.enable = true;
+          notes.orgmode.enable = true;
+          statusline.lualine.enable = true;
+          theme = {
+            enable = true;
+            name = "catppuccin";
+            style = "dark";
+          };
+          treesitter.enable = true;
+          lsp = {
+            enable = true;
+            clang.enable = true;
+            nix.enable = true;
+            python = true;
+            rust.enable = true;
+            sql = true;
+          };
+        };
+      };
     };
   };
 

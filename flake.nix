@@ -47,6 +47,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    neovim-flake = {
+      url = "github:notashelf/neovim-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nil.follows = "nil";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+
     # Nix User Repository
     nur = {
       url = "github:nix-community/NUR";
@@ -93,6 +102,7 @@
     nur,
     xremap,
     kmonad,
+    neovim-flake,
     programsdb,
     ...
   } @ inputs: let
@@ -232,7 +242,8 @@
           (builtins.attrValues homeManagerModules)
           ++ [
             # > Our main home-manager configuration file <
-            ./home-manager/home.nix
+            neovim-flake.nixosModules.hm-module
+            (import ./home-manager/home.nix inputs)
             ./graphical/home-manager/home-wlroots.nix
             ./graphical/home-manager/home-sway.nix
             ./graphical/home-manager/home-hyprland.nix
