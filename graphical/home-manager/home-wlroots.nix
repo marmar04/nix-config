@@ -78,6 +78,10 @@
         recursive = true;
         source = ./../../dotfiles/config/tofi;
       };
+      "foot" = {
+        recursive = true;
+        source = ./../../dotfiles/config/foot;
+      };
       "fuzzel/fuzzel.ini" = {
         source = ./../../dotfiles/config/fuzzel/fuzzel.ini;
       };
