@@ -1,6 +1,5 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{neovim-flake, ...}:
 {
   inputs,
   lib,
@@ -94,6 +93,23 @@
       enable = true;
     };
 
+    vim = {
+      enable = true;
+      packageConfigurable = pkgs.vim_configurable;
+      plugins = with pkgs.vimPlugins; [vim-nix YouCompleteMe vimsence catppuccin-vim yuck-vim];
+      extraConfig =
+        /*
+        vim
+        */
+        ''
+          set number relativenumber
+          colorscheme catppuccin_mocha
+          set shiftwidth=4
+          autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+        '';
+    };
+
+    /* Broken for now
     neovim-flake = {
       enable = true;
       settings = {
@@ -123,6 +139,7 @@
         };
       };
     };
+    */
   };
 
   # For linking the files in config folder
