@@ -242,8 +242,9 @@
           (builtins.attrValues homeManagerModules)
           ++ [
             # > Our main home-manager configuration file <
-            neovim-flake.nixosModules.hm-module
-            (import ./home-manager/home.nix inputs)
+            # Broken for now
+            # neovim-flake.nixosModules.hm-module
+            ./home-manager/home.nix
             ./graphical/home-manager/home-wlroots.nix
             ./graphical/home-manager/home-sway.nix
             ./graphical/home-manager/home-hyprland.nix

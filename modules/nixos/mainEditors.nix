@@ -30,6 +30,7 @@
     python311Packages.black
 
     # vim with extensions
+    /*
     (vim-full.customize {
       name = "vim";
 
@@ -47,5 +48,6 @@
         # opt = [vim-nix yuck-vim];
       };
     })
+    */
   ];
 }
