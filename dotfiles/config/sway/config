@@ -10,6 +10,7 @@ exec cliphist wipe
 exec dbus-sway-environment
 exec configure-gtk
 exec emacs --daemon
+exec foot --server
 
 exec_always --no-startup-id nm-applet --indicator &
 exec_always --no-startup-id gammastep-indicator -l 2.9:101.6 &
@@ -33,7 +34,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term footclient
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
