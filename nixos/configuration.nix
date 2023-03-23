@@ -240,7 +240,9 @@
         doomPrivateDir = ./../dotfiles/config/doom.d;
       };
     in [
-      doom-emacs
+      # doom-emacs
+      emacs
+      clang
       # themes
       catppuccin-kde
       catppuccin-gtk
