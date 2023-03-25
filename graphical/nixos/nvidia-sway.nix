@@ -21,8 +21,4 @@
       extraOptions = lib.mkForce ["--unsupported-gpu"];
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    sway-nvidia-wrapper
-  ];
 }
