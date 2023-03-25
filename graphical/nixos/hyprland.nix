@@ -45,6 +45,33 @@ in {
     };
   };
 
+  fonts.fonts = with pkgs; [
+    jost
+    material-symbols
+  ];
+
+  environment.systemPackages = with pkgs; [
+    eww-wayland
+
+    bc
+    blueberry
+    bluez
+    dunst
+    findutils
+    gnome.gnome-control-center
+    libnotify
+    gnused
+    gojq
+    imagemagick
+    jaq
+    procps
+    socat
+    udev
+    upower
+    util-linux
+    wlogout
+  ];
+
   # xdg-desktop-portal works by exposing a series of D-Bus interfaces
   # known as portals under a well-known name
   # (org.freedesktop.portal.Desktop) and object path

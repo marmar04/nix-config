@@ -47,15 +47,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-flake = {
-      url = "github:notashelf/neovim-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nil.follows = "nil";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-
     # Nix User Repository
     nur = {
       url = "github:nix-community/NUR";
@@ -102,7 +93,6 @@
     nur,
     xremap,
     kmonad,
-    neovim-flake,
     programsdb,
     ...
   } @ inputs: let
@@ -164,6 +154,7 @@
 
             # ./graphical/nvidia-sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
+            ./graphical/nixos/sway.nix
             ./graphical/nixos/nvidia-sway.nix
             # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
             # Our common nixpkgs config (unfree, overlays, etc)
@@ -184,11 +175,10 @@
             (import ./nixos/configuration.nix inputs)
             (import ./machines/elitenix/nixos/configuration.nix inputs)
 
-            ./graphical/sway-hyprland.nix
+            # ./graphical/sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
-            ./graphical/nixos/sway.nix
+            # ./graphical/nixos/sway.nix
             (import ./graphical/nixos/hyprland.nix inputs)
-            ./graphical/nixos/sway.nix
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix {inherit overlays;})
           ];
@@ -246,7 +236,7 @@
             # neovim-flake.nixosModules.hm-module
             ./home-manager/home.nix
             ./graphical/home-manager/home-wlroots.nix
-            ./graphical/home-manager/home-sway.nix
+            # ./graphical/home-manager/home-sway.nix
             ./graphical/home-manager/home-hyprland.nix
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix {inherit overlays;})
