@@ -114,6 +114,7 @@ in {
     pavucontrol
     pamixer
     alacritty # gpu accelerated terminal
+    foot
     # shotwell
     wdisplays
     wob
