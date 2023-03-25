@@ -26,6 +26,7 @@
 
   environment.systemPackages = with pkgs; [
     lsd
+    waybar
   ];
 
   # xdg-desktop-portal works by exposing a series of D-Bus interfaces

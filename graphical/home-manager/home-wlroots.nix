@@ -29,6 +29,7 @@
   };
 
   # For programs that have their options in home-manager
+  /*
   programs = {
     waybar = {
       enable = true;
@@ -38,6 +39,7 @@
       });
     };
   };
+  */
 
   gtk = {
     enable = true;
