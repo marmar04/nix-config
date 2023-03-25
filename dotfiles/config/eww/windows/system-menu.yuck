@@ -60,7 +60,7 @@
             :text "│")
           (button
             :class "bluetooth-arrow-btn"
-            :onclick "eww close system-menu && blueberry"
+            :onclick "eww close system-menu && blueman-manager"
             ""))
         (label
           :text {bluetooth.text}
