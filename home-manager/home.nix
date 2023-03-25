@@ -108,38 +108,6 @@
           autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
         '';
     };
-
-    /* Broken for now
-    neovim-flake = {
-      enable = true;
-      settings = {
-        vim = {
-          dashboard.dashboard-nvim.enable = true;
-          viAlias = false;
-          vimAlias = true;
-          autocomplete.enable = true;
-          autopairs.enable = true;
-          markdown.enable = true;
-          notes.orgmode.enable = true;
-          statusline.lualine.enable = true;
-          theme = {
-            enable = true;
-            name = "catppuccin";
-            style = "dark";
-          };
-          treesitter.enable = true;
-          lsp = {
-            enable = true;
-            clang.enable = true;
-            nix.enable = true;
-            python = true;
-            rust.enable = true;
-            sql = true;
-          };
-        };
-      };
-    };
-    */
   };
 
   # For linking the files in config folder

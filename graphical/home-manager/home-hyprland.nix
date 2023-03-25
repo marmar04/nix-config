@@ -21,6 +21,10 @@
         recursive = true;
         source = ./../../dotfiles/config/hypr;
       };
+      "eww" = {
+        recursive = true;
+        source = ./../../dotfiles/config/eww;
+      };
     };
   };
 
