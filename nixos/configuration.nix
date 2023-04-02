@@ -241,7 +241,7 @@
       };
     in [
       # doom-emacs
-      emacs
+      # emacs
       clang
       # themes
       catppuccin-kde
