@@ -93,14 +93,12 @@
       enable = true;
     };
 
+    /*
     vim = {
       enable = true;
       packageConfigurable = pkgs.vim_configurable;
       plugins = with pkgs.vimPlugins; [vim-nix YouCompleteMe vimsence catppuccin-vim yuck-vim];
       extraConfig =
-        /*
-        vim
-        */
         ''
           set number relativenumber
           colorscheme catppuccin_mocha
@@ -108,6 +106,7 @@
           autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
         '';
     };
+    */
   };
 
   # For linking the files in config folder
