@@ -214,6 +214,7 @@
           ++ [
             # > Our main home-manager configuration file <
             ./home-manager/home.nix
+            ./home-manager/editors.nix
             ./graphical/home-manager/home-wlroots.nix
             ./graphical/home-manager/home-sway.nix
             # ./graphical/home-manager/home-hyprland.nix
