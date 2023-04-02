@@ -33,6 +33,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    neovim-flake = {
+      url = "github:notashelf/neovim-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nil.follows = "nil";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+
     # Remap keys
     xremap = {
       url = "github:xremap/nix-flake";
@@ -92,6 +101,7 @@
     hyprland,
     nur,
     xremap,
+    neovim-flake,
     kmonad,
     programsdb,
     ...

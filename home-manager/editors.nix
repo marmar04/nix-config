@@ -7,7 +7,10 @@
 }:
 # Editors
 {
-  imports = [ inputs.nix-doom-emacs.hmModule ];
+  imports = [
+    inputs.nix-doom-emacs.hmModule
+    inputs.neovim-flake.homeManagerModules.default
+  ];
 
   # Sets up the variables so that vim is the default editor
   home.sessionVariables = {
@@ -46,6 +49,7 @@
 
   programs = {
     # neovim
+    /*
     neovim = {
       enable = true;
       # package = pkgs.neovim-nightly;
@@ -93,6 +97,37 @@
         nodePackages.eslint
         ccls
       ];
+    };
+    */
+
+    neovim-flake = {
+      enable = true;
+      settings = {
+        vim = {
+          dashboard.dashboard-nvim.enable = true;
+          viAlias = false;
+          vimAlias = false;
+          autocomplete.enable = true;
+          autopairs.enable = true;
+          markdown.enable = true;
+          notes.orgmode.enable = true;
+          statusline.lualine.enable = true;
+          theme = {
+            enable = true;
+            name = "catppuccin";
+            style = "mocha";
+          };
+          treesitter.enable = true;
+          lsp = {
+            enable = true;
+            clang.enable = true;
+            nix.enable = true;
+            python = true;
+            rust.enable = true;
+            sql = true;
+          };
+        };
+      };
     };
 
     # Vim
