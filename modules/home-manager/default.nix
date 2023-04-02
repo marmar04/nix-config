@@ -4,6 +4,6 @@
   # List your module files here
   # my-module = import ./my-module.nix;
   # astroNvim = import ./astroNvim.nix;
-  # editors = import ./editors.nix;
+  editors = import ./editors.nix;
   games = import ./games.nix;
 }

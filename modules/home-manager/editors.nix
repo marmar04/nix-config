@@ -27,7 +27,7 @@
     jdk17_headless
     python310Packages.jedi
     python310Packages.jedi-language-server
-    python39Packages.python-lsp-server
+    # python39Packages.python-lsp-server
     jupyter
     php
     sqlite
@@ -48,7 +48,6 @@
 
   programs = {
     # neovim
-    /*
     neovim = {
       enable = true;
       # package = pkgs.neovim-nightly;
@@ -65,7 +64,8 @@
         cmp-path
         cmp-spell
         dashboard-nvim
-        (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
+        # (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
+        nvim-treesitter.withAllGrammars
         # nvim-treesitter
         cmp-treesitter
         orgmode
@@ -96,7 +96,6 @@
         ccls
       ];
     };
-    */
 
     # Vim
     vim = {
