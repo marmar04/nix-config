@@ -219,6 +219,7 @@
 
   # Fonts
   fonts.fonts = with pkgs; [
+    liberation_ttf
     fira-code
     fira
     cooper-hewitt
@@ -233,110 +234,103 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;
-  # For doom emacs
-    let
-      doom-emacs = nix-doom-emacs.packages.${pkgs.system}.default.override {
-        doomPrivateDir = ./../dotfiles/config/doom.d;
-      };
-    in [
-      # doom-emacs
-      # emacs
-      clang
-      # themes
-      catppuccin-kde
-      catppuccin-gtk
-      papirus-icon-theme
-      gnome.adwaita-icon-theme
-      colloid-kde
-      colloid-gtk-theme
-      colloid-icon-theme
-      # browsers
-      firefox-esr-wayland
-      # librewolf-wayland
-      google-chrome
-      microsoft-edge
-      # communication
-      thunderbird-wayland
-      tdesktop
-      pidgin
-      zoom-us
-      # download
-      persepolis
-      transmission-gtk
-      czkawka
-      # notes
-      xournalpp
-      # system
-      glib
-      hplip
-      easyeffects
-      xsane
-      # skanlite
-      libimobiledevice
-      ifuse
-      # editors
-      texlive.combined.scheme-basic
-      # cli
-      dash
-      coreutils
-      lesspipe
-      poppler_utils
-      epr
-      fortune
-      curl
-      wget
-      nnn
-      w3m
-      termusic
-      pandoc
-      tuir
-      cht-sh
-      moc
-      ytfzf
-      unzip
-      killall
-      fd
-      ripgrep
-      spotdl
-      neofetch
-      htop
-      lolcat
-      ncdu
-      inxi
-      tealdeer
-      compsize
-      winePackages.minimal
-      exfat
-      networkmanagerapplet
-      protonvpn-gui
-      # media
-      kdenlive
-      gimp
-      krita
-      # inkscape
-      darktable
-      # rawtherapee
-      handbrake
-      zathura
-      vlc
-      mpv
-      freetube
-      gsettings-desktop-schemas
-      # coding
-      zeal
-      yabasic
-      python3Minimal
-      # utilities
-      # blueman
-      gparted
-      libreoffice-fresh
-      xmind
-      freemind
-      bottles
-      libsForQt5.qtstyleplugin-kvantum
-      cpu-x
-    ];
+  environment.systemPackages = with pkgs; [
+    # emacs
+    clang
+    # themes
+    catppuccin-kde
+    catppuccin-gtk
+    papirus-icon-theme
+    gnome.adwaita-icon-theme
+    colloid-kde
+    colloid-gtk-theme
+    colloid-icon-theme
+    # browsers
+    firefox-esr-wayland
+    # librewolf-wayland
+    google-chrome
+    microsoft-edge
+    # communication
+    thunderbird-wayland
+    tdesktop
+    pidgin
+    zoom-us
+    # download
+    persepolis
+    transmission-gtk
+    czkawka
+    # notes
+    xournalpp
+    # system
+    glib
+    hplip
+    easyeffects
+    xsane
+    # skanlite
+    libimobiledevice
+    ifuse
+    # editors
+    texlive.combined.scheme-basic
+    # cli
+    dash
+    coreutils
+    lesspipe
+    poppler_utils
+    epr
+    fortune
+    curl
+    wget
+    nnn
+    w3m
+    termusic
+    pandoc
+    tuir
+    cht-sh
+    moc
+    ytfzf
+    unzip
+    killall
+    fd
+    ripgrep
+    spotdl
+    neofetch
+    htop
+    lolcat
+    ncdu
+    inxi
+    tealdeer
+    compsize
+    winePackages.minimal
+    exfat
+    networkmanagerapplet
+    protonvpn-gui
+    # media
+    kdenlive
+    gimp
+    krita
+    # inkscape
+    darktable
+    # rawtherapee
+    handbrake
+    zathura
+    vlc
+    mpv
+    freetube
+    gsettings-desktop-schemas
+    # coding
+    zeal
+    yabasic
+    python3Minimal
+    # utilities
+    # blueman
+    gparted
+    libreoffice-fresh
+    xmind
+    freemind
+    bottles
+    libsForQt5.qtstyleplugin-kvantum
+    cpu-x
+  ];
 
   boot = {
     initrd.systemd.enable = true;
