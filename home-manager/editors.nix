@@ -27,6 +27,7 @@
     go
     rust-analyzer
     nodePackages.npm
+    nodePackages.pyright
     jdk17_headless
     python310Packages.jedi
     python310Packages.jedi-language-server
