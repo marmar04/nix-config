@@ -22,13 +22,12 @@
     ycmd
 
     # Language servers
-    nil
     nodejs
-    go
     rust-analyzer
     nodePackages.npm
+    ccls
+    haskell-language-server
     nodePackages.pyright
-    jdk17_headless
     python310Packages.jedi
     python310Packages.jedi-language-server
     # python39Packages.python-lsp-server
