@@ -138,18 +138,6 @@ in {
 
   # Enable wayland on firefox
   environment = {
-    /*
-    etc = {
-      # To make swaylock work
-      "pam.d/swaylock" = {
-        enable = true;
-        text = ''
-          auth include login
-        '';
-      };
-    };
-    */
-
     sessionVariables = {
       MOZ_ENABLE_WAYLAND = "1";
       # XDG_CURRENT_DESKTOP = "sway";

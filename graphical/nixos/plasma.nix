@@ -35,6 +35,7 @@
 
   environment.systemPackages = with pkgs; [
     wl-clipboard
+    foot
     libsForQt5.kamoso
     # latte-dock
     digikam
@@ -57,16 +58,9 @@
 
       # Electron apps use wayland
       NIXOS_OZONE_WL = "1";
-    };
-  };
 
-  /*
-  xdg = {
-    mime = {
-      defaultApplications = {
-        applications/pdf = "firefox.desktop";
-      }
+      # Use kvantum theming for qt apps
+      QT_STYLE_OVERRIDE = "kvantum";
     };
   };
-  */
 }
