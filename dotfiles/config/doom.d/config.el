@@ -48,6 +48,10 @@
 ;; Set up nov for epub reading
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
+;; Set up latex-preview-pane
+(require ‘latex-preview-pane)
+(latex-preview-pane-enable)
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
