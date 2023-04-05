@@ -110,6 +110,27 @@
         recursive = true;
         source = ./../dotfiles/config/alacritty;
       };
+      "Kvantum" = {
+        recursive = true;
+        source = ./../../dotfiles/config/Kvantum;
+      };
+    };
+  };
+
+  # Default theming
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
+      size = 24;
+    };
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
+    theme = {
+      name = "Catppuccin-Mocha-Compact-Green-Dark";
     };
   };
 
