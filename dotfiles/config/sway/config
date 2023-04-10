@@ -45,7 +45,7 @@ bindsym --release Super_L exec pkill fuzzel || fuzzel
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output "*" bg ./../wallpaper/latissa_otwat.jpg fill
+output "*" bg ./../wallpaper/changing_at_the_edge_of_the_world_final_shot.jpg fill
 #
 # Example configuration:
 #
@@ -63,11 +63,11 @@ bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
 # Example configuration:
 
 exec swayidle -w \
-        timeout 300 'swaylock --clock -f -i ~/.config/wallpaper/wingItLikeWitches01.png' \
+        timeout 300 'swaylock --clock -f -i ~/.config/wallpaper/end_cred3.png' \
         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-        before-sleep 'swaylock --clock -f -i ~/.config/wallpaper/portal_toh.jpg'
+        before-sleep 'swaylock --clock -f -i ~/.config/wallpaper/end_cred2.png'
 # DB54B4
-bindsym Mod4+l exec swaylock -f -i ~/.config/wallpaper/wingItLikeWitches01.png
+bindsym Mod4+l exec swaylock --clock -f -i ~/.config/wallpaper/end_cred1.png
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -262,6 +262,7 @@ for_window [app_id="nm-connection-editor"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="kvantummanager"] floating enable
 for_window [app_id="org.kde."] floating enable
+for_window [class="Picture in picture"] floating enable
 for_window [con_mark="About Mozilla Thunderbird"] floating enable
 # for_window [con_mark="kdenlive"] floating enable
 
@@ -279,15 +280,29 @@ for_window [app_id="firefox"] inhibit_idle fullscreen
 # Read `man 5 sway-bar` for more information about this section.
 # bar {
 #     position top
-# 
+#
 #     # When the status_command prints a new line to stdout, swaybar updates.
 #     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-# 
+#     # status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+#
+#     # Keep in mind that the current directory of this config file is $HOME
+#     status_command while ~/.config/sway/status.sh; do sleep 1; done
+#
+#     gaps 5px 5px 0px 5px
+#
+#     font pango:JetBrainsMono Nerd Font 10
+#
 #     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
+#         statusline #f5e0dc
+#         background #313244
+#         inactive_workspace #585b70 #585b70 #cdd6f4
+#         urgent_workspace #fab387 #f38ba8 #cdd6f4
+#     }
+#
+#     tray {
+#         tray_bindcode 273 ContextMenu
+#         tray_bindcode 272 Activate
+#         icon_theme "Papirus-Dark"
 #     }
 # }
 
