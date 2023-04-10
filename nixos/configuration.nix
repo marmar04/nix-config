@@ -93,10 +93,11 @@
     networkmanager = {
       enable = true;
       plugins = with pkgs; [
-        pkgs.networkmanager-openvpn
-        pkgs.networkmanager-openconnect
+        networkmanager-openvpn
+        networkmanager-openconnect
       ];
     };
+    # Blocklists of websites
     stevenblack = {
       enable = true;
       block = ["fakenews" "gambling" "porn"];
@@ -162,6 +163,10 @@
 
     power-profiles-daemon.enable = lib.mkForce false;
 
+    upower = {
+      enable = true;
+    };
+
     # Enable earlyoom
     earlyoom.enable = true;
 
@@ -222,7 +227,6 @@
     liberation_ttf
     fira-code
     fira
-    cooper-hewitt
     ibm-plex
     jetbrains-mono
     fira-code-symbols
@@ -250,6 +254,7 @@
     # librewolf-wayland
     google-chrome
     microsoft-edge
+    tor-browser-bundle-bin
     # communication
     thunderbird-wayland
     tdesktop
