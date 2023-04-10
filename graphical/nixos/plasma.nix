@@ -1,5 +1,5 @@
 # Module to enable the plasma session
-{xremap, ...}: {
+{
   cfg,
   lib,
   pkgs,
@@ -24,21 +24,6 @@
       };
       */
       desktopManager.plasma5.enable = true;
-    };
-
-    # To remap CapsLock to Esc for easier vim navigation
-    xremap = {
-      userName = "marmar";
-      config = {
-        keymap = [
-          {
-            name = "caps to escape";
-            remap = {
-              "CapsLock" = "Esc";
-            };
-          }
-        ];
-      };
     };
   };
 

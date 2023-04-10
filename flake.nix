@@ -154,7 +154,7 @@
         modules =
           (builtins.attrValues nixosModules)
           ++ [
-            # hyprland.nixosModules.default
+            hyprland.nixosModules.default
             xremap.nixosModules.default
             kmonad.nixosModules.default
             # > Our main nixos configuration file <
@@ -162,12 +162,11 @@
             (import ./machines/roguenix/nixos/configuration.nix inputs)
             # (import ./unstable/unstable.nix inputs)
 
-            # (import ./graphical/nixos/wlroots.nix inputs)
-            # ./graphical/nixos/sway.nix
-            # ./graphical/nixos/nvidia-sway.nix
-            (import ./graphical/nixos/plasma.nix inputs)
+            # ./graphical/nvidia-sway-hyprland.nix
+            (import ./graphical/nixos/wlroots.nix inputs)
+            ./graphical/nixos/sway.nix
+            ./graphical/nixos/nvidia-sway.nix
             # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
-
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix {inherit overlays;})
           ];
@@ -205,7 +204,7 @@
             ./nixos/configuration.nix
             (import ./machines/oldnix/nixos/configuration.nix inputs)
 
-            (import ./graphical/nixos/plasma.nix inputs)
+            ./graphical/nixos/plasma.nix
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix {inherit overlays;})
           ];
@@ -226,9 +225,8 @@
             # > Our main home-manager configuration file <
             ./home-manager/home.nix
             ./home-manager/editors.nix
-
-            # ./graphical/home-manager/home-wlroots.nix
-            # ./graphical/home-manager/home-sway.nix
+            ./graphical/home-manager/home-wlroots.nix
+            ./graphical/home-manager/home-sway.nix
             # ./graphical/home-manager/home-hyprland.nix
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix {inherit overlays;})
