@@ -42,6 +42,14 @@
       };
     };
 
+    stylix = {
+      url = "github:danth/stylix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
     # Remap keys
     xremap = {
       url = "github:xremap/nix-flake";
@@ -102,6 +110,7 @@
     nur,
     xremap,
     neovim-flake,
+    stylix,
     kmonad,
     programsdb,
     ...
