@@ -113,8 +113,8 @@ in {
     playerctl
     pavucontrol
     pamixer
-    alacritty # gpu accelerated terminal
-    foot
+    # alacritty # gpu accelerated terminal
+    # foot
     # shotwell
     wdisplays
     wob

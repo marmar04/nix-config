@@ -224,10 +224,10 @@
 
   # Fonts
   fonts.fonts = with pkgs; [
+    corefonts
     liberation_ttf
     fira-code
     fira
-    ibm-plex
     jetbrains-mono
     fira-code-symbols
     powerline-fonts

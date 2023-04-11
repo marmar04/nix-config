@@ -13,6 +13,8 @@
 
     # inputs.neovim-flake.nixosModules.default
 
+    ./terminal.nix
+
     # Feel free to split up your configuration and import pieces of it here.
   ];
 
@@ -34,6 +36,7 @@
   programs = {
     # Enable home-manager and git
     home-manager.enable = true;
+
     git = {
       enable = true;
       userName = "Muhammad Ameer Rafiqi";
@@ -52,32 +55,6 @@
         sponsorblock-mark = "all";
         write-description = true;
       };
-    };
-
-    bash = {
-      enable = true;
-      bashrcExtra = ''
-        # Add any bashrc lines here
-        bind '"\e[A":history-search-backward'
-        bind '"\e[B":history-search-forward'
-      '';
-    };
-
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
-      historySubstringSearch.enable = true;
-      oh-my-zsh = {
-        enable = true;
-        plugins = ["tmux"];
-        theme = "robbyrussell";
-      };
-    };
-
-    starship = {
-      enable = true;
     };
 
     btop = {
@@ -105,10 +82,6 @@
       "wallpaper" = {
         recursive = true;
         source = ./../dotfiles/config/wallpaper;
-      };
-      "alacritty" = {
-        recursive = true;
-        source = ./../dotfiles/config/alacritty;
       };
     };
   };
