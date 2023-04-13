@@ -18,13 +18,15 @@
     enable = true;
     config = {
       startup = [
+        /*
         {
           command = "systemctl --user restart waybar";
           always = true;
         }
+        */
         {command = "configure-gtk";}
+        # {command = "waybar";}
         {command = "foot --server";}
-        {command = "footclient";}
         {command = "nm-applet --indicator";}
         {command = "gammastep-indicator -l 2.9:101.6";}
         {command = "blueman-applet";}
@@ -54,7 +56,7 @@
       };
 
       bars = [
-        {}
+        {command = "${pkgs.waybar}/bin/waybar";}
       ];
 
       fonts = {
@@ -215,7 +217,7 @@
 
         "${mod}+r" = "mode resize";
 
-        "Mod4+l" = ''exec ${pkgs.swaylock}/bin/swaylock -i ~/.config/wallpaper/end_cred1.png'';
+        "Mod4+l" = ''exec ${pkgs.swaylock}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred1.png'';
         # "${mod}+k" = "exec ${pkgs.mako}/bin/makoctl dismiss";
         # "${mod}+Shift+k" = "exec ${pkgs.mako}/bin/makoctl dismiss -a";
 
@@ -249,8 +251,8 @@
 
       # Set up cliphist
       exec wl-paste --watch cliphist store &
-      bindsym $mod+Shift+p exec cliphist list | fuzzel -d | cliphist decode | wl-copy
-      bindsym $mod+Shift+d exec cliphist list | fuzzel -d | cliphist delete
+      bindsym Mod1+Shift+p exec cliphist list | fuzzel -d | cliphist decode | wl-copy
+      bindsym Mod1+Shift+d exec cliphist list | fuzzel -d | cliphist delete
 
       # Binding keys to functions
       bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
