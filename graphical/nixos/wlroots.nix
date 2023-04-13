@@ -147,7 +147,6 @@ in {
 
       # Use kvantum theming for qt apps
       QT_STYLE_OVERRIDE = "kvantum";
-
     };
     etc = {
       "pam.d/swaylock" = {

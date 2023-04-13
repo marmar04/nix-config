@@ -19,6 +19,51 @@
     # You can also split up your configuration and import pieces of it here.
   ];
 
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      # outputs.overlays.additions
+      # outputs.overlays.modifications
+      # outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+
+      (self: super: {
+        colloid-gtk-theme = super.colloid-gtk-theme.override {
+          themeVariants = ["green"];
+          colorVariants = ["dark"];
+          sizeVariants = ["compact"];
+          tweaks = ["rimless" "black"];
+        };
+      })
+      (self: super: {
+        catppuccin-gtk = super.catppuccin-gtk.override {
+          accents = ["green"];
+          size = "compact";
+          tweaks = ["rimless"];
+          variant = "mocha";
+        };
+      })
+    ];
+    # Configure your nixpkgs instance
+    config = {
+      # Disable if you don't want unfree packages
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "python-2.7.18.6"
+      ];
+    };
+  };
+
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
@@ -42,32 +87,6 @@
   };
 
   # FIXME: Add the rest of your current configuration
-
-  nixpkgs = {
-    config.permittedInsecurePackages = [
-      "python-2.7.18.6"
-    ];
-
-    # overlays for packages
-    overlays = [
-      (self: super: {
-        colloid-gtk-theme = super.colloid-gtk-theme.override {
-          themeVariants = ["green"];
-          colorVariants = ["dark"];
-          sizeVariants = ["compact"];
-          tweaks = ["rimless" "black"];
-        };
-      })
-      (self: super: {
-        catppuccin-gtk = super.catppuccin-gtk.override {
-          accents = ["green"];
-          size = "compact";
-          tweaks = ["rimless"];
-          variant = "mocha";
-        };
-      })
-    ];
-  };
 
   security = {
     # Disable sudo and enable doas

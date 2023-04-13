@@ -14,6 +14,7 @@
     # inputs.neovim-flake.nixosModules.default
 
     ./terminal.nix
+    ./editors.nix
 
     # Feel free to split up your configuration and import pieces of it here.
   ];
@@ -37,12 +38,12 @@
       # })
     ];
     # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = _: true;
-    };
+    # config = {
+    # Disable if you don't want unfree packages
+    # allowUnfree = true;
+    # Workaround for https://github.com/nix-community/home-manager/issues/2942
+    # allowUnfreePredicate = _: true;
+    # };
   };
 
   # Set your username
