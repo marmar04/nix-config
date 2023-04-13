@@ -81,6 +81,8 @@
         }
       ];
     };
+
+    polkit.enable = true;
   };
 
   # zram configuration

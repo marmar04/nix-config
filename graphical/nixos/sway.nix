@@ -17,12 +17,14 @@
     };
   };
 
+  /*
   programs = {
     sway = {
-      enable = true;
+      enable = false;
       wrapperFeatures.gtk = true;
     };
   };
+  */
 
   environment.systemPackages = with pkgs; [
     lsd

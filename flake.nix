@@ -166,6 +166,24 @@
             hyprland.nixosModules.default
             xremap.nixosModules.default
             kmonad.nixosModules.default
+
+            # home-manager module
+            home-manager.nixosModules.home-manager
+            {
+              # home-manager.useGlobalPkgs = true;
+              home-manager.extraSpecialArgs = {inherit inputs;};
+              home-manager.users.marmar.imports =
+                (builtins.attrValues homeManagerModules)
+                ++ [
+                  ./home-manager/home.nix
+                  ./home-manager/editors.nix
+                  ./graphical/home-manager/home-wlroots.nix
+                  ./graphical/home-manager/home-sway.nix
+                  # Our common nixpkgs config (unfree, overlays, etc)
+                  (import ./nixpkgs-config.nix {inherit overlays;})
+                ];
+            }
+
             # > Our main nixos configuration file <
             (import ./nixos/configuration.nix inputs)
             (import ./machines/roguenix/nixos/configuration.nix inputs)
@@ -174,7 +192,7 @@
             # ./graphical/nvidia-sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
             ./graphical/nixos/sway.nix
-            ./graphical/nixos/nvidia-sway.nix
+            # ./graphical/nixos/nvidia-sway.nix
             # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix {inherit overlays;})
@@ -191,6 +209,24 @@
             hyprland.nixosModules.default
             xremap.nixosModules.default
             kmonad.nixosModules.default
+
+            # home-manager module
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.extraSpecialArgs = {inherit inputs;};
+              home-manager.users.marmar.imports =
+                (builtins.attrValues homeManagerModules)
+                ++ [
+                  ./home-manager/home.nix
+                  ./home-manager/editors.nix
+                  ./graphical/home-manager/home-wlroots.nix
+                  ./graphical/home-manager/home-sway.nix
+                  # Our common nixpkgs config (unfree, overlays, etc)
+                  (import ./nixpkgs-config.nix {inherit overlays;})
+                ];
+            }
+
             (import ./nixos/configuration.nix inputs)
             (import ./machines/elitenix/nixos/configuration.nix inputs)
 

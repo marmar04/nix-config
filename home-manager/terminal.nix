@@ -25,6 +25,7 @@
       settings = {
         env.TERM = "xterm-256color";
         window.opacity = 0.8;
+        mouse.hide_when_typing = false;
       };
     };
 
