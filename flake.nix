@@ -160,35 +160,39 @@
         specialArgs = {
           inherit inputs outputs;
         }; # Pass flake inputs to our config
-        modules = [
-          hyprland.nixosModules.default
-          xremap.nixosModules.default
-          kmonad.nixosModules.default
+        modules =
+          (builtins.attrValues nixosModules)
+          ++ [
+            hyprland.nixosModules.default
+            xremap.nixosModules.default
+            kmonad.nixosModules.default
 
-          # home-manager module
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.marmar.imports = [
-              ./home-manager/home.nix
-              ./graphical/home-manager/home-wlroots.nix
-              ./graphical/home-manager/home-sway.nix
-            ];
-          }
+            # home-manager module
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {inherit inputs;};
+              home-manager.users.marmar.imports =
+                (builtins.attrValues homeManagerModules)
+                ++ [
+                  ./home-manager/home.nix
+                  ./graphical/home-manager/home-wlroots.nix
+                  ./graphical/home-manager/home-sway.nix
+                ];
+            }
 
-          # > Our main nixos configuration file <
-          (import ./nixos/configuration.nix inputs)
-          (import ./machines/roguenix/nixos/configuration.nix inputs)
-          # (import ./unstable/unstable.nix inputs)
+            # > Our main nixos configuration file <
+            (import ./nixos/configuration.nix inputs)
+            (import ./machines/roguenix/nixos/configuration.nix inputs)
+            # (import ./unstable/unstable.nix inputs)
 
-          # ./graphical/nvidia-sway-hyprland.nix
-          (import ./graphical/nixos/wlroots.nix inputs)
-          ./graphical/nixos/sway.nix
-          # ./graphical/nixos/nvidia-sway.nix
-          # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
-        ];
+            # ./graphical/nvidia-sway-hyprland.nix
+            (import ./graphical/nixos/wlroots.nix inputs)
+            ./graphical/nixos/sway.nix
+            # ./graphical/nixos/nvidia-sway.nix
+            # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
+          ];
       };
 
       elitenix = nixpkgs.lib.nixosSystem {
