@@ -42,6 +42,14 @@
       };
     };
 
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+
     stylix = {
       url = "github:danth/stylix";
       inputs = {
@@ -110,6 +118,7 @@
     nur,
     xremap,
     neovim-flake,
+    emacs-overlay,
     stylix,
     kmonad,
     programsdb,
