@@ -217,7 +217,7 @@
 
         "${mod}+r" = "mode resize";
 
-        "Mod4+l" = ''exec ${pkgs.swaylock}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred1.png'';
+        "Mod4+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred1.png";
         # "${mod}+k" = "exec ${pkgs.mako}/bin/makoctl dismiss";
         # "${mod}+Shift+k" = "exec ${pkgs.mako}/bin/makoctl dismiss -a";
 
@@ -284,7 +284,7 @@
         {
           timeout = 600;
           command = ''${pkgs.sway}/bin/swaymsg "output * power off"'';
-          resumeCommand = ''${pkgs.sway}/bin/swaymsg output * power on"'';
+          resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * power on"'';
         }
       ];
       events = [
