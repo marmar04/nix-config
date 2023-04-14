@@ -6,8 +6,10 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Muhammad Ameer Rafiqi"
+      user-mail-address "m.ameerrafiqi@gmail.com")
+
+(setq inhibit-startup-screen t)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -31,7 +33,7 @@
 
 ;; Set up jetbrains mono as default font
 (setq doom-font (font-spec :family "JetBrainsMono" :size 12 :weight 'light)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMono" :size 13)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono" :size 14)
       doom-unicode-font (font-spec :family "JetBrainsMono")
       doom-big-font (font-spec :family "JetBrainsMono" :size 24))
 
@@ -47,6 +49,14 @@
 
 ;; Set up nov for epub reading
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+;; Set up elcord
+(require 'elcord)
+(elcord-mode)
+(setq elcord-use-major-mode-as-main-icon t)
+(setq elcord-editor-icon "emacs_icon")
+(setq elcord-idle-message "Banging my head against the wall")
+(add-to-list 'elcord-boring-buffers-regexp-list "^\\*scratch\\*$")
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!

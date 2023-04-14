@@ -39,6 +39,26 @@
     alejandra
     astyle
     python311Packages.black
+
+    /*
+    (pkgs.emacsWithPackagesFromUsePackage {
+      package = pkgs.emacsPgtk;  # replace with pkgs.emacsPgtk, or another version if desired.
+      config = ./../dotfiles/config/doom.d/config.el;
+      # config = path/to/your/config.org; # Org-Babel configs also supported
+
+      # Optionally provide extra packages not in the configuration file.
+      extraEmacsPackages = epkgs: [
+        epkgs.use-package
+      ];
+
+      # Optionally override derivations.
+      override = epkgs: epkgs // {
+        somePackage = epkgs.melpaPackages.somePackage.overrideAttrs(old: {
+           # Apply fixes here
+        });
+      };
+    })
+    */
   ];
 
   services = {

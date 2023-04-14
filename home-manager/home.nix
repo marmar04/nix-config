@@ -30,6 +30,8 @@
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
+      # (import self.inputs.emacs-overlay)
+
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
