@@ -73,6 +73,11 @@
       userEmail = "m.ameerrafiqi@gmail.com";
     };
 
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
     bat = {
       enable = true;
     };
