@@ -14,16 +14,29 @@
     # Feel free to split up your configuration and import pieces of it here.
   ];
 
+  wayland.windowManager.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    nvidiaPatches = true;
+
+    recommendedEnvironment = true;
+    systemdIntegration = true;
+  };
+
+  programs = {
+    eww = {
+      enable = true;
+      package = pkgs.eww-wayland;
+      configDir = ./../../dotfiles/config/eww;
+    };
+  };
+
   # For linking the files in config folder
   xdg = {
     configFile = {
       "hypr" = {
         recursive = true;
         source = ./../../dotfiles/config/hypr;
-      };
-      "eww" = {
-        recursive = true;
-        source = ./../../dotfiles/config/eww;
       };
     };
   };
