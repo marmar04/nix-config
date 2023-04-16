@@ -25,7 +25,6 @@
         }
         */
         {command = "configure-gtk";}
-        # {command = "waybar";}
         {command = "foot --server";}
         {command = "nm-applet --indicator";}
         {command = "gammastep-indicator -l 2.9:101.6";}
@@ -38,11 +37,10 @@
       assigns = {
         "3" = [{class = "Emacs";}];
         "5" = [
-          {class = "discord";}
-          {app_id = "Slack";}
-          {app_id = "Element";}
+          {app_id = "discord";}
+          # {app_id = "Slack";}
+          # {app_id = "Element";}
         ];
-        "10" = [{app_id = "sublime-music";}];
       };
 
       colors = {
@@ -56,11 +54,11 @@
       };
 
       bars = [
-        {command = "${pkgs.waybar}/bin/waybar";}
+        # {command = "${pkgs.waybar}/bin/waybar";}
       ];
 
       fonts = {
-        names = ["JetBrainsMono" "Sans-Serif"];
+        names = ["JetBrains Mono" "Sans-Serif"];
         # style = "Bold Semi-Condensed";
         size = 11.0;
       };
@@ -106,7 +104,8 @@
       floating = {
         titlebar = false;
         criteria = [
-          {class = "pavucontrol";}
+          {app_id = "pavucontrol";}
+          {app_id = "nm-connection-editor";}
           {title = "Bluetooth Devices";}
         ];
       };
@@ -132,12 +131,6 @@
           command = "inhibit_idle focus";
           criteria.class = "vlc";
         }
-        /*
-        {
-          command = "move to workspace number 3";
-          criteria.class = "Emacs";
-        }
-        */
       ];
 
       keybindings = let
@@ -155,7 +148,7 @@
         "${mod}+Return" = "exec ${terminal}";
         "${mod}+Shift+q" = "kill";
         "${mod}+space" = "exec ${menu}";
-        "--release Super_L" = "exec pkill ${menu} || ${menu}";
+        "--release Super_L" = "exec pkill fuzzel || ${menu}";
 
         "${mod}+${left}" = "focus left";
         "${mod}+${down}" = "focus down";
@@ -271,6 +264,116 @@
       bindsym XF86MonBrightnessUp exec light -A 5 && light -G | cut -d'.' -f1 > $WOBSOCK
       bindsym XF86MonBrightnessDown exec light -U 5 && light -G | cut -d'.' -f1 > $WOBSOCK
     '';
+  };
+
+  programs = {
+    waybar = {
+      enable = true;
+      systemd = {
+        enable = true;
+        target = "sway-session.target";
+      };
+      style = ./../../dotfiles/config/waybar/style.css;
+      settings = {
+        mainBar = {
+          layer = "top";
+          position = "top";
+          height = 42;
+          margin-left = 2;
+          margin-right = 2;
+          spacing = 2;
+
+          modules-left = ["custom/search" "custom/separator" "sway/workspaces" "custom/separator" "sway/window"];
+          modules-right = ["idle_inhibitor" "tray" "pulseaudio" "backlight" "battery" "clock"];
+
+          "custom/search" = {
+            tooltip = false;
+            format = " ";
+            on-click = "killall fuzzel || fuzzel";
+          };
+
+          "custom/separator" = {
+            format = "|";
+            interval = "once";
+            tooltip = false;
+          };
+
+          "sway/workspaces" = {
+            disable-scroll = false;
+            disable-markup = false;
+            all-outputs = true;
+            format = " {icon} ";
+            format-icons = {
+              "1" = "";
+              "2" = "";
+              "3" = "";
+              "4" = "";
+              "5" = "";
+              "6" = "";
+              "focused" = "";
+              "default" = "";
+            };
+            persistent_workspaces = {
+              "1" = [];
+              "2" = [];
+              "3" = [];
+              "4" = [];
+              "5" = [];
+            };
+          };
+
+          "idle_inhibitor" = {
+            format = "{icon}";
+            format-icons = {
+              "activated" = "";
+              "deactivated" = "";
+            };
+          };
+
+          "tray" = {
+            spacing = 10;
+          };
+
+          "battery" = {
+            states = {
+              "good" = 95;
+              "warning" = 30;
+              "critical" = 15;
+            };
+            format = "{capacity}% {icon}";
+            tooltip-format = "{timeTo}, {capacity}";
+            format-alt = "{time} {icon}";
+            format-icons = ["" "" "" "" ""];
+          };
+
+          "pulseaudio" = {
+            format = "{volume}% {icon} {format_source}";
+            format-muted = " {format_source}";
+            format-bluetooth = "{volume}% {icon} {format_source}";
+            format-bluetooth-muted = " {icon} {format_source}";
+            format-source = "{volume}% ";
+            format-source-muted = "";
+            ignored-sinks = ["Easy Effects Sink"];
+            format-icons = {
+              "headphone" = "";
+              "hands-free" = "";
+              "headset" = "";
+              "phone" = "";
+              "portable" = "";
+              "car" = "";
+              "default" = ["" "" ""];
+            };
+            on-click = "pavucontrol";
+          };
+
+          "clock" = {
+            format = "{:%Y-%m-%d - %I:%M}";
+            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+            on-click = "swaync-client -t -sw";
+          };
+        };
+      };
+    };
   };
 
   services = {

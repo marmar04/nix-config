@@ -81,7 +81,7 @@
           fi
           ${EDITOR:-vim} flake.nix
         }
-     '';
+      '';
     };
 
     zsh = {

@@ -29,6 +29,7 @@
   };
 
   # For programs that have their options in home-manager
+  /*
   programs = {
     waybar = {
       enable = true;
@@ -38,6 +39,7 @@
       });
     };
   };
+  */
 
   gtk = {
     enable = true;
@@ -58,12 +60,14 @@
   # For linking the files in config folder
   xdg = {
     configFile = {
+      /*
       "waybar/style.css" = {
         source = ./../../dotfiles/config/waybar/style.css;
       };
       "waybar/config" = {
         source = ./../../dotfiles/config/waybar/sway-config;
       };
+      */
       "waybar/hyprland-config" = {
         source = ./../../dotfiles/config/waybar/config;
       };
