@@ -301,13 +301,14 @@
     libimobiledevice
     ifuse
     # editors
-    texlive.combined.scheme-basic
+    # texlive.combined.scheme-basic
     # cli
     dash
     coreutils
     lesspipe
     poppler_utils
     epr
+    gnuplot
     fortune
     curl
     wget

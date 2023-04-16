@@ -32,10 +32,10 @@
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
 ;; Set up jetbrains mono as default font
-(setq doom-font (font-spec :family "JetBrainsMono" :size 12 :weight 'light)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMono" :size 14)
-      doom-unicode-font (font-spec :family "JetBrainsMono")
-      doom-big-font (font-spec :family "JetBrainsMono" :size 24))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 12 :weight 'light)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 12)
+      doom-unicode-font (font-spec :family "JetBrains Mono")
+      doom-big-font (font-spec :family "JetBrains Mono" :size 24))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -47,15 +47,19 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+;; Battery power on laptops
+(unless (string-match-p "^Power N/A" (battery))
+        (display-battery-mode 1))
+
 ;; Set up nov for epub reading
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
 ;; Set up elcord
 (require 'elcord)
 (elcord-mode)
-(setq elcord-use-major-mode-as-main-icon t)
-(setq elcord-editor-icon "emacs_icon")
-(setq elcord-idle-message "Banging my head against the wall")
+(setq elcord-use-major-mode-as-main-icon t
+      elcord-editor-icon "emacs_icon"
+      elcord-idle-message "Banging my head against the wall")
 (add-to-list 'elcord-boring-buffers-regexp-list "^\\*scratch\\*$")
 
 ;; If you use `org' and don't want your org files in the default location below,

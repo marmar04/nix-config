@@ -31,6 +31,8 @@
     python310Packages.jedi
     python310Packages.jedi-language-server
     # python39Packages.python-lsp-server
+    # For doom emacs latex integration
+    texlive.combined.scheme-medium
     jupyter
     php
     sqlite
