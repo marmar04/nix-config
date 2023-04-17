@@ -187,7 +187,7 @@
 
     thermald.enable = true;
 
-    power-profiles-daemon.enable = lib.mkForce false;
+    power-profiles-daemon.enable = lib.mkDefault false;
 
     upower = {
       enable = true;
