@@ -186,7 +186,7 @@
                 ++ [
                   ./home-manager/home.nix
                   ./graphical/home-manager/home-wlroots.nix
-                  ./graphical/home-manager/home-sway.nix
+                  ./graphical/home-manager/home-hyprland.nix
                 ];
             }
 
@@ -197,7 +197,9 @@
 
             # ./graphical/nvidia-sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
-            ./graphical/nixos/sway.nix
+            (import ./graphical/nixos/hyprland.nix inputs)
+            (import ./graphical/nixos/nvidia-hyprland.nix inputs)
+            # ./graphical/nixos/sway.nix
             # ./graphical/nixos/nvidia-sway.nix
             # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
           ];
