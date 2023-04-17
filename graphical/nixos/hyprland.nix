@@ -39,13 +39,12 @@ in {
     };
   };
 
-  /*
   programs = {
     hyprland = {
       enable = true;
+      xwayland.enable = true;
     };
   };
-  */
 
   fonts.fonts = with pkgs; [
     jost
