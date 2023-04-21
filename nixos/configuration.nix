@@ -303,6 +303,7 @@
     # editors
     # texlive.combined.scheme-basic
     # cli
+    alsa-utils
     dash
     coreutils
     lesspipe

@@ -158,12 +158,12 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
+    background-color: #a6e3a1;
     color: #000000;
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: #eba0ac;
 }
 
 #disk {
@@ -207,7 +207,7 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    background-color: #fab387;
 }
 
 #temperature.critical {
