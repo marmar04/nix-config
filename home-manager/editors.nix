@@ -122,6 +122,8 @@
     };
     */
 
+    # TODO: To fix in near future
+    /*
     neovim-flake = {
       enable = true;
       settings = {
@@ -142,7 +144,7 @@
           treesitter.enable = true;
           lsp = {
             enable = true;
-            clang.enable = true;
+            # clang.enable = true;
             nix.enable = true;
             python = true;
             rust.enable = true;
@@ -151,6 +153,7 @@
         };
       };
     };
+    */
 
     # Vim
     vim = {
