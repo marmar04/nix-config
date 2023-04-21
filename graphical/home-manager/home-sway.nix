@@ -271,11 +271,14 @@
   programs = {
     waybar = {
       enable = true;
+
       systemd = {
         enable = true;
         target = "sway-session.target";
       };
+
       style = ./../../dotfiles/config/waybar/style.css;
+
       settings = {
         mainBar = {
           layer = "top";
@@ -285,7 +288,8 @@
           margin-right = 2;
           spacing = 2;
 
-          modules-left = ["custom/search" "custom/separator" "sway/workspaces" "custom/separator" "sway/window"];
+          modules-left = ["custom/separator" "sway/workspaces" "custom/separator" "cpu" "memory" "temperature"];
+          modules-center = ["sway/window"];
           modules-right = ["idle_inhibitor" "tray" "pulseaudio" "backlight" "battery" "clock"];
 
           "custom/search" = {
@@ -322,6 +326,24 @@
               "4" = [];
               "5" = [];
             };
+          };
+
+          "cpu" = {
+            format = "{usage}% ";
+            tooltip = false;
+          };
+
+          "memory" = {
+            format = "{}% ";
+          };
+
+          "temperature" = {
+            # thermal-zone = 2;
+            # hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+            critical-threshold = 80;
+            format-critical = "{temperatureC}°C {icon}";
+            format = "{temperatureC}°C {icon}";
+            format-icons = ["" "" ""];
           };
 
           "idle_inhibitor" = {
