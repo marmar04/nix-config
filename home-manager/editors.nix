@@ -123,7 +123,6 @@
     */
 
     # TODO: To fix in near future
-    /*
     neovim-flake = {
       enable = true;
       settings = {
@@ -133,27 +132,62 @@
           vimAlias = false;
           autocomplete.enable = true;
           autopairs.enable = true;
-          markdown.enable = true;
           notes.orgmode.enable = true;
           statusline.lualine.enable = true;
+
           theme = {
             enable = true;
             name = "catppuccin";
             style = "mocha";
           };
-          treesitter.enable = true;
-          lsp = {
-            enable = true;
-            # clang.enable = true;
-            nix.enable = true;
-            python = true;
-            rust.enable = true;
-            sql = true;
+
+          languages = {
+            enableFormat = true;
+            enableLSP = true;
+            enableTreesitter = true;
+
+            markdown = {
+              enable = true;
+              glow.enable = true;
+              treesitter.enable = true;
+            };
+
+            python = {
+              enable = true;
+              format.enable = true;
+              treesitter.enable = true;
+              lsp = {
+                enable = true;
+              };
+            };
+
+            nix = {
+              enable = true;
+              format = {
+                enable = true;
+                package = pkgs.alejandra;
+              };
+              treesitter.enable = true;
+              lsp = {
+                enable = true;
+                package = inputs.nil.packages.${pkgs.system}.nil;
+              };
+            };
+
+            rust = {
+              enable = true;
+              treesitter.enable = true;
+              lsp = {
+                enable = true;
+                package = pkgs.rust-analyzer;
+              };
+            };
+
+            sql.enable = true;
           };
         };
       };
     };
-    */
 
     # Vim
     vim = {
