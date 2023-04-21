@@ -207,6 +207,8 @@
         "${mod}+Shift+c" = "reload";
         "${mod}+Shift+r" = "restart";
         "${mod}+Shift+e" = ''mode "system:  [r]eboot  [p]oweroff  [l]ogout"'';
+        # For emacs-everywhere
+        # "${mod}+Shift+e" = ''exec emacsclient --eval "(emacs-everywhere)"'';
 
         "${mod}+r" = "mode resize";
 
@@ -364,6 +366,11 @@
               "default" = ["" "" ""];
             };
             on-click = "pavucontrol";
+          };
+
+          "backlight" = {
+            format = "{percent}% {icon}";
+            format-icons = ["" "" "" "" "" "" "" "" ""];
           };
 
           "clock" = {
