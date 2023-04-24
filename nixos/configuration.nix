@@ -328,6 +328,7 @@
     fd
     ripgrep
     spotdl
+    nix-du
     neofetch
     htop
     lolcat
@@ -340,6 +341,7 @@
     networkmanagerapplet
     protonvpn-gui
     # media
+    graphviz
     kdenlive
     gimp
     krita
