@@ -312,6 +312,7 @@
     epr
     gnuplot
     fortune
+    ispell
     curl
     wget
     nnn
