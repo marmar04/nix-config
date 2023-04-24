@@ -293,6 +293,7 @@
     # notes
     xournalpp
     # system
+    bucklespring-libinput
     glib
     hplip
     easyeffects
