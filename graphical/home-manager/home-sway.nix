@@ -107,6 +107,7 @@
           {app_id = "pavucontrol";}
           {app_id = "nm-connection-editor";}
           {title = "Bluetooth Devices";}
+          {title = "Firefox — Sharing Indicator";}
         ];
       };
 
