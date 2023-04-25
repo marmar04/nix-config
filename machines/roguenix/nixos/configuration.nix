@@ -37,7 +37,13 @@
     supportedFilesystems = ["ntfs" "btrfs" "exfat"];
 
     # Swappiness of the machine
-    kernel.sysctl = {"vm.swappiness" = 60;};
+    kernel.sysctl = {
+      "vm.swappiness" = 60;
+
+      # For (hopefully) unlimited tethering. Try 129 if this doesn't work
+      "net.ipv4.ip_default_ttl" = 65;
+      "net.ipv6.conf.all.hop_limit" = 65;
+    };
   };
 
   # Bootloader
