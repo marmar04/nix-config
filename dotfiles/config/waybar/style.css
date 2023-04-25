@@ -102,11 +102,22 @@ window#waybar.chromium {
 #mode,
 #idle_inhibitor,
 #mpd {
-	border-radius: 2rem;
-	padding-left: 8px;
-	padding-right: 8px;
-	margin: 2px;
+    border-radius: 2rem;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 2px;
     color: #4c4f69;
+}
+
+#cpu,
+#memory,
+#temperature {
+    margin: 4px;
+    background-color: #313244;
+    color: #4c4f69;
+    border-radius: 2rem;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 #window {
