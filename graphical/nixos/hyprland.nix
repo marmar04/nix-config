@@ -1,4 +1,4 @@
-{hyprland, ...}: {
+{
   cfg,
   lib,
   pkgs,

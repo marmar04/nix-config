@@ -197,7 +197,7 @@
 
             # ./graphical/nvidia-sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
-            # (import ./graphical/nixos/hyprland.nix inputs)
+            # ./graphical/nixos/hyprland.nix
             # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
             ./graphical/nixos/sway.nix
             # ./graphical/nixos/nvidia-sway.nix

@@ -18,7 +18,8 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = null;
+    # package = null;
+    package = pkgs.hyprland;
     recommendedEnvironment = true;
     systemdIntegration = true;
 
@@ -69,8 +70,8 @@
             disable-markup = false;
             all-outputs = true;
             on-click = "activate";
-            on-scroll-up = "hyprctl dispatch workspace e+1";
-            on-scroll-down = "hyprctl dispatch workspace e-1";
+            on-scroll-up = "${pkgs.hyprland}/bin/hyprctl dispatch workspace e+1";
+            on-scroll-down = "${pkgs.hyprland}/bin/hyprctl dispatch workspace e-1";
             format = " {icon} ";
             format-icons = {
               "1" = "  ";
@@ -171,8 +172,8 @@
         }
         {
           timeout = 600;
-          command = ''hyprctl dispatch dpms off'';
-          resumeCommand = ''hyprctl dispatch dpms on'';
+          command = ''${pkgs.hyprland}/bin/hyprctl dispatch dpms off'';
+          resumeCommand = ''${pkgs.hyprland}/bin/hyprctl dispatch dpms on'';
         }
       ];
       events = [
