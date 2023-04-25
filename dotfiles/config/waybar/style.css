@@ -60,7 +60,7 @@ window#waybar.chromium {
 }
 
 #workspaces {
-	margin: 2px;
+	margin: 0px;
 	padding: 0px;
 	background-color: #313244;
 	border-radius: 2rem;

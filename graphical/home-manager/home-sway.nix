@@ -289,7 +289,7 @@
           margin-right = 2;
           spacing = 2;
 
-          modules-left = ["cpu" "memory" "temperature" "sway/workspaces"];
+          modules-left = ["cpu" "memory" "temperature" "custom/seperator" "sway/workspaces"];
           modules-center = ["sway/window"];
           modules-right = ["idle_inhibitor" "tray" "pulseaudio" "backlight" "battery" "clock"];
 
