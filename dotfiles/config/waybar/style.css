@@ -13,6 +13,13 @@
 	border-radius: 2rem;
 }
 
+.modules-left {
+	margin: 4px;
+	padding: 3px;
+	background-color: #313244;
+	border-radius: 2rem;
+}
+
 window#waybar {
     /* background-color: #313244; old */
     /* background-color: #1e1e2e; */
@@ -53,8 +60,8 @@ window#waybar.chromium {
 }
 
 #workspaces {
-	margin: 4px;
-	padding: 3px;
+	margin: 2px;
+	padding: 0px;
 	background-color: #313244;
 	border-radius: 2rem;
 }
@@ -109,6 +116,7 @@ window#waybar.chromium {
     color: #4c4f69;
 }
 
+/*
 #cpu,
 #memory,
 #temperature {
@@ -119,6 +127,7 @@ window#waybar.chromium {
     padding-left: 8px;
     padding-right: 8px;
 }
+*/
 
 #window {
     margin: 4px;
