@@ -259,13 +259,13 @@
     /*
     "emacs" = {
       recursive = true;
-      source = ./../../dotfiles/config/emacs;
+      source = ./../dotfiles/config/emacs;
     };
     */
 
     "doom" = {
       recursive = true;
-      source = ./../../dotfiles/config/doom;
+      source = ./../dotfiles/config/doom;
     };
   };
 
