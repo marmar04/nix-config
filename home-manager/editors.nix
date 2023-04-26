@@ -210,16 +210,17 @@
     # astronvim.enable = true;
 
     # Emacs
-    /*
     emacs = {
       enable = true;
     };
-    */
 
+    # For nix-doom-emacs
+    /*
     doom-emacs = {
       enable = true;
       doomPrivateDir = ./../dotfiles/config/doom.d;
     };
+    */
 
     # Visual Studio Code
     vscode = {
@@ -252,4 +253,24 @@
     };
   };
   # xdg.configFile."nvim/coc-settings.json".text = builtins.readFile ./../../dotfiles/config/my-coc-settings.json;
+
+  # Symlink for {,doom-}emacs configuration
+  xdg.configFile = {
+    /*
+    "emacs" = {
+      recursive = true;
+      source = ./../../dotfiles/config/emacs;
+    };
+    */
+
+    "doom" = {
+      recursive = true;
+      source = ./../../dotfiles/config/doom;
+    };
+  };
+
+  # For the doom command
+  home.shellAliases = {
+    doom = "/home/marmar/.config/emacs/bin/doom";
+  };
 }
