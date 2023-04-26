@@ -249,18 +249,26 @@
   };
 
   # Fonts
-  fonts.fonts = with pkgs; [
-    corefonts
-    liberation_ttf
-    fira-code
-    fira
-    jetbrains-mono
-    fira-code-symbols
-    powerline-fonts
-    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-    font-awesome
-    source-code-pro
-  ];
+  fonts = {
+    fontDir.enable = true;
+
+    fonts = with pkgs; [
+      corefonts
+      liberation_ttf
+      fira-code
+      fira
+      jetbrains-mono
+      fira-code-symbols
+      powerline-fonts
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+      font-awesome
+      source-code-pro
+    ];
+
+    fontconfig = {
+      monospace = ["JetBrains Mono"];
+    };
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
