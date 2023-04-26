@@ -15,6 +15,7 @@
 
     ./terminal.nix
     ./editors.nix
+    ./theming.nix
 
     # Feel free to split up your configuration and import pieces of it here.
   ];
