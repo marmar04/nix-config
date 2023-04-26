@@ -278,6 +278,7 @@
     # themes
     catppuccin-kde
     catppuccin-gtk
+    catppuccin-kvantum
     papirus-icon-theme
     gnome.adwaita-icon-theme
     colloid-kde
