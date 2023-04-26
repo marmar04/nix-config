@@ -50,7 +50,7 @@
           margin-right = 2;
           spacing = 2;
 
-          modules-left = ["custom/search" "custom/separator" "wlr/workspaces" "custom/separator" "hyprland/window"];
+          modules-left = ["temperature" "memory" "cpu" "wlr/workspaces" "hyprland/window"];
           modules-right = ["idle_inhibitor" "tray" "pulseaudio" "backlight" "battery" "clock"];
 
           "custom/search" = {
@@ -68,7 +68,7 @@
           "wlr/workspaces" = {
             disable-scroll = true;
             disable-markup = false;
-            all-outputs = true;
+            all-outputs = false;
             on-click = "activate";
             on-scroll-up = "${pkgs.hyprland}/bin/hyprctl dispatch workspace e+1";
             on-scroll-down = "${pkgs.hyprland}/bin/hyprctl dispatch workspace e-1";
@@ -83,7 +83,6 @@
               "focused" = "  ";
               "default" = "  ";
             };
-            /*
             persistent_workspaces = {
               "1" = [];
               "2" = [];
@@ -91,7 +90,24 @@
               "4" = [];
               "5" = [];
             };
-            */
+          };
+
+          "cpu" = {
+            format = "{usage}% ";
+            tooltip = false;
+          };
+
+          "memory" = {
+            format = "{}% ";
+          };
+
+          "temperature" = {
+            # thermal-zone = 2;
+            # hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+            critical-threshold = 80;
+            format-critical = "{temperatureC}°C {icon}";
+            format = "{temperatureC}°C {icon}";
+            format-icons = ["" "" ""];
           };
 
           "hyprland/window" = {
@@ -154,7 +170,7 @@
           "clock" = {
             format = "{:%Y-%m-%d - %I:%M}";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-            on-click = "swaync-client -t -sw";
+            # on-click = "swaync-client -t -sw";
           };
         };
       };

@@ -65,6 +65,13 @@ window#waybar.chromium {
 	background-color: #313244;
 	border-radius: 2rem;
 }
+#window {
+    margin: 0px;
+    background-color: #313244;
+    border-radius: 2rem;
+    padding: 0px;
+    /* padding: 0 6px; */
+}
 
 #workspaces button {
 	padding: 0px;
@@ -128,15 +135,6 @@ window#waybar.chromium {
     padding-right: 8px;
 }
 */
-
-#window {
-    margin: 4px;
-    background-color: #313244;
-    border-radius: 2rem;
-    padding-left: 8px;
-    padding-right: 8px;
-    /* padding: 0 6px; */
-}
 
 window#waybar.empty #window {
 	background-color: transparent;
