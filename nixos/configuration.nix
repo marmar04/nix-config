@@ -257,7 +257,7 @@
     jetbrains-mono
     fira-code-symbols
     powerline-fonts
-    nerdfonts
+    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     font-awesome
     source-code-pro
   ];
