@@ -265,7 +265,7 @@
       source-code-pro
     ];
 
-    fontconfig = {
+    fontconfig.defaultFonts = {
       monospace = ["JetBrains Mono"];
     };
   };
