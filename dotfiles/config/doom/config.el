@@ -62,7 +62,9 @@
       elcord-idle-message "Banging my head against the wall")
 (add-to-list 'elcord-boring-buffers-regexp-list "^\\*scratch\\*$")
 
-(require 'selectric-mode)
+;;(require 'selectric-mode)
+
+(use-package! kbd-mode)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
