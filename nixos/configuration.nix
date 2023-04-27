@@ -53,6 +53,20 @@
           variant = "mocha";
         };
       })
+      (self: super: {
+        catppuccin-kvantum = super.catppuccin-kvantum.override {
+          accent = "Green";
+          variant = "Mocha";
+        };
+      })
+      /*
+      (self: super: {
+        catppuccin-kde = super.catppuccin-kde.override {
+          flavour = ["mocha"];
+          # accents = ["green"];
+        };
+      })
+      */
     ];
     # Configure your nixpkgs instance
     config = {

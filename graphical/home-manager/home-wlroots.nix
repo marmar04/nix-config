@@ -90,8 +90,13 @@
         source = ./../../dotfiles/config/fuzzel/fuzzel.ini;
       };
       "Kvantum" = {
-        recursive = true;
-        source = ./../../dotfiles/config/Kvantum;
+        # recursive = true;
+        # source = ./../../dotfiles/config/Kvantum;
+        enable = false;
+        text = ''
+          [General]
+          theme=Catppuccin-Mocha-Green
+        '';
       };
     };
   };

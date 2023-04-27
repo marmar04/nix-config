@@ -34,7 +34,7 @@
 ;; Set up jetbrains mono as default font
 (setq doom-font (font-spec :family "JetBrains Mono" :size 12 :weight 'light)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 12)
-      doom-unicode-font (font-spec :family "JetBrains Mono")
+      doom-unicode-font (font-spec :family "Symbols Nerd Font")
       doom-big-font (font-spec :family "JetBrains Mono" :size 24))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
