@@ -12,6 +12,13 @@
   (package-install 'use-package))
 (eval-when-compile (require 'use-package))
 
+;; Load path for manually installed packages
+(add-to-list 'load-path "~/.config/emacs/lisp/")
+
+;; Set up the modules in ./lisp/
+(require 'init-evil)
+(require 'init-org)
+
 ;;; THEMING
 ;; Use catppuccin theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -20,30 +27,7 @@
 ;; Don't show the splash screen
 (setq inhibit-startup-message t)  ; Comment at end of line!
 
-;;; UNDO
-;; Vim style undo not needed for emacs 28
-(use-package undo-fu)
-
-;;; Vim Bindings
-(use-package evil
-  :demand t
-  :bind (("<escape>" . keyboard-escape-quit))
-  :init
-  ;; allows for using cgn
-  ;; (setq evil-search-module 'evil-search)
-  (setq evil-want-keybinding nil)
-  ;; no vim insert bindings
-  (setq evil-undo-system 'undo-fu)
-  :config
-  (evil-mode 1))
-
-;;; Vim Bindings Everywhere else
-(use-package evil-collection
-  :after evil
-  :config
-  (setq evil-want-integration t)
-  (evil-collection-init))
-
+;; elcord.el
 (use-package elcord
   :config
   (setq elcord-use-major-mode-as-main-icon t
@@ -51,3 +35,10 @@
         elcord-idle-message "Lost in the sea of configurability")
   (add-to-list `elcord-boring-buffers-regexp-list "^\\*scratch\\*$")
   (elcord-mode))
+
+;;; MAJOR MODE
+;; Nix
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
+;;; LSP MODE
