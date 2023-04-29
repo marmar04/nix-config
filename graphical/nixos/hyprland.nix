@@ -1,4 +1,4 @@
-{hyprland, ...}: {
+{
   cfg,
   lib,
   pkgs,
@@ -42,6 +42,7 @@ in {
   programs = {
     hyprland = {
       enable = true;
+      xwayland.enable = true;
     };
   };
 
@@ -51,7 +52,7 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
-    eww-wayland
+    # eww-wayland
 
     bc
     blueberry
@@ -67,7 +68,6 @@ in {
     procps
     socat
     udev
-    upower
     util-linux
     wlogout
   ];

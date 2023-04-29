@@ -16,7 +16,6 @@
       url = "github:nix-community/home-manager/";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
       };
     };
 
@@ -39,6 +38,22 @@
         nixpkgs.follows = "nixpkgs";
         nil.follows = "nil";
         flake-utils.follows = "flake-utils";
+      };
+    };
+
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
       };
     };
 
@@ -102,6 +117,8 @@
     nur,
     xremap,
     neovim-flake,
+    emacs-overlay,
+    stylix,
     kmonad,
     programsdb,
     ...
@@ -157,6 +174,22 @@
             hyprland.nixosModules.default
             xremap.nixosModules.default
             kmonad.nixosModules.default
+
+            # home-manager module
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {inherit inputs;};
+              home-manager.users.marmar.imports =
+                (builtins.attrValues homeManagerModules)
+                ++ [
+                  ./home-manager/home.nix
+                  ./graphical/home-manager/home-wlroots.nix
+                  ./graphical/home-manager/home-sway.nix
+                ];
+            }
+
             # > Our main nixos configuration file <
             (import ./nixos/configuration.nix inputs)
             (import ./machines/roguenix/nixos/configuration.nix inputs)
@@ -164,11 +197,11 @@
 
             # ./graphical/nvidia-sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
-            ./graphical/nixos/sway.nix
-            ./graphical/nixos/nvidia-sway.nix
+            # ./graphical/nixos/hyprland.nix
             # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
-            # Our common nixpkgs config (unfree, overlays, etc)
-            (import ./nixpkgs-config.nix {inherit overlays;})
+            ./graphical/nixos/sway.nix
+            # ./graphical/nixos/nvidia-sway.nix
+            # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
           ];
       };
 
@@ -182,6 +215,24 @@
             hyprland.nixosModules.default
             xremap.nixosModules.default
             kmonad.nixosModules.default
+
+            # home-manager module
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.extraSpecialArgs = {inherit inputs;};
+              home-manager.users.marmar.imports =
+                (builtins.attrValues homeManagerModules)
+                ++ [
+                  ./home-manager/home.nix
+                  ./home-manager/editors.nix
+                  ./graphical/home-manager/home-wlroots.nix
+                  ./graphical/home-manager/home-sway.nix
+                  # Our common nixpkgs config (unfree, overlays, etc)
+                  (import ./nixpkgs-config.nix {inherit overlays;})
+                ];
+            }
+
             (import ./nixos/configuration.nix inputs)
             (import ./machines/elitenix/nixos/configuration.nix inputs)
 

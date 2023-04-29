@@ -2,11 +2,18 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
-    font-family: 'JetBrains Mono', FontAwesome, Inter, 'Victor Mono', 'Fira Code', sans-serif;
+    font-family: 'Symbols Nerd Font', FontAwesome, 'JetBrains Mono', Inter, 'Victor Mono', 'Fira Code', sans-serif;
     font-size: 13px;
 }
 
 .modules-right {
+	margin: 4px;
+	padding: 3px;
+	background-color: #313244;
+	border-radius: 2rem;
+}
+
+.modules-left {
 	margin: 4px;
 	padding: 3px;
 	background-color: #313244;
@@ -53,10 +60,18 @@ window#waybar.chromium {
 }
 
 #workspaces {
-	margin: 4px;
-	padding: 3px;
+	margin: 0px;
+	padding: 0px;
 	background-color: #313244;
 	border-radius: 2rem;
+}
+#window {
+    margin: 2px;
+    background-color: #313244;
+    border-radius: 2rem;
+    padding-right: 8px;
+    padding-left: 8px;
+    /* padding: 0 6px; */
 }
 
 #workspaces button {
@@ -102,21 +117,25 @@ window#waybar.chromium {
 #mode,
 #idle_inhibitor,
 #mpd {
-	border-radius: 2rem;
-	padding-left: 8px;
-	padding-right: 8px;
-	margin: 2px;
-    color: #4c4f69;
-}
-
-#window {
-    margin: 4px;
-    background-color: #313244;
     border-radius: 2rem;
     padding-left: 8px;
     padding-right: 8px;
-    /* padding: 0 6px; */
+    margin: 2px;
+    color: #4c4f69;
 }
+
+/*
+#cpu,
+#memory,
+#temperature {
+    margin: 4px;
+    background-color: #313244;
+    color: #4c4f69;
+    border-radius: 2rem;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+*/
 
 window#waybar.empty #window {
 	background-color: transparent;
@@ -158,12 +177,12 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
+    background-color: #a6e3a1;
     color: #000000;
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: #eba0ac;
 }
 
 #disk {
@@ -207,7 +226,7 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    background-color: #fab387;
 }
 
 #temperature.critical {

@@ -19,6 +19,65 @@
     # You can also split up your configuration and import pieces of it here.
   ];
 
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      # outputs.overlays.additions
+      # outputs.overlays.modifications
+      # outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+
+      (self: super: {
+        colloid-gtk-theme = super.colloid-gtk-theme.override {
+          themeVariants = ["green"];
+          colorVariants = ["dark"];
+          sizeVariants = ["compact"];
+          tweaks = ["rimless" "black"];
+        };
+      })
+      (self: super: {
+        catppuccin-gtk = super.catppuccin-gtk.override {
+          accents = ["green"];
+          size = "compact";
+          tweaks = ["rimless"];
+          variant = "mocha";
+        };
+      })
+      (self: super: {
+        catppuccin-kvantum = super.catppuccin-kvantum.override {
+          accent = "Green";
+          variant = "Mocha";
+        };
+      })
+      /*
+      (self: super: {
+        catppuccin-kde = super.catppuccin-kde.override {
+          flavour = ["mocha"];
+          # accents = ["green"];
+        };
+      })
+      */
+    ];
+    # Configure your nixpkgs instance
+    config = {
+      # Disable if you don't want unfree packages
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "python-2.7.18.6"
+      ];
+    };
+  };
+
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
@@ -39,35 +98,14 @@
       substituters = ["https://hyprland.cachix.org"];
       trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
+
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+    '';
   };
 
   # FIXME: Add the rest of your current configuration
-
-  nixpkgs = {
-    config.permittedInsecurePackages = [
-      "python-2.7.18.6"
-    ];
-
-    # overlays for packages
-    overlays = [
-      (self: super: {
-        colloid-gtk-theme = super.colloid-gtk-theme.override {
-          themeVariants = ["green"];
-          colorVariants = ["dark"];
-          sizeVariants = ["compact"];
-          tweaks = ["rimless" "black"];
-        };
-      })
-      (self: super: {
-        catppuccin-gtk = super.catppuccin-gtk.override {
-          accents = ["green"];
-          size = "compact";
-          tweaks = ["rimless"];
-          variant = "mocha";
-        };
-      })
-    ];
-  };
 
   security = {
     # Disable sudo and enable doas
@@ -81,6 +119,8 @@
         }
       ];
     };
+
+    polkit.enable = true;
   };
 
   # zram configuration
@@ -161,7 +201,11 @@
 
     thermald.enable = true;
 
-    power-profiles-daemon.enable = lib.mkForce false;
+    power-profiles-daemon.enable = lib.mkDefault false;
+
+    upower = {
+      enable = true;
+    };
 
     upower = {
       enable = true;
@@ -223,18 +267,26 @@
   };
 
   # Fonts
-  fonts.fonts = with pkgs; [
-    liberation_ttf
-    fira-code
-    fira
-    ibm-plex
-    jetbrains-mono
-    fira-code-symbols
-    powerline-fonts
-    nerdfonts
-    font-awesome
-    source-code-pro
-  ];
+  fonts = {
+    fontDir.enable = true;
+
+    fonts = with pkgs; [
+      corefonts
+      liberation_ttf
+      fira-code
+      fira
+      jetbrains-mono
+      fira-code-symbols
+      powerline-fonts
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+      font-awesome
+      source-code-pro
+    ];
+
+    fontconfig.defaultFonts = {
+      monospace = ["JetBrains Mono"];
+    };
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -244,6 +296,7 @@
     # themes
     catppuccin-kde
     catppuccin-gtk
+    catppuccin-kvantum
     papirus-icon-theme
     gnome.adwaita-icon-theme
     colloid-kde
@@ -267,6 +320,7 @@
     # notes
     xournalpp
     # system
+    bucklespring-libinput
     glib
     hplip
     easyeffects
@@ -275,14 +329,17 @@
     libimobiledevice
     ifuse
     # editors
-    texlive.combined.scheme-basic
+    # texlive.combined.scheme-basic
     # cli
+    alsa-utils
     dash
     coreutils
     lesspipe
     poppler_utils
     epr
+    gnuplot
     fortune
+    ispell
     curl
     wget
     nnn
@@ -298,6 +355,7 @@
     fd
     ripgrep
     spotdl
+    nix-du
     neofetch
     htop
     lolcat
@@ -310,6 +368,7 @@
     networkmanagerapplet
     protonvpn-gui
     # media
+    graphviz
     kdenlive
     gimp
     krita

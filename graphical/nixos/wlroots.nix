@@ -113,8 +113,8 @@ in {
     playerctl
     pavucontrol
     pamixer
-    alacritty # gpu accelerated terminal
-    foot
+    # alacritty # gpu accelerated terminal
+    # foot
     # shotwell
     wdisplays
     wob
@@ -128,7 +128,7 @@ in {
     glib # gsettings
     swaybg
     swaylock-effects
-    swayidle
+    # swayidle
     grim # screenshot functionality
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
@@ -147,6 +147,12 @@ in {
 
       # Use kvantum theming for qt apps
       QT_STYLE_OVERRIDE = "kvantum";
+    };
+    etc = {
+      "pam.d/swaylock" = {
+        enable = true;
+        text = "auth include login";
+      };
     };
   };
 

@@ -60,12 +60,14 @@
   # For linking the files in config folder
   xdg = {
     configFile = {
+      /*
       "waybar/style.css" = {
         source = ./../../dotfiles/config/waybar/style.css;
       };
       "waybar/config" = {
         source = ./../../dotfiles/config/waybar/sway-config;
       };
+      */
       "waybar/hyprland-config" = {
         source = ./../../dotfiles/config/waybar/config;
       };
@@ -88,8 +90,13 @@
         source = ./../../dotfiles/config/fuzzel/fuzzel.ini;
       };
       "Kvantum" = {
-        recursive = true;
-        source = ./../../dotfiles/config/Kvantum;
+        # recursive = true;
+        # source = ./../../dotfiles/config/Kvantum;
+        enable = false;
+        text = ''
+          [General]
+          theme=Catppuccin-Mocha-Green
+        '';
       };
     };
   };
