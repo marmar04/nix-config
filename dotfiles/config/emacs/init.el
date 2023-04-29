@@ -18,14 +18,32 @@
 ;; Set up the modules in ./lisp/
 (require 'init-evil)
 (require 'init-org)
+(require 'init-company)
+(require 'init-general)
 
 ;;; THEMING
 ;; Use catppuccin theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'catppuccin t)
 
-;; Don't show the splash screen
-(setq inhibit-startup-message t)  ; Comment at end of line!
+(use-package emacs
+  :init
+  ;; <OPTIONAL> Setting my favorite fonts here. You can replace "Roboto" with your favorite font.
+  ;; You can also also adjust the size of the font with the "height" here under.
+  (set-face-attribute 'default nil :family "JetBrains Mono" :height 120 :weight 'regular)
+  (set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 120 :weight 'medium)
+  (set-face-attribute 'variable-pitch nil :family "JetBrains Mono" :height 120 :weight 'medium)
+  :config
+  (setq-default cursor-type 'bar)              ; Line-style cursor similar to other text editors
+  (setq inhibit-startup-screen t)              ; Disable startup screen (the welcome to Emacs message)
+  (setq initial-scratch-message "")	       ; Make *scratch* buffer blank
+  (setq-default frame-title-format '("%b"))    ; Make window title the buffer name
+  (setq confirm-kill-processes nil)            ; Stop confirming the killing of processes
+  (setq use-short-answers t)	               ; y-or-n-p makes answering questions faster
+  (show-paren-mode t)	                       ; Visually indicates pair of matching parentheses
+  (delete-selection-mode t)                    ; Start writing straight after deletion
+  (setq read-process-output-max (* 1024 1024)) ; Increase the amount of data which Emacs reads from the process
+  (global-hl-line-mode 1))                     ; Highlight the current line to make it more visible
 
 ;; elcord.el
 (use-package elcord
@@ -40,5 +58,3 @@
 ;; Nix
 (use-package nix-mode
   :mode "\\.nix\\'")
-
-;;; LSP MODE
