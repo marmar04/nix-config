@@ -207,10 +207,6 @@
       enable = true;
     };
 
-    upower = {
-      enable = true;
-    };
-
     # Enable earlyoom
     earlyoom.enable = true;
 
