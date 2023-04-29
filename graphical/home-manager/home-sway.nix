@@ -14,6 +14,10 @@
     # Feel free to split up your configuration and import pieces of it here.
   ];
 
+  home.packages = with pkgs; [
+    sway-contrib.grimshot
+  ];
+
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -221,6 +225,12 @@
 
         "${mod}+minus" = "scratchpad show";
         "${mod}+underscore" = "move container to scratchpad";
+
+        # For screenshots with grimshot
+        "Mod4+p" = "grimshot --notify copy output";
+        "Mod4+Shift+p" = ''grimshot --notify save output screenshot$(date +"%FT%H%M%S-%N").png'';
+        "Print" = "grimshot --notify copy area";
+        "${mod}+Mod4+Shift+p" = ''grimshot --notify save area screenshot$(date +"%FT%H%M%S-%N").png'';
       };
     };
 
