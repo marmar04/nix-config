@@ -262,6 +262,9 @@
     flatpak.enable = true;
   };
 
+  # For flatpak
+  xdg.portal.enable = true;
+
   # Fonts
   fonts = {
     fontDir.enable = true;

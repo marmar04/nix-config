@@ -39,12 +39,14 @@ in {
     };
   };
 
+  /*
   programs = {
     hyprland = {
       enable = true;
       xwayland.enable = true;
     };
   };
+  */
 
   fonts.fonts = with pkgs; [
     jost
@@ -54,6 +56,7 @@ in {
   environment.systemPackages = with pkgs; [
     # eww-wayland
 
+    /*
     bc
     blueberry
     bluez
@@ -67,6 +70,7 @@ in {
     jaq
     procps
     socat
+    */
     udev
     util-linux
     wlogout
@@ -78,13 +82,12 @@ in {
   # (/org/freedesktop/portal/desktop).
   # The portal interfaces include APIs for file access, opening URIs,
   # printing and others.
-  /*
-  * services.dbus.enable = true;
-  * xdg.portal = {
-  *   enable = true;
-  *   wlr.enable = true;
-  *   # gtk portal needed to make gtk apps happy
-  *   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  * };
-  */
+
+  services.dbus.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
 }

@@ -12,6 +12,7 @@
     # inputs.nix-colors.homeManagerModule
 
     inputs.hyprland.homeManagerModules.default
+    inputs.hy3.homeManagerModules.default
 
     # Feel free to split up your configuration and import pieces of it here.
   ];
@@ -19,9 +20,12 @@
   wayland.windowManager.hyprland = {
     enable = true;
     # package = null;
-    package = pkgs.hyprland;
+    # package = inputs.hyprland.packages.${pkgs.system}.;
     recommendedEnvironment = true;
     systemdIntegration = true;
+    nvidiaPatches = true;
+
+    plugins.hy3.enable = true;
 
     extraConfig = builtins.readFile ./../../dotfiles/config/hypr/hyprland.conf;
   };
@@ -35,9 +39,9 @@
 
     waybar = {
       enable = true;
-      package = inputs.hyprland.packages.x86_64-linux.waybar-hyprland;
+      package = pkgs.waybar;
       systemd = {
-        enable = false;
+        enable = true;
         target = "hyprland-session.target";
       };
       style = ./../../dotfiles/config/waybar/style.css;
@@ -50,7 +54,8 @@
           margin-right = 2;
           spacing = 2;
 
-          modules-left = ["temperature" "memory" "cpu" "wlr/workspaces" "hyprland/window"];
+          modules-left = ["temperature" "memory" "cpu" "wlr/workspaces"];
+          modules-center = ["hyprland/window"];
           modules-right = ["idle_inhibitor" "tray" "pulseaudio" "backlight" "battery" "clock"];
 
           "custom/search" = {
@@ -167,6 +172,11 @@
             on-click = "pavucontrol";
           };
 
+          "backlight" = {
+            format = "{percent}% {icon}";
+            format-icons = ["" "" "" "" "" "" "" "" ""];
+          };
+
           "clock" = {
             format = "{:%Y-%m-%d - %I:%M}";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
@@ -188,8 +198,8 @@
         }
         {
           timeout = 600;
-          command = ''${pkgs.hyprland}/bin/hyprctl dispatch dpms off'';
-          resumeCommand = ''${pkgs.hyprland}/bin/hyprctl dispatch dpms on'';
+          command = ''hyprctl dispatch dpms off'';
+          resumeCommand = ''hyprctl dispatch dpms on'';
         }
       ];
       events = [
