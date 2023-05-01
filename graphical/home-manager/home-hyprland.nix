@@ -25,7 +25,14 @@
     systemdIntegration = true;
     nvidiaPatches = true;
 
-    plugins.hy3.enable = true;
+    plugins = {
+      hy3 = {
+        enable = true;
+        package = inputs.hy3.packages.x86_64-linux.default.overrideAttrs (_: {
+          patches = [ ./uaf-debugging.patch ];
+        });
+      };
+    };
 
     extraConfig = builtins.readFile ./../../dotfiles/config/hypr/hyprland.conf;
   };
@@ -194,7 +201,7 @@
       timeouts = [
         {
           timeout = 300;
-          command = "${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred2.png";
+          command = ''${pkgs.gtklock}/bin/gtklock -g "Catppuccin-Mocha-Compact-Green-Dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred2.png'';
         }
         {
           timeout = 600;
@@ -205,7 +212,7 @@
       events = [
         {
           event = "before-sleep";
-          command = "${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred3.png";
+          command = ''${pkgs.gtklock}/bin/gtklock -g "Catppuccin-Mocha-Compact-Green-Dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred3.png'';
         }
         # { event = "lock"; command = "lock"; }
       ];

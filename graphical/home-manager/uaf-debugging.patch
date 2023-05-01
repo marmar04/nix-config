@@ -1,0 +1,83 @@
+diff --git a/src/Hy3Layout.cpp b/src/Hy3Layout.cpp
+index 5889d18..d57fc13 100644
+--- a/src/Hy3Layout.cpp
++++ b/src/Hy3Layout.cpp
+@@ -223,6 +223,7 @@ void Hy3Node::markFocused() {
+ 	}
+ 
+ 	while (node->parent != nullptr) {
++		Debug::log(LOG, "* UAF DEBUGGING - Set %p's lastFocusedChild to %p at %s:%d", node->parent, node, __FILE__, __LINE__);
+ 		node->parent->data.as_group.lastFocusedChild = node;
+ 		node = node->parent;
+ 	}
+@@ -285,6 +286,7 @@ bool Hy3Node::swallowGroups(Hy3Node* into) {
+ 
+ 	Debug::log(LOG, "Swallowing %p into %p", child, into);
+ 	Hy3Node::swapData(*into, *child);
++	Debug::log(LOG, "* UAF DEBUGGING - Removed %p at %s:%d", child, __FILE__, __LINE__);
+ 	into->layout->nodes.remove(*child);
+ 
+ 	return true;
+@@ -298,9 +300,9 @@ Hy3Node* Hy3Node::removeFromParentRecursive() {
+ 	while (parent->parent != nullptr) {
+ 		auto* child = parent;
+ 		parent = parent->parent;
++		Debug::log(LOG, "- removing %p from %p", child, parent);
+ 		auto& group = parent->data.as_group;
+ 
+-
+ 		if (group.children.size() > 2) {
+ 			auto iter = std::find(group.children.begin(), group.children.end(), child);
+ 
+@@ -311,6 +313,11 @@ Hy3Node* Hy3Node::removeFromParentRecursive() {
+ 			}
+ 		}
+ 
++		Debug::log(ERR, "* UAF DEBUGGING - Listing %p's children pre-remove", parent);
++		for (auto* child: group.children) {
++			Debug::log(LOG, " - %p", child);
++		}
++
+ 		if (!group.children.remove(child)) {
+ 			Debug::log(ERR, "Was unable to remove child node %p from parent %p. Child likely has a false parent pointer.", child, parent);
+ 			errorNotif();
+@@ -321,7 +328,15 @@ Hy3Node* Hy3Node::removeFromParentRecursive() {
+ 			group.lastFocusedChild = group.children.front();
+ 		}
+ 
++		Debug::log(LOG, "* UAF DEBUGGING - Set %p's lastFocusedChild to %p at %s:%d", parent, group.lastFocusedChild, __FILE__, __LINE__);
++
++		Debug::log(ERR, "* UAF DEBUGGING - Listing %p's children post-remove", parent);
++		for (auto* child: group.children) {
++			Debug::log(LOG, " - %p", child);
++		}
++
+ 		if (child != this) {
++			Debug::log(LOG, "* UAF DEBUGGING - Removed %p at %s:%d", child, __FILE__, __LINE__);
+ 			parent->layout->nodes.remove(*child);
+ 		}
+ 
+@@ -614,6 +629,7 @@ void Hy3Layout::onWindowRemovedTiling(CWindow* window) {
+ 	}
+ 
+ 	auto* parent = node->removeFromParentRecursive();
++	Debug::log(LOG, "* UAF DEBUGGING - Removed %p at %s:%d", node, __FILE__, __LINE__);
+ 	this->nodes.remove(*node);
+ 
+ 	if (parent != nullptr) {
+@@ -1066,6 +1082,7 @@ void Hy3Layout::makeGroupOn(int workspace, Hy3GroupLayout layout) {
+ 	node->data = layout;
+ 	node->data.as_group.children.push_back(&this->nodes.back());
+ 	node->data.as_group.lastFocusedChild = &this->nodes.back();
++	Debug::log(LOG, "* UAF DEBUGGING - Set %p's lastFocusedChild to %p at %s:%d", node, node->data.as_group.lastFocusedChild, __FILE__, __LINE__);
+ 	node->recalcSizePosRecursive();
+ 
+ 	return;
+@@ -1154,6 +1171,7 @@ Hy3Node* Hy3Layout::shiftOrGetFocus(Hy3Node& node, ShiftDirection direction, boo
+ 				Hy3Node::swapData(*break_parent, *newChild);
+ 				break_parent->data.as_group.children.push_back(newChild);
+ 				break_parent->data.as_group.lastFocusedChild = newChild;
++				Debug::log(LOG, "* UAF DEBUGGING - Set %p's lastFocusedChild to %p at %s:%d", break_parent, break_parent->data.as_group.lastFocusedChild, __FILE__, __LINE__);
+ 				break_origin = newChild;
+ 			}
+ 
