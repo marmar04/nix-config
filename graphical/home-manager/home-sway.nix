@@ -16,6 +16,7 @@
 
   home.packages = with pkgs; [
     sway-contrib.grimshot
+    inputs.swayosd.packages.x86_64-linux.swayosd
   ];
 
   wayland.windowManager.sway = {
@@ -261,21 +262,36 @@
       bindsym Mod1+Shift+d exec cliphist list | fuzzel -d | cliphist delete
 
       # Binding keys to functions
-      bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+      # bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
       bindsym --locked XF86AudioPlay exec playerctl play-pause
       bindsym --locked XF86AudioNext exec playerctl next
       bindsym --locked XF86AudioPrev exec playerctl previous
       bindsym XF86Search exec $menu
       bindsym XF86Display exec wdisplays
 
+      # For swayosd
+      exec swayosd
+
       # For wob
       set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
       exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
-      bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/^Volume: //' | sed 's/\.\([0-9]\)/\1/g' | awk '{if ($0 ~ /\[MUTED\]/) print "0"; else print $0}' | sed 's/^\([0-9]*\)\..*/\1/' > $WOBSOCK
-      bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/^Volume: //' | sed 's/\.\([0-9]\)/\1/g' | awk '{if ($0 ~ /\[MUTED\]/) print "0"; else print $0}' | sed 's/^\([0-9]*\)\..*/\1/' > $WOBSOCK
-      bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/^Volume: //' | sed 's/\.\([0-9]\)/\1/g' | awk '{if ($0 ~ /\[MUTED\]/) print "0"; else print $0}' | sed 's/^\([0-9]*\)\..*/\1/' > $WOBSOCK
-      bindsym XF86MonBrightnessUp exec light -A 5 && light -G | cut -d'.' -f1 > $WOBSOCK
-      bindsym XF86MonBrightnessDown exec light -U 5 && light -G | cut -d'.' -f1 > $WOBSOCK
+
+      # Sink volume raise
+      bindsym XF86AudioRaiseVolume exec swayosd --output-volume raise
+      # Sink volume lower
+      bindsym XF86AudioLowerVolume exec  swayosd --output-volume lower
+      # Sink volume toggle mute
+      bindsym XF86AudioMute exec swayosd --output-volume mute-toggle
+      # Source volume toggle mute
+      bindsym XF86AudioMicMute exec swayosd --input-volume mute-toggle
+
+      # Capslock
+      bindsym --release Caps_Lock exec swayosd --caps-lock
+
+      # Brightness raise
+      bindsym XF86MonBrightnessUp exec swayosd --brightness raise
+      # Brightness lower
+      bindsym XF86MonBrightnessDown exec swayosd --brightness lower
     '';
   };
 

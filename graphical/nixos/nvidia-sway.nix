@@ -5,6 +5,12 @@
   pkgs,
   ...
 }: {
+  imports = [
+
+    ./sway.nix
+
+  ];
+
   services = {
     greetd = {
       enable = true;
