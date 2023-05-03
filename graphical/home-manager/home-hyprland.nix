@@ -17,6 +17,10 @@
     # Feel free to split up your configuration and import pieces of it here.
   ];
 
+  home.packages = with pkgs; [
+    gtklock
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     # package = null;
