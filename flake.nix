@@ -108,6 +108,11 @@
       };
     };
 
+    swayosd = {
+      url = "github:marmar04/SwayOSD";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
@@ -192,9 +197,9 @@
                   ./home-manager/home.nix
                   ./graphical/home-manager/home-wlroots.nix
 
-                  # ./graphical/home-manager/home-sway.nix
+                  ./graphical/home-manager/home-sway.nix
 
-                  ./graphical/home-manager/home-hyprland.nix
+                  # ./graphical/home-manager/home-hyprland.nix
                 ];
             }
 
@@ -205,10 +210,10 @@
 
             (import ./graphical/nixos/wlroots.nix inputs)
 
-            # ./graphical/nixos/sway.nix
+            ./graphical/nixos/sway.nix
             # ./graphical/nixos/nvidia-sway.nix
 
-            ./graphical/nixos/hyprland.nix
+            # ./graphical/nixos/hyprland.nix
             # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
           ];
       };
@@ -247,7 +252,7 @@
             # ./graphical/sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
             # ./graphical/nixos/sway.nix
-            (import ./graphical/nixos/hyprland.nix inputs)
+            # (import ./graphical/nixos/hyprland.nix inputs)
             # Our common nixpkgs config (unfree, overlays, etc)
             (import ./nixpkgs-config.nix {inherit overlays;})
           ];

@@ -2023,6 +2023,7 @@
         "programsdb": "programsdb",
         "rust-overlay": "rust-overlay",
         "stylix": "stylix",
+        "swayosd": "swayosd",
         "xremap": "xremap"
       }
     },
@@ -2184,6 +2185,26 @@
         "owner": "musikinformatik",
         "ref": "master",
         "repo": "superdirt",
+        "type": "github"
+      }
+    },
+    "swayosd": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1683123146,
+        "narHash": "sha256-FhU3iOw+h91y5tNWHJGF0eAVrMCSNWtD/KuD7KJdeQw=",
+        "owner": "marmar04",
+        "repo": "SwayOSD",
+        "rev": "27c4b241fa92f4e17794f3e0a4ccee0bffab33d0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marmar04",
+        "repo": "SwayOSD",
         "type": "github"
       }
     },
