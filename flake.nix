@@ -108,6 +108,13 @@
       };
     };
 
+    /*
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    */
+
     swayosd = {
       url = "github:marmar04/SwayOSD";
       inputs.nixpkgs.follows = "nixpkgs";
