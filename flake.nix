@@ -212,7 +212,7 @@
         modules =
           (builtins.attrValues nixosModules)
           ++ [
-            hyprland.nixosModules.default
+            # hyprland.nixosModules.default
             xremap.nixosModules.default
             kmonad.nixosModules.default
 
@@ -225,11 +225,10 @@
                 (builtins.attrValues homeManagerModules)
                 ++ [
                   ./home-manager/home.nix
-                  ./home-manager/editors.nix
                   ./graphical/home-manager/home-wlroots.nix
                   ./graphical/home-manager/home-sway.nix
                   # Our common nixpkgs config (unfree, overlays, etc)
-                  (import ./nixpkgs-config.nix {inherit overlays;})
+                  # (import ./nixpkgs-config.nix {inherit overlays;})
                 ];
             }
 
@@ -238,10 +237,10 @@
 
             # ./graphical/sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
-            # ./graphical/nixos/sway.nix
-            (import ./graphical/nixos/hyprland.nix inputs)
+            ./graphical/nixos/sway.nix
+            # (import ./graphical/nixos/hyprland.nix inputs)
             # Our common nixpkgs config (unfree, overlays, etc)
-            (import ./nixpkgs-config.nix {inherit overlays;})
+            # (import ./nixpkgs-config.nix {inherit overlays;})
           ];
       };
 
