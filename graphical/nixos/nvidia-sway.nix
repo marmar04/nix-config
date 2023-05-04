@@ -6,9 +6,7 @@
   ...
 }: {
   imports = [
-
     ./sway.nix
-
   ];
 
   services = {

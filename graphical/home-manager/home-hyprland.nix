@@ -33,7 +33,7 @@
       hy3 = {
         enable = true;
         package = inputs.hy3.packages.x86_64-linux.default.overrideAttrs (_: {
-          patches = [ ./uaf-debugging.patch ];
+          patches = [./uaf-debugging.patch];
         });
       };
     };
