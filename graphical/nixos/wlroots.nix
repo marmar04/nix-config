@@ -148,12 +148,12 @@ in {
       # Use kvantum theming for qt apps
       QT_STYLE_OVERRIDE = "kvantum";
     };
-    etc = {
-      "pam.d/swaylock" = {
-        enable = true;
-        text = "auth include login";
-      };
-    };
+    # etc = {
+    #   "pam.d/swaylock" = {
+    #     enable = true;
+    #     text = "auth include login";
+    #   };
+    # };
   };
 
   xdg = {

@@ -32,6 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hy3 = {
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     neovim-flake = {
       url = "github:notashelf/neovim-flake";
       inputs = {
@@ -103,6 +108,18 @@
       };
     };
 
+    /*
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    */
+
+    swayosd = {
+      url = "github:marmar04/SwayOSD";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
@@ -171,7 +188,7 @@
         modules =
           (builtins.attrValues nixosModules)
           ++ [
-            hyprland.nixosModules.default
+            # hyprland.nixosModules.default
             xremap.nixosModules.default
             kmonad.nixosModules.default
 
@@ -186,7 +203,10 @@
                 ++ [
                   ./home-manager/home.nix
                   ./graphical/home-manager/home-wlroots.nix
+
                   ./graphical/home-manager/home-sway.nix
+
+                  # ./graphical/home-manager/home-hyprland.nix
                 ];
             }
 
@@ -195,12 +215,12 @@
             (import ./machines/roguenix/nixos/configuration.nix inputs)
             # (import ./unstable/unstable.nix inputs)
 
-            # ./graphical/nvidia-sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
-            # ./graphical/nixos/hyprland.nix
-            # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
+
             ./graphical/nixos/sway.nix
             # ./graphical/nixos/nvidia-sway.nix
+
+            # ./graphical/nixos/hyprland.nix
             # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
           ];
       };

@@ -121,6 +121,11 @@
     };
 
     polkit.enable = true;
+
+    pam.services = {
+      swaylock = {};
+      gtklock = {};
+    };
   };
 
   # zram configuration
@@ -261,6 +266,9 @@
     # Enable flatpak
     flatpak.enable = true;
   };
+
+  # For flatpak
+  xdg.portal.enable = true;
 
   # Fonts
   fonts = {
