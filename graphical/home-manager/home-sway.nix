@@ -11,8 +11,13 @@
     # If you want to use home-manager modules from other flakes (such as nix-colors), use something like:
     # inputs.nix-colors.homeManagerModule
 
+    inputs.nix-colors.homeManagerModule
+
     # Feel free to split up your configuration and import pieces of it here.
   ];
+
+  # Catppuccin mocha for colour
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
   home.packages = with pkgs; [
     sway-contrib.grimshot
@@ -50,11 +55,11 @@
 
       colors = {
         focused = {
-          background = "#1e1e2e";
-          border = "#94e2d5";
-          childBorder = "#a6e3a1";
-          indicator = "#a6e3a1";
-          text = "#cdd6f4";
+          background = "#${config.colorScheme.colors.base00}";
+          border = "#${config.colorScheme.colors.base0C}";
+          childBorder = "#${config.colorScheme.colors.base0B}";
+          indicator = "#${config.colorScheme.colors.base0B}";
+          text = "#${config.colorScheme.colors.base05}";
         };
       };
 
