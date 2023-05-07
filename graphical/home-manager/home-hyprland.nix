@@ -12,7 +12,6 @@
     # inputs.nix-colors.homeManagerModule
 
     inputs.hyprland.homeManagerModules.default
-    inputs.hy3.homeManagerModules.default
 
     # Feel free to split up your configuration and import pieces of it here.
   ];
@@ -23,20 +22,12 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # package = null;
+    package = null;
     # package = inputs.hyprland.packages.${pkgs.system}.;
     recommendedEnvironment = true;
     systemdIntegration = true;
-    nvidiaPatches = true;
 
-    plugins = {
-      hy3 = {
-        enable = true;
-        package = inputs.hy3.packages.x86_64-linux.default.overrideAttrs (_: {
-          patches = [./uaf-debugging.patch];
-        });
-      };
-    };
+    # plugins = [inputs.hy3.packages.${pkgs.system}.hy3];
 
     extraConfig = builtins.readFile ./../../dotfiles/config/hypr/hyprland.conf;
   };
@@ -209,8 +200,8 @@
         }
         {
           timeout = 600;
-          command = ''hyprctl dispatch dpms off'';
-          resumeCommand = ''hyprctl dispatch dpms on'';
+          command = ''${pkgs.hyprland}/bin/hyprctl dispatch dpms off'';
+          resumeCommand = ''${pkgs.hyprland}/bin/hyprctl dispatch dpms on'';
         }
       ];
       events = [

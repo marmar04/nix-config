@@ -307,7 +307,7 @@
     colloid-gtk-theme
     colloid-icon-theme
     # browsers
-    firefox-esr-wayland
+    firefox-wayland
     # librewolf-wayland
     google-chrome
     microsoft-edge

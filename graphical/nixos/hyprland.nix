@@ -2,6 +2,7 @@
   cfg,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   hyprland-startup = pkgs.writeTextFile {
@@ -26,6 +27,8 @@
     '';
   };
 in {
+  imports = [inputs.hyprland.nixosModules.default];
+
   services = {
     # To start up tuigreet and set it up to start up hyprland after loging in
     greetd = {
@@ -39,14 +42,13 @@ in {
     };
   };
 
-  /*
   programs = {
     hyprland = {
       enable = true;
       xwayland.enable = true;
+      nvidiaPatches = true;
     };
   };
-  */
 
   fonts.fonts = with pkgs; [
     jost
@@ -88,6 +90,6 @@ in {
     enable = true;
     wlr.enable = true;
     # gtk portal needed to make gtk apps happy
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+    # extraPortals = [pkgs.xdg-desktop-portal-hyprland];
   };
 }
