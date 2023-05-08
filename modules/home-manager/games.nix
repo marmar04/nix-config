@@ -16,6 +16,6 @@
     opendungeons
     mindustry-wayland
 
-    discord
+    webcord-vencord
   ];
 }
