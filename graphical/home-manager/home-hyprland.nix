@@ -18,6 +18,7 @@
 
   home.packages = with pkgs; [
     gtklock
+    tesseract
   ];
 
   wayland.windowManager.hyprland = {
