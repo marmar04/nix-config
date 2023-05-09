@@ -1,0 +1,8 @@
+#+title: Structure of configuration files
+
+* How it'll be organised
+There'll be a flake.nix and all the other necessary folders for the root of this repo
+
+** Necessary folders
+*** hosts
+For machines and home-manager profiles
