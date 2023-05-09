@@ -61,11 +61,9 @@ in {
     /*
     bc
     blueberry
-    bluez
     dunst
     findutils
     gnome.gnome-control-center
-    libnotify
     gnused
     gojq
     imagemagick
@@ -73,6 +71,9 @@ in {
     procps
     socat
     */
+    tesseract
+    libnotify
+    gtklock
     udev
     util-linux
     wlogout

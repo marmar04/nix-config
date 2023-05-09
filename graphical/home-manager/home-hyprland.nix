@@ -16,10 +16,11 @@
     # Feel free to split up your configuration and import pieces of it here.
   ];
 
+  /*
   home.packages = with pkgs; [
     gtklock
-    tesseract
   ];
+  */
 
   wayland.windowManager.hyprland = {
     enable = true;
