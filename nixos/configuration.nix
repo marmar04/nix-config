@@ -45,6 +45,7 @@
           tweaks = ["rimless" "black"];
         };
       })
+
       (self: super: {
         catppuccin-gtk = super.catppuccin-gtk.override {
           accents = ["green"];
@@ -53,13 +54,24 @@
           variant = "mocha";
         };
       })
+
       (self: super: {
         catppuccin-kvantum = super.catppuccin-kvantum.override {
           accent = "Green";
           variant = "Mocha";
         };
       })
-      /*
+
+      # fluent icon theme
+      (self: super: {
+       fluent-icon-theme = super.fluent-icon-theme.override {
+         roundedIcons = true;
+         blackPanelIcons = true;
+         colorVariants = ["green"];
+       };
+     })
+
+     /*
       (self: super: {
         catppuccin-kde = super.catppuccin-kde.override {
           flavour = ["mocha"];
@@ -298,10 +310,13 @@
     # emacs
     clang
     # themes
+    gradience
+    adw-gtk3
     catppuccin-kde
     catppuccin-gtk
     catppuccin-kvantum
     papirus-icon-theme
+    fluent-icon-theme
     gnome.adwaita-icon-theme
     colloid-kde
     colloid-gtk-theme
@@ -388,7 +403,6 @@
     # coding
     zeal
     yabasic
-    python3Minimal
     # utilities
     # blueman
     gparted

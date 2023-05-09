@@ -48,12 +48,15 @@
       name = "Adwaita";
       size = 24;
     };
+
     iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
+      # package = pkgs.papirus-icon-theme;
+      # name = "Papirus-Dark";
+      name = "Fluent green dark";
     };
+
     theme = {
-      name = "Catppuccin-Mocha-Compact-Green-Dark";
+      name = "adw-gtk3-dark";
     };
   };
 

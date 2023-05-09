@@ -126,7 +126,7 @@
           "wlr/taskbar" = {
             format = " {icon} {title} ";
             icon-size = 14;
-            icon-theme = "Papirus-Dark";
+            icon-theme = "Fluent green dark";
             tooltip-format = "{app_id}";
             on-click = "activate";
             on-click-middle = "close";
@@ -198,7 +198,7 @@
       timeouts = [
         {
           timeout = 300;
-          command = ''${pkgs.gtklock}/bin/gtklock -g "Catppuccin-Mocha-Compact-Green-Dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred2.png'';
+          command = ''${pkgs.gtklock}/bin/gtklock -g "adw-gtk3-dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred2.png'';
         }
         {
           timeout = 600;
@@ -209,7 +209,7 @@
       events = [
         {
           event = "before-sleep";
-          command = ''${pkgs.gtklock}/bin/gtklock -g "Catppuccin-Mocha-Compact-Green-Dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred3.png'';
+          command = ''${pkgs.gtklock}/bin/gtklock -g "adw-gtk3-dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred3.png'';
         }
         # { event = "lock"; command = "lock"; }
       ];
