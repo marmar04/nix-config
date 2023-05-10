@@ -86,7 +86,12 @@ in {
   # The portal interfaces include APIs for file access, opening URIs,
   # printing and others.
 
-  services.dbus.enable = true;
+  services = {
+    dbus.enable = true;
+    # to make gtklock work
+    gnome.at-spi2-core.enable = true;
+  };
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;

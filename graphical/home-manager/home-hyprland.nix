@@ -126,7 +126,7 @@
           "wlr/taskbar" = {
             format = " {icon} {title} ";
             icon-size = 14;
-            icon-theme = "Fluent green dark";
+            icon-theme = "Papirus-Dark";
             tooltip-format = "{app_id}";
             on-click = "activate";
             on-click-middle = "close";
