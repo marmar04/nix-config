@@ -108,7 +108,7 @@
   */
 
   programs = {
-  /*
+    /*
     bash = {
       loginShellInit = ''
         # Add any bashrc lines here
@@ -116,7 +116,7 @@
         bind '"\e[B":history-search-forward'
       '';
     };
-  */
+    */
     zsh.enable = true;
   };
 
