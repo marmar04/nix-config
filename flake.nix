@@ -19,11 +19,6 @@
       };
     };
 
-    nix-doom-emacs = {
-      url = "github:nix-community/nix-doom-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # TODO: Add any other flake you might need
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -134,7 +129,6 @@
     self,
     nixpkgs,
     home-manager,
-    nix-doom-emacs,
     hyprland,
     nur,
     xremap,
@@ -193,7 +187,6 @@
         modules =
           (builtins.attrValues nixosModules)
           ++ [
-            # hyprland.nixosModules.default
             xremap.nixosModules.default
             kmonad.nixosModules.default
 
