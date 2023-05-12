@@ -17,12 +17,6 @@
     };
 
     xserver = {
-      /*
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
-      };
-      */
       desktopManager.plasma5.enable = true;
     };
   };
@@ -60,7 +54,7 @@
       NIXOS_OZONE_WL = "1";
 
       # Use kvantum theming for qt apps
-      QT_STYLE_OVERRIDE = "kvantum";
+      # QT_STYLE_OVERRIDE = "kvantum";
     };
   };
 }
