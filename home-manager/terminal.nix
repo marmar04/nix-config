@@ -42,8 +42,10 @@
 
         mouse = {
           hide-when-typing = "yes";
-        }; #%s/\([0-9a-fA-F]\{6\}\)/"\1";/g
+        };
+
         colors = {
+          alpha = 0.9;
           foreground = "D3C6AA"; # Text
           background = "3a515d"; # Base
           regular0 = "45475a"; # Surface 1
