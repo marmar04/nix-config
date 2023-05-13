@@ -76,18 +76,6 @@
       "waybar/mocha.css" = {
         source = ./../../dotfiles/config/waybar/mocha.css;
       };
-      "rofi" = {
-        recursive = true;
-        source = ./../../dotfiles/config/rofi;
-      };
-      "tofi" = {
-        recursive = true;
-        source = ./../../dotfiles/config/tofi;
-      };
-      "foot" = {
-        recursive = true;
-        source = ./../../dotfiles/config/foot;
-      };
       "fuzzel/fuzzel.ini" = {
         source = ./../../dotfiles/config/fuzzel/fuzzel.ini;
       };

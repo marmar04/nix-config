@@ -47,9 +47,6 @@
   # For linking the files in config folder
   xdg = {
     configFile = {
-      "waybar/hyprland-config" = {
-        source = ./../../dotfiles/config/waybar/config;
-      };
       "waybar/mocha.css" = {
         source = ./../../dotfiles/config/waybar/mocha.css;
       };
@@ -60,10 +57,6 @@
       "tofi" = {
         recursive = true;
         source = ./../../dotfiles/config/tofi;
-      };
-      "foot" = {
-        recursive = true;
-        source = ./../../dotfiles/config/foot;
       };
       "fuzzel/fuzzel.ini" = {
         source = ./../../dotfiles/config/fuzzel/fuzzel.ini;
