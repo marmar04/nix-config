@@ -108,12 +108,11 @@
       };
     };
 
-    /*
+    # Anyrun launcher (for wayland)
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    */
 
     swayosd = {
       url = "github:marmar04/SwayOSD";

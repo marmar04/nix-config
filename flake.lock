@@ -16,6 +16,26 @@
         "type": "github"
       }
     },
+    "anyrun": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1683826089,
+        "narHash": "sha256-YXphf9SnUcw9zlnnD4nPLQL5pWMHfpBY3CpzsQqzlZY=",
+        "owner": "Kirottu",
+        "repo": "anyrun",
+        "rev": "9d151d9725e25f07549f2723228723c8f55e9302",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kirottu",
+        "repo": "anyrun",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "nixpkgs": [
@@ -1709,6 +1729,7 @@
     },
     "root": {
       "inputs": {
+        "anyrun": "anyrun",
         "emacs-overlay": "emacs-overlay",
         "flake-utils": "flake-utils",
         "hardware": "hardware",

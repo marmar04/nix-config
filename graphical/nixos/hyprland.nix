@@ -71,6 +71,8 @@ in {
     procps
     socat
     */
+
+    inputs.anyrun.packages.${pkgs.system}.anyrun
     tesseract
     libnotify
     gtklock
