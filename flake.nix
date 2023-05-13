@@ -156,7 +156,12 @@
 
     # Formatter
     # Can be accessed through nix fmt
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    formatter = forAllSystems (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        pkgs.alejandra
+    );
 
     # Devshell for bootstrapping
     # Acessible through 'nix develop' or 'nix-shell' (legacy)
