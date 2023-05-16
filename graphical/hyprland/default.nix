@@ -4,30 +4,13 @@
   pkgs,
   inputs,
   ...
-}: let
-  hyprland-startup = pkgs.writeTextFile {
-    name = "hyprland-startup";
-    destination = "/bin/hyprland-startup";
-    executable = true;
-    text = ''
-      #!/bin/sh
-
-      cd ~
-
-      export _JAVA_AWT_WM_NONREPARENTING=1
-      export XCURSOR_SIZE=24
-      # for nvidia
-      export LIBVA_DRIVER_NAME=nvidia
-      export XDG_SESSION_TYPE=wayland
-      export GBM_BACKEND=nvidia-drm
-      export __GLX_VENDOR_LIBRARY_NAME=nvidia
-      export WLR_NO_HARDWARE_CURSORS=1
-
-      exec Hyprland
-    '';
-  };
-in {
+}: {
   imports = [inputs.hyprland.nixosModules.default];
+
+  home-manager.sharedModules = [
+    ./home-hyprland.nix
+    ./home-waybar.nix
+  ];
 
   services = {
     # To start up tuigreet and set it up to start up hyprland after loging in

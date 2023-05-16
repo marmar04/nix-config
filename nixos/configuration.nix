@@ -1,10 +1,6 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{
-  programsdb,
-  nix-doom-emacs,
-  ...
-}: {
+{programsdb, ...}: {
   inputs,
   lib,
   config,
@@ -64,14 +60,14 @@
 
       # fluent icon theme
       (self: super: {
-       fluent-icon-theme = super.fluent-icon-theme.override {
-         roundedIcons = true;
-         blackPanelIcons = true;
-         colorVariants = ["green"];
-       };
-     })
+        fluent-icon-theme = super.fluent-icon-theme.override {
+          roundedIcons = true;
+          blackPanelIcons = true;
+          colorVariants = ["green"];
+        };
+      })
 
-     /*
+      /*
       (self: super: {
         catppuccin-kde = super.catppuccin-kde.override {
           flavour = ["mocha"];

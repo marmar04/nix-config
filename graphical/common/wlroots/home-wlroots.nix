@@ -1,5 +1,3 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
   lib,
@@ -28,19 +26,6 @@
     };
   };
 
-  # For programs that have their options in home-manager
-  /*
-  programs = {
-    waybar = {
-      enable = true;
-      # systemd.enable = true;
-      package = pkgs.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-      });
-    };
-  };
-  */
-
   gtk = {
     enable = true;
     cursorTheme = {
@@ -62,19 +47,16 @@
   # For linking the files in config folder
   xdg = {
     configFile = {
-      /*
-      "waybar/style.css" = {
-        source = ./../../dotfiles/config/waybar/style.css;
-      };
-      "waybar/config" = {
-        source = ./../../dotfiles/config/waybar/sway-config;
-      };
-      */
-      "waybar/hyprland-config" = {
-        source = ./../../dotfiles/config/waybar/config;
-      };
       "waybar/mocha.css" = {
         source = ./../../dotfiles/config/waybar/mocha.css;
+      };
+      "rofi" = {
+        recursive = true;
+        source = ./../../dotfiles/config/rofi;
+      };
+      "tofi" = {
+        recursive = true;
+        source = ./../../dotfiles/config/tofi;
       };
       "fuzzel/fuzzel.ini" = {
         source = ./../../dotfiles/config/fuzzel/fuzzel.ini;
@@ -98,7 +80,4 @@
       source = ./../../dotfiles/local/share/rofi;
     };
   };
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "22.05";
 }

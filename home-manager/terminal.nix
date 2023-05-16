@@ -43,6 +43,28 @@
         mouse = {
           hide-when-typing = "yes";
         };
+
+        colors = {
+          alpha = 0.9;
+          foreground = "D3C6AA"; # Text
+          background = "3a515d"; # Base
+          regular0 = "45475a"; # Surface 1
+          regular1 = "e67e80"; # red
+          regular2 = "a7c080"; # green
+          regular3 = "dbb7cf"; # yellow
+          regular4 = "7fbbb3"; # blue
+          regular5 = "d699b6"; # pink
+          regular6 = "83c092"; # teal
+          regular7 = "bac2de"; # Subtext 1
+          bright0 = "585b70"; # Surface 2
+          bright1 = "f85552"; # red
+          bright2 = "8da101"; # green
+          bright3 = "dfa000"; # yellow
+          bright4 = "3a94c5"; # blue
+          bright5 = "df69ba"; # pink
+          bright6 = "35a77c"; # teal
+          bright7 = "a6adc8"; # Subtext 0
+        };
       };
     };
 

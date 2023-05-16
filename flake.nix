@@ -19,11 +19,6 @@
       };
     };
 
-    nix-doom-emacs = {
-      url = "github:nix-community/nix-doom-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # TODO: Add any other flake you might need
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -113,12 +108,11 @@
       };
     };
 
-    /*
+    # Anyrun launcher (for wayland)
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    */
 
     swayosd = {
       url = "github:marmar04/SwayOSD";
@@ -134,7 +128,6 @@
     self,
     nixpkgs,
     home-manager,
-    nix-doom-emacs,
     hyprland,
     nur,
     xremap,
@@ -163,16 +156,21 @@
 
     # Formatter
     # Can be accessed through nix fmt
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-
-    # Devshell for bootstrapping
-    # Acessible through 'nix develop' or 'nix-shell' (legacy)
-    devShells = forAllSystems (
+    formatter = forAllSystems (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in
-        import ./shell.nix {inherit pkgs;}
+        pkgs.alejandra
     );
+
+    # Devshell for bootstrapping
+    # Acessible through 'nix develop' or 'nix-shell' (legacy)
+    # devShells = forAllSystems (
+    #   system: let
+    #     pkgs = nixpkgs.legacyPackages.${system};
+    #   in
+    #     import ./shell.nix {inherit pkgs;}
+    # );
 
     # Your custom packages and modifications, exported as overlays
     overlays = import ./overlays;
@@ -193,7 +191,6 @@
         modules =
           (builtins.attrValues nixosModules)
           ++ [
-            # hyprland.nixosModules.default
             xremap.nixosModules.default
             kmonad.nixosModules.default
 
@@ -237,7 +234,6 @@
         modules =
           (builtins.attrValues nixosModules)
           ++ [
-            # hyprland.nixosModules.default
             xremap.nixosModules.default
             kmonad.nixosModules.default
 
@@ -251,21 +247,16 @@
                 ++ [
                   ./home-manager/home.nix
                   ./graphical/home-manager/home-wlroots.nix
-                  ./graphical/home-manager/home-sway.nix
-                  # Our common nixpkgs config (unfree, overlays, etc)
-                  # (import ./nixpkgs-config.nix {inherit overlays;})
                 ];
             }
+
+            # For sway environment
+            ./graphical/sway
 
             (import ./nixos/configuration.nix inputs)
             (import ./machines/elitenix/nixos/configuration.nix inputs)
 
-            # ./graphical/sway-hyprland.nix
             (import ./graphical/nixos/wlroots.nix inputs)
-            ./graphical/nixos/sway.nix
-            # (import ./graphical/nixos/hyprland.nix inputs)
-            # Our common nixpkgs config (unfree, overlays, etc)
-            # (import ./nixpkgs-config.nix {inherit overlays;})
           ];
       };
 

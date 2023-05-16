@@ -7,7 +7,8 @@
     ./sway.nix
   ];
 
-  home-manager.users.marmar.imports = [
+  home-manager.sharedModules = [
     ./home-sway.nix
+    ./home-waybar.nix
   ];
 }

@@ -6,6 +6,9 @@
   ...
 }: {
   imports = [inputs.nix-colors.homeManagerModule];
+
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
+
   programs = {
     waybar = {
       enable = true;

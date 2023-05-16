@@ -18,18 +18,10 @@
   };
 
   /*
-  programs = {
-    sway = {
-      enable = false;
-      wrapperFeatures.gtk = true;
-    };
-  };
-  */
-
   environment.systemPackages = with pkgs; [
     lsd
-    waybar
   ];
+  */
 
   # xdg-desktop-portal works by exposing a series of D-Bus interfaces
   # known as portals under a well-known name

@@ -8,7 +8,6 @@
 # Editors
 {
   imports = [
-    inputs.nix-doom-emacs.hmModule
     inputs.neovim-flake.homeManagerModules.default
   ];
 
@@ -30,7 +29,6 @@
     nodePackages.pyright
     python310Packages.jedi
     python310Packages.jedi-language-server
-    # python39Packages.python-lsp-server
     # For doom emacs latex integration
     texlive.combined.scheme-medium
     jupyter
@@ -71,7 +69,6 @@
 
   programs = {
     # neovim
-    /*
     neovim = {
       enable = true;
       # package = pkgs.neovim-nightly;
@@ -87,7 +84,6 @@
         cmp-buffer
         cmp-path
         cmp-spell
-        dashboard-nvim
         # (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
         nvim-treesitter.withAllGrammars
         # nvim-treesitter
@@ -110,7 +106,6 @@
         lspkind-nvim
       ];
       extraPackages = with pkgs; [
-        rnix-lsp
         gcc
         vimPlugins.packer-nvim
         ripgrep
@@ -120,9 +115,9 @@
         ccls
       ];
     };
-    */
 
     # TODO: To fix in near future
+    /*
     neovim-flake = {
       enable = true;
       settings = {
@@ -188,6 +183,7 @@
         };
       };
     };
+    */
 
     # Vim
     vim = {
@@ -213,14 +209,6 @@
     emacs = {
       enable = true;
     };
-
-    # For nix-doom-emacs
-    /*
-    doom-emacs = {
-      enable = true;
-      doomPrivateDir = ./../dotfiles/config/doom.d;
-    };
-    */
 
     # Visual Studio Code
     vscode = {
@@ -248,7 +236,7 @@
           # appears to be buggy at the moment
           "editor.stickyScroll.enabled" = false;
         };
-        "vscode-neovim.neovimExecutablePaths.linux" = "/home/marmar/.nix-profile/bin/nvim";
+        "vscode-neovim.neovimExecutablePaths.linux" = "/etc/profiles/per-user/marmar/bin/nvim";
       };
     };
   };

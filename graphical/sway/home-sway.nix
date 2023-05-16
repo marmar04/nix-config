@@ -17,12 +17,38 @@
   ];
 
   # Catppuccin mocha for colour
+  # TODO: change with own everforest base 16 theme
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
   home.packages = with pkgs; [
     sway-contrib.grimshot
     inputs.swayosd.packages.x86_64-linux.swayosd
   ];
+
+  # swayidle config
+  services = {
+    swayidle = {
+      enable = true;
+      timeouts = [
+        {
+          timeout = 300;
+          command = "${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred2.png";
+        }
+        {
+          timeout = 600;
+          command = ''${pkgs.sway}/bin/swaymsg "output * power off"'';
+          resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * power on"'';
+        }
+      ];
+      events = [
+        {
+          event = "before-sleep";
+          command = "${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred3.png";
+        }
+        # { event = "lock"; command = "lock"; }
+      ];
+    };
+  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -48,8 +74,6 @@
         "3" = [{class = "Emacs";}];
         "5" = [
           {app_id = "discord";}
-          # {app_id = "Slack";}
-          # {app_id = "Element";}
         ];
       };
 
@@ -300,178 +324,17 @@
     '';
   };
 
-  programs = {
-    waybar = {
-      enable = true;
-
-      systemd = {
-        enable = true;
-        target = "sway-session.target";
-      };
-
-      style = ./../../dotfiles/config/waybar/style.css;
-
-      settings = {
-        mainBar = {
-          layer = "top";
-          position = "top";
-          height = 42;
-          margin-left = 2;
-          margin-right = 2;
-          spacing = 2;
-
-          modules-left = ["cpu" "memory" "temperature" "custom/seperator" "sway/workspaces"];
-          modules-center = ["sway/window"];
-          modules-right = ["idle_inhibitor" "tray" "pulseaudio" "backlight" "battery" "clock"];
-
-          "custom/search" = {
-            tooltip = false;
-            format = " ";
-            on-click = "killall fuzzel || fuzzel";
-          };
-
-          "custom/separator" = {
-            format = "|";
-            interval = "once";
-            tooltip = false;
-          };
-
-          "sway/workspaces" = {
-            disable-scroll = false;
-            disable-markup = false;
-            all-outputs = true;
-            format = " {icon} ";
-            format-icons = {
-              "1" = "";
-              "2" = "";
-              "3" = "";
-              "4" = "";
-              "5" = "";
-              "6" = "";
-              "focused" = "";
-              "default" = "";
-            };
-            persistent_workspaces = {
-              "1" = [];
-              "2" = [];
-              "3" = [];
-              "4" = [];
-              "5" = [];
-            };
-          };
-
-          "cpu" = {
-            format = "{usage}% ";
-            tooltip = false;
-          };
-
-          "memory" = {
-            format = "{}% ";
-          };
-
-          "temperature" = {
-            # thermal-zone = 2;
-            # hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
-            critical-threshold = 80;
-            format-critical = "{temperatureC}°C {icon}";
-            format = "{temperatureC}°C {icon}";
-            format-icons = ["" "" ""];
-          };
-
-          "idle_inhibitor" = {
-            format = "{icon}";
-            format-icons = {
-              "activated" = "";
-              "deactivated" = "";
-            };
-          };
-
-          "tray" = {
-            spacing = 10;
-          };
-
-          "battery" = {
-            states = {
-              "good" = 95;
-              "warning" = 30;
-              "critical" = 15;
-            };
-            format = "{capacity}% {icon}";
-            tooltip-format = "{timeTo}, {capacity}";
-            format-alt = "{time} {icon}";
-            format-icons = ["" "" "" "" ""];
-          };
-
-          "pulseaudio" = {
-            format = "{volume}% {icon} {format_source}";
-            format-muted = " {format_source}";
-            format-bluetooth = "{volume}% {icon} {format_source}";
-            format-bluetooth-muted = " {icon} {format_source}";
-            format-source = "{volume}% ";
-            format-source-muted = "";
-            ignored-sinks = ["Easy Effects Sink"];
-            format-icons = {
-              "headphone" = "";
-              "hands-free" = "";
-              "headset" = "";
-              "phone" = "";
-              "portable" = "";
-              "car" = "";
-              "default" = ["" "" ""];
-            };
-            on-click = "pavucontrol";
-          };
-
-          "backlight" = {
-            format = "{percent}% {icon}";
-            format-icons = ["" "" "" "" "" "" "" "" ""];
-          };
-
-          "clock" = {
-            format = "{:%Y-%m-%d - %I:%M}";
-            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-            on-click = "swaync-client -t -sw";
-          };
-        };
-      };
-    };
-  };
-
-  services = {
-    swayidle = {
-      enable = true;
-      timeouts = [
-        {
-          timeout = 300;
-          command = "${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred2.png";
-        }
-        {
-          timeout = 600;
-          command = ''${pkgs.sway}/bin/swaymsg "output * power off"'';
-          resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * power on"'';
-        }
-      ];
-      events = [
-        {
-          event = "before-sleep";
-          command = "${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred3.png";
-        }
-        # { event = "lock"; command = "lock"; }
-      ];
-    };
-  };
-
   # For linking the files in config folder
+  /*
   xdg = {
     configFile = {
-      /*
       "sway" = {
         recursive = true;
         source = ./../../dotfiles/config/sway;
       };
-      */
     };
   };
+  */
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.05";
