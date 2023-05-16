@@ -46,6 +46,7 @@
 in {
   imports = [
     inputs.home-manager.nixosModule.home-manager
+    inputs.xremap.nixosModule.default
   ];
 
   # to import home-manager modules
