@@ -1,4 +1,4 @@
-name: "Test for nix build"
+name: "nix flake check"
 on:
   pull_request:
   push:
@@ -10,5 +10,4 @@ jobs:
     - uses: cachix/install-nix-action@v20
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
-    - run: sudo nixos-rebuild boot --flake .#roguenix
     - run: nix flake check
