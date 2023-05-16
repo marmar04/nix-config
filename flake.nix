@@ -276,12 +276,44 @@
         modules =
           (builtins.attrValues nixosModules)
           ++ [
-            ./nixos/configuration.nix
-            (import ./machines/oldnix/nixos/configuration.nix inputs)
+            # hyprland.nixosModules.default
+            xremap.nixosModules.default
+            kmonad.nixosModules.default
 
-            ./graphical/nixos/plasma.nix
+            # home-manager module
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {inherit inputs;};
+              home-manager.users.marmar.imports =
+                (builtins.attrValues homeManagerModules)
+                ++ [
+                  ./home-manager/home.nix
+                  ./graphical/home-manager/home-wlroots.nix
+
+                  ./graphical/home-manager/home-sway.nix
+
+                  # ./graphical/home-manager/home-hyprland.nix
+                ];
+            }
+
+            # > Our main nixos configuration file <
+            (import ./nixos/configuration.nix inputs)
+            ./machines/oldnix/nixos/configuration.nix
+            # (import ./unstable/unstable.nix inputs)
+
+            (import ./graphical/nixos/wlroots.nix inputs)
+
+            ./graphical/nixos/sway.nix
+            # ./graphical/nixos/nvidia-sway.nix
+
+            # ./graphical/nixos/hyprland.nix
+            # (import ./graphical/nixos/nvidia-hyprland.nix inputs)
+
+            # ./graphical/nixos/plasma.nix
             # Our common nixpkgs config (unfree, overlays, etc)
-            (import ./nixpkgs-config.nix {inherit overlays;})
+            # (import ./nixpkgs-config.nix {inherit overlays;})
           ];
       };
     };
