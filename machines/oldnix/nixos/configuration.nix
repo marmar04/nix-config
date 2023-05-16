@@ -44,6 +44,11 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
+  programs = {
+    zsh.enable = true;
+    fish.enable = true;
+  };
+
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     # Replace with your username
