@@ -1,22 +1,19 @@
-# Module to enable the plasma session
 {
   cfg,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
+  imports = [inputs.xremap.nixosModules.default];
   services = {
     xserver = {
       displayManager.gdm = {
-        enable = true;
+        enable = lib.mkForce true;
         wayland = true;
       };
 
-      # displayManager.defaultSession = "plasmawayland";
-
-      desktopManager.gnome = {
-        enable = true;
-      };
+      desktopManager.gnome.enable = true;
     };
 
     gnome = {
@@ -24,6 +21,8 @@
       # gnome-settings-daemon.enable = true;
       sushi.enable = true;
     };
+
+    power-profiles-daemon = lib.mkForce true;
 
     udev.packages = with pkgs; [gnome.gnome-settings-daemon];
   };
