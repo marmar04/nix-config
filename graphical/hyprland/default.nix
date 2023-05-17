@@ -5,7 +5,11 @@
   inputs,
   ...
 }: {
-  imports = [inputs.hyprland.nixosModules.default];
+  imports = [
+    inputs.hyprland.nixosModules.default
+
+    ./../common/wlroots
+  ];
 
   home-manager.sharedModules = [
     ./home-hyprland.nix
