@@ -254,7 +254,6 @@
           (builtins.attrValues nixosModules)
           ++ [
             # hyprland.nixosModules.default
-            xremap.nixosModules.default
             kmonad.nixosModules.default
 
             # home-manager module
