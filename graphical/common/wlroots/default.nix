@@ -44,7 +44,6 @@
     '';
   };
 in {
-
   imports = [
     inputs.home-manager.nixosModules.home-manager
     inputs.xremap.nixosModules.default
