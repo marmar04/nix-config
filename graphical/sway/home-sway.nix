@@ -79,11 +79,11 @@
 
       colors = {
         focused = {
-          background = "#${config.colorScheme.colors.base00}";
-          border = "#${config.colorScheme.colors.base0C}";
-          childBorder = "#${config.colorScheme.colors.base0B}";
-          indicator = "#${config.colorScheme.colors.base0B}";
-          text = "#${config.colorScheme.colors.base05}";
+          background = "#3a515d";
+          border = "#a7c080";
+          childBorder = "#f85552";
+          indicator = "#f85552";
+          text = "#d3c6aa";
         };
       };
 
@@ -323,18 +323,6 @@
       bindsym XF86MonBrightnessDown exec swayosd --brightness lower
     '';
   };
-
-  # For linking the files in config folder
-  /*
-  xdg = {
-    configFile = {
-      "sway" = {
-        recursive = true;
-        source = ./../../dotfiles/config/sway;
-      };
-    };
-  };
-  */
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.05";

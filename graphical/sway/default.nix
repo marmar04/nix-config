@@ -4,6 +4,8 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
 
+    ./../common/wlroots
+
     ./sway.nix
   ];
 

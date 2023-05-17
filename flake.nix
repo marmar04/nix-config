@@ -234,7 +234,6 @@
         modules =
           (builtins.attrValues nixosModules)
           ++ [
-            xremap.nixosModules.default
             kmonad.nixosModules.default
 
             # home-manager module
@@ -246,7 +245,6 @@
                 (builtins.attrValues homeManagerModules)
                 ++ [
                   ./home-manager/home.nix
-                  ./graphical/home-manager/home-wlroots.nix
                 ];
             }
 
@@ -255,8 +253,6 @@
 
             (import ./nixos/configuration.nix inputs)
             (import ./machines/elitenix/nixos/configuration.nix inputs)
-
-            (import ./graphical/nixos/wlroots.nix inputs)
           ];
       };
 

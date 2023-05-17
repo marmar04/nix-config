@@ -48,22 +48,22 @@
   xdg = {
     configFile = {
       "waybar/mocha.css" = {
-        source = ./../../dotfiles/config/waybar/mocha.css;
+        source = ./../../../dotfiles/config/waybar/mocha.css;
       };
       "rofi" = {
         recursive = true;
-        source = ./../../dotfiles/config/rofi;
+        source = ./../../../dotfiles/config/rofi;
       };
       "tofi" = {
         recursive = true;
-        source = ./../../dotfiles/config/tofi;
+        source = ./../../../dotfiles/config/tofi;
       };
       "fuzzel/fuzzel.ini" = {
-        source = ./../../dotfiles/config/fuzzel/fuzzel.ini;
+        source = ./../../../dotfiles/config/fuzzel/fuzzel.ini;
       };
       "Kvantum" = {
         # recursive = true;
-        # source = ./../../dotfiles/config/Kvantum;
+        # source = ./../../../dotfiles/config/Kvantum;
         enable = false;
         text = ''
           [General]
@@ -77,7 +77,7 @@
     # rofi theme
     ".local/share/rofi" = {
       recursive = true;
-      source = ./../../dotfiles/local/share/rofi;
+      source = ./../../../dotfiles/local/share/rofi;
     };
   };
 }

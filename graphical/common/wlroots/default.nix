@@ -44,9 +44,10 @@
     '';
   };
 in {
+
   imports = [
-    inputs.home-manager.nixosModule.home-manager
-    inputs.xremap.nixosModule.default
+    inputs.home-manager.nixosModules.home-manager
+    inputs.xremap.nixosModules.default
   ];
 
   # to import home-manager modules
