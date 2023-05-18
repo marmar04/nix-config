@@ -166,7 +166,10 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 -- require('lspconfig')['rnix'].setup {
   -- capabilities = capabilities
 -- }
-require'lspconfig'.nil_ls.setup{}
+
+require'lspconfig'.nil_ls.setup{
+  capabilities = capabilities
+}
 
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities
