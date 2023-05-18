@@ -214,7 +214,7 @@
 
     thermald.enable = true;
 
-    power-profiles-daemon.enable = false;
+    power-profiles-daemon.enable = lib.mkDefault false;
 
     upower = {
       enable = true;
@@ -241,8 +241,8 @@
       # Configure keymap in X11
       layout = "us";
 
-      displayManager.gdm.enable = false;
-      displayManager.lightdm.enable = false;
+      displayManager.gdm.enable = lib.mkDefault false;
+      displayManager.lightdm.enable = lib.mkDefault false;
     };
 
     # Have dbus

@@ -6,10 +6,26 @@
   ...
 }: {
   imports = [inputs.xremap.nixosModules.default];
+
   services = {
+    # To remap caps lock to escape
+    xremap = {
+      userName = "marmar";
+      config = {
+        keymap = [
+          {
+            name = "caps to escape";
+            remap = {
+              "CapsLock" = "Esc";
+            };
+          }
+        ];
+      };
+    };
+
     xserver = {
       displayManager.gdm = {
-        enable = lib.mkForce true;
+        enable = true;
         wayland = true;
       };
 
@@ -22,7 +38,7 @@
       sushi.enable = true;
     };
 
-    power-profiles-daemon = lib.mkForce true;
+    power-profiles-daemon.enable = true;
 
     udev.packages = with pkgs; [gnome.gnome-settings-daemon];
   };
@@ -32,10 +48,6 @@
     adw-gtk3
     adwaita-qt
 
-    /*
-    gsound
-    libgda6
-    */
     foliate
 
     gnome.gnome-tweaks
