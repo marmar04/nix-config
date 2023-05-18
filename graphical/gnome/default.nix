@@ -1,22 +1,35 @@
-# Module to enable the plasma session
 {
   cfg,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
+  imports = [inputs.xremap.nixosModules.default];
+
   services = {
+    # To remap caps lock to escape
+    xremap = {
+      userName = "marmar";
+      config = {
+        keymap = [
+          {
+            name = "caps to escape";
+            remap = {
+              "CapsLock" = "Esc";
+            };
+          }
+        ];
+      };
+    };
+
     xserver = {
       displayManager.gdm = {
         enable = true;
         wayland = true;
       };
 
-      # displayManager.defaultSession = "plasmawayland";
-
-      desktopManager.gnome = {
-        enable = true;
-      };
+      desktopManager.gnome.enable = true;
     };
 
     gnome = {
@@ -24,6 +37,8 @@
       # gnome-settings-daemon.enable = true;
       sushi.enable = true;
     };
+
+    power-profiles-daemon.enable = true;
 
     udev.packages = with pkgs; [gnome.gnome-settings-daemon];
   };
@@ -33,10 +48,6 @@
     adw-gtk3
     adwaita-qt
 
-    /*
-    gsound
-    libgda6
-    */
     foliate
 
     gnome.gnome-tweaks

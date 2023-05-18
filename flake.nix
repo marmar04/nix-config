@@ -250,7 +250,7 @@
 
             # For sway environment
             #./graphical/sway
-            ./graphical/hyprland
+            ./graphical/gnome
 
             (import ./nixos/configuration.nix inputs)
             (import ./machines/elitenix/nixos/configuration.nix inputs)
