@@ -65,6 +65,10 @@
     '';
   };
 
+  environment.systemPackages = with pkgs; [
+    inputs.gpt4all.packages.${pkgs.system}.gpt4all-chat-avx
+  ];
+
   systemd = {
     services.NetworkManager-wait-online.enable = false;
     tmpfiles = {

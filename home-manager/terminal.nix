@@ -16,9 +16,6 @@
     # Feel free to split up your configuration and import pieces of it here.
   ];
 
-  # Enable home-manager and git
-  # programs.home-manager.enable = true;
-  # programs.git.enable = true;
   programs = {
     alacritty = {
       enable = true;

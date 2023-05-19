@@ -119,6 +119,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # gpt4all flake
+    gpt4all = {
+      url = "github:polygon/gpt4all-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     nix-colors.url = "github:misterio77/nix-colors";

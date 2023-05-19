@@ -53,38 +53,5 @@
     # };
   };
 
-  home = {
-    # for qt theming (if I get it working)
-    /*
-    sessionVariables = {
-      "QT_QPA_PLATFORMTHEME" = "qt5ct";
-    };
-
-    file.".icons/default/index.theme".text = ''
-      [Icon Theme]
-      Inherits=breeze_cursors
-    '';
-
-    xdg.configFile = {
-      # fixes dolphin background colors
-      "kdeglobals".source = "${pkgs.catppuccin-kde}/share/color-schemes/BreezeDark.colors";
-
-      "qt5ct/qt5ct.conf".source = pkgs.writeText "qt5ct.conf" ''
-        [Appearance]
-        style=catppuccin
-
-        # Cantata misbehaves without color overrides. This overrides the breeze colors with the
-        # exact same colors.
-        color_scheme_path=${./breeze-dark-colors-override.conf}
-        custom_palette=true
-      '';
-    };
-    */
-  };
-
-  # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "22.05";
+  # TODO: Define _all_ themes and icons here
 }

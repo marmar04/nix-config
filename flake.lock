@@ -612,6 +612,45 @@
         "type": "github"
       }
     },
+    "gpt4all": {
+      "inputs": {
+        "gpt4all": "gpt4all_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1684258877,
+        "narHash": "sha256-CWFkvbKQv6IMJIAXvuRueX2qxrh4ZppmIoP9oDtz63o=",
+        "owner": "polygon",
+        "repo": "gpt4all-nix",
+        "rev": "c32afc111c1b3da89a9c014551e62e0cbe0ba9d0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "polygon",
+        "repo": "gpt4all-nix",
+        "type": "github"
+      }
+    },
+    "gpt4all_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1684003426,
+        "narHash": "sha256-KAP76KV+m2kQdUlo3O2pdkiIUNmwO7NDjMGDCDXpjh0=",
+        "ref": "refs/heads/main",
+        "rev": "0f71cb6759f648ad210d2b4bdd56d5b3e94b8d37",
+        "revCount": 698,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/nomic-ai/gpt4all"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/nomic-ai/gpt4all"
+      }
+    },
     "hardware": {
       "locked": {
         "lastModified": 1683269598,
@@ -1732,6 +1771,7 @@
         "anyrun": "anyrun",
         "emacs-overlay": "emacs-overlay",
         "flake-utils": "flake-utils",
+        "gpt4all": "gpt4all",
         "hardware": "hardware",
         "home-manager": "home-manager",
         "hy3": "hy3",
