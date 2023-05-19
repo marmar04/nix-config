@@ -408,9 +408,6 @@
     bottles
     libsForQt5.qtstyleplugin-kvantum
     cpu-x
-
-    # gpt4all - accessible through the command `chat`
-    inputs.gpt4all.packages.${pkgs.system}.gpt4all-chat
   ];
 
   boot = {

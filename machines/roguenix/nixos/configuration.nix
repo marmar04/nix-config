@@ -54,6 +54,10 @@
 
   services.fstrim.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    inputs.gpt4all.packages.${pkgs.system}.gpt4all-chat
+  ];
+
   services = {
     xserver = {
       displayManager.gdm.enable = false;
