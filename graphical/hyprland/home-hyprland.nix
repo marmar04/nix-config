@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   inputs,
   ...
@@ -34,7 +32,7 @@
       timeouts = [
         {
           timeout = 300;
-          command = ''${pkgs.gtklock}/bin/gtklock -d -g "adw-gtk3-dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred2.png'';
+          command = ''${pkgs.gtklock}/bin/gtklock -d -g "Catppuccin-Mocha-Compact-Green-Dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred2.png'';
         }
         {
           timeout = 600;
@@ -45,7 +43,7 @@
       events = [
         {
           event = "before-sleep";
-          command = ''${pkgs.gtklock}/bin/gtklock -d -g "adw-gtk3-dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred3.png'';
+          command = ''${pkgs.gtklock}/bin/gtklock -d -g "Catppuccin-Mocha-Compact-Green-Dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred3.png'';
         }
         # { event = "lock"; command = "lock"; }
       ];

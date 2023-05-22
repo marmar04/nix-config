@@ -1,7 +1,4 @@
 {
-  inputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
@@ -40,7 +37,7 @@
     };
 
     theme = {
-      name = "adw-gtk3-dark";
+      name = "Catppuccin-Mocha-Compact-Green-Dark";
     };
   };
 
