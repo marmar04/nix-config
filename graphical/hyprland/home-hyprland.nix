@@ -23,7 +23,8 @@
 
     # plugins = [inputs.hy3.packages.${pkgs.system}.hy3];
 
-    extraConfig = builtins.readFile ./../../dotfiles/config/hypr/hyprland.conf;
+    # Concatenate the two files and add a newline in between
+    extraConfig = builtins.readFile ./mocha.conf + "\n" + builtins.readFile ./hyprland.conf;
   };
 
   services = {
@@ -48,15 +49,6 @@
         }
         # { event = "lock"; command = "lock"; }
       ];
-    };
-  };
-
-  # For linking the files in config folder
-  xdg = {
-    configFile = {
-      "hypr/mocha.conf" = {
-        source = ./../../dotfiles/config/hypr/mocha.conf;
-      };
     };
   };
 }
