@@ -1,8 +1,8 @@
 #+title: Structure of configuration files
 
-* How it'll be organised
-There'll be a flake.nix and all the other necessary folders for the root of this repo
+* Things to do
+** TODO Change kernel of roguenix to include tuxedo-keyboard kernel module
 
-** Necessary folders
-*** hosts
-For machines and home-manager profiles
+** TODO Profiles folder to replace nixos/ and home-manager/
+
+** TODO Create a github action/bot that updates the flake every 2 weeks
