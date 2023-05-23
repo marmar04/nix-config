@@ -3,6 +3,8 @@
 * Things to do
 ** TODO Change kernel of roguenix to include tuxedo-keyboard kernel module
 
+** TODO Use wallpapers from wallpkgs
+
 ** TODO Profiles folder to replace nixos/ and home-manager/
 
 ** TODO Create a github action/bot that updates the flake every 2 weeks
