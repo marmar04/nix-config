@@ -62,6 +62,7 @@
     inputs.anyrun.packages.${pkgs.system}.anyrun
     tesseract
     libnotify
+    hyprpicker
     gtklock
     udev
     util-linux
