@@ -343,8 +343,6 @@
     # skanlite
     libimobiledevice
     ifuse
-    # editors
-    # texlive.combined.scheme-basic
     # cli
     alsa-utils
     dash
@@ -400,13 +398,11 @@
     zeal
     yabasic
     # utilities
-    # blueman
     gparted
     libreoffice-fresh
     xmind
     freemind
     bottles
-    libsForQt5.qtstyleplugin-kvantum
     cpu-x
   ];
 
@@ -418,9 +414,6 @@
   programs = {
     # Enabel dconf for gtk theming
     dconf.enable = true;
-
-    # If want to theme qt with qt5ct
-    # qt5ct.enable = true;
 
     tmux = {
       enable = true;
@@ -445,6 +438,12 @@
     etc = {
       "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
     };
+  };
+
+  # qt theming
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
   };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.

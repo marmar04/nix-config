@@ -64,6 +64,10 @@
           theme=Catppuccin-Mocha-Green
         '';
       };
+      "qt5ct" = {
+        recursive = true;
+        source = ./../../../dotfiles/config/qt5ct;
+      };
     };
   };
 
