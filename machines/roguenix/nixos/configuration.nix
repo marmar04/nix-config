@@ -31,7 +31,9 @@
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
 
-    kernelParams = ["ahci.mobile_lpm_policy=3" "quiet"];
+    extraModulePackages = with config.boot.kernelPackages; [tuxedo-keyboard];
+
+    kernelParams = ["ahci.mobile_lpm_policy=3" "quiet" "nowatchdog"];
 
     # Mount NTFS drives with ntfs-3g
     supportedFilesystems = ["ntfs" "btrfs" "exfat"];
