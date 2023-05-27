@@ -389,7 +389,6 @@
     darktable
     # rawtherapee
     handbrake
-    zathura
     vlc
     mpv
     freetube

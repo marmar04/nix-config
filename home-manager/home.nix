@@ -91,11 +91,6 @@
   # For linking the files in config folder
   xdg = {
     configFile = {
-      "zathura" = {
-        recursive = true;
-        source = ./../dotfiles/config/zathura;
-      };
-
       # All the wallpapers that you might want to use
       "wallpaper" = {
         recursive = true;

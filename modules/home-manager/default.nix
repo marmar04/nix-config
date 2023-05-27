@@ -6,4 +6,5 @@
   # astroNvim = import ./astroNvim.nix;
   # editors = import ./editors.nix;
   games = import ./games.nix;
+  pdf = import ./pdf.nix;
 }
