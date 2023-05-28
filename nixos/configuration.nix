@@ -231,7 +231,7 @@
 
     xserver = {
       # Enable X server
-      enable = true;
+      enable = lib.mkDefault false;
 
       digimend.enable = true;
 
@@ -408,6 +408,8 @@
   boot = {
     initrd.systemd.enable = true;
     plymouth.enable = true;
+
+    tmp.cleanOnBoot = true;
   };
 
   programs = {
