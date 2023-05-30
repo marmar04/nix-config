@@ -56,10 +56,6 @@
 
   services.fstrim.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    inputs.gpt4all.packages.${pkgs.system}.gpt4all-chat
-  ];
-
   services = {
     xserver = {
       displayManager.gdm.enable = false;
@@ -153,17 +149,17 @@
       };
     };
 
-    extraUsers = {
-      nixBuild = {
-        name = "nixBuild";
-        useDefaultShell = true;
-        isSystemUser = true;
-        group = "nixBuild";
-        openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPaSOSh7eH1ekDr76+rmcmbGpvg04nYHTIGo8p7gfqfF nixBuild"
-        ];
-      };
-    };
+    # extraUsers = {
+    #   nixBuild = {
+    #     name = "nixBuild";
+    #     useDefaultShell = true;
+    #     isSystemUser = true;
+    #     group = "nixBuild";
+    #     openssh.authorizedKeys.keys = [
+    #       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPaSOSh7eH1ekDr76+rmcmbGpvg04nYHTIGo8p7gfqfF nixBuild"
+    #     ];
+    #   };
+    # };
   };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
