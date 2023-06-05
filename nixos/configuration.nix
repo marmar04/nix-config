@@ -233,7 +233,7 @@
       # Enable X server
       enable = lib.mkDefault false;
 
-      digimend.enable = true;
+      # digimend.enable = true;
 
       # Enable touchpad support (enabled default in most desktopManager).
       libinput.enable = true;

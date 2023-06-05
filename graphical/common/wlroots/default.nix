@@ -101,7 +101,6 @@ in {
     pamixer
     # alacritty # gpu accelerated terminal
     wdisplays
-    wob
     wf-recorder
     flameshot
     dbus-sway-environment
@@ -117,7 +116,7 @@ in {
     clipman
     mako # notification system developed by swaywm maintainer
   ];
-  #
+
   # Enable wayland on firefox
   environment = {
     sessionVariables = {

@@ -26,6 +26,12 @@
   };
 
   services = {
+    # overlay bar
+    avizo = {
+      enable = true;
+    };
+
+    # idle management
     swayidle = {
       enable = true;
       systemdTarget = "hyprland-session.target";

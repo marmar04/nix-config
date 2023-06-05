@@ -45,21 +45,9 @@
   environment.systemPackages = with pkgs; [
     # eww-wayland
 
-    /*
     bc
-    blueberry
-    dunst
     findutils
-    gnome.gnome-control-center
-    gnused
-    gojq
-    imagemagick
     jaq
-    procps
-    socat
-    */
-
-    inputs.anyrun.packages.${pkgs.system}.anyrun
     tesseract
     libnotify
     hyprpicker
