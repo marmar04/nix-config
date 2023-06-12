@@ -17,6 +17,7 @@
     };
 
     xserver = {
+      enable = true;
       desktopManager.plasma5.enable = true;
     };
   };
@@ -28,10 +29,13 @@
   };
 
   environment.systemPackages = with pkgs; [
+    plasma5Packages.bismuth
+
     wl-clipboard
     foot
     libsForQt5.kamoso
-    # latte-dock
+    komikku
+
     digikam
     neochat
     kcalc
@@ -40,7 +44,6 @@
     libsForQt5.krecorder
     libsForQt5.audiotube
     libsForQt5.plasmatube
-    # sddm-kcm
     libsForQt5.kio-gdrive
   ];
 
