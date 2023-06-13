@@ -202,7 +202,7 @@
             }
 
             # everything to do with hyprland
-            ./graphical/hyprland
+            ./graphical/plasma
 
             # > Our main nixos configuration file <
             (import ./nixos/configuration.nix inputs)
