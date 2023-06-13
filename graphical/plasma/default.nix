@@ -6,6 +6,7 @@
   ...
 }: {
   services = {
+    /*
     greetd = {
       enable = true;
       settings = {
@@ -15,9 +16,14 @@
         };
       };
     };
+    */
 
     xserver = {
-      enable = true;
+      displayManager.gdm = {
+        enable = lib.mkForce true;
+        wayland = true;
+      };
+
       desktopManager.plasma5.enable = true;
     };
   };
@@ -32,9 +38,10 @@
     plasma5Packages.bismuth
 
     wl-clipboard
-    foot
     libsForQt5.kamoso
     komikku
+
+    gsettings-desktop-schemas
 
     digikam
     neochat
@@ -42,22 +49,17 @@
     kate
     rsibreak
     libsForQt5.krecorder
-    libsForQt5.audiotube
-    libsForQt5.plasmatube
-    libsForQt5.kio-gdrive
   ];
 
   # Enable wayland on firefox
   environment = {
     sessionVariables = {
       MOZ_ENABLE_WAYLAND = "1";
-      # XDG_CURRENT_DESKTOP = "sway";
 
       # Electron apps use wayland
       NIXOS_OZONE_WL = "1";
-
-      # Use kvantum theming for qt apps
-      # QT_STYLE_OVERRIDE = "kvantum";
     };
   };
+
+  qt.platformTheme = lib.mkForce "kde";
 }
