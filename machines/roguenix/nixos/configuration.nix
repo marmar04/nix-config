@@ -31,7 +31,7 @@
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
 
-    extraModulePackages = with config.boot.kernelPackages; [tuxedo-keyboard];
+    # extraModulePackages = with config.boot.kernelPackages; [tuxedo-keyboard];
 
     kernelParams = ["ahci.mobile_lpm_policy=3" "quiet" "nowatchdog"];
 
