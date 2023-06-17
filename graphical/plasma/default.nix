@@ -6,7 +6,6 @@
   ...
 }: {
   services = {
-    /*
     greetd = {
       enable = true;
       settings = {
@@ -16,13 +15,15 @@
         };
       };
     };
-    */
 
     xserver = {
+    /*
       displayManager.gdm = {
         enable = lib.mkForce true;
         wayland = true;
+        defaultSession = "plasmawayland"; 
       };
+    */
 
       desktopManager.plasma5.enable = true;
     };
@@ -62,4 +63,9 @@
   };
 
   qt.platformTheme = lib.mkForce "kde";
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [plasma5Packages.xdg-desktop-portal-kde];
+  };
 }
