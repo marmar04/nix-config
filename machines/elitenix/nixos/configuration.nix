@@ -117,6 +117,7 @@
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFIJtCCRbvvg9o+xW0cHAIzp/euVpY1VZl1QgMvDaloP m.ameerrafiqi@gmail.com"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKN1a4DP85F/GaMMsUcDRj6U7x5akgIalqBFFlhWxCtC m.ameerrafiqi@gmail.com"
       ];
       extraGroups = ["video" "input" "wheel" "networkmanager" "audio" "scanner" "lp"];
     };
