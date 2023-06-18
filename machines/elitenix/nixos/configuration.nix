@@ -26,7 +26,7 @@
   networking.hostName = "elitenix";
 
   boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_hardened;
 
     kernelParams = ["quiet"];
 
