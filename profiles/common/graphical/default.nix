@@ -1,5 +1,4 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
+# This is the base config that every system should have installed
 {programsdb, ...}: {
   inputs,
   lib,
@@ -9,8 +8,6 @@
 }: {
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware), use something like:
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
 
     # You can also split up your configuration and import pieces of it here.
   ];
@@ -86,105 +83,8 @@
     };
   };
 
-  nix = {
-    # This will add each flake input as a registry
-    # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
-
-    # This will additionally add your inputs to the system's legacy channels
-    # Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
-  };
-
-  nix = {
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Deduplicate and optimize nix store
-      auto-optimise-store = true;
-
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-    };
-
-    extraOptions = ''
-      keep-outputs = true
-      keep-derivations = true
-    '';
-  };
-
-  # FIXME: Add the rest of your current configuration
-
   security = {
-    # Disable sudo and enable doas
-    # sudo.enable = false;
-    doas = {
-      enable = true;
-      extraRules = [
-        {
-          users = ["marmar"];
-          keepEnv = true;
-        }
-      ];
-    };
-
     polkit.enable = true;
-
-    pam.services = {
-      swaylock = {};
-      gtklock = {};
-    };
-  };
-
-  # zram configuration
-  zramSwap = {
-    enable = true;
-    # priority = 10;
-  };
-
-  networking = {
-    networkmanager = {
-      enable = true;
-      plugins = with pkgs; [
-        networkmanager-openvpn
-        networkmanager-openconnect
-      ];
-    };
-    # Blocklists of websites
-    stevenblack = {
-      enable = true;
-      block = ["fakenews" "gambling" "porn"];
-    };
-  };
-
-  systemd = {
-    services.NetworkManager-wait-online.enable = false;
-    tmpfiles = {
-      rules = [
-        "L+ /lib/${builtins.baseNameOf pkgs.stdenv.cc.bintools.dynamicLinker} - - - - ${pkgs.stdenv.cc.bintools.dynamicLinker}"
-        "L+ /lib64 - - - - /lib"
-      ];
-    };
-  };
-
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "ondemand";
-    # For maximum power saving, may not be the most convenient
-    # powertop.enable = true;
-  };
-
-  # Set your time zone.
-  time.timeZone = "Asia/Kuala_Lumpur";
-
-  location.provider = "geoclue2";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
-  console = {
-    # font = "Lat2-Terminus16";
-    # keyMap = "us";
-    useXkbConfig = true; # use xkbOptions in tty.
   };
 
   hardware = {
@@ -304,7 +204,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # emacs
-    clang
     # themes
     gradience
     adw-gtk3
@@ -340,44 +239,7 @@
     hplip
     easyeffects
     xsane
-    # skanlite
-    libimobiledevice
-    ifuse
     # cli
-    alsa-utils
-    dash
-    coreutils
-    lesspipe
-    poppler_utils
-    epr
-    gnuplot
-    fortune
-    ispell
-    curl
-    wget
-    nnn
-    w3m
-    termusic
-    pandoc
-    tuir
-    cht-sh
-    moc
-    ytfzf
-    unzip
-    killall
-    fd
-    ripgrep
-    spotdl
-    nix-du
-    neofetch
-    htop
-    lolcat
-    ncdu
-    inxi
-    tealdeer
-    compsize
-    winePackages.minimal
-    exfat
     networkmanagerapplet
     protonvpn-gui
     # media
@@ -405,73 +267,11 @@
     cpu-x
   ];
 
-  boot = {
-    initrd.systemd.enable = true;
-    plymouth.enable = true;
-
-    tmp.cleanOnBoot = true;
-  };
-
   programs = {
     # Enabel dconf for gtk theming
     dconf.enable = true;
 
-    tmux = {
-      enable = true;
-      clock24 = true;
-      keyMode = "vi";
-      customPaneNavigationAndResize = true;
-    };
-
-    command-not-found.dbPath = "/etc/programs.sqlite";
   };
-
-  # List environment variables:
-
-  # Enable wayland on firefox
-  environment = {
-    # Dash is just an example, you can use whatever you want
-    binsh = "${pkgs.dash}/bin/dash";
-    shells = with pkgs; [fish bash zsh];
-
-    pathsToLink = ["/share/zsh"];
-
-    etc = {
-      "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
-    };
-
-    shellAliases = {
-      yt-embed-sub = "yt-dlp -f bestvideo+bestaudio --embed-subs --write-auto-sub";
-      yt-best-quality = "yt-dlp -f bestvideo+bestaudio";
-    };
-  };
-
-  # qt theming
-  qt = {
-    enable = true;
-    platformTheme = "qt5ct";
-  };
-
-  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
-  /*
-  users.users = {
-    # Replace with your username
-    # Already in machines subdirectory
-    marmar = {
-      # TODO: You can set an initial password for your user.
-      # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-      # Be sure to change it (using passwd) after rebooting!
-      # initialPassword = "correcthorsebatterystaple";
-      isNormalUser = true;
-      shell = pkgs.fish;
-      openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-      ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "wheel" "networkmanager" "audio" "scanner" "lp" ];
-    };
-  };
-  */
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.05";

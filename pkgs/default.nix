@@ -2,4 +2,5 @@
 # These are similar to nixpkgs packages
 {pkgs}: {
   # example = pkgs.callPackage ./example { };
+  # tuxedo-backlight-control = pkgs.callPackage ./tuxedo-backlight-control {};
 }

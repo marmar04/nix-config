@@ -1,6 +1,4 @@
 {
-  cfg,
-  lib,
   pkgs,
   inputs,
   ...
@@ -12,7 +10,7 @@
   ];
 
   home-manager.sharedModules = [
-    ./home-hyprland.nix
+    ./home-wayfire.nix
     ./home-waybar.nix
   ];
 
@@ -22,28 +20,19 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd wayfire";
           user = "greeter";
         };
       };
     };
   };
 
-  programs = {
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-      nvidiaPatches = true;
-    };
-  };
-
-  fonts.fonts = with pkgs; [
-    jost
-    material-symbols
-  ];
-
   environment.systemPackages = with pkgs; [
     # eww-wayland
+
+    wayfire
+
+    wcm
 
     bc
     findutils

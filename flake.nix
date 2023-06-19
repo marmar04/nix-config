@@ -119,12 +119,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # gpt4all flake
-    gpt4all = {
-      url = "github:polygon/gpt4all-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     nix-colors.url = "github:misterio77/nix-colors";
@@ -134,12 +128,7 @@
     self,
     nixpkgs,
     home-manager,
-    hyprland,
-    nur,
-    xremap,
     neovim-flake,
-    emacs-overlay,
-    stylix,
     kmonad,
     programsdb,
     ...
@@ -213,7 +202,7 @@
             }
 
             # everything to do with hyprland
-            ./graphical/hyprland
+            ./graphical/plasma
 
             # > Our main nixos configuration file <
             (import ./nixos/configuration.nix inputs)
@@ -285,62 +274,27 @@
       };
     };
 
-    homeConfigurations = {
-      # replace with your username@hostname
-      "marmar@roguenix" = home-manager.lib.homeManagerConfiguration {
-        pkgs =
-          nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {
-          inherit inputs;
-        }; # Pass flake inputs to our config
-        modules =
-          (builtins.attrValues homeManagerModules)
-          ++ [
-            # > Our main home-manager configuration file <
-            ./home-manager/home.nix
-            ./home-manager/editors.nix
-            ./graphical/home-manager/home-wlroots.nix
-            ./graphical/home-manager/home-sway.nix
-            # ./graphical/home-manager/home-hyprland.nix
-            # Our common nixpkgs config (unfree, overlays, etc)
-            (import ./nixpkgs-config.nix {inherit overlays;})
-          ];
-      };
-
-      "marmar@elitenix" = home-manager.lib.homeManagerConfiguration {
-        pkgs =
-          nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-        modules =
-          (builtins.attrValues homeManagerModules)
-          ++ [
-            # > Our main home-manager configuration file <
-            # Broken for now
-            # neovim-flake.nixosModules.hm-module
-            ./home-manager/home.nix
-            ./graphical/home-manager/home-wlroots.nix
-            # ./graphical/home-manager/home-sway.nix
-            ./graphical/home-manager/home-hyprland.nix
-            # Our common nixpkgs config (unfree, overlays, etc)
-            (import ./nixpkgs-config.nix {inherit overlays;})
-          ];
-      };
-      "marmar@oldnix" = home-manager.lib.homeManagerConfiguration {
-        pkgs =
-          nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-        modules =
-          (builtins.attrValues homeManagerModules)
-          ++ [
-            ./home-manager/home.nix
-            # Our common nixpkgs config (unfree, overlays, etc)
-            (import ./nixpkgs-config.nix {inherit overlays;})
-          ];
-      };
-    };
+    # homeConfigurations = {
+    #   # replace with your username@hostname
+    #   "marmar@roguenix" = home-manager.lib.homeManagerConfiguration {
+    #     pkgs =
+    #       nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+    #     extraSpecialArgs = {
+    #       inherit inputs;
+    #     }; # Pass flake inputs to our config
+    #     modules =
+    #       (builtins.attrValues homeManagerModules)
+    #       ++ [
+    #         # > Our main home-manager configuration file <
+    #         ./home-manager/home.nix
+    #         ./home-manager/editors.nix
+    #         ./graphical/home-manager/home-wlroots.nix
+    #         ./graphical/home-manager/home-sway.nix
+    #         # ./graphical/home-manager/home-hyprland.nix
+    #         # Our common nixpkgs config (unfree, overlays, etc)
+    #         (import ./nixpkgs-config.nix {inherit overlays;})
+    #       ];
+    #   };
+    # };
   };
 }
