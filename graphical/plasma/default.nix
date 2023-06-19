@@ -66,6 +66,6 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [plasma5Packages.xdg-desktop-portal-kde];
+    extraPortals = [pkgs.plasma5Packages.xdg-desktop-portal-kde];
   };
 }
