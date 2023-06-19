@@ -5,24 +5,7 @@
   inputs,
   ...
 }: {
-  imports = [inputs.xremap.nixosModules.default];
-
   services = {
-    # To remap caps lock to escape
-    xremap = {
-      userName = "marmar";
-      config = {
-        keymap = [
-          {
-            name = "caps to escape";
-            remap = {
-              "CapsLock" = "Esc";
-            };
-          }
-        ];
-      };
-    };
-
     xserver = {
       displayManager.gdm = {
         enable = true;
@@ -60,6 +43,7 @@
     gnomeExtensions.arcmenu
     gnomeExtensions.rounded-window-corners
     gnomeExtensions.clipboard-indicator
+    gnomeExtensions.forge
   ];
 
   programs = {

@@ -26,7 +26,7 @@
   networking.hostName = "elitenix";
 
   boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_hardened;
 
     kernelParams = ["quiet"];
 
@@ -46,28 +46,6 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  nix = {
-    distributedBuilds = true;
-    buildMachines = [
-      {
-        hostName = "roguenix";
-        system = "x86_64-linux";
-        maxJobs = 4;
-        speedFactor = 2;
-        supportedFeatures = ["nixos-test" "benchmark" "big-parallel" "kvm"];
-        sshKey = "/root/.ssh/id_nixBuild";
-        sshUser = "nixBuild";
-      }
-    ];
-    extraOptions = ''
-      builders-use-substitutes = true
-    '';
-  };
-
-  environment.systemPackages = with pkgs; [
-    inputs.gpt4all.packages.${pkgs.system}.gpt4all-chat-avx
-  ];
 
   systemd = {
     services.NetworkManager-wait-online.enable = false;
@@ -139,6 +117,7 @@
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFIJtCCRbvvg9o+xW0cHAIzp/euVpY1VZl1QgMvDaloP m.ameerrafiqi@gmail.com"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKN1a4DP85F/GaMMsUcDRj6U7x5akgIalqBFFlhWxCtC m.ameerrafiqi@gmail.com"
       ];
       extraGroups = ["video" "input" "wheel" "networkmanager" "audio" "scanner" "lp"];
     };
