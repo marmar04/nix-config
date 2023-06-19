@@ -31,7 +31,9 @@
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
 
-    kernelParams = ["ahci.mobile_lpm_policy=3" "quiet"];
+    # extraModulePackages = with config.boot.kernelPackages; [tuxedo-keyboard];
+
+    kernelParams = ["ahci.mobile_lpm_policy=3" "quiet" "nowatchdog"];
 
     # Mount NTFS drives with ntfs-3g
     supportedFilesystems = ["ntfs" "btrfs" "exfat"];
@@ -147,17 +149,17 @@
       };
     };
 
-    extraUsers = {
-      nixBuild = {
-        name = "nixBuild";
-        useDefaultShell = true;
-        isSystemUser = true;
-        group = "nixBuild";
-        openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPaSOSh7eH1ekDr76+rmcmbGpvg04nYHTIGo8p7gfqfF nixBuild"
-        ];
-      };
-    };
+    # extraUsers = {
+    #   nixBuild = {
+    #     name = "nixBuild";
+    #     useDefaultShell = true;
+    #     isSystemUser = true;
+    #     group = "nixBuild";
+    #     openssh.authorizedKeys.keys = [
+    #       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPaSOSh7eH1ekDr76+rmcmbGpvg04nYHTIGo8p7gfqfF nixBuild"
+    #     ];
+    #   };
+    # };
   };
 
   # This setups a SSH server. Very important if you're setting up a headless system.

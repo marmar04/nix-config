@@ -1,10 +1,4 @@
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors), use something like:
     # inputs.nix-colors.homeManagerModule
@@ -40,7 +34,7 @@
     };
 
     theme = {
-      name = "adw-gtk3-dark";
+      name = "Catppuccin-Mocha-Compact-Green-Dark";
     };
   };
 
@@ -69,6 +63,10 @@
           [General]
           theme=Catppuccin-Mocha-Green
         '';
+      };
+      "qt5ct" = {
+        recursive = true;
+        source = ./../../../dotfiles/config/qt5ct;
       };
     };
   };

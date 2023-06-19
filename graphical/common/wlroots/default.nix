@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   inputs,
   ...
@@ -39,12 +37,11 @@
     in ''
       export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
       gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome_schema gtk-theme 'adw-gtk3-dark'
+      gsettings set $gnome_schema gtk-theme 'Catppuccin-Mocha-Compact-Green-Dark'
       gsettings set org.gnome.desktop.interface color-scheme prefer-dark
     '';
   };
 in {
-
   imports = [
     inputs.home-manager.nixosModules.home-manager
     inputs.xremap.nixosModules.default
@@ -104,7 +101,6 @@ in {
     pamixer
     # alacritty # gpu accelerated terminal
     wdisplays
-    wob
     wf-recorder
     flameshot
     dbus-sway-environment
@@ -120,7 +116,7 @@ in {
     clipman
     mako # notification system developed by swaywm maintainer
   ];
-  #
+
   # Enable wayland on firefox
   environment = {
     sessionVariables = {
@@ -131,7 +127,7 @@ in {
       NIXOS_OZONE_WL = "1";
 
       # Use kvantum theming for qt apps
-      QT_STYLE_OVERRIDE = "kvantum";
+      # QT_STYLE_OVERRIDE = "kvantum";
     };
   };
 

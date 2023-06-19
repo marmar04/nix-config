@@ -17,6 +17,14 @@
     };
 
     xserver = {
+    /*
+      displayManager.gdm = {
+        enable = lib.mkForce true;
+        wayland = true;
+        defaultSession = "plasmawayland"; 
+      };
+    */
+
       desktopManager.plasma5.enable = true;
     };
   };
@@ -28,33 +36,36 @@
   };
 
   environment.systemPackages = with pkgs; [
+    plasma5Packages.bismuth
+
     wl-clipboard
-    foot
     libsForQt5.kamoso
-    # latte-dock
+    komikku
+
+    gsettings-desktop-schemas
+
     digikam
     neochat
     kcalc
     kate
     rsibreak
     libsForQt5.krecorder
-    libsForQt5.audiotube
-    libsForQt5.plasmatube
-    # sddm-kcm
-    libsForQt5.kio-gdrive
   ];
 
   # Enable wayland on firefox
   environment = {
     sessionVariables = {
       MOZ_ENABLE_WAYLAND = "1";
-      # XDG_CURRENT_DESKTOP = "sway";
 
       # Electron apps use wayland
       NIXOS_OZONE_WL = "1";
-
-      # Use kvantum theming for qt apps
-      # QT_STYLE_OVERRIDE = "kvantum";
     };
+  };
+
+  qt.platformTheme = lib.mkForce "kde";
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.plasma5Packages.xdg-desktop-portal-kde];
   };
 }

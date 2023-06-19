@@ -1,5 +1,4 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
+# This is the base config that every system should have installed
 {programsdb, ...}: {
   inputs,
   lib,
@@ -9,8 +8,6 @@
 }: {
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware), use something like:
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
 
     # You can also split up your configuration and import pieces of it here.
   ];
@@ -102,9 +99,6 @@
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
-
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
 
     extraOptions = ''
@@ -116,18 +110,6 @@
   # FIXME: Add the rest of your current configuration
 
   security = {
-    # Disable sudo and enable doas
-    # sudo.enable = false;
-    doas = {
-      enable = true;
-      extraRules = [
-        {
-          users = ["marmar"];
-          keepEnv = true;
-        }
-      ];
-    };
-
     polkit.enable = true;
 
     pam.services = {
@@ -267,16 +249,7 @@
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
-
-    # Store VS Code auth token
-    gnome.gnome-keyring.enable = true;
-
-    # Enable flatpak
-    flatpak.enable = true;
   };
-
-  # For flatpak
-  xdg.portal.enable = true;
 
   # Fonts
   fonts = {
@@ -305,35 +278,6 @@
   environment.systemPackages = with pkgs; [
     # emacs
     clang
-    # themes
-    gradience
-    adw-gtk3
-    catppuccin-kde
-    catppuccin-gtk
-    catppuccin-kvantum
-    papirus-icon-theme
-    fluent-icon-theme
-    gnome.adwaita-icon-theme
-    colloid-kde
-    colloid-gtk-theme
-    colloid-icon-theme
-    # browsers
-    firefox-wayland
-    # librewolf-wayland
-    google-chrome
-    microsoft-edge
-    tor-browser-bundle-bin
-    # communication
-    thunderbird-wayland
-    tdesktop
-    pidgin
-    zoom-us
-    # download
-    persepolis
-    transmission-gtk
-    czkawka
-    # notes
-    xournalpp
     # system
     bucklespring-libinput
     glib
@@ -378,31 +322,9 @@
     compsize
     winePackages.minimal
     exfat
-    networkmanagerapplet
-    protonvpn-gui
-    # media
-    graphviz
-    kdenlive
-    gimp
-    krita
-    # inkscape
-    darktable
-    # rawtherapee
-    handbrake
-    vlc
-    mpv
-    freetube
-    gsettings-desktop-schemas
     # coding
     zeal
     yabasic
-    # utilities
-    gparted
-    libreoffice-fresh
-    xmind
-    freemind
-    bottles
-    cpu-x
   ];
 
   boot = {
@@ -413,9 +335,6 @@
   };
 
   programs = {
-    # Enabel dconf for gtk theming
-    dconf.enable = true;
-
     tmux = {
       enable = true;
       clock24 = true;
@@ -445,33 +364,6 @@
       yt-best-quality = "yt-dlp -f bestvideo+bestaudio";
     };
   };
-
-  # qt theming
-  qt = {
-    enable = true;
-    platformTheme = "qt5ct";
-  };
-
-  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
-  /*
-  users.users = {
-    # Replace with your username
-    # Already in machines subdirectory
-    marmar = {
-      # TODO: You can set an initial password for your user.
-      # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-      # Be sure to change it (using passwd) after rebooting!
-      # initialPassword = "correcthorsebatterystaple";
-      isNormalUser = true;
-      shell = pkgs.fish;
-      openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-      ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "wheel" "networkmanager" "audio" "scanner" "lp" ];
-    };
-  };
-  */
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.05";

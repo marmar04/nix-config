@@ -22,6 +22,7 @@
 
     # Language servers
     nodejs
+    inputs.nil.packages.${pkgs.system}.nil
     rust-analyzer
     nodePackages.npm
     ccls
@@ -36,29 +37,8 @@
     sqlite
 
     # Formatters
-    alejandra
     astyle
     python311Packages.black
-
-    /*
-    (pkgs.emacsWithPackagesFromUsePackage {
-      package = pkgs.emacsPgtk;  # replace with pkgs.emacsPgtk, or another version if desired.
-      config = ./../dotfiles/config/doom.d/config.el;
-      # config = path/to/your/config.org; # Org-Babel configs also supported
-
-      # Optionally provide extra packages not in the configuration file.
-      extraEmacsPackages = epkgs: [
-        epkgs.use-package
-      ];
-
-      # Optionally override derivations.
-      override = epkgs: epkgs // {
-        somePackage = epkgs.melpaPackages.somePackage.overrideAttrs(old: {
-           # Apply fixes here
-        });
-      };
-    })
-    */
   ];
 
   services = {
@@ -116,75 +96,6 @@
       ];
     };
 
-    # TODO: To fix in near future
-    /*
-    neovim-flake = {
-      enable = true;
-      settings = {
-        vim = {
-          dashboard.dashboard-nvim.enable = true;
-          viAlias = false;
-          vimAlias = false;
-          autocomplete.enable = true;
-          autopairs.enable = true;
-          notes.orgmode.enable = true;
-          statusline.lualine.enable = true;
-
-          theme = {
-            enable = true;
-            name = "catppuccin";
-            style = "mocha";
-          };
-
-          languages = {
-            enableFormat = true;
-            enableLSP = true;
-            enableTreesitter = true;
-
-            markdown = {
-              enable = true;
-              glow.enable = true;
-              treesitter.enable = true;
-            };
-
-            python = {
-              enable = true;
-              format.enable = true;
-              treesitter.enable = true;
-              lsp = {
-                enable = true;
-              };
-            };
-
-            nix = {
-              enable = true;
-              format = {
-                enable = true;
-                package = pkgs.alejandra;
-              };
-              treesitter.enable = true;
-              lsp = {
-                enable = true;
-                package = inputs.nil.packages.${pkgs.system}.nil;
-              };
-            };
-
-            rust = {
-              enable = true;
-              treesitter.enable = true;
-              lsp = {
-                enable = true;
-                package = pkgs.rust-analyzer;
-              };
-            };
-
-            sql.enable = true;
-          };
-        };
-      };
-    };
-    */
-
     # Vim
     vim = {
       enable = true;
@@ -227,6 +138,7 @@
         jnoortheen.nix-ide
         kamadorueda.alejandra
       ];
+      /*
       userSettings = {
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = lib.getExe pkgs.nil;
@@ -238,6 +150,7 @@
         };
         "vscode-neovim.neovimExecutablePaths.linux" = "/etc/profiles/per-user/marmar/bin/nvim";
       };
+      */
     };
   };
   # xdg.configFile."nvim/coc-settings.json".text = builtins.readFile ./../../dotfiles/config/my-coc-settings.json;

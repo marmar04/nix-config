@@ -40,13 +40,6 @@
       #   });
       # })
     ];
-    # Configure your nixpkgs instance
-    # config = {
-    # Disable if you don't want unfree packages
-    # allowUnfree = true;
-    # Workaround for https://github.com/nix-community/home-manager/issues/2942
-    # allowUnfreePredicate = _: true;
-    # };
   };
 
   # Set your username
@@ -55,19 +48,7 @@
     homeDirectory = "/home/marmar";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [
-  #   git
-  # ];
-
-  # Enable home-manager and git
-  # programs.home-manager.enable = true;
-  # programs.git.enable = true;
   programs = {
-    # Enable home-manager and git
-    home-manager.enable = true;
-
     git = {
       enable = true;
       userName = "Muhammad Ameer Rafiqi";
@@ -110,10 +91,6 @@
   # For linking the files in config folder
   xdg = {
     configFile = {
-      "zathura" = {
-        recursive = true;
-        source = ./../dotfiles/config/zathura;
-      };
       # All the wallpapers that you might want to use
       "wallpaper" = {
         recursive = true;
