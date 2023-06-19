@@ -138,6 +138,7 @@
         jnoortheen.nix-ide
         kamadorueda.alejandra
       ];
+      /*
       userSettings = {
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = lib.getExe pkgs.nil;
@@ -149,6 +150,7 @@
         };
         "vscode-neovim.neovimExecutablePaths.linux" = "/etc/profiles/per-user/marmar/bin/nvim";
       };
+      */
     };
   };
   # xdg.configFile."nvim/coc-settings.json".text = builtins.readFile ./../../dotfiles/config/my-coc-settings.json;
