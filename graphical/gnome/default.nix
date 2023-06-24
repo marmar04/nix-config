@@ -7,6 +7,8 @@
 }: {
   services = {
     xserver = {
+      enable = true;
+
       displayManager.gdm = {
         enable = true;
         wayland = true;
@@ -31,19 +33,19 @@
     adw-gtk3
     adwaita-qt
 
-    foliate
+    shortwave
 
     gnome.gnome-tweaks
     gnome.pomodoro
     shotwell
     newsflash
+    foliate
 
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-panel
     gnomeExtensions.arcmenu
     gnomeExtensions.rounded-window-corners
     gnomeExtensions.clipboard-indicator
-    gnomeExtensions.forge
   ];
 
   programs = {
