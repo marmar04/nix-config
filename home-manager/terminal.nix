@@ -67,6 +67,7 @@
 
     bash = {
       enable = true;
+      /*
       bashrcExtra = ''
         # Add any bashrc lines here
         bind '"\e[A":history-search-backward'
@@ -101,6 +102,7 @@
           ${EDITOR:-vim} flake.nix
         }
       '';
+      */
     };
 
     zsh = {
