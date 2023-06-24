@@ -324,6 +324,7 @@
     microsoft-edge
     tor-browser-bundle-bin
     # communication
+    keepassxc
     thunderbird-wayland
     tdesktop
     pidgin
