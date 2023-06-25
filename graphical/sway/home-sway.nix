@@ -266,7 +266,8 @@
 
     extraOptions = ["--unsupported-gpu"];
 
-    systemdIntegration = true;
+    # systemdIntegration = true;
+    systemd.enable = true;
 
     extraSessionCommands = ''
       export SDL_VIDEODRIVER=wayland
