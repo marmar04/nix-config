@@ -158,7 +158,9 @@
   };
 
   systemd = {
+    # make startup time faster
     services.NetworkManager-wait-online.enable = false;
+
     tmpfiles = {
       rules = [
         "L+ /lib/${builtins.baseNameOf pkgs.stdenv.cc.bintools.dynamicLinker} - - - - ${pkgs.stdenv.cc.bintools.dynamicLinker}"
@@ -293,11 +295,9 @@
       (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
       font-awesome
       source-code-pro
-    ];
 
-    fontconfig.defaultFonts = {
-      monospace = ["JetBrains Mono"];
-    };
+      noto-fonts-cjk
+    ];
   };
 
   # List packages installed in system profile. To search, run:

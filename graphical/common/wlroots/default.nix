@@ -52,6 +52,12 @@ in {
     ./home-wlroots.nix
   ];
 
+  fonts = {
+    fontconfig.defaultFonts = {
+      monospace = ["JetBrains Mono"];
+    };
+  };
+
   services = {
     dbus.enable = true;
 
