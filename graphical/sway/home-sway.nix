@@ -48,6 +48,11 @@
         # { event = "lock"; command = "lock"; }
       ];
     };
+
+    # overlay bar
+    avizo = {
+      enable = true;
+    };
   };
 
   wayland.windowManager.sway = {
@@ -80,8 +85,8 @@
       colors = {
         focused = {
           background = "#3a515d";
-          border = "#a7c080";
-          childBorder = "#f85552";
+          border = "#a6e3a1";
+          childBorder = "#94e2d5";
           indicator = "#f85552";
           text = "#d3c6aa";
         };
@@ -299,29 +304,13 @@
       bindsym XF86Search exec $menu
       bindsym XF86Display exec wdisplays
 
-      # For swayosd
-      exec swayosd
+      bindsym XF86AudioRaiseVolume exec volumectl -u up
+      bindsym XF86AudioLowerVolume exec volumectl -u down
+      bindsym XF86AudioMute exec volumectl toggle-mute
+      bindsym XF86AudioMicMute exec volumectl -m toggle-mute
 
-      # For wob
-      set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
-      exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
-
-      # Sink volume raise
-      bindsym XF86AudioRaiseVolume exec swayosd --output-volume raise
-      # Sink volume lower
-      bindsym XF86AudioLowerVolume exec  swayosd --output-volume lower
-      # Sink volume toggle mute
-      bindsym XF86AudioMute exec swayosd --output-volume mute-toggle
-      # Source volume toggle mute
-      bindsym XF86AudioMicMute exec swayosd --input-volume mute-toggle
-
-      # Capslock
-      bindsym --release Caps_Lock exec swayosd --caps-lock
-
-      # Brightness raise
-      bindsym XF86MonBrightnessUp exec swayosd --brightness raise
-      # Brightness lower
-      bindsym XF86MonBrightnessDown exec swayosd --brightness lower
+      bindsym XF86MonBrightnessUp exec lightctl up
+      bindsym XF86MonBrightnessDown exec lightctl down
     '';
   };
 
