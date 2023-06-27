@@ -375,6 +375,7 @@
     ispell
     curl
     wget
+    aria
     nnn
     w3m
     termusic
