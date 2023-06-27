@@ -86,8 +86,8 @@
         focused = {
           background = "#3a515d";
           border = "#a6e3a1";
-          childBorder = "#94e2d5";
-          indicator = "#f85552";
+          childBorder = "#a6e3a1";
+          indicator = "#a6e3a1";
           text = "#d3c6aa";
         };
       };
@@ -129,7 +129,13 @@
       };
 
       output = {
+        # most screens
         eDP-1 = {
+          bg = "~/.config/wallpaper/changing_at_the_edge_of_the_world_final_shot.jpg fill";
+        };
+
+        # for elitenix
+        LVDS-1 = {
           bg = "~/.config/wallpaper/changing_at_the_edge_of_the_world_final_shot.jpg fill";
         };
       };
@@ -165,7 +171,7 @@
         }
         {
           command = "inhibit_idle focus";
-          criteria.class = "freetube";
+          criteria.class = "FreeTube";
         }
         {
           command = "inhibit_idle focus";
@@ -292,6 +298,7 @@
       bindgesture swipe:left workspace next
 
       # Set up cliphist
+      exec cliphist wipe
       exec wl-paste --watch cliphist store &
       bindsym Mod1+Shift+p exec cliphist list | fuzzel -d | cliphist decode | wl-copy
       bindsym Mod1+Shift+d exec cliphist list | fuzzel -d | cliphist delete
@@ -303,7 +310,6 @@
       bindsym --locked XF86AudioPrev exec playerctl previous
       bindsym XF86Search exec $menu
       bindsym XF86Display exec wdisplays
-
       bindsym XF86AudioRaiseVolume exec volumectl -u up
       bindsym XF86AudioLowerVolume exec volumectl -u down
       bindsym XF86AudioMute exec volumectl toggle-mute
@@ -311,6 +317,9 @@
 
       bindsym XF86MonBrightnessUp exec lightctl up
       bindsym XF86MonBrightnessDown exec lightctl down
+
+      # to start on workspace 1
+      workspace 1
     '';
   };
 
