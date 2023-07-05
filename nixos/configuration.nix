@@ -347,7 +347,9 @@
     thunderbird-wayland
     tdesktop
     pidgin
+    element-desktop-wayland
     zoom-us
+    foliate
     # download
     persepolis
     transmission-gtk
@@ -461,10 +463,12 @@
       "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
     };
 
+    /*
     shellAliases = {
       yt-embed-sub = "yt-dlp -f bestvideo+bestaudio --embed-subs --write-auto-sub";
       yt-best-quality = "yt-dlp -f bestvideo+bestaudio";
     };
+    */
   };
 
   # qt theming
