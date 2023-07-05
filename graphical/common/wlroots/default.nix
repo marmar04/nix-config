@@ -77,6 +77,7 @@ in {
             name = "caps to escape";
             remap = {
               "CapsLock" = "Esc";
+              "Esc" = "CapsLock";
             };
           }
         ];

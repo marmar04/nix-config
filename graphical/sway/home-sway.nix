@@ -153,6 +153,8 @@
           {app_id = "nm-connection-editor";}
           {title = "Bluetooth Devices";}
           {title = "Firefox — Sharing Indicator";}
+          {title = "File Operation Progress";}
+          {title = "Instant messaging status";}
         ];
       };
 
@@ -160,6 +162,10 @@
         {
           command = "inhibit_idle fullscreen";
           criteria.app_id = "firefox";
+        }
+        {
+          command = "inhibit_idle fullscreen";
+          criteria.class = "Microsoft-edge";
         }
         {
           command = "inhibit_idle fullscreen";
@@ -194,7 +200,7 @@
         "${mod}+Return" = "exec ${terminal}";
         "${mod}+Shift+q" = "kill";
         "${mod}+space" = "exec ${menu}";
-        "--release Super_L" = "exec pkill fuzzel || ${menu}";
+        # "--release Super_L" = "exec pkill fuzzel || ${menu}";
 
         "${mod}+${left}" = "focus left";
         "${mod}+${down}" = "focus down";
