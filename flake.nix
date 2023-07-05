@@ -233,8 +233,8 @@
             }
 
             # For sway environment
-            #./graphical/sway
-            ./graphical/gnome
+            ./graphical/sway
+            #./graphical/gnome
 
             (import ./nixos/configuration.nix inputs)
             (import ./machines/elitenix/nixos/configuration.nix inputs)

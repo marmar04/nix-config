@@ -26,17 +26,19 @@
   networking.hostName = "elitenix";
 
   boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_hardened;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod;
 
-    kernelParams = ["quiet"];
+    # kernelParams = ["quiet"];
 
     # Mount NTFS drives with ntfs-3g
     supportedFilesystems = ["ntfs" "btrfs" "exfat"];
 
     # Swappiness of the machine
-    kernel.sysctl = {"vm.swappiness" = 45;};
+    kernel.sysctl = {"vm.swappiness" = 60;};
 
     resumeDevice = "/dev/sda2";
+
+    plymouth.enable = lib.mkForce false;
   };
 
   # FIXME: Add a boot loader

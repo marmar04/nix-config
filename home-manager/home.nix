@@ -68,9 +68,14 @@
       enable = true;
       settings = {
         prefer-free-formats = true;
+        downloader = "aria2c";
+        output = "%(title)s.%(ext)s";
+        embed-thumbnail = false;
         write-subs = true;
+        write-auto-subs = true;
         sponsorblock-mark = "all";
-        write-description = true;
+        sponsorblock-remove = "sponsor";
+        write-description = false;
       };
     };
 

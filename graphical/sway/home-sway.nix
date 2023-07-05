@@ -48,6 +48,11 @@
         # { event = "lock"; command = "lock"; }
       ];
     };
+
+    # overlay bar
+    avizo = {
+      enable = true;
+    };
   };
 
   wayland.windowManager.sway = {
@@ -80,9 +85,9 @@
       colors = {
         focused = {
           background = "#3a515d";
-          border = "#a7c080";
-          childBorder = "#f85552";
-          indicator = "#f85552";
+          border = "#a6e3a1";
+          childBorder = "#a6e3a1";
+          indicator = "#a6e3a1";
           text = "#d3c6aa";
         };
       };
@@ -124,7 +129,13 @@
       };
 
       output = {
+        # most screens
         eDP-1 = {
+          bg = "~/.config/wallpaper/changing_at_the_edge_of_the_world_final_shot.jpg fill";
+        };
+
+        # for elitenix
+        LVDS-1 = {
           bg = "~/.config/wallpaper/changing_at_the_edge_of_the_world_final_shot.jpg fill";
         };
       };
@@ -142,6 +153,8 @@
           {app_id = "nm-connection-editor";}
           {title = "Bluetooth Devices";}
           {title = "Firefox — Sharing Indicator";}
+          {title = "File Operation Progress";}
+          {title = "Instant messaging status";}
         ];
       };
 
@@ -149,6 +162,10 @@
         {
           command = "inhibit_idle fullscreen";
           criteria.app_id = "firefox";
+        }
+        {
+          command = "inhibit_idle fullscreen";
+          criteria.class = "Microsoft-edge";
         }
         {
           command = "inhibit_idle fullscreen";
@@ -160,7 +177,7 @@
         }
         {
           command = "inhibit_idle focus";
-          criteria.class = "freetube";
+          criteria.class = "FreeTube";
         }
         {
           command = "inhibit_idle focus";
@@ -183,7 +200,7 @@
         "${mod}+Return" = "exec ${terminal}";
         "${mod}+Shift+q" = "kill";
         "${mod}+space" = "exec ${menu}";
-        "--release Super_L" = "exec pkill fuzzel || ${menu}";
+        # "--release Super_L" = "exec pkill fuzzel || ${menu}";
 
         "${mod}+${left}" = "focus left";
         "${mod}+${down}" = "focus down";
@@ -266,7 +283,8 @@
 
     extraOptions = ["--unsupported-gpu"];
 
-    systemdIntegration = true;
+    # systemdIntegration = true;
+    systemd.enable = true;
 
     extraSessionCommands = ''
       export SDL_VIDEODRIVER=wayland
@@ -286,6 +304,7 @@
       bindgesture swipe:left workspace next
 
       # Set up cliphist
+      exec cliphist wipe
       exec wl-paste --watch cliphist store &
       bindsym Mod1+Shift+p exec cliphist list | fuzzel -d | cliphist decode | wl-copy
       bindsym Mod1+Shift+d exec cliphist list | fuzzel -d | cliphist delete
@@ -297,30 +316,16 @@
       bindsym --locked XF86AudioPrev exec playerctl previous
       bindsym XF86Search exec $menu
       bindsym XF86Display exec wdisplays
+      bindsym XF86AudioRaiseVolume exec volumectl -u up
+      bindsym XF86AudioLowerVolume exec volumectl -u down
+      bindsym XF86AudioMute exec volumectl toggle-mute
+      bindsym XF86AudioMicMute exec volumectl -m toggle-mute
 
-      # For swayosd
-      exec swayosd
+      bindsym XF86MonBrightnessUp exec lightctl up
+      bindsym XF86MonBrightnessDown exec lightctl down
 
-      # For wob
-      set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
-      exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
-
-      # Sink volume raise
-      bindsym XF86AudioRaiseVolume exec swayosd --output-volume raise
-      # Sink volume lower
-      bindsym XF86AudioLowerVolume exec  swayosd --output-volume lower
-      # Sink volume toggle mute
-      bindsym XF86AudioMute exec swayosd --output-volume mute-toggle
-      # Source volume toggle mute
-      bindsym XF86AudioMicMute exec swayosd --input-volume mute-toggle
-
-      # Capslock
-      bindsym --release Caps_Lock exec swayosd --caps-lock
-
-      # Brightness raise
-      bindsym XF86MonBrightnessUp exec swayosd --brightness raise
-      # Brightness lower
-      bindsym XF86MonBrightnessDown exec swayosd --brightness lower
+      # to start on workspace 1
+      workspace 1
     '';
   };
 

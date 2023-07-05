@@ -43,7 +43,7 @@
 
   services = {
     emacs = {
-      enable = true;
+      enable = false;
     };
   };
 
@@ -118,7 +118,7 @@
 
     # Emacs
     emacs = {
-      enable = true;
+      enable = false;
     };
 
     # Visual Studio Code

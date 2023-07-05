@@ -76,6 +76,7 @@
       })
       */
     ];
+
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -158,7 +159,9 @@
   };
 
   systemd = {
+    # make startup time faster
     services.NetworkManager-wait-online.enable = false;
+
     tmpfiles = {
       rules = [
         "L+ /lib/${builtins.baseNameOf pkgs.stdenv.cc.bintools.dynamicLinker} - - - - ${pkgs.stdenv.cc.bintools.dynamicLinker}"
@@ -276,6 +279,24 @@
   };
 
   # For flatpak
+  system.fsPackages = [ pkgs.bindfs ];
+  fileSystems = let
+    mkRoSymBind = path: {
+      device = path;
+      fsType = "fuse.bindfs";
+      options = [ "ro" "resolve-symlinks" "x-gvfs-hide" ];
+    };
+    aggregatedFonts = pkgs.buildEnv {
+      name = "system-fonts";
+      paths = config.fonts.fonts;
+      pathsToLink = [ "/share/fonts" ];
+    };
+  in {
+    # Create an FHS mount to support flatpak host icons/fonts
+    "/usr/share/icons" = mkRoSymBind (config.system.path + "/share/icons");
+    "/usr/share/fonts" = mkRoSymBind (aggregatedFonts + "/share/fonts");
+  };
+
   xdg.portal.enable = true;
 
   # Fonts
@@ -293,11 +314,9 @@
       (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
       font-awesome
       source-code-pro
-    ];
 
-    fontconfig.defaultFonts = {
-      monospace = ["JetBrains Mono"];
-    };
+      noto-fonts-cjk
+    ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -324,10 +343,13 @@
     microsoft-edge
     tor-browser-bundle-bin
     # communication
+    keepassxc
     thunderbird-wayland
     tdesktop
     pidgin
+    element-desktop-wayland
     zoom-us
+    foliate
     # download
     persepolis
     transmission-gtk
@@ -355,6 +377,7 @@
     ispell
     curl
     wget
+    aria
     nnn
     w3m
     termusic
@@ -440,10 +463,12 @@
       "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
     };
 
+    /*
     shellAliases = {
       yt-embed-sub = "yt-dlp -f bestvideo+bestaudio --embed-subs --write-auto-sub";
       yt-best-quality = "yt-dlp -f bestvideo+bestaudio";
     };
+    */
   };
 
   # qt theming
