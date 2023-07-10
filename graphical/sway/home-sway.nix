@@ -183,6 +183,10 @@
           command = "inhibit_idle focus";
           criteria.class = "vlc";
         }
+        {
+          command = "fullscreen enable";
+          criteria.app_id = "calibre-ebook-viewer";
+        }
       ];
 
       keybindings = let
