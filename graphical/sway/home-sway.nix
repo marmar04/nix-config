@@ -22,7 +22,6 @@
 
   home.packages = with pkgs; [
     sway-contrib.grimshot
-    inputs.swayosd.packages.x86_64-linux.swayosd
   ];
 
   # swayidle config
