@@ -31,7 +31,7 @@
       timeouts = [
         {
           timeout = 300;
-          command = "${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred2.png";
+          command = "${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/lockscreen.png";
         }
         {
           timeout = 600;
@@ -42,7 +42,7 @@
       events = [
         {
           event = "before-sleep";
-          command = "${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred3.png";
+          command = "${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/lockscreen.png";
         }
         # { event = "lock"; command = "lock"; }
       ];
@@ -128,14 +128,9 @@
       };
 
       output = {
-        # most screens
-        eDP-1 = {
-          bg = "~/.config/wallpaper/changing_at_the_edge_of_the_world_final_shot.jpg fill";
-        };
-
-        # for elitenix
-        LVDS-1 = {
-          bg = "~/.config/wallpaper/changing_at_the_edge_of_the_world_final_shot.jpg fill";
+        # all screens
+        "*" = {
+          bg = "~/.config/wallpaper/wallpaper.jpg fill";
         };
       };
 
