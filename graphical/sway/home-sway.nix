@@ -262,7 +262,7 @@
 
         "${mod}+r" = "mode resize";
 
-        "Mod4+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/end_cred1.png";
+        "Mod4+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock -f --clock -i ~/.config/wallpaper/lockscreen.png";
         # "${mod}+k" = "exec ${pkgs.mako}/bin/makoctl dismiss";
         # "${mod}+Shift+k" = "exec ${pkgs.mako}/bin/makoctl dismiss -a";
 
