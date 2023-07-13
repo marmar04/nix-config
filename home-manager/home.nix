@@ -96,11 +96,7 @@
   # For linking the files in config folder
   xdg = {
     configFile = {
-      # All the wallpapers that you might want to use
-      "wallpaper" = {
-        recursive = true;
-        source = ./../dotfiles/config/wallpaper;
-      };
+      # for any config files in ~/.config/"folder_name"
     };
   };
 
