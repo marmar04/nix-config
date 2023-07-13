@@ -38,7 +38,7 @@
       timeouts = [
         {
           timeout = 300;
-          command = ''${pkgs.gtklock}/bin/gtklock -d -g "Catppuccin-Mocha-Compact-Green-Dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred2.png'';
+          command = ''${pkgs.gtklock}/bin/gtklock -d -g "Catppuccin-Mocha-Compact-Green-Dark" -S -H -T 30 -b ~/.config/wallpaper/lockscreen.png'';
         }
         {
           timeout = 600;
@@ -49,7 +49,7 @@
       events = [
         {
           event = "before-sleep";
-          command = ''${pkgs.gtklock}/bin/gtklock -d -g "Catppuccin-Mocha-Compact-Green-Dark" -S -H -T 30 -b ~/.config/wallpaper/end_cred3.png'';
+          command = ''${pkgs.gtklock}/bin/gtklock -d -g "Catppuccin-Mocha-Compact-Green-Dark" -S -H -T 30 -b ~/.config/wallpaper/lockscreen.png'';
         }
         # { event = "lock"; command = "lock"; }
       ];
