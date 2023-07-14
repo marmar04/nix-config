@@ -117,18 +117,6 @@
   # FIXME: Add the rest of your current configuration
 
   security = {
-    # Disable sudo and enable doas
-    # sudo.enable = false;
-    doas = {
-      enable = true;
-      extraRules = [
-        {
-          users = ["marmar"];
-          keepEnv = true;
-        }
-      ];
-    };
-
     polkit.enable = true;
 
     pam.services = {
