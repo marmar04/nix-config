@@ -262,17 +262,17 @@
   };
 
   # For flatpak
-  system.fsPackages = [ pkgs.bindfs ];
+  system.fsPackages = [pkgs.bindfs];
   fileSystems = let
     mkRoSymBind = path: {
       device = path;
       fsType = "fuse.bindfs";
-      options = [ "ro" "resolve-symlinks" "x-gvfs-hide" ];
+      options = ["ro" "resolve-symlinks" "x-gvfs-hide"];
     };
     aggregatedFonts = pkgs.buildEnv {
       name = "system-fonts";
       paths = config.fonts.fonts;
-      pathsToLink = [ "/share/fonts" ];
+      pathsToLink = ["/share/fonts"];
     };
   in {
     # Create an FHS mount to support flatpak host icons/fonts
