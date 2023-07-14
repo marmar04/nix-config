@@ -1,8 +1,9 @@
-{ stdenv, lib
-, fetchurl
-, autoPatchelfHook
+{
+  stdenv,
+  lib,
+  fetchurl,
+  autoPatchelfHook,
 }:
-
 stdenv.mkDerivation rec {
   pname = "tuxedo-backlight-control";
   version = "0.8.0";
