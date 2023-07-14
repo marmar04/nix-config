@@ -194,6 +194,9 @@
   services = {
     kmscon = {
       enable = true;
+      fonts = {
+        name = "JetBrains Mono";
+      };
     };
 
     usbmuxd.enable = true;
