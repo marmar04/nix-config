@@ -117,24 +117,7 @@
   # FIXME: Add the rest of your current configuration
 
   security = {
-    # Disable sudo and enable doas
-    # sudo.enable = false;
-    doas = {
-      enable = true;
-      extraRules = [
-        {
-          users = ["marmar"];
-          keepEnv = true;
-        }
-      ];
-    };
-
     polkit.enable = true;
-
-    pam.services = {
-      swaylock = {};
-      gtklock = {};
-    };
   };
 
   # zram configuration
@@ -279,17 +262,17 @@
   };
 
   # For flatpak
-  system.fsPackages = [ pkgs.bindfs ];
+  system.fsPackages = [pkgs.bindfs];
   fileSystems = let
     mkRoSymBind = path: {
       device = path;
       fsType = "fuse.bindfs";
-      options = [ "ro" "resolve-symlinks" "x-gvfs-hide" ];
+      options = ["ro" "resolve-symlinks" "x-gvfs-hide"];
     };
     aggregatedFonts = pkgs.buildEnv {
       name = "system-fonts";
       paths = config.fonts.fonts;
-      pathsToLink = [ "/share/fonts" ];
+      pathsToLink = ["/share/fonts"];
     };
   in {
     # Create an FHS mount to support flatpak host icons/fonts
@@ -305,16 +288,15 @@
 
     fonts = with pkgs; [
       corefonts
-      liberation_ttf
       fira-code
       fira
       jetbrains-mono
       fira-code-symbols
       powerline-fonts
       (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-      font-awesome
       source-code-pro
 
+      # for japanese characters to display
       noto-fonts-cjk
     ];
   };
@@ -322,8 +304,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # emacs
-    clang
     # themes
     gradience
     adw-gtk3
@@ -333,9 +313,6 @@
     papirus-icon-theme
     fluent-icon-theme
     gnome.adwaita-icon-theme
-    colloid-kde
-    colloid-gtk-theme
-    colloid-icon-theme
     # browsers
     firefox-wayland
     # librewolf-wayland
@@ -346,10 +323,8 @@
     keepassxc
     thunderbird-wayland
     tdesktop
-    pidgin
     element-desktop-wayland
-    zoom-us
-    foliate
+    calibre
     # download
     persepolis
     transmission-gtk
@@ -399,7 +374,6 @@
     inxi
     tealdeer
     compsize
-    winePackages.minimal
     exfat
     networkmanagerapplet
     protonvpn-gui
@@ -423,14 +397,12 @@
     gparted
     libreoffice-fresh
     xmind
-    freemind
-    bottles
     cpu-x
   ];
 
   boot = {
     initrd.systemd.enable = true;
-    plymouth.enable = true;
+    plymouth.enable = lib.mkDefault false;
 
     tmp.cleanOnBoot = true;
   };
@@ -462,19 +434,12 @@
     etc = {
       "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
     };
-
-    /*
-    shellAliases = {
-      yt-embed-sub = "yt-dlp -f bestvideo+bestaudio --embed-subs --write-auto-sub";
-      yt-best-quality = "yt-dlp -f bestvideo+bestaudio";
-    };
-    */
   };
 
   # qt theming
   qt = {
     enable = true;
-    platformTheme = "qt5ct";
+    platformTheme = lib.mkDefault "qt5ct";
   };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.

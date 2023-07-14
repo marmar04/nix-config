@@ -17,13 +17,13 @@
     };
 
     xserver = {
-    /*
+      /*
       displayManager.gdm = {
         enable = lib.mkForce true;
         wayland = true;
-        defaultSession = "plasmawayland"; 
+        defaultSession = "plasmawayland";
       };
-    */
+      */
 
       desktopManager.plasma5.enable = true;
     };
