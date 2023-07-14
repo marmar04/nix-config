@@ -109,17 +109,6 @@
       };
     };
 
-    # Anyrun launcher (for wayland)
-    anyrun = {
-      url = "github:Kirottu/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    swayosd = {
-      url = "github:marmar04/SwayOSD";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     nix-colors.url = "github:misterio77/nix-colors";

@@ -16,27 +16,6 @@
         "type": "github"
       }
     },
-    "anyrun": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1688716072,
-        "narHash": "sha256-FP3QTbGZN23SemynwphrCDhMCXcQEAl209owaSMStyU=",
-        "owner": "Kirottu",
-        "repo": "anyrun",
-        "rev": "509cb95b68fd64191a78b30672d3d556d4a7d86f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Kirottu",
-        "repo": "anyrun",
-        "type": "github"
-      }
-    },
     "base16": {
       "inputs": {
         "nixpkgs": [
@@ -520,27 +499,6 @@
     },
     "flake-parts": {
       "inputs": {
-        "nixpkgs-lib": [
-          "anyrun",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1685662779,
-        "narHash": "sha256-cKDDciXGpMEjP1n6HlzKinN0H+oLmNpgeCTzYnsA2po=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "71fb97f0d875fd4de4994dfb849f2c75e17eb6c3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "flake-parts_2": {
-      "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
@@ -557,7 +515,7 @@
         "type": "github"
       }
     },
-    "flake-parts_3": {
+    "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib_3"
       },
@@ -1071,7 +1029,7 @@
         "elixir-ls": "elixir-ls",
         "elixir-tools": "elixir-tools",
         "fidget-nvim": "fidget-nvim",
-        "flake-parts": "flake-parts_2",
+        "flake-parts": "flake-parts",
         "flake-utils": [
           "flake-utils"
         ],
@@ -1839,7 +1797,6 @@
     },
     "root": {
       "inputs": {
-        "anyrun": "anyrun",
         "emacs-overlay": "emacs-overlay",
         "flake-utils": "flake-utils",
         "hardware": "hardware",
@@ -1856,7 +1813,6 @@
         "programsdb": "programsdb",
         "rust-overlay": "rust-overlay",
         "stylix": "stylix",
-        "swayosd": "swayosd",
         "xremap": "xremap"
       }
     },
@@ -1986,26 +1942,6 @@
         "owner": "musikinformatik",
         "ref": "master",
         "repo": "superdirt",
-        "type": "github"
-      }
-    },
-    "swayosd": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1684294399,
-        "narHash": "sha256-33c55dKirTUNwoUpA7A1g358aXWzzW2IQaMI0KAVUCE=",
-        "owner": "marmar04",
-        "repo": "SwayOSD",
-        "rev": "6cadc0cb42623483c8be83404cbc9630a487610f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "marmar04",
-        "repo": "SwayOSD",
         "type": "github"
       }
     },
@@ -2366,7 +2302,7 @@
     "xremap": {
       "inputs": {
         "devshell": "devshell",
-        "flake-parts": "flake-parts_3",
+        "flake-parts": "flake-parts_2",
         "home-manager": [
           "home-manager"
         ],
