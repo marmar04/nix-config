@@ -68,6 +68,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         hyprland.follows = "hyprland";
+        home-manager.follows = "home-manager";
       };
     };
 
