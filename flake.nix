@@ -273,28 +273,5 @@
           ];
       };
     };
-
-    # homeConfigurations = {
-    #   # replace with your username@hostname
-    #   "marmar@roguenix" = home-manager.lib.homeManagerConfiguration {
-    #     pkgs =
-    #       nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-    #     extraSpecialArgs = {
-    #       inherit inputs;
-    #     }; # Pass flake inputs to our config
-    #     modules =
-    #       (builtins.attrValues homeManagerModules)
-    #       ++ [
-    #         # > Our main home-manager configuration file <
-    #         ./home-manager/home.nix
-    #         ./home-manager/editors.nix
-    #         ./graphical/home-manager/home-wlroots.nix
-    #         ./graphical/home-manager/home-sway.nix
-    #         # ./graphical/home-manager/home-hyprland.nix
-    #         # Our common nixpkgs config (unfree, overlays, etc)
-    #         (import ./nixpkgs-config.nix {inherit overlays;})
-    #       ];
-    #   };
-    # };
   };
 }
