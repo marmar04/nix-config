@@ -333,9 +333,6 @@
     papirus-icon-theme
     fluent-icon-theme
     gnome.adwaita-icon-theme
-    colloid-kde
-    colloid-gtk-theme
-    colloid-icon-theme
     # browsers
     firefox-wayland
     # librewolf-wayland
@@ -346,10 +343,7 @@
     keepassxc
     thunderbird-wayland
     tdesktop
-    pidgin
     element-desktop-wayland
-    zoom-us
-    foliate
     calibre
     # download
     persepolis
@@ -424,14 +418,13 @@
     gparted
     libreoffice-fresh
     xmind
-    freemind
     bottles
     cpu-x
   ];
 
   boot = {
     initrd.systemd.enable = true;
-    plymouth.enable = true;
+    plymouth.enable = lib.mkDefault false;
 
     tmp.cleanOnBoot = true;
   };
@@ -463,19 +456,12 @@
     etc = {
       "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
     };
-
-    /*
-    shellAliases = {
-      yt-embed-sub = "yt-dlp -f bestvideo+bestaudio --embed-subs --write-auto-sub";
-      yt-best-quality = "yt-dlp -f bestvideo+bestaudio";
-    };
-    */
   };
 
   # qt theming
   qt = {
     enable = true;
-    platformTheme = "qt5ct";
+    platformTheme = lib.mkDefault "qt5ct";
   };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
