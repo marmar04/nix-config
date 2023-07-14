@@ -350,6 +350,7 @@
     element-desktop-wayland
     zoom-us
     foliate
+    calibre
     # download
     persepolis
     transmission-gtk
