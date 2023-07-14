@@ -291,16 +291,15 @@
 
     fonts = with pkgs; [
       corefonts
-      liberation_ttf
       fira-code
       fira
       jetbrains-mono
       fira-code-symbols
       powerline-fonts
       (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-      font-awesome
       source-code-pro
 
+      # for japanese characters to display
       noto-fonts-cjk
     ];
   };
