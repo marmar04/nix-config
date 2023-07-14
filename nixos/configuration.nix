@@ -307,8 +307,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # emacs
-    clang
     # themes
     gradience
     adw-gtk3
@@ -379,7 +377,6 @@
     inxi
     tealdeer
     compsize
-    winePackages.minimal
     exfat
     networkmanagerapplet
     protonvpn-gui
@@ -403,7 +400,6 @@
     gparted
     libreoffice-fresh
     xmind
-    bottles
     cpu-x
   ];
 
