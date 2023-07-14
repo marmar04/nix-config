@@ -14,5 +14,10 @@
     ./home-waybar.nix
   ];
 
-  environment.systemPackages = with pkgs; [wob];
+  # for swaylock to work
+  security = {
+    pam.services = {
+      swaylock = {};
+    };
+  };
 }

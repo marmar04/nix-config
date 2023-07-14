@@ -118,11 +118,6 @@
 
   security = {
     polkit.enable = true;
-
-    pam.services = {
-      swaylock = {};
-      gtklock = {};
-    };
   };
 
   # zram configuration

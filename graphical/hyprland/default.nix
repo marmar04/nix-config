@@ -16,6 +16,13 @@
     ./home-waybar.nix
   ];
 
+  # for gtklock to work
+  security = {
+    pam.services = {
+      gtklock = {};
+    };
+  };
+
   services = {
     # To start up tuigreet and set it up to start up hyprland after loging in
     greetd = {
