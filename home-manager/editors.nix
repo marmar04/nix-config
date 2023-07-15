@@ -8,7 +8,7 @@
 # Editors
 {
   imports = [
-    inputs.neovim-flake.homeManagerModules.default
+    inputs.nix-doom-emacs.hmModule
   ];
 
   # Sets up the variables so that vim is the default editor
@@ -113,12 +113,10 @@
         '';
     };
 
-    # astroNvim
-    # astronvim.enable = true;
-
     # Emacs
-    emacs = {
-      enable = false;
+    doom-emacs = {
+      enable = true;
+      doomPrivateDir = ./../dotfiles/config/doom;
     };
 
     # Visual Studio Code
