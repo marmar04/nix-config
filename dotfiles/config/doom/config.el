@@ -54,16 +54,16 @@
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
 ;; Set up elcord
-(require 'elcord)
-(elcord-mode)
-(setq elcord-use-major-mode-as-main-icon t
-      elcord-editor-icon "emacs_icon"
-      elcord-idle-message "Banging my head against the wall")
-(add-to-list 'elcord-boring-buffers-regexp-list "^\\*scratch\\*$")
+;;(require 'elcord)
+;;(elcord-mode)
+;;(setq elcord-use-major-mode-as-main-icon t
+;;      elcord-editor-icon "emacs_icon"
+;;      elcord-idle-message "Banging my head against the wall")
+;;(add-to-list 'elcord-boring-buffers-regexp-list "^\\*scratch\\*$")
 
 ;;(require 'selectric-mode)
 
-(use-package! kbd-mode)
+;;(use-package! kbd-mode)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!

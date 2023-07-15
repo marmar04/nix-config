@@ -12,22 +12,13 @@
 ;; Install nov
 (package! nov)
 
-(package! elcord)
+;;(package! elcord)
 
 (package! pomm)
 
 (package! w3m)
 
-(package! selectric-mode)
-
-(package! kbd-mode
-  :recipe (:host github
-           :repo "kmonad/kbd-mode"))
-
-(package! everforest
-  :recipe (:repo "https://git.sr.ht/~theorytoe/everforest-theme"))
-(use-package! 'everforest')
-(load-theme 'everforest-hard-dark t)
+;;(package! selectric-mode)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
