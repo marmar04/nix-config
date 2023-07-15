@@ -37,6 +37,7 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    /*
     neovim-flake = {
       url = "github:notashelf/neovim-flake";
       inputs = {
@@ -45,7 +46,17 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    */
 
+    nix-doom-emacs = {
+      url = "github:nix-community/nix-doom-emacs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+
+    /*
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs = {
@@ -61,6 +72,7 @@
         home-manager.follows = "home-manager";
       };
     };
+    */
 
     # Remap keys
     xremap = {
