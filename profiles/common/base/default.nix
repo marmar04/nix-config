@@ -111,17 +111,12 @@
 
   security = {
     polkit.enable = true;
-
-    pam.services = {
-      swaylock = {};
-      gtklock = {};
-    };
   };
 
   # zram configuration
   zramSwap = {
     enable = true;
-    # priority = 10;
+    priority = 10;
   };
 
   networking = {
@@ -257,27 +252,22 @@
 
     fonts = with pkgs; [
       corefonts
-      liberation_ttf
       fira-code
       fira
       jetbrains-mono
       fira-code-symbols
       powerline-fonts
       (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-      font-awesome
       source-code-pro
-    ];
 
-    fontconfig.defaultFonts = {
-      monospace = ["JetBrains Mono"];
-    };
+      # for japanese characters to display properly
+      noto-fonts-cjk
+    ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # emacs
-    clang
     # system
     bucklespring-libinput
     glib
@@ -320,7 +310,6 @@
     inxi
     tealdeer
     compsize
-    winePackages.minimal
     exfat
     # coding
     zeal
@@ -329,7 +318,7 @@
 
   boot = {
     initrd.systemd.enable = true;
-    plymouth.enable = true;
+    plymouth.enable = lib.mkDefault false;
 
     tmp.cleanOnBoot = true;
   };
@@ -357,11 +346,6 @@
 
     etc = {
       "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
-    };
-
-    shellAliases = {
-      yt-embed-sub = "yt-dlp -f bestvideo+bestaudio --embed-subs --write-auto-sub";
-      yt-best-quality = "yt-dlp -f bestvideo+bestaudio";
     };
   };
 
