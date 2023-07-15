@@ -16,26 +16,6 @@
         "type": "github"
       }
     },
-    "anyrun": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1686994820,
-        "narHash": "sha256-7jTwUhJi3wIYARlBsiZ9I2ZY/Cz5F/f+7IuoA0Bwqvo=",
-        "owner": "Kirottu",
-        "repo": "anyrun",
-        "rev": "8da0ec5ff721212d74bb31fede6d8b35e51fb2cb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Kirottu",
-        "repo": "anyrun",
-        "type": "github"
-      }
-    },
     "base16-schemes": {
       "flake": false,
       "locked": {
@@ -2074,7 +2054,6 @@
     },
     "root": {
       "inputs": {
-        "anyrun": "anyrun",
         "flake-utils": "flake-utils",
         "hardware": "hardware",
         "home-manager": "home-manager",
@@ -2090,7 +2069,6 @@
         "nur": "nur",
         "programsdb": "programsdb",
         "rust-overlay": "rust-overlay_2",
-        "swayosd": "swayosd",
         "xremap": "xremap"
       }
     },
@@ -2254,26 +2232,6 @@
         "owner": "musikinformatik",
         "ref": "master",
         "repo": "superdirt",
-        "type": "github"
-      }
-    },
-    "swayosd": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1684294399,
-        "narHash": "sha256-33c55dKirTUNwoUpA7A1g358aXWzzW2IQaMI0KAVUCE=",
-        "owner": "marmar04",
-        "repo": "SwayOSD",
-        "rev": "6cadc0cb42623483c8be83404cbc9630a487610f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "marmar04",
-        "repo": "SwayOSD",
         "type": "github"
       }
     },
