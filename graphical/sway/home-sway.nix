@@ -149,6 +149,7 @@
           {title = "Firefox — Sharing Indicator";}
           {title = "File Operation Progress";}
           {title = "Instant messaging status";}
+          {title = "Open Folder";}
         ];
       };
 
