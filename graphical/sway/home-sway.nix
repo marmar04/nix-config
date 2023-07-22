@@ -145,11 +145,13 @@
         criteria = [
           {app_id = "pavucontrol";}
           {app_id = "nm-connection-editor";}
+          {app_id = "zenity";}
           {title = "Bluetooth Devices";}
           {title = "Firefox — Sharing Indicator";}
           {title = "File Operation Progress";}
           {title = "Instant messaging status";}
           {title = "Open Folder";}
+          {title = "Save screenshot";}
         ];
       };
 
