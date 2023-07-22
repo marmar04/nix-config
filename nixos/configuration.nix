@@ -325,6 +325,7 @@
     tdesktop
     element-desktop-wayland
     calibre
+    logseq
     # download
     persepolis
     transmission-gtk
