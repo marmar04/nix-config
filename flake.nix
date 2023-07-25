@@ -68,6 +68,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         hyprland.follows = "hyprland";
+        home-manager.follows = "home-manager";
       };
     };
 
@@ -106,17 +107,6 @@
         nixpkgs.follows = "nixpkgs";
         utils.follows = "flake-utils";
       };
-    };
-
-    # Anyrun launcher (for wayland)
-    anyrun = {
-      url = "github:Kirottu/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    swayosd = {
-      url = "github:marmar04/SwayOSD";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Shameless plug: looking for a way to nixify your themes and make
