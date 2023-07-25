@@ -117,7 +117,6 @@
   outputs = {
     self,
     nixpkgs,
-    nur,
     home-manager,
     neovim-flake,
     kmonad,
@@ -179,7 +178,6 @@
           ++ [
             kmonad.nixosModules.default
 
-            nur.nixosModules.nur
             # home-manager module
             home-manager.nixosModules.home-manager
             {
@@ -212,7 +210,6 @@
           ++ [
             kmonad.nixosModules.default
 
-            nur.nixosModules.nur
             # home-manager module
             home-manager.nixosModules.home-manager
             {
@@ -244,7 +241,6 @@
             # hyprland.nixosModules.default
             kmonad.nixosModules.default
 
-            nur.nixosModules.nur
             # home-manager module
             home-manager.nixosModules.home-manager
             {
