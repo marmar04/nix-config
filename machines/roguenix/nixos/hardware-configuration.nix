@@ -12,31 +12,43 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];
-  boot.initrd.kernelModules = [];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod"];
+  boot.initrd.kernelModules = ["dm-snapshot"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/b184cc00-fa7b-438e-b769-afc6d1dade38";
-    fsType = "btrfs";
-    options = ["subvol=root" "compress=zstd:9"];
+  boot.initrd.luks.devices = {
+    "enc" = {
+      device = "/dev/disk/by-uuid/0f39ca55-877e-4686-99fa-9c0e71bb2647";
+      preLVM = true;
+      allowDiscards = true;
+    };
   };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/b184cc00-fa7b-438e-b769-afc6d1dade38";
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/0d60a50c-2bdb-493c-8126-4a7308fdd360";
     fsType = "btrfs";
-    options = ["subvol=home" "compress=zstd:9"];
+    options = ["subvol=root" "compress=zstd:9" "noatime"];
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/b184cc00-fa7b-438e-b769-afc6d1dade38";
+    device = "/dev/disk/by-uuid/0d60a50c-2bdb-493c-8126-4a7308fdd360";
     fsType = "btrfs";
     options = ["subvol=nix" "compress-force=zstd:9" "noatime"];
   };
 
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/0d60a50c-2bdb-493c-8126-4a7308fdd360";
+    fsType = "btrfs";
+    options = ["subvol=home" "compress=zstd:9"];
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/FB1B-5B29";
+    fsType = "vfat";
+  };
+
   swapDevices = [
-    {device = "/dev/disk/by-uuid/c9b498c0-87d8-4fb2-b967-87ea89ec11dc";}
+    {device = "/dev/disk/by-uuid/d7f2e43d-2734-4314-88bc-1ddb0fbc31fa";}
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

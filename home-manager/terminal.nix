@@ -109,7 +109,7 @@
       enable = true;
       enableCompletion = true;
       enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
+      syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
       oh-my-zsh = {
         enable = true;
