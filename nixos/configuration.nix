@@ -33,6 +33,8 @@
       #   });
       # })
 
+      (import inputs.emacs-overlay)
+
       (self: super: {
         colloid-gtk-theme = super.colloid-gtk-theme.override {
           themeVariants = ["green"];
@@ -304,6 +306,28 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # emacs package
+    (pkgs.emacsWithPackagesFromUsePackage {
+      package = pkgs.emacs-pgtk;  # replace with pkgs.emacsPgtk, or another version if desired.
+      config = ./../dotfiles/config/emacs/init.el;
+      # config = path/to/your/config.org; # Org-Babel configs also supported
+
+      defaultInitFile = true;
+      alwaysEnsure = true;
+
+      # Optionally provide extra packages not in the configuration file.
+      extraEmacsPackages = epkgs: [
+        epkgs.use-package
+        epkgs.cask
+      ];
+
+      # Optionally override derivations.
+      override = epkgs: epkgs // {
+        somePackage = epkgs.melpaPackages.somePackage.overrideAttrs(old: {
+           # Apply fixes here
+        });
+      };
+    })
     # themes
     gradience
     adw-gtk3
