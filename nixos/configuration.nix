@@ -308,7 +308,7 @@
   environment.systemPackages = with pkgs; [
     # emacs package
     (pkgs.emacsWithPackagesFromUsePackage {
-      package = pkgs.emacs-pgtk;  # replace with pkgs.emacsPgtk, or another version if desired.
+      package = pkgs.emacs-pgtk; # replace with pkgs.emacsPgtk, or another version if desired.
       config = ./../dotfiles/config/emacs/init.el;
       # config = path/to/your/config.org; # Org-Babel configs also supported
 
@@ -322,11 +322,13 @@
       ];
 
       # Optionally override derivations.
-      override = epkgs: epkgs // {
-        somePackage = epkgs.melpaPackages.somePackage.overrideAttrs(old: {
-           # Apply fixes here
-        });
-      };
+      override = epkgs:
+        epkgs
+        // {
+          somePackage = epkgs.melpaPackages.somePackage.overrideAttrs (old: {
+            # Apply fixes here
+          });
+        };
     })
     # themes
     gradience
