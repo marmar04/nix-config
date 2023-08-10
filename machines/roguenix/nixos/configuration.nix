@@ -18,6 +18,8 @@
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-pc-ssd
 
+    inputs.darkmatter-grub-theme.nixosModule
+
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
     ./../../common/optimus.nix
@@ -56,6 +58,13 @@
       device = "nodev";
       efiSupport = true;
       enableCryptodisk = true;
+
+      darkmatter-theme = {
+        enable = true;
+        style = "nixos";
+        icon = "color";
+        resolution = "1080p";
+      };
     };
     efi.canTouchEfiVariables = true;
   };
