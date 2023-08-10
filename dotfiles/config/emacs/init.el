@@ -1,8 +1,8 @@
 ;;; Commentary: Some startup code
 ;;; PACKAGE LIST
-(setq package-archives 
-      '(("melpa" . "https://melpa.org/packages/")
-        ("elpa" . "https://elpa.gnu.org/packages/")))
+;;(setq package-archives 
+;;      '(("melpa" . "https://melpa.org/packages/")
+;;        ("elpa" . "https://elpa.gnu.org/packages/")))
 
 ;;; BOOTSTRAP USE-PACKAGE
 (package-initialize)
@@ -13,18 +13,161 @@
 (eval-when-compile (require 'use-package))
 
 ;; Load path for manually installed packages
-(add-to-list 'load-path "~/.config/emacs/lisp/")
+;;(add-to-list 'load-path "~/.config/emacs/lisp/")
 
 ;; Set up the modules in ./lisp/
-(require 'init-evil)
-(require 'init-org)
-(require 'init-company)
-(require 'init-general)
+;;(require 'init-evil)
+;;; UNDO
+;; Vim style undo not needed for emacs 28
+(use-package undo-fu)
+
+;;; Vim Bindings
+(use-package evil
+  :demand t
+  :bind (("<escape>" . keyboard-escape-quit))
+  :init
+  ;; allows for using cgn
+  ;; (setq evil-search-module 'evil-search)
+  (setq evil-want-keybinding nil)
+  ;; no vim insert bindings
+  (setq evil-undo-system 'undo-fu)
+  :config
+  (evil-mode 1))
+
+;;; Vim Bindings Everywhere else
+(use-package evil-collection
+  :after evil
+  :config
+  (setq evil-want-integration t)
+  (evil-collection-init))
+
+;;(require 'init-org)
+;; This will copy & paste from doom emacs a _lot_
+;; Just some startup code for now
+(use-package org-journal)
+
+;;(require 'init-company)
+;; Provide drop-down completion.
+(use-package company
+  :ensure t
+  :defer t
+  :custom
+  ;; Search other buffers with the same modes for completion instead of
+  ;; searching all other buffers.
+  (company-dabbrev-other-buffers t)
+  (company-dabbrev-code-other-buffers t)
+
+  ;; M-<num> to select an option according to its number.
+  (company-show-numbers t)
+
+  ;; Only 2 letters required for completion to activate.
+  (company-minimum-prefix-length 3)
+
+  ;; Do not downcase completions by default.
+  (company-dabbrev-downcase nil)
+
+  ;; Even if I write something with the wrong case,
+  ;; provide the correct casing.
+  (company-dabbrev-ignore-case t)
+
+  ;; company completion wait
+  (company-idle-delay 0.2)
+
+  ;; No company-mode in shell & eshell
+  (company-global-modes '(not eshell-mode shell-mode))
+  ;; Use company with text and programming modes.
+    :hook ((text-mode . company-mode)
+           (prog-mode . company-mode)))
+
+;;(require 'init-general)
+(use-package general)
+
+;; * Global Keybindings
+;; `general-define-key' acts like `evil-define-key' when :states is specified
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (general-define-key           ;;
+;;  :states 'motion              ;;
+;;  ;; swap ; and :              ;;
+;;   ";" 'evil-ex                ;;
+;;   ":" 'evil-repeat-find-char) ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; * Mode Keybindings
+(general-define-key
+ :states 'normal
+ :keymaps 'emacs-lisp-mode-map
+ ;; or xref equivalent
+ "K" 'elisp-slime-nav-describe-elisp-thing-at-point)
+;; `general-def' can be used instead for `evil-define-key'-like syntax
+(general-def 'normal emacs-lisp-mode-map
+  "K" 'elisp-slime-nav-describe-elisp-thing-at-point)
+
+;; * Prefix Keybindings
+;; :prefix can be used to prevent redundant specification of prefix keys
+;; again, variables are not necessary and likely not useful if you are only
+;; using a definer created with `general-create-definer' for the prefixes
+;; (defconst my-leader "SPC")
+;; (defconst my-local-leader "SPC m")
+
+(general-create-definer my-leader-def
+  ;; :prefix my-leader
+  :prefix "SPC")
+
+(general-create-definer my-local-leader-def
+  ;; :prefix my-local-leader
+  :prefix "SPC m")
+
+;; ** Global Keybindings
+(my-leader-def
+  :keymaps 'normal
+  ;; bind "SPC a"
+  "a" 'org-agenda
+  "b" 'counsel-bookmark
+  "c" 'org-capture)
+;; `general-create-definer' creates wrappers around `general-def', so
+;; `evil-global-set-key'-like syntax is also supported
+(my-leader-def 'normal
+  "a" 'org-agenda
+  "b" 'counsel-bookmark
+  "c" 'org-capture)
+
+;; to prevent your leader keybindings from ever being overridden (e.g. an evil
+;; package may bind "SPC"), use :keymaps 'override
+(my-leader-def
+  :states 'normal
+  :keymaps 'override
+  "a" 'org-agenda)
+;; or
+(my-leader-def 'normal 'override
+  "a" 'org-agenda)
+
+;; ** Mode Keybindings
+(my-local-leader-def
+  :states 'normal
+  :keymaps 'org-mode-map
+  "y" 'org-store-link
+  "p" 'org-insert-link
+  ;; ...
+  )
+;; `general-create-definer' creates wrappers around `general-def', so
+;; `evil-define-key'-like syntax is also supported
+(my-local-leader-def 'normal org-mode-map
+  "y" 'org-store-link
+  "p" 'org-insert-link
+  ;; ...
+  )
+
+;; * Settings
+;; change evil's search module after evil has been loaded (`setq' will not work)
+(general-setq evil-search-module 'evil-search)
 
 ;;; THEMING
 ;; Use catppuccin theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'catppuccin t)
+(use-package catppuccin-theme)
+;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'catppuccin :no-confirm)
+(setq catppuccin-flavor 'mocha)
+(catppuccin-reload)
 
 (use-package emacs
   :init
