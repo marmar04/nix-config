@@ -22,6 +22,12 @@
     # TODO: Add any other flake you might need
     hardware.url = "github:nixos/nixos-hardware";
 
+    # grub theming
+    darkmatter-grub-theme = {
+      url = "gitlab:VandalByte/darkmatter-grub-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
