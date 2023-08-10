@@ -72,6 +72,7 @@
       };
     };
 
+    # keyboard remapping
     kmonad = {
       url = "github:kmonad/kmonad?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
