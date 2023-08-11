@@ -186,6 +186,8 @@
   (show-paren-mode t)	                       ; Visually indicates pair of matching parentheses
   (delete-selection-mode t)                    ; Start writing straight after deletion
   (setq read-process-output-max (* 1024 1024)) ; Increase the amount of data which Emacs reads from the process
+  (tool-bar-mode -1)                           ; Removes toolbar for both graphical and terminal sessions
+  (menu-bar-mode -1)                           ; Removes the menu bar for graphical and terminal sessions
   (global-hl-line-mode 1))                     ; Highlight the current line to make it more visible
 
 ;; elcord.el
@@ -200,4 +202,16 @@
 ;;; MAJOR MODE
 ;; Nix
 (use-package nix-mode
+  :ensure t
   :mode "\\.nix\\'")
+
+;; Yaml
+(use-package yaml-mode
+  :ensure t
+  :mode "\\.yml\\'")
+
+;; Markdown
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
