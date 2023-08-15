@@ -434,7 +434,7 @@
     yabasic
     # utilities
     gparted
-    libreoffice-fresh
+    libreoffice-qt
     xmind
     cpu-x
   ];
