@@ -12,6 +12,8 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
+    inputs.nh.nixosModules.default
+
     # You can also split up your configuration and import pieces of it here.
   ];
 
@@ -89,6 +91,13 @@
     };
   };
 
+  # configure nh (nix helper)
+  nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+  };
+
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
@@ -154,6 +163,9 @@
       ];
     };
   };
+
+  # for kvm virtualisation
+  virtualisation.libvirtd.enable = true;
 
   powerManagement = {
     enable = true;
@@ -340,6 +352,7 @@
     fluent-icon-theme
     gnome.adwaita-icon-theme
     # browsers
+    virt-manager
     firefox-wayland
     # librewolf-wayland
     google-chrome
@@ -460,6 +473,8 @@
     etc = {
       "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
     };
+
+    sessionVariables.FLAKE = "/home/marmar/nix-config";
   };
 
   # qt theming
