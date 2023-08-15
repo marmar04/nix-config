@@ -257,7 +257,7 @@
 
     fonts = with pkgs; [
       corefonts
-      liberation_ttf
+      #liberation_ttf
       fira-code
       fira
       jetbrains-mono
