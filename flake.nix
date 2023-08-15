@@ -19,6 +19,12 @@
       };
     };
 
+    # nix helper
+    nh = {
+      url = "github:viperML/nh";
+      inputs.nixpkgs.follows = "nixpkgs"; # override this repo's nixpkgs snapshot
+    };
+
     # TODO: Add any other flake you might need
     hardware.url = "github:nixos/nixos-hardware";
 
