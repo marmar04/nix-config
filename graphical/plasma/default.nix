@@ -36,7 +36,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    plasma5Packages.bismuth
+    #plasma5Packages.bismuth
 
     wl-clipboard
     libsForQt5.kamoso
@@ -46,6 +46,7 @@
 
     digikam
     neochat
+    tokodon
     kcalc
     kate
     rsibreak
