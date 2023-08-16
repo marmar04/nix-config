@@ -197,6 +197,7 @@
 (setq catppuccin-flavor 'mocha)
 (catppuccin-reload)
 
+;;; SETTINGS
 (use-package emacs
   :init
   ;; <OPTIONAL> Setting my favorite fonts here. You can replace "Roboto" with your favorite font.
@@ -212,11 +213,16 @@
   (setq confirm-kill-processes nil)            ; Stop confirming the killing of processes
   (setq use-short-answers t)	               ; y-or-n-p makes answering questions faster
   (show-paren-mode t)	                       ; Visually indicates pair of matching parentheses
+  (electric-pair-mode)                         ; Auto-pairing of braces and parentheses for easier time programming
   (delete-selection-mode t)                    ; Start writing straight after deletion
   (setq read-process-output-max (* 1024 1024)) ; Increase the amount of data which Emacs reads from the process
   (tool-bar-mode -1)                           ; Removes toolbar for both graphical and terminal sessions
   (menu-bar-mode -1)                           ; Removes the menu bar for graphical and terminal sessions
   (global-hl-line-mode 1))                     ; Highlight the current line to make it more visible
+
+;; smartparens
+;(use-package smartparens
+;  :init (require 'smartparens-config))
 
 ;; elcord.el
 (use-package elcord
@@ -225,13 +231,14 @@
         elcord-editor-icon "emacs_icon"
         elcord-idle-message "Lost in the sea of configurability")
   (add-to-list `elcord-boring-buffers-regexp-list "^\\*scratch\\*$")
-  (elcord-mode))
+  (elcord-mode -1))
 
 ;;; MAJOR MODE
 ;; Nix
 (use-package nix-mode
   :ensure t
-  :mode "\\.nix\\'")
+  :mode "\\.nix\\'"
+  :init (setq tab-width 2))
 
 ;; Yaml
 (use-package yaml-mode
