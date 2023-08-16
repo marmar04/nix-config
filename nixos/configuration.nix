@@ -343,13 +343,13 @@
         };
     })
     # themes
-    gradience
-    adw-gtk3
-    catppuccin-kde
+    #gradience
+    #adw-gtk3
+    #catppuccin-kde
     catppuccin-gtk
     catppuccin-kvantum
     papirus-icon-theme
-    fluent-icon-theme
+    #fluent-icon-theme
     gnome.adwaita-icon-theme
     # browsers
     virt-manager
@@ -359,6 +359,7 @@
     microsoft-edge
     tor-browser-bundle-bin
     # communication
+    localsend
     keepassxc
     thunderbird-wayland
     tdesktop
@@ -417,21 +418,21 @@
     networkmanagerapplet
     protonvpn-gui
     # media
-    graphviz
+    #graphviz
     kdenlive
     gimp
     krita
-    # inkscape
+    inkscape
     darktable
     # rawtherapee
     handbrake
     vlc
     mpv
-    freetube
+    #freetube
     gsettings-desktop-schemas
     # coding
     zeal
-    yabasic
+    #yabasic
     # utilities
     gparted
     libreoffice-qt
