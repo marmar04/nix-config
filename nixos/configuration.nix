@@ -301,6 +301,9 @@
     fontDir.enable = true;
 
     packages = with pkgs; [
+      # emoji support
+      noto-fonts-emoji
+
       corefonts
       fira-code
       fira
