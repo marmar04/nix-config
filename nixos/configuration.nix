@@ -362,6 +362,7 @@
     microsoft-edge
     tor-browser-bundle-bin
     # communication
+    joplin-desktop
     localsend
     keepassxc
     thunderbird-wayland
