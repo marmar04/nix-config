@@ -14,6 +14,8 @@
 
     inputs.nh.nixosModules.default
 
+    inputs.nur.nixosModules.nur
+
     # You can also split up your configuration and import pieces of it here.
   ];
 
@@ -369,6 +371,7 @@
     tdesktop
     element-desktop-wayland
     calibre
+    config.nur.repos.nltch.spotify-adblock
     # download
     persepolis
     transmission-gtk
