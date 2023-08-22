@@ -242,6 +242,12 @@
   :mode "\\.nix\\'"
   :init (setq tab-width 2))
 
+;; web (php, html, css)
+(use-package web-mode
+  :ensure t
+  :mode ("\\.php\\'" "\\.html\\'" "\\.css\\'")
+  :init (setq tab-width 4))
+
 ;; Yaml
 (use-package yaml-mode
   :ensure t
