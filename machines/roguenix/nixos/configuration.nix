@@ -69,7 +69,8 @@
     efi.canTouchEfiVariables = true;
   };
 
-  services.fstrim.enable = true;
+  # for keyboard monitoring
+  hardware.tuxedo-keyboard.enable = true;
 
   services = {
     xserver = {
@@ -79,6 +80,8 @@
       # xkbOptions = "compose:ralt";
       # layout = "us";
     };
+
+    fstrim.enable = true;
 
     # Read the kmonad flake more properly
     /*
