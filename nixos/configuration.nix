@@ -197,7 +197,16 @@
     };
 
     # Enable bluetooth support
-    bluetooth.enable = true;
+    bluetooth = {
+      enable = true;
+      settings = {
+        General = {
+          # to remove errors in journald
+          Experimental = true;
+          KernelExperimental = true;
+        };
+      };
+    };
 
     # Disable pulseaudio
     pulseaudio.enable = lib.mkForce false;
@@ -482,7 +491,11 @@
       "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
     };
 
-    sessionVariables.FLAKE = "/home/marmar/nix-config";
+    sessionVariables = {
+      FLAKE = "/home/marmar/nix-config";
+      GTK2_RC_FILES = ''"$XDG_CONFIG_HOME"/gtk-2.0/gtkrc'';
+      ELINKS_CONFDIR = ''"$XDG_CONFIG_HOME"/elinks'';
+    };
   };
 
   # qt theming
