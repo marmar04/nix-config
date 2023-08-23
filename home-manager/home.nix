@@ -103,7 +103,7 @@
   home = {
     file = {
       # elinks
-      ".elinks/elinks.conf" = {
+      ".config/elinks/elinks.conf" = {
         source = ./../dotfiles/config/elinks.conf;
       };
     };
