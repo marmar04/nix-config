@@ -45,6 +45,8 @@ in {
       nvidiaBusId = "PCI:1:0:0";
     };
 
+    dynamicBoost.enable = true;
+
     powerManagement = {
       enable = true;
       finegrained = true;
