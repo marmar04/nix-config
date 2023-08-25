@@ -96,7 +96,7 @@
       enable = true;
       keyboards = {
         default = {
-          ids = [ "*" ];
+          ids = ["*"];
           settings = {
             main = {
               capslock = "overload(control, esc)";
@@ -104,14 +104,14 @@
             };
           };
         };
-      #   externalKeyboard = {
-      #     ids = [ "1ea7:0907" ];
-      #     settings = {
-      #       main = {
-      #         esc = capslock;
-      #       };
-      #     };
-      #   };
+        #   externalKeyboard = {
+        #     ids = [ "1ea7:0907" ];
+        #     settings = {
+        #       main = {
+        #         esc = capslock;
+        #       };
+        #     };
+        #   };
       };
     };
 
