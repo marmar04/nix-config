@@ -21,15 +21,15 @@
     ycmd
 
     # Language servers
-    nodejs
+    #nodejs
     inputs.nil.packages.${pkgs.system}.nil
-    rust-analyzer
-    nodePackages.npm
-    ccls
-    haskell-language-server
-    nodePackages.pyright
-    python310Packages.jedi
-    python310Packages.jedi-language-server
+    #rust-analyzer
+    #nodePackages.npm
+    #ccls
+    #haskell-language-server
+    #nodePackages.pyright
+    #python310Packages.jedi
+    #python310Packages.jedi-language-server
     #python311Packages.python-lsp-server
     # For doom emacs latex integration
     texlive.combined.scheme-medium
@@ -39,7 +39,7 @@
 
     # Formatters
     astyle
-    python311Packages.black
+    #python311Packages.black
   ];
 
   services = {
