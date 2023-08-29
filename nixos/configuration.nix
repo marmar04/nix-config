@@ -467,6 +467,12 @@
     # Enabel dconf for gtk theming
     dconf.enable = true;
 
+    # for captive portal (hotel wi-fi)
+    captive-browser = {
+      enable = true;
+      interface = "wlo1";
+    };
+
     tmux = {
       enable = true;
       clock24 = true;
