@@ -212,7 +212,7 @@
   (setq-default frame-title-format '("%b"))    ; Make window title the buffer name
   (setq confirm-kill-processes nil)            ; Stop confirming the killing of processes
   (setq use-short-answers t)	               ; y-or-n-p makes answering questions faster
-  (setq backup-directory-alist '((".*" . "~/.Trash"))) ; Sets the backup files to be made in ~/.Trash
+  (setq backup-directory-alist '((".*" . "~/.local/share/Trash/files"))) ; Sets the backup files in the trashbin
   (save-place-mode 1)                          ; Save cursor position
   (show-paren-mode t)	                       ; Visually indicates pair of matching parentheses
   (electric-pair-mode)                         ; Auto-pairing of braces and parentheses for easier time programming
