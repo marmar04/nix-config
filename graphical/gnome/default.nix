@@ -56,13 +56,22 @@
     adw-gtk3
     adwaita-qt
 
-    shortwave
-
     gnome.gnome-tweaks
     gnome.pomodoro
+
+    # gnome circle
+    shortwave
     shotwell
     newsflash
     foliate
+    blanket
+    citations
+    dialect
+    wike
+    junction
+    komikku
+    mousai
+    solanum
 
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-panel
