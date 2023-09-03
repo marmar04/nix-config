@@ -320,8 +320,8 @@
       fira
       jetbrains-mono
       fira-code-symbols
-      powerline-fonts
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+      #powerline-fonts
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly" "JetBrainsMono"];})
       source-code-pro
 
       # for japanese characters to display
