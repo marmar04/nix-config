@@ -9,6 +9,10 @@
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware), use something like:
 
+    inputs.nh.nixosModules.default
+
+    inputs.nur.nixosModules.nur
+
     # You can also split up your configuration and import pieces of it here.
   ];
 
@@ -81,6 +85,13 @@
         "python-2.7.18.6"
       ];
     };
+  };
+
+  # configure nh (nix helper)
+  nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
   };
 
   nix = {
