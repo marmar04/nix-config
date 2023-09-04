@@ -180,7 +180,16 @@
     };
 
     # Enable bluetooth support
-    bluetooth.enable = true;
+    bluetooth = {
+     enable = true;
+     settings = {
+       General = {
+         # to remove some errors in journald
+         Experimental = true;
+         KernelExperimental = true;
+       };
+     };
+    };
 
     # Disable pulseaudio
     pulseaudio.enable = lib.mkForce false;
