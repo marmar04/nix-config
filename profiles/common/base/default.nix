@@ -271,7 +271,7 @@
   fonts = {
     fontDir.enable = true;
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       corefonts
       #liberation_ttf
       fira-code
@@ -331,6 +331,7 @@
     ispell
     curl
     wget
+    aria
     nnn
     w3m
     termusic
