@@ -140,6 +140,12 @@
     };
   };
 
+  environment = {
+    etc = {
+      "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
+    };
+  };
+
   # qt theming
   qt = {
     enable = true;
