@@ -230,7 +230,8 @@
     # Enable printing
     printing = {
       enable = true;
-      drivers = [pkgs.hplip];
+      allowFrom = ["all"];
+      drivers = with pkgs; [hplip];
     };
 
     # Enable sound with pipewire
