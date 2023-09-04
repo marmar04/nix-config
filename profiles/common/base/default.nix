@@ -27,6 +27,8 @@
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
+      (import inputs.emacs-overlay)
+
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -271,6 +273,29 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # emacs
+    (pkgs.emacsWithPackagesFromUsePackage {
+      package = pkgs.emacs; # replace with pkgs.emacsPgtk, or another version if desired.
+      config = ./../dotfiles/config/emacs/init.el;
+      # config = path/to/your/config.org; # Org-Babel configs also supported
+
+      defaultInitFile = true;
+      alwaysEnsure = true;
+
+      # Optionally provide extra packages not in the configuration file.
+      extraEmacsPackages = epkgs: [
+        epkgs.use-package
+        epkgs.cask
+      ];
+
+      # Optionally override derivations.
+      override = epkgs:
+        epkgs
+        // {
+          somePackage = epkgs.melpaPackages.somePackage.overrideAttrs (old: {
+            # Apply fixes here
+          });
+        };
+    })
     clang
     # system
     bucklespring-libinput
