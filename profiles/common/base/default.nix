@@ -1,5 +1,5 @@
 # This is the base config that every system should have installed
-{programsdb, ...}: {
+{
   inputs,
   lib,
   config,
@@ -10,8 +10,6 @@
     # If you want to use modules from other flakes (such as nixos-hardware), use something like:
 
     inputs.nh.nixosModules.default
-
-    inputs.nur.nixosModules.nur
 
     # You can also split up your configuration and import pieces of it here.
   ];
@@ -353,8 +351,6 @@
     inxi
     tealdeer
     compsize
-    winePackages.minimal
-    exfat
     # coding
     zeal
     yabasic
@@ -394,10 +390,6 @@
     shells = with pkgs; [fish bash zsh];
 
     pathsToLink = ["/share/zsh"];
-
-    etc = {
-      "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
-    };
 
     sessionVariables = {
       FLAKE = "/home/marmar/nix-config";
