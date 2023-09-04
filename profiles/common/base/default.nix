@@ -140,6 +140,7 @@
   systemd = {
     # make startup time faster
     services.NetworkManager-wait-online.enable = false;
+
     tmpfiles = {
       rules = [
         "L+ /lib/${builtins.baseNameOf pkgs.stdenv.cc.bintools.dynamicLinker} - - - - ${pkgs.stdenv.cc.bintools.dynamicLinker}"
