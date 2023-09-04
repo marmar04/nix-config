@@ -362,7 +362,7 @@
 
   boot = {
     initrd.systemd.enable = true;
-    plymouth.enable = true;
+    plymouth.enable = lib.mkDefault false;
 
     tmp.cleanOnBoot = true;
   };
