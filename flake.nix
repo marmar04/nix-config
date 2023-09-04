@@ -208,7 +208,7 @@
             ./graphical/plasma
 
             # > Our main nixos configuration file <
-            (import ./nixos/configuration.nix inputs)
+            (import ./profiles/common/graphical inputs)
             (import ./machines/roguenix/nixos/configuration.nix inputs)
             # (import ./unstable/unstable.nix inputs)
           ];
@@ -239,7 +239,7 @@
             #./graphical/sway
             ./graphical/gnome
 
-            (import ./nixos/configuration.nix inputs)
+            (import ./profiles/common/graphical inputs)
             (import ./machines/elitenix/nixos/configuration.nix inputs)
           ];
       };
@@ -268,7 +268,7 @@
             }
 
             # > Our main nixos configuration file <
-            (import ./nixos/configuration.nix inputs)
+            (import ./profiles/common/graphical inputs)
             ./machines/oldnix/nixos/configuration.nix
             # (import ./unstable/unstable.nix inputs)
 
