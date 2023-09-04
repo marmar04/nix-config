@@ -67,16 +67,8 @@
           colorVariants = ["green"];
         };
       })
-
-      /*
-      (self: super: {
-        catppuccin-kde = super.catppuccin-kde.override {
-          flavour = ["mocha"];
-          # accents = ["green"];
-        };
-      })
-      */
     ];
+
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -118,15 +110,8 @@
     '';
   };
 
-  # FIXME: Add the rest of your current configuration
-
   security = {
     polkit.enable = true;
-
-    pam.services = {
-      swaylock = {};
-      gtklock = {};
-    };
   };
 
   # zram configuration
@@ -271,17 +256,10 @@
       #liberation_ttf
       fira-code
       fira
-      jetbrains-mono
       fira-code-symbols
-      powerline-fonts
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-      font-awesome
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly" "JetBrainsMono"];})
       source-code-pro
     ];
-
-    fontconfig.defaultFonts = {
-      monospace = ["JetBrains Mono"];
-    };
   };
 
   # List packages installed in system profile. To search, run:
