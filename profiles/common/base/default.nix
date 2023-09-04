@@ -286,7 +286,7 @@
     # emacs
     (pkgs.emacsWithPackagesFromUsePackage {
       package = pkgs.emacs; # replace with pkgs.emacsPgtk, or another version if desired.
-      config = ./../dotfiles/config/emacs/init.el;
+      config = ./../../../dotfiles/config/emacs/init.el;
       # config = path/to/your/config.org; # Org-Babel configs also supported
 
       defaultInitFile = true;
