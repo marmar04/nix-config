@@ -371,9 +371,16 @@
     tmux = {
       enable = true;
       clock24 = true;
+      terminal = "screen-256color";
+      # make it like byobu
+      shortcut = "a";
       keyMode = "vi";
+      escapeTime = 0;
       customPaneNavigationAndResize = true;
+
+      plugins = with pkgs.tmuxPlugins; [catppuccin];
     };
+
 
     command-not-found.dbPath = "/etc/programs.sqlite";
   };
