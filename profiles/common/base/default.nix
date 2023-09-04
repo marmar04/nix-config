@@ -136,6 +136,7 @@
   };
 
   systemd = {
+    # make startup time faster
     services.NetworkManager-wait-online.enable = false;
     tmpfiles = {
       rules = [
