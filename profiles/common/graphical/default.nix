@@ -11,6 +11,8 @@
 
     ./../base
 
+    inputs.nur.nixosModules.nur
+
     # You can also split up your configuration and import pieces of it here.
   ];
 
@@ -77,7 +79,7 @@
     tdesktop
     pidgin
     calibre
-    config.nur.repos.spotify-adblock
+    config.nur.repos.nltch.spotify-adblock
     # download
     persepolis
     transmission-gtk
