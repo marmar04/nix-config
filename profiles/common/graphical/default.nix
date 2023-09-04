@@ -9,267 +9,139 @@
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware), use something like:
 
+    ./../base
+
     # You can also split up your configuration and import pieces of it here.
   ];
 
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      # outputs.overlays.additions
-      # outputs.overlays.modifications
-      # outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-
-      (self: super: {
-        colloid-gtk-theme = super.colloid-gtk-theme.override {
-          themeVariants = ["green"];
-          colorVariants = ["dark"];
-          sizeVariants = ["compact"];
-          tweaks = ["rimless" "black"];
-        };
-      })
-
-      (self: super: {
-        catppuccin-gtk = super.catppuccin-gtk.override {
-          accents = ["green"];
-          size = "compact";
-          tweaks = ["rimless"];
-          variant = "mocha";
-        };
-      })
-
-      (self: super: {
-        catppuccin-kvantum = super.catppuccin-kvantum.override {
-          accent = "Green";
-          variant = "Mocha";
-        };
-      })
-
-      # fluent icon theme
-      (self: super: {
-        fluent-icon-theme = super.fluent-icon-theme.override {
-          roundedIcons = true;
-          blackPanelIcons = true;
-          colorVariants = ["green"];
-        };
-      })
-
-      /*
-      (self: super: {
-        catppuccin-kde = super.catppuccin-kde.override {
-          flavour = ["mocha"];
-          # accents = ["green"];
-        };
-      })
-      */
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        "python-2.7.18.6"
-      ];
-    };
-  };
-
-  security = {
-    polkit.enable = true;
-  };
-
-  hardware = {
-    opengl.enable = true;
-    sane = {
-      enable = true;
-      extraBackends = [pkgs.hplipWithPlugin];
-    };
-
-    # Enable bluetooth support
-    bluetooth.enable = true;
-
-    # Disable pulseaudio
-    pulseaudio.enable = lib.mkForce false;
-
-    # Enable opentabletdriver
-    # opentabletdriver.enable = true;
-  };
-
   # Enable services
   services = {
-    kmscon = {
-      enable = true;
-    };
-
-    usbmuxd.enable = true;
-
-    thermald.enable = true;
-
-    power-profiles-daemon.enable = lib.mkDefault false;
-
-    upower = {
-      enable = true;
-    };
-
-    # Enable earlyoom
-    earlyoom.enable = true;
-
-    geoclue2 = {
-      enable = true;
-      enable3G = false;
-      enableCDMA = true;
-    };
-
-    xserver = {
-      # Enable X server
-      enable = lib.mkDefault false;
-
-      # digimend.enable = true;
-
-      # Enable touchpad support (enabled default in most desktopManager).
-      libinput.enable = true;
-
-      # Configure keymap in X11
-      layout = "us";
-
-      displayManager.gdm.enable = lib.mkDefault false;
-      displayManager.lightdm.enable = lib.mkDefault false;
-    };
-
-    # Have dbus
-    dbus.enable = true;
-
-    # Enable printing
-    printing = {
-      enable = true;
-      drivers = [pkgs.hplip];
-    };
-
-    # Enable sound with pipewire
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      #jack.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
-    };
-
-    # Store VS Code auth token
-    gnome.gnome-keyring.enable = true;
-
     # Enable flatpak
     flatpak.enable = true;
   };
 
   # For flatpak
-  xdg.portal.enable = true;
+  system.fsPackages = [pkgs.bindfs];
+  fileSystems = let
+    mkRoSymBind = path: {
+      device = path;
+      fsType = "fuse.bindfs";
+      options = ["ro" "resolve-symlinks" "x-gvfs-hide"];
+    };
+    aggregatedFonts = pkgs.buildEnv {
+      name = "system-fonts";
+      paths = config.fonts.packages;
+      pathsToLink = ["/share/fonts"];
+    };
+  in {
+    # Create an FHS mount to support flatpak host icons/fonts
+    "/usr/share/icons" = mkRoSymBind (config.system.path + "/share/icons");
+    "/usr/share/fonts" = mkRoSymBind (aggregatedFonts + "/share/fonts");
+  };
 
   # Fonts
   fonts = {
-    fontDir.enable = true;
+    packages = with pkgs; [
+      # emoji support
+      noto-fonts-emoji
 
-    fonts = with pkgs; [
-      corefonts
-      #liberation_ttf
-      fira-code
-      fira
       jetbrains-mono
-      fira-code-symbols
-      powerline-fonts
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-      font-awesome
-      source-code-pro
-    ];
 
-    fontconfig.defaultFonts = {
-      monospace = ["JetBrains Mono"];
-    };
+      # for japanese characters
+      noto-fonts-cjk
+    ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # emacs
     # themes
-    gradience
-    adw-gtk3
-    catppuccin-kde
+    #gradience
+    #adw-gtk3
+    #catppuccin-kde
     catppuccin-gtk
     catppuccin-kvantum
     papirus-icon-theme
-    fluent-icon-theme
+    #fluent-icon-theme
     gnome.adwaita-icon-theme
-    colloid-kde
-    colloid-gtk-theme
-    colloid-icon-theme
     # browsers
     firefox-wayland
-    # librewolf-wayland
-    google-chrome
+    #librewolf-wayland
     microsoft-edge
     tor-browser-bundle-bin
     # communication
+    joplin-desktop
+    localsend
+    keepassxc
     thunderbird-wayland
     tdesktop
     pidgin
-    zoom-us
+    calibre
+    config.nur.repos.spotify-adblock
     # download
     persepolis
     transmission-gtk
     czkawka
     # notes
     xournalpp
-    # system
-    bucklespring-libinput
-    glib
-    hplip
-    easyeffects
-    xsane
     # cli
     networkmanagerapplet
     protonvpn-gui
+    virt-manager
     # media
-    graphviz
+    #graphviz
+    blender
     kdenlive
     gimp
     krita
-    # inkscape
+    inkscape
     darktable
     # rawtherapee
     handbrake
     vlc
     mpv
-    freetube
+    #freetube
     gsettings-desktop-schemas
     # coding
     zeal
     yabasic
     # utilities
     gparted
-    libreoffice-fresh
+    libreoffice-qt
     xmind
-    freemind
-    bottles
     cpu-x
   ];
 
   programs = {
     # Enabel dconf for gtk theming
     dconf.enable = true;
+
+    # for captive portal (hotel wi-fi)
+    captive-browser = {
+      enable = true;
+      interface = "wlo1";
+    };
+
+    # sandboxing apps
+    firejail = {
+      enable = true;
+      wrappedBinaries = {
+        google-chrome-stable = {
+          executable = "${pkgs.google-chrome}/bin/google-chrome-stable";
+          profile = "${pkgs.firejail}/etc/firejail/google-chrome.profile";
+          desktop = "${pkgs.google-chrome}/share/applications/google-chrome.desktop";
+          extraArgs = [
+            "--dbus-user.talk=org.freedesktop.Notifications"
+          ];
+        };
+      };
+    };
+  };
+
+  # qt theming
+  qt = {
+    enable = true;
+    platformTheme = lib.mkDefault "qt5ct";
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
