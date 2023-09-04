@@ -399,9 +399,10 @@
       "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
     };
 
-    shellAliases = {
-      yt-embed-sub = "yt-dlp -f bestvideo+bestaudio --embed-subs --write-auto-sub";
-      yt-best-quality = "yt-dlp -f bestvideo+bestaudio";
+    sessionVariables = {
+      FLAKE = "/home/marmar/nix-config";
+      GTK2_RC_FILES = ''"$XDG_CONFIG_HOME"/gtk-2.0/gtkrc'';
+      ELINKS_CONFDIR = ''"$XDG_CONFIG_HOME"/elinks'';
     };
   };
 
