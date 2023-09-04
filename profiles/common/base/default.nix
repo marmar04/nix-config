@@ -149,6 +149,9 @@
     };
   };
 
+  # for kvm virtualisation
+  virtualisation.libvirtd.enable = true;
+
   powerManagement = {
     enable = true;
     cpuFreqGovernor = "ondemand";
