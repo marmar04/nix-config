@@ -179,14 +179,14 @@
 
     # Enable bluetooth support
     bluetooth = {
-     enable = true;
-     settings = {
-       General = {
-         # to remove some errors in journald
-         Experimental = true;
-         KernelExperimental = true;
-       };
-     };
+      enable = true;
+      settings = {
+        General = {
+          # to remove some errors in journald
+          Experimental = true;
+          KernelExperimental = true;
+        };
+      };
     };
 
     # Disable pulseaudio
@@ -376,7 +376,6 @@
 
       plugins = with pkgs.tmuxPlugins; [catppuccin];
     };
-
 
     command-not-found.dbPath = "/etc/programs.sqlite";
   };
