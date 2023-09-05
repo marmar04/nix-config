@@ -25,7 +25,10 @@
       };
       */
 
-      desktopManager.plasma5.enable = true;
+      desktopManager.plasma5 = {
+        enable = true;
+        runUsingSystemd = false;
+      };
     };
   };
 
