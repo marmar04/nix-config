@@ -338,6 +338,7 @@
     cht-sh
     moc
     ytfzf
+    porsmo # pomodoro timer
     unzip
     killall
     fd
