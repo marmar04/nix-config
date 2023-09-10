@@ -311,6 +311,7 @@
           });
         };
     })
+    neovim
     clang
     # system
     bucklespring-libinput
