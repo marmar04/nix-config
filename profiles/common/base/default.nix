@@ -263,6 +263,10 @@
 
     # for security credentials
     gnome.gnome-keyring.enable = true;
+
+    tailscale = {
+      enable = true;
+    };
   };
 
   # Fonts
