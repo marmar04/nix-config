@@ -71,6 +71,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    appimage-run
     # themes
     #gradience
     #adw-gtk3
@@ -90,6 +91,7 @@
     localsend
     keepassxc
     thunderbird-wayland
+    nheko
     tdesktop
     pidgin
     calibre
@@ -109,7 +111,7 @@
     blender
     kdenlive
     gimp
-    krita
+    #krita
     inkscape
     darktable
     # rawtherapee
