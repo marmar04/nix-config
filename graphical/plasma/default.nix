@@ -40,6 +40,7 @@
 
   environment.systemPackages = with pkgs; [
     #plasma5Packages.bismuth
+    arianna
 
     wl-clipboard
     libsForQt5.kamoso
@@ -47,6 +48,8 @@
 
     gsettings-desktop-schemas
 
+    falkon
+    kup
     digikam
     neochat
     tokodon
