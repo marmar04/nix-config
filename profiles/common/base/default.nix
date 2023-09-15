@@ -390,11 +390,18 @@
 
   # Enable wayland on firefox
   environment = {
+    localBinInPath = true;
+
     # Dash is just an example, you can use whatever you want
     binsh = "${pkgs.dash}/bin/dash";
     shells = with pkgs; [fish bash zsh];
 
     pathsToLink = ["/share/zsh"];
+
+    variables = {
+      EDITOR = "emacsclient -nw";
+      VISUAL = "emacsclient -c";
+    }
 
     sessionVariables = {
       FLAKE = "/home/marmar/nix-config";
