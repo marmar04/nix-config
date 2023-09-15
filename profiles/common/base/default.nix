@@ -401,7 +401,7 @@
     variables = {
       EDITOR = "emacsclient -nw";
       VISUAL = "emacsclient -c";
-    }
+    };
 
     sessionVariables = {
       FLAKE = "/home/marmar/nix-config";
