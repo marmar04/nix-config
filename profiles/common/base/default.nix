@@ -235,6 +235,10 @@
 
       displayManager.gdm.enable = lib.mkDefault false;
       displayManager.lightdm.enable = lib.mkDefault false;
+
+      excludePackages = with pkgs; [
+        xterm
+      ];
     };
 
     # Have dbus
