@@ -40,12 +40,6 @@
       };
     };
 
-    gnome = {
-      gnome-online-accounts.enable = true;
-      # gnome-settings-daemon.enable = true;
-      sushi.enable = true;
-    };
-
     power-profiles-daemon.enable = true;
 
     udev.packages = with pkgs; [gnome.gnome-settings-daemon];
