@@ -49,6 +49,7 @@
     # themes
     adw-gtk3
     adwaita-qt
+    gradience
 
     gnome.gnome-tweaks
     gnome.pomodoro
@@ -58,6 +59,7 @@
     shotwell
     newsflash
     foliate
+    amberol
     blanket
     citations
     dialect
