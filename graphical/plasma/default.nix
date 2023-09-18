@@ -48,6 +48,8 @@
 
     gsettings-desktop-schemas
 
+    nheko
+
     falkon
     kup
     digikam

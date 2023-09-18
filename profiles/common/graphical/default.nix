@@ -91,7 +91,6 @@
     localsend
     keepassxc
     thunderbird-wayland
-    nheko
     tdesktop
     pidgin
     calibre
