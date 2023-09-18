@@ -48,7 +48,10 @@
 
     gsettings-desktop-schemas
 
+    # socials
     nheko
+    kaidan
+    abaddon
 
     falkon
     kup
