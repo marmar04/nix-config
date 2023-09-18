@@ -69,6 +69,13 @@
     mousai
     solanum
 
+    # socials
+    gtkcord4
+    dino
+    fluffychat
+    tuba
+
+    # extensions
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-panel
     gnomeExtensions.arcmenu
