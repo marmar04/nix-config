@@ -55,6 +55,12 @@
 ;; Just some startup code for now
 (use-package org-journal)
 
+;;;   ___ ___  _ __ ___  _ __   __ _ _ __  _   _
+;;;  / __/ _ \| '_ ` _ \| '_ \ / _` | '_ \| | | |
+;;; | (_| (_) | | | | | | |_) | (_| | | | | |_| |
+;;;  \___\___/|_| |_| |_| .__/ \__,_|_| |_|\__, |
+;;;                     |_|                |___/
+
 ;;(require 'init-company)
 ;; Provide drop-down completion.
 (use-package company
@@ -236,15 +242,21 @@
 ;  :init (require 'smartparens-config))
 
 ;; elcord.el
-(use-package elcord
-  :config
-  (setq elcord-use-major-mode-as-main-icon t
-        elcord-editor-icon "emacs_icon"
-        elcord-idle-message "Lost in the sea of configurability")
-  (add-to-list `elcord-boring-buffers-regexp-list "^\\*scratch\\*$")
-  (elcord-mode -1))
+;(use-package elcord
+;  :config
+;  (setq elcord-use-major-mode-as-main-icon t
+;        elcord-editor-icon "emacs_icon"
+;        elcord-idle-message "Lost in the sea of configurability")
+;  (add-to-list `elcord-boring-buffers-regexp-list "^\\*scratch\\*$")
+;  (elcord-mode -1))
 
-;;; MAJOR MODE
+;;;                   _                                  _
+;;;  _ __ ___   __ _ (_) ___  _ __   _ __ ___   ___   __| | ___  ___
+;;; | '_ ` _ \ / _` || |/ _ \| '__| | '_ ` _ \ / _ \ / _` |/ _ \/ __|
+;;; | | | | | | (_| || | (_) | |    | | | | | | (_) | (_| |  __/\__ \
+;;; |_| |_| |_|\__,_|/ |\___/|_|    |_| |_| |_|\___/ \__,_|\___||___/
+;;;                |__/
+
 ;; Nix
 (use-package nix-mode
   :ensure t
