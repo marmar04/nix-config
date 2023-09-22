@@ -17,11 +17,20 @@
 
 ;; Set up the modules in ./lisp/
 ;;(require 'init-evil)
-;;; UNDO
-;; Vim style undo not needed for emacs 28
-(use-package undo-fu)
+
+;;;             _ _   _              _     _           _ _
+;;;   _____   _(_) | | | _____ _   _| |__ (_)_ __   __| (_)_ __   __ _ ___
+;;;  / _ \ \ / / | | | |/ / _ \ | | | '_ \| | '_ \ / _` | | '_ \ / _` / __|
+;;; |  __/\ V /| | | |   <  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \
+;;;  \___| \_/ |_|_| |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/
+;;;                            |___/                             |___/
 
 ;;; Vim Bindings
+(use-package bind-key
+  :ensure t
+  :config
+  (add-to-list 'same-window-buffer-names "*Personal Keybindings*"))
+
 (use-package evil
   :demand t
   :bind (("<escape>" . keyboard-escape-quit))
