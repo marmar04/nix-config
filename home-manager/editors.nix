@@ -22,7 +22,6 @@
 
     # Language servers
     #nodejs
-    inputs.nil.packages.${pkgs.system}.nil
     #rust-analyzer
     #nodePackages.npm
     #ccls

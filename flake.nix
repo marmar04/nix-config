@@ -39,23 +39,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hy3 = {
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
-    };
-
-    neovim-flake = {
-      url = "github:notashelf/neovim-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nil.follows = "nil";
-        flake-utils.follows = "flake-utils";
-      };
     };
 
     emacs-overlay = {
@@ -63,14 +49,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
-      };
-    };
-
-    stylix = {
-      url = "github:danth/stylix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
       };
     };
 
@@ -93,24 +71,6 @@
     # Nix User Repository
     nur = {
       url = "github:nix-community/NUR";
-    };
-
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-
-    # Nix Language server
-    nil = {
-      url = "github:oxalica/nil";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-        flake-utils.follows = "flake-utils";
-      };
     };
 
     # For command-not-found
