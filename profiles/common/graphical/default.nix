@@ -115,7 +115,6 @@
     darktable
     # rawtherapee
     handbrake
-    vlc
     mpv
     #freetube
     gsettings-desktop-schemas
