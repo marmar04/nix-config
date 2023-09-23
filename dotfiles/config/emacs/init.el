@@ -132,7 +132,11 @@
   (setq read-process-output-max (* 1024 1024)) ; Increase the amount of data which Emacs reads from the process
   (tool-bar-mode -1)                           ; Removes toolbar for both graphical and terminal sessions
   (menu-bar-mode -1)                           ; Removes the menu bar for graphical and terminal sessions
-  (global-hl-line-mode 1))                     ; Highlight the current line to make it more visible
+  (global-hl-line-mode 1)                      ; Highlight the current line to make it more visible
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)) ; one line at a time
+	mouse-wheel-progressive-speed nil      ; don't accelerate scrolling
+	mouse-wheel-follow-mouse 't            ; scroll window under mouse
+	scroll-step 1))                        ; keyboard scroll one line at a time
 
 ;; smartparens
 ;(use-package smartparens
