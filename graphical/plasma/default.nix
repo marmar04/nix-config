@@ -50,10 +50,9 @@
 
     # socials
     nheko
-    kaidan
-    abaddon
 
     falkon
+    kristall
     kup
     digikam
     neochat
