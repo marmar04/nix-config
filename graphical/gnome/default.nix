@@ -70,15 +70,14 @@
     solanum
 
     # socials
-    gtkcord4
     dino
-    fluffychat
     tuba
 
     # extensions
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-panel
     gnomeExtensions.arcmenu
+    gnomeExtensions.just-perfection
     gnomeExtensions.rounded-window-corners
     gnomeExtensions.clipboard-indicator
   ];
