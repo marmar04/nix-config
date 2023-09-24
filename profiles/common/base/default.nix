@@ -147,9 +147,6 @@
     };
   };
 
-  # for kvm virtualisation
-  virtualisation.libvirtd.enable = true;
-
   powerManagement = {
     enable = true;
     cpuFreqGovernor = "ondemand";
@@ -409,8 +406,6 @@
 
     sessionVariables = {
       FLAKE = "/home/marmar/nix-config";
-      GTK2_RC_FILES = ''"$XDG_CONFIG_HOME"/gtk-2.0/gtkrc'';
-      ELINKS_CONFDIR = ''"$XDG_CONFIG_HOME"/elinks'';
     };
   };
 

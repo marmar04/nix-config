@@ -102,7 +102,6 @@
     # cli
     networkmanagerapplet
     protonvpn-gui
-    virt-manager
     # media
     #graphviz
     blender
