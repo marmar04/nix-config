@@ -6,28 +6,36 @@
   ...
 }: {
   services = {
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd startplasma-wayland";
-          user = "greeter";
+    xserver = {
+      enable = lib.mkForce true;
+
+      displayManager = {
+        defaultSession = "plasmawayland";
+
+        sddm = {
+          enable = true;
+          autoNumlock = true;
+          settings = {
+            # run sddm in wayland
+            General = {
+              DisplayServer = "wayland";
+              #GreeterEnvironment = "QT_WAYLAND_SHELL_INTEGRATION=layer-shell";
+            };
+            #Wayland = {
+            #  CompositorCommand = "kwin_wayland --drm --no-lockscreen --no-global-shortcuts --locale1";
+            #};
+
+            # enables autologin
+            Autologin = {
+              User = "marmar";
+              Session = "plasmawayland";
+            };
+          };
         };
       };
-    };
-
-    xserver = {
-      /*
-      displayManager.gdm = {
-        enable = lib.mkForce true;
-        wayland = true;
-        defaultSession = "plasmawayland";
-      };
-      */
 
       desktopManager.plasma5 = {
         enable = true;
-        runUsingSystemd = false;
       };
     };
   };
