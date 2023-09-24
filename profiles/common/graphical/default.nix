@@ -83,8 +83,7 @@
     gnome.adwaita-icon-theme
     # browsers
     firefox-wayland
-    #librewolf-wayland
-    microsoft-edge
+    ungoogled-chromium
     tor-browser-bundle-bin
     # communication
     joplin-desktop
@@ -136,21 +135,6 @@
     captive-browser = {
       enable = true;
       interface = "wlo1";
-    };
-
-    # sandboxing apps
-    firejail = {
-      enable = true;
-      wrappedBinaries = {
-        google-chrome-stable = {
-          executable = "${pkgs.google-chrome}/bin/google-chrome-stable";
-          profile = "${pkgs.firejail}/etc/firejail/google-chrome.profile";
-          desktop = "${pkgs.google-chrome}/share/applications/google-chrome.desktop";
-          extraArgs = [
-            "--dbus-user.talk=org.freedesktop.Notifications"
-          ];
-        };
-      };
     };
   };
 
