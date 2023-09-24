@@ -158,6 +158,9 @@
 ;(use-package smartparens
 ;  :init (require 'smartparens-config))
 
+;; zen mode
+(use-package zen-mode)
+
 ;; elcord.el
 ;(use-package elcord
 ;  :config
@@ -166,6 +169,9 @@
 ;        elcord-idle-message "Lost in the sea of configurability")
 ;  (add-to-list `elcord-boring-buffers-regexp-list "^\\*scratch\\*$")
 ;  (elcord-mode -1))
+
+;; nov.el
+(use-package nov)
 
 ;;;                   _                                  _
 ;;;  _ __ ___   __ _ (_) ___  _ __   _ __ ___   ___   __| | ___  ___
