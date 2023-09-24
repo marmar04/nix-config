@@ -59,13 +59,25 @@
 ;; Just some startup code for now
 (use-package org-journal)
 
-;;;   ___ ___  _ __ ___  _ __   __ _ _ __  _   _
-;;;  / __/ _ \| '_ ` _ \| '_ \ / _` | '_ \| | | |
-;;; | (_| (_) | | | | | | |_) | (_| | | | | |_| |
-;;;  \___\___/|_| |_| |_| .__/ \__,_|_| |_|\__, |
-;;;                     |_|                |___/
+;;;              _                                  _      _
+;;;   __ _ _   _| |_ ___   ___ ___  _ __ ___  _ __ | | ___| |_ ___
+;;;  / _` | | | | __/ _ \ / __/ _ \| '_ ` _ \| '_ \| |/ _ \ __/ _ \
+;;; | (_| | |_| | || (_) | (_| (_) | | | | | | |_) | |  __/ ||  __/
+;;;  \__,_|\__,_|\__\___/ \___\___/|_| |_| |_| .__/|_|\___|\__\___|
+;;;                                          |_|
+;;; autocomplete
 
-;;(require 'init-company)
+;; Set up helm completion framework
+(use-package helm
+  :ensure t
+  :config
+  (setq helm-split-window-in-side-p         t   ; open helm buffer inside current window, not occupy whole other window
+      helm-move-to-line-cycle-in-source     t   ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t   ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8   ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf t
+      helm-echo-input-in-header-line t))
+
 ;; Provide drop-down completion.
 (use-package company
   :ensure t
