@@ -47,12 +47,11 @@
   };
 
   environment.systemPackages = with pkgs; [
-    #plasma5Packages.bismuth
+    westonLite
     arianna
 
     wl-clipboard
     libsForQt5.kamoso
-    komikku
 
     gsettings-desktop-schemas
 
@@ -63,6 +62,7 @@
     falkon
     kristall
     minitube
+    libsForQt5.kasts
     kup
     digikam
     kcalc
