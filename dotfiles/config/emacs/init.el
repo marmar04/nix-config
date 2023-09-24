@@ -119,11 +119,11 @@
 
 ;;; THEMING
 ;; Use catppuccin theme
-(use-package catppuccin-theme)
-;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'catppuccin :no-confirm)
-(setq catppuccin-flavor 'mocha)
-(catppuccin-reload)
+(use-package catppuccin-theme
+  :config
+  (load-theme 'catppuccin :no-confirm)
+  (setq catppuccin-flavor 'mocha)
+  (catppuccin-reload))
 
 ;;; SETTINGS
 (use-package emacs
