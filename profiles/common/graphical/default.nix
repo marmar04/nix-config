@@ -91,7 +91,6 @@
     keepassxc
     thunderbird-wayland
     tdesktop
-    pidgin
     calibre
     config.nur.repos.nltch.spotify-adblock
     # download
