@@ -25,6 +25,10 @@
 ;;;  \___| \_/ |_|_| |_|\_\___|\__, |_.__/|_|_| |_|\__,_|_|_| |_|\__, |___/
 ;;;                            |___/                             |___/
 
+;;; UNDO
+;; Vim style undo not needed for emacs 28
+(use-package undo-fu)
+
 ;;; Vim Bindings
 (use-package bind-key
   :ensure t
