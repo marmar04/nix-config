@@ -50,13 +50,13 @@
 
     # socials
     nheko
+    tokodon
 
     falkon
     kristall
+    minitube
     kup
     digikam
-    neochat
-    tokodon
     kcalc
     kate
     rsibreak
