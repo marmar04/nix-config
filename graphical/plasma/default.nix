@@ -57,6 +57,7 @@
 
     # socials
     nheko
+    gajim
     tokodon
 
     falkon
