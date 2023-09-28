@@ -170,8 +170,10 @@
 ;  (add-to-list `elcord-boring-buffers-regexp-list "^\\*scratch\\*$")
 ;  (elcord-mode -1))
 
-;; nov.el
-(use-package nov)
+;; Read ePub files
+(use-package nov
+  :init
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
 
 ;;;                   _                                  _
 ;;;  _ __ ___   __ _ (_) ___  _ __   _ __ ___   ___   __| | ___  ___
