@@ -44,7 +44,6 @@
 in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    inputs.xremap.nixosModules.default
   ];
 
   # to import home-manager modules
@@ -67,22 +66,6 @@ in {
 
     # Enable blueman to access bluetooth
     blueman.enable = true;
-
-    # To remap caps lock to escape
-    xremap = {
-      userName = "marmar";
-      config = {
-        keymap = [
-          {
-            name = "caps to escape";
-            remap = {
-              "CapsLock" = "Esc";
-              "Esc" = "CapsLock";
-            };
-          }
-        ];
-      };
-    };
   };
 
   programs = {
