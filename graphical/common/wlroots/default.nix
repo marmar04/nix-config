@@ -37,7 +37,7 @@
     in ''
       export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
       gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome_schema gtk-theme 'Catppuccin-Mocha-Compact-Green-Dark'
+      gsettings set $gnome_schema gtk-theme 'Breeze-Dark'
       gsettings set org.gnome.desktop.interface color-scheme prefer-dark
     '';
   };
@@ -83,6 +83,9 @@ in {
 
   # Soma packages
   environment.systemPackages = with pkgs; [
+    breeze-qt5
+    breeze-gtk
+
     fuzzel
     cliphist
     gammastep
