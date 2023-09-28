@@ -16,30 +16,6 @@
       desktopManager.gnome.enable = true;
     };
 
-    # remapping keys
-    keyd = {
-      enable = true;
-      keyboards = {
-        default = {
-          ids = ["*"];
-          settings = {
-            main = {
-              capslock = "overload(control, esc)";
-              esc = "capslock";
-            };
-          };
-        };
-        #   externalKeyboard = {
-        #     ids = [ "1ea7:0907" ];
-        #     settings = {
-        #       main = {
-        #         esc = capslock;
-        #       };
-        #     };
-        #   };
-      };
-    };
-
     power-profiles-daemon.enable = true;
 
     udev.packages = with pkgs; [gnome.gnome-settings-daemon];
