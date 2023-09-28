@@ -95,7 +95,6 @@ in {
     flameshot
     dbus-sway-environment
     configure-gtk
-    wayland
     xdg-utils # for openning default programs when clicking links
     glib # gsettings
     swaybg
@@ -105,6 +104,18 @@ in {
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     clipman
     mako # notification system developed by swaywm maintainer
+
+    # socials
+    nheko
+    gajim
+    tokodon
+
+    # qt apps
+    falkon
+    kristall
+    minitube
+    libsForQt5.kasts
+    elisa
   ];
 
   # Enable wayland on firefox
