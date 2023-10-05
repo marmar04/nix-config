@@ -92,7 +92,7 @@
     thunderbird-wayland
     tdesktop
     calibre
-    config.nur.repos.nltch.spotify-adblock
+    #config.nur.repos.nltch.spotify-adblock
     # download
     persepolis
     transmission-gtk

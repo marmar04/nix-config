@@ -13,9 +13,6 @@
     unciv
     crawl
     wesnoth
-    opendungeons
     mindustry-wayland
-
-    webcord-vencord
   ];
 }
