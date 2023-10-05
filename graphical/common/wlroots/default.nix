@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   ...
 }: let
@@ -83,6 +84,7 @@ in {
 
   # Soma packages
   environment.systemPackages = with pkgs; [
+    systemsettings
     breeze-qt5
     breeze-gtk
 
@@ -141,6 +143,8 @@ in {
       gtklock = {};
     };
   };
+
+  qt.platformTheme = lib.mkForce "kde";
 
   xdg = {
     mime = {

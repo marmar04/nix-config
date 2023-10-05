@@ -69,6 +69,7 @@
         {command = "nm-applet --indicator";}
         {command = "gammastep-indicator -l 2.9:101.6";}
         {command = "blueman-applet";}
+        {command = "emacs --daemon";}
       ];
 
       # Default terminal
