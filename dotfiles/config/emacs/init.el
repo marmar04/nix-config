@@ -182,6 +182,14 @@
 ;;; |_| |_| |_|\__,_|/ |\___/|_|    |_| |_| |_|\___/ \__,_|\___||___/
 ;;;                |__/
 
+;; snippets
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode t)
+  (define-key yas-minor-mode-map (kbd "M-z") 'yas-expand))
+(use-package yasnippet-snippets)
+
 ;; Nix
 (use-package nix-mode
   :ensure t
