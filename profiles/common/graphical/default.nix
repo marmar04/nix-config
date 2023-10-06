@@ -84,7 +84,7 @@
     # browsers
     firefox-wayland
     ungoogled-chromium
-    tor-browser-bundle-bin
+    tor-browser
     # communication
     joplin-desktop
     localsend
@@ -101,7 +101,6 @@
     xournalpp
     # cli
     networkmanagerapplet
-    protonvpn-gui
     # media
     #graphviz
     blender
