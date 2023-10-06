@@ -1,0 +1,44 @@
+#+TITLE: marmar22's config
+#+AUTHOR: marmar22
+#+OPTIONS: toc:2
+
+* IMPORTANT PACKAGES
+** use-package
+
+#+begin_src emacs-lisp
+  (package-initialize)
+  (setq use-package-always-ensure t)
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package -install 'use-package))
+  (eval-when-compile (require 'use-package))
+#+end_src
+
+** evil-mode
+
+#+begin_src emacs-lisp
+  (use-package undo-fu)
+  (use-package bind-key
+    :ensure t
+    :config
+    (add-to-list 'same-window-buffer-names "*Personal Keybindings*"))
+  (use-package evil
+    :demand t
+    :bind (("<escape>" . keyboard-escape-quit))
+    :init
+    ;; allows for using cgn
+    ;; (setq evil-search-module 'evil-search)
+    (setq evil-want-keybinding nil)
+    (setq evil-vsplit-window-right t)
+    (setq evil-split-window-below t)
+    ;; no vim insert bindings
+    (setq evil-undo-system 'undo-fu)
+    (evil-mode))
+  ;;; Vim Bindings Everywhere else
+  (use-package evil-collection
+    :after evil
+    :config
+    (setq evil-want-integration t)
+    (evil-collection-init))
+  (use-package evil-tutor)
+#+end_src
