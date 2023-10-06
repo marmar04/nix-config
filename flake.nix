@@ -52,16 +52,6 @@
       };
     };
 
-    # Remap keys
-    xremap = {
-      url = "github:xremap/nix-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        hyprland.follows = "hyprland";
-        home-manager.follows = "home-manager";
-      };
-    };
-
     # keyboard remapping
     kmonad = {
       url = "github:kmonad/kmonad?dir=nix";
