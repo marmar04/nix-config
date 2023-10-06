@@ -44,7 +44,6 @@
   (setq evil-want-keybinding nil)
   ;; no vim insert bindings
   (setq evil-undo-system 'undo-fu)
-  :config
   (evil-mode 1))
 
 ;;; Vim Bindings Everywhere else
@@ -110,6 +109,24 @@
     :hook ((text-mode . company-mode)
            (prog-mode . company-mode)))
 
+;; which-key
+(use-package which-key
+  :init
+    (which-key-mode 1)
+  :config
+  (setq which-key-side-window-location 'bottom
+	  which-key-sort-order #'which-key-key-order-alpha
+	  which-key-sort-uppercase-first nil
+	  which-key-add-column-padding 1
+	  which-key-max-display-columns nil
+	  which-key-min-display-lines 6
+	  which-key-side-window-slot -10
+	  which-key-side-window-max-height 0.25
+	  which-key-idle-delay 0.8
+	  which-key-max-description-length 25
+	  which-key-allow-imprecise-window-fit t
+	  which-key-separator " → " ))
+
 ;;;           _   _   _
 ;;;  ___  ___| |_| |_(_)_ __   __ _ ___
 ;;; / __|/ _ \ __| __| | '_ \ / _` / __|
@@ -148,6 +165,7 @@
   (setq read-process-output-max (* 1024 1024)) ; Increase the amount of data which Emacs reads from the process
   (tool-bar-mode -1)                           ; Removes toolbar for both graphical and terminal sessions
   (menu-bar-mode -1)                           ; Removes the menu bar for graphical and terminal sessions
+  (scroll-bar-mode -1)                         ; Disable scrollbar
   (global-hl-line-mode 1)                      ; Highlight the current line to make it more visible
   (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)) ; one line at a time
 	mouse-wheel-progressive-speed nil      ; don't accelerate scrolling
