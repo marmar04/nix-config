@@ -86,7 +86,6 @@
     ungoogled-chromium
     tor-browser
     # communication
-    joplin-desktop
     localsend
     keepassxc
     thunderbird-wayland
