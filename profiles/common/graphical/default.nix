@@ -109,13 +109,11 @@
     inkscape
     darktable
     # rawtherapee
-    handbrake
     mpv
     #freetube
     gsettings-desktop-schemas
     # coding
     zeal
-    yabasic
     # utilities
     gparted
     libreoffice-qt
