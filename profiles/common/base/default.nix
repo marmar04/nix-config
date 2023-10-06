@@ -324,19 +324,8 @@
       # Optionally provide extra packages not in the configuration file.
       extraEmacsPackages = epkgs: [
         epkgs.use-package
-        epkgs.cask
       ];
-
-      # Optionally override derivations.
-      override = epkgs:
-        epkgs
-        // {
-          somePackage = epkgs.melpaPackages.somePackage.overrideAttrs (old: {
-            # Apply fixes here
-          });
-        };
     })
-    neovim
     clang
     # system
     bucklespring-libinput
