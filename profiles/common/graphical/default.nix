@@ -88,7 +88,7 @@
     # communication
     localsend
     keepassxc
-    thunderbird-wayland
+    thunderbird
     tdesktop
     calibre
     #config.nur.repos.nltch.spotify-adblock
