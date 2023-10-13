@@ -147,9 +147,9 @@
   :init
   ;; <OPTIONAL> Setting my favorite fonts here. You can replace "Roboto" with your favorite font.
   ;; You can also also adjust the size of the font with the "height" here under.
-  (set-face-attribute 'default nil :family "JetBrains Mono" :height 120 :weight 'regular)
-  (set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 120 :weight 'medium)
-  (set-face-attribute 'variable-pitch nil :family "JetBrains Mono" :height 120 :weight 'medium)
+  (set-face-attribute 'default nil :family "JetBrainsMono Nerd Font" :height 120 :weight 'regular)
+  (set-face-attribute 'fixed-pitch nil :family "JetBrainsMono Nerd Font" :height 120 :weight 'medium)
+  (set-face-attribute 'variable-pitch nil :family "Cantarell" :height 120 :weight 'medium)
   :config
   (setq-default cursor-type 'bar)              ; Line-style cursor similar to other text editors
   (setq inhibit-startup-screen t)              ; Disable startup screen (the welcome to Emacs message)
