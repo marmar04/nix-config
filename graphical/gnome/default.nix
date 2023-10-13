@@ -29,17 +29,15 @@
     udev.packages = with pkgs; [gnome.gnome-settings-daemon];
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     # themes
     adw-gtk3
     adwaita-qt
     gradience
 
-    gnome.gnome-tweaks
-    gnome.pomodoro
-
     # gnome circle
     shortwave
+    gnome-podcasts
     shotwell
     newsflash
     foliate
@@ -51,20 +49,29 @@
     junction
     komikku
     mousai
-    solanum
+    gnome-solanum
+    curtail
 
     # socials
     dino
     tuba
-
-    # extensions
-    gnomeExtensions.appindicator
-    gnomeExtensions.dash-to-panel
-    gnomeExtensions.arcmenu
-    gnomeExtensions.just-perfection
-    gnomeExtensions.rounded-window-corners
-    gnomeExtensions.clipboard-indicator
-  ];
+    fractal-next # leave to compile overnight
+  ]) ++
+  (with pkgs.gnome; [
+    gnome-tweaks
+    pomodoro
+    polari
+    gnome-boxes
+    gnome-sudoku
+  ]) ++
+  (with pkgs.gnomeExtensions; [
+    appindicator
+    dash-to-panel
+    arcmenu
+    just-perfection
+    rounded-window-corners
+    clipboard-indicator
+  ]);
 
   programs = {
     kdeconnect = {
