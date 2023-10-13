@@ -75,11 +75,7 @@
     # themes
     #gradience
     #adw-gtk3
-    #catppuccin-kde
-    catppuccin-gtk
-    catppuccin-kvantum
     papirus-icon-theme
-    #fluent-icon-theme
     gnome.adwaita-icon-theme
     # browsers
     firefox-wayland
