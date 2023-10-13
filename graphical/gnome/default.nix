@@ -5,6 +5,14 @@
   inputs,
   ...
 }: {
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
+  home-manager.sharedModules = [
+    ./settings.nix
+  ];
+
   services = {
     xserver = {
       enable = true;
