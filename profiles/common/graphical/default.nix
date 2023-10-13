@@ -112,7 +112,7 @@
     zeal
     # utilities
     gparted
-    libreoffice-qt
+    libreoffice-fresh
     xmind
     cpu-x
   ];
