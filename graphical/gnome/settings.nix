@@ -6,7 +6,7 @@
   ...
 }: {
   gtk = {
-    enable = true;
+    #enable = true;
 
     #iconTheme.name = "Adwaita";
     #theme.name = "adw-gtk3-dark";
