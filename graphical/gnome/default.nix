@@ -55,7 +55,7 @@
     # socials
     dino
     tuba
-    fractal-next # leave to compile overnight
+    #fractal-next # leave to compile overnight
   ]) ++
   (with pkgs.gnome; [
     gnome-tweaks
