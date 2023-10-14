@@ -154,8 +154,7 @@
                 ];
             }
 
-            # everything to do with hyprland
-            ./graphical/plasma
+            ./graphical/gnome
 
             # > Our main nixos configuration file <
             (import ./profiles/common/graphical inputs)
