@@ -83,15 +83,8 @@
 
   services = {
     xserver = {
-      displayManager = {
-        gdm.enable = lib.mkDefault false;
-        lightdm.enable = false;
-
-        autoLogin = {
-          enable = true;
-          user = "marmar";
-        };
-      };
+      displayManager.gdm.enable = lib.mkDefault false;
+      displayManager.lightdm.enable = false;
 
       # xkbOptions = "compose:ralt";
       # layout = "us";
