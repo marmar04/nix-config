@@ -13,6 +13,8 @@
     ./settings.nix
   ];
 
+  virtualisation.libvirtd.enable = true;
+
   services = {
     xserver = {
       enable = true;

@@ -179,7 +179,7 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtWU/an7RwitlGTKlRWCigWlcFPsdo5g7Wp+wKmEtRn m.ameerrafiqi@gmail.com"
         ];
         # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-        extraGroups = ["video" "uinput" "input" "wheel" "networkmanager" "audio" "scanner" "lp"];
+        extraGroups = ["video" "uinput" "input" "wheel" "networkmanager" "audio" "scanner" "libvirtd" "lp"];
       };
     };
 
