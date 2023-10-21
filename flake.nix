@@ -154,7 +154,7 @@
                 ];
             }
 
-            ./graphical/gnome
+            ./graphical/plasma
 
             # > Our main nixos configuration file <
             (import ./profiles/common/graphical inputs)
