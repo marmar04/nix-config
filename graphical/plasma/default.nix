@@ -38,6 +38,7 @@
         enable = true;
       };
     };
+    power-profiles-daemon.enable = true;
   };
 
   programs = {
@@ -48,7 +49,6 @@
 
   environment.systemPackages = with pkgs; [
     westonLite
-    arianna
 
     wl-clipboard
     libsForQt5.kamoso
@@ -62,12 +62,14 @@
 
     falkon
     kristall
+    arianna
     minitube
     libsForQt5.kasts
     kup
     digikam
     kcalc
     kate
+    ktimetracker
     rsibreak
     libsForQt5.krecorder
   ];
