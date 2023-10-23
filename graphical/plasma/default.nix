@@ -58,6 +58,7 @@
     # socials
     nheko
     gajim
+    konversation
     tokodon
 
     falkon
