@@ -362,7 +362,7 @@
     killall
     fd
     ripgrep
-    spotdl
+    #spotdl
     nix-du
     neofetch
     htop
