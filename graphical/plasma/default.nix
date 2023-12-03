@@ -93,6 +93,12 @@
 
   xdg.portal = {
     enable = true;
+    config = {
+      common = {
+        default = ["kde"];
+      };
+    };
+    xdgOpenUsePortal = true;
     extraPortals = [pkgs.plasma5Packages.xdg-desktop-portal-kde];
   };
 }
