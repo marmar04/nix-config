@@ -82,7 +82,7 @@
     ungoogled-chromium
     tor-browser
     # communication
-    localsend
+    #localsend
     keepassxc
     thunderbird
     tdesktop

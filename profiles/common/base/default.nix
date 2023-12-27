@@ -350,7 +350,6 @@
     curl
     wget
     aria
-    nnn
     w3m
     termusic
     pandoc
@@ -363,7 +362,7 @@
     killall
     fd
     ripgrep
-    #spotdl
+    spotdl
     nix-du
     neofetch
     htop
