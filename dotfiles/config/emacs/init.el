@@ -160,7 +160,7 @@
   (setq backup-directory-alist '((".*" . "~/.local/share/Trash/files"))) ; Sets the backup files in the trashbin
   (save-place-mode 1)                          ; Save cursor position
   (show-paren-mode t)	                       ; Visually indicates pair of matching parentheses
-  (electric-pair-mode)                         ; Auto-pairing of braces and parentheses for easier time programming
+  ;(electric-pair-mode)                         ; Auto-pairing of braces and parentheses for easier time programming
   (delete-selection-mode t)                    ; Start writing straight after deletion
   (setq read-process-output-max (* 1024 1024)) ; Increase the amount of data which Emacs reads from the process
   (tool-bar-mode -1)                           ; Removes toolbar for both graphical and terminal sessions
@@ -173,8 +173,12 @@
 	scroll-step 1))                        ; keyboard scroll one line at a time
 
 ;; smartparens
-;(use-package smartparens
-;  :init (require 'smartparens-config))
+(use-package smartparens-mode
+  :ensure smartparens  ;; install the package
+  :hook (prog-mode text-mode markdown-mode nix-mode web-mode cc-mode org latex) ;; add `smartparens-mode` to these hooks
+  :config
+  ;; load default config
+  (require 'smartparens-config))
 
 ;; zen mode
 (use-package zen-mode)
