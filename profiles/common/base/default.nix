@@ -117,7 +117,8 @@
   # zram configuration
   zramSwap = {
     enable = true;
-    # priority = 10;
+    algorithm = "zstd";
+    priority = 10;
   };
 
   networking = {
