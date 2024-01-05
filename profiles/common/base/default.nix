@@ -330,6 +330,7 @@
     })
     clang
     # system
+    pika-backup
     bucklespring-libinput
     glib
     hplip
