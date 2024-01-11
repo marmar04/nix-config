@@ -302,6 +302,8 @@
     packages = with pkgs; [
       corefonts
       #liberation_ttf
+      eb-garamond
+      lato
       monocraft #gamification
       fira-code
       fira
