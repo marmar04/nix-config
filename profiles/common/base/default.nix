@@ -330,7 +330,10 @@
         epkgs.use-package
       ];
     })
+    # cpp
+    codeblocks
     clang
+    gnumake
     # system
     pika-backup
     bucklespring-libinput
