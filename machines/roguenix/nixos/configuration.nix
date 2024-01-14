@@ -79,7 +79,13 @@
   };
 
   # for keyboard monitoring
-  hardware.tuxedo-keyboard.enable = true;
+  hardware = {
+    tuxedo-keyboard.enable = true;
+    tuxedo-rs = {
+      enable = true;
+      tailor-gui.enable = true;
+    };
+  };
 
   services = {
     xserver = {
