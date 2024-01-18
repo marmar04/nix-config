@@ -41,9 +41,9 @@
       "nowatchdog"
 
       # for keyboard lights
-      "tuxedo_keyboard.mode=0"
-      "tuxedo_keyboard.brightness=255"
-      "tuxedo_keyboard.color_left=0xa6e3a1"
+      #"tuxedo_keyboard.mode=0"
+      #"tuxedo_keyboard.brightness=255"
+      #"tuxedo_keyboard.color_left=0xa6e3a1"
     ];
 
     # Mount NTFS drives with ntfs-3g
