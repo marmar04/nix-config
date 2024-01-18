@@ -72,6 +72,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     appimage-run
+    winetricks
+    winePackages.waylandFull
     # themes
     #gradience
     #adw-gtk3
