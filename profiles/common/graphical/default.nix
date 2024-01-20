@@ -123,6 +123,9 @@
     # Enabel dconf for gtk theming
     dconf.enable = true;
 
+    # Run unpatched dynamic libraries
+    nix-ld.enable = true;
+
     # for captive portal (hotel wi-fi)
     captive-browser = {
       enable = true;
