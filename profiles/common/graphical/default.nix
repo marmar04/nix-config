@@ -74,6 +74,8 @@
     appimage-run
     winetricks
     winePackages.waylandFull
+    # games
+    katawa-shoujo
     # themes
     #gradience
     #adw-gtk3
@@ -96,6 +98,7 @@
     czkawka
     # notes
     xournalpp
+    sioyek
     # cli
     networkmanagerapplet
     # media
@@ -103,7 +106,7 @@
     blender
     kdenlive
     gimp
-    #krita
+    krita
     inkscape
     darktable
     # rawtherapee
