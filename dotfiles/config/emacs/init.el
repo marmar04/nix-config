@@ -114,6 +114,16 @@
     :hook ((text-mode . company-mode)
            (prog-mode . company-mode)))
 
+;; eshell-toggle
+(use-package eshell-toggle
+  :custom
+  (eshell-toggle-size-fraction 3)
+  (eshell-toggle-use-projectile-root t)
+  (eshell-toggle-run-command nil)
+  (eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
+  :bind
+  ("s-`" . eshell-toggle))
+
 ;; which-key
 (use-package which-key
   :init
@@ -179,9 +189,18 @@
   ;; keep things out of ~/.emacs.d/
   (setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
 	url-history-file (expand-file-name "url/history" user-emacs-directory))
+  ;; Startup
+  (setq gc-cons-threshold (* 50 1000 1000))
   ;; fullscreen
   (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
   (add-to-list 'default-frame-alist '(fullscreen . maximized)))
+
+;; Profile emacs startup
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "*** Emacs loaded in %s seconds with %d garbage collections."
+                     (emacs-init-time "%.2f")
+                     gcs-done)))
 
 (use-package no-littering)
 
