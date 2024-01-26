@@ -53,6 +53,11 @@
   (setq evil-want-integration t)
   (evil-collection-init))
 
+;(use-package general
+;  :after evil
+;  :config
+;  ())
+
 ;;(require 'init-org)
 ;; This will copy & paste from doom emacs a _lot_
 ;; Just some startup code for now
@@ -171,9 +176,15 @@
 	mouse-wheel-progressive-speed nil      ; don't accelerate scrolling
 	mouse-wheel-follow-mouse 't            ; scroll window under mouse
 	scroll-step 1)                        ; keyboard scroll one line at a time
+  ;; keep things out of ~/.emacs.d/
+  (setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
+	url-history-file (expand-file-name "url/history" user-emacs-directory))
   ;; fullscreen
   (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
   (add-to-list 'default-frame-alist '(fullscreen . maximized)))
+
+(use-package no-littering)
+
 ;; smartparens
 (use-package smartparens-mode
   :ensure smartparens  ;; install the package
