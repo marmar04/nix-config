@@ -175,6 +175,8 @@
       extraBackends = [pkgs.hplipWithPlugin];
     };
 
+    usbStorage.manageStartStop = true;
+
     # Enable bluetooth support
     bluetooth = {
       enable = true;
@@ -404,6 +406,8 @@
 
       plugins = with pkgs.tmuxPlugins; [catppuccin];
     };
+
+    usbtop.enable = true;
 
     command-not-found.dbPath = "/etc/programs.sqlite";
   };
