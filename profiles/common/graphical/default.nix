@@ -76,6 +76,7 @@
     winePackages.waylandFull
     # games
     katawa-shoujo
+    rigsofrods
     # themes
     #gradience
     #adw-gtk3
