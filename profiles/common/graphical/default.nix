@@ -75,8 +75,11 @@
     winetricks
     winePackages.waylandFull
     # games
+    vinegar
+    lutris
     katawa-shoujo
     rigsofrods
+    freeciv_qt
     # themes
     #gradience
     #adw-gtk3
@@ -130,6 +133,14 @@
     # Run unpatched dynamic libraries
     nix-ld.enable = true;
 
+    chromium = {
+      enable = true;
+      extensions = [
+        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+        "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
+      ];
+    };
+
     # for captive portal (hotel wi-fi)
     captive-browser = {
       enable = true;
@@ -146,6 +157,12 @@
         ''-no-default-browser-check''
         ''http://cache.nixos.org/''
       ];
+    };
+
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     };
   };
 
