@@ -361,6 +361,10 @@
 ;;; |_| |_| |_|\__,_|/ |\___/|_|    |_| |_| |_|\___/ \__,_|\___||___/
 ;;;                |__/
 
+;; c indent style
+(setq c-default-style "k&r"
+      c-basic-offset 4)
+
 ;; snippets
 (use-package yasnippet
   :ensure t
