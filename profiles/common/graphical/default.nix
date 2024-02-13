@@ -135,6 +135,7 @@
 
     chromium = {
       enable = true;
+      plasmaBrowserIntegrationPackage = pkgs.plasma5Packages.plasma-browser-integration;
       extensions = [
         "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
         "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
