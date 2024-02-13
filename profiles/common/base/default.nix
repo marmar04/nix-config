@@ -161,7 +161,17 @@
   location.provider = "geoclue2";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
+  i18n = {
+    defaultLocale = "en_GB.UTF-8";
+    supportedLocales = [
+      "C.UTF-8"
+      "en_US.UTF-8"
+      "en_GB.UTF-8"
+      "en_SG.UTF-8"
+      "ms_MY.UTF-8"
+    ];
+  };
+
   console = {
     # font = "Lat2-Terminus16";
     # keyMap = "us";
@@ -334,6 +344,7 @@
     })
     # cpp
     codeblocks
+    gdb
     clang
     clang-tools
     gnumake
