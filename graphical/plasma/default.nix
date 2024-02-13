@@ -73,6 +73,7 @@
     ktimetracker
     rsibreak
     libsForQt5.krecorder
+    libsForQt5.alligator
   ];
 
   # Enable wayland on firefox
