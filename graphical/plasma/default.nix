@@ -47,34 +47,39 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    westonLite
+  environment.systemPackages =
+    (with pkgs; [
+      westonLite
 
-    wl-clipboard
-    libsForQt5.kamoso
+      wl-clipboard
 
-    gsettings-desktop-schemas
+      gsettings-desktop-schemas
 
-    # socials
-    nheko
-    gajim
-    konversation
-    tokodon
+      # socials
+      nheko
+      gajim
+      konversation
+      tokodon
 
-    falkon
-    kristall
-    arianna
-    minitube
-    libsForQt5.kasts
-    kup
-    digikam
-    kcalc
-    kate
-    ktimetracker
-    rsibreak
-    libsForQt5.krecorder
-    libsForQt5.alligator
-  ];
+      falkon
+      kristall
+      arianna
+      minitube
+      kup
+      digikam
+      kcalc
+      kate
+      ktimetracker
+      rsibreak
+    ])
+    ++ (with pkgs.libsForQt5; [
+      kamoso
+      kasts
+      krecorder
+      alligator
+      plasmatube
+      audiotube
+    ]);
 
   # Enable wayland on firefox
   environment = {
