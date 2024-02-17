@@ -31,7 +31,7 @@
   networking.hostName = "roguenix";
 
   boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
     # extraModulePackages = with config.boot.kernelPackages; [tuxedo-keyboard];
 
