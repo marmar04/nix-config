@@ -39,10 +39,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hy3 = {
-      url = "github:outfoxxed/hy3";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # window manager
+    niri.url = "github:sodiboo/niri-flake";
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
@@ -74,7 +72,7 @@
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
-    nix-colors.url = "github:misterio77/nix-colors";
+    #nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {
