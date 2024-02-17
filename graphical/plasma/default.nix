@@ -57,7 +57,7 @@
 
       # socials
       nheko
-      gajim
+      kaidan
       konversation
       tokodon
 
