@@ -88,7 +88,11 @@ in {
     breeze-qt5
     breeze-gtk
 
-    fuzzel
+    # idle purposes
+    wlopm
+    chayang
+
+    tofi
     cliphist
     gammastep
     playerctl
