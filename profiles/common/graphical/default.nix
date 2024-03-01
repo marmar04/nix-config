@@ -136,14 +136,14 @@
     # Run unpatched dynamic libraries
     nix-ld.enable = true;
 
-    chromium = {
-      enable = true;
-      plasmaBrowserIntegrationPackage = pkgs.plasma5Packages.plasma-browser-integration;
-      extensions = [
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
-        "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
-      ];
-    };
+    #chromium = {
+    #  enable = true;
+    #  plasmaBrowserIntegrationPackage = pkgs.kdePackages.plasma-browser-integration;
+    #  extensions = [
+    #    "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+    #    "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
+    #  ];
+    #};
 
     # for captive portal (hotel wi-fi)
     captive-browser = {

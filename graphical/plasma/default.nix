@@ -10,7 +10,7 @@
       enable = lib.mkForce true;
 
       displayManager = {
-        defaultSession = "plasmawayland";
+        defaultSession = "plasma";
 
         sddm = {
           enable = true;
@@ -28,13 +28,13 @@
             # enables autologin
             Autologin = {
               User = "marmar";
-              Session = "plasmawayland";
+              Session = "plasma";
             };
           };
         };
       };
 
-      desktopManager.plasma5 = {
+      desktopManager.plasma6 = {
         enable = true;
       };
     };
@@ -72,8 +72,8 @@
       ktimetracker
       rsibreak
     ])
-    ++ (with pkgs.libsForQt5; [
-      kamoso
+    ++ (with pkgs.kdePackages; [
+      #kamoso
       kasts
       krecorder
       alligator
@@ -106,6 +106,6 @@
       };
     };
     xdgOpenUsePortal = true;
-    extraPortals = [pkgs.plasma5Packages.xdg-desktop-portal-kde];
+    extraPortals = [pkgs.kdePackages.xdg-desktop-portal-kde];
   };
 }
