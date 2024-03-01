@@ -77,6 +77,7 @@
       kasts
       krecorder
       alligator
+      neochat
       plasmatube
       audiotube
     ]);
