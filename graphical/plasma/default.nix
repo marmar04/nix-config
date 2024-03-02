@@ -41,10 +41,6 @@
 
   environment.systemPackages =
     (with pkgs; [
-      westonLite
-
-      wl-clipboard
-
       gsettings-desktop-schemas
 
       # socials
