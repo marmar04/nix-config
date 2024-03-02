@@ -14,17 +14,9 @@
 
         sddm = {
           enable = true;
+          wayland.enable = true;
           autoNumlock = true;
           settings = {
-            # run sddm in wayland
-            General = {
-              DisplayServer = "wayland";
-              #GreeterEnvironment = "QT_WAYLAND_SHELL_INTEGRATION=layer-shell";
-            };
-            #Wayland = {
-            #  CompositorCommand = "kwin_wayland --drm --no-lockscreen --no-global-shortcuts --locale1";
-            #};
-
             # enables autologin
             Autologin = {
               User = "marmar";
