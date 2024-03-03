@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   programs.plasma = {
     enable = true;
@@ -1022,7 +1021,13 @@
       "kwinrulesrc"."eb5e0d21-2b37-4cf5-ac49-6eb6e1f6f683"."wmclasscomplete" = true;
       "kwinrulesrc"."eb5e0d21-2b37-4cf5-ac49-6eb6e1f6f683"."wmclassmatch" = 1;
       "plasma-localerc"."Formats"."LANG" = "en_GB.UTF-8";
+      "plasma-localerc"."Formats"."LC_ADDRESS" = "ms_MY.UTF-8";
       "plasma-localerc"."Formats"."LC_MEASUREMENT" = "ms_MY.UTF-8";
+      "plasma-localerc"."Formats"."LC_MONETARY" = "ms_MY.UTF-8";
+      "plasma-localerc"."Formats"."LC_NAME" = "ms_MY.UTF-8";
+      "plasma-localerc"."Formats"."LC_PAPER" = "ms_MY.UTF-8";
+      "plasma-localerc"."Formats"."LC_TELEPHONE" = "ms_MY.UTF-8";
+      "plasma-localerc"."Formats"."LC_TIME" = "ms_MY.UTF-8";
       "plasmarc"."Wallpapers"."usersWallpapers" = "/home/marmar/.config/wallpaper/wallpaper.jpg";
       "systemsettingsrc"."KFileDialog Settings"."detailViewIconSize" = 16;
     };
