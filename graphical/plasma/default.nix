@@ -17,6 +17,10 @@
           wayland.enable = true;
           autoNumlock = true;
           settings = {
+            Theme = {
+              CursorTheme = "Breeze";
+              CursorSize = 24;
+            };
             # enables autologin
             Autologin = {
               User = "marmar";
