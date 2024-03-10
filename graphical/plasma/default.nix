@@ -65,6 +65,7 @@
       kasts
       krecorder
       alligator
+      akregator
       neochat
       plasmatube
       audiotube
