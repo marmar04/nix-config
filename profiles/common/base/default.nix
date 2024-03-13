@@ -363,6 +363,7 @@
     clang
     clang-tools
     gnumake
+    vscode-langservers-extracted
     # system
     pika-backup
     bucklespring-libinput
