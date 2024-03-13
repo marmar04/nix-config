@@ -60,7 +60,6 @@
       kup
       digikam
       kcalc
-      kate
       ktimetracker
       rsibreak
     ])
@@ -70,6 +69,7 @@
       krecorder
       alligator
       akregator
+      kate
       neochat
       plasmatube
       audiotube
