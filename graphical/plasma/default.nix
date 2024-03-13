@@ -50,27 +50,26 @@
       # socials
       nheko
       kaidan
-      konversation
-      tokodon
 
-      falkon
       kristall
-      arianna
       minitube
-      kup
       digikam
-      kcalc
-      ktimetracker
-      rsibreak
     ])
     ++ (with pkgs.kdePackages; [
       #kamoso
+      tokodon
+      konversation
+
+      arianna
+      falkon
+      kcalc
       kasts
       krecorder
       alligator
       akregator
       kate
       neochat
+      kleopatra
       plasmatube
       audiotube
     ]);
