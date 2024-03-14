@@ -46,6 +46,7 @@
   environment.systemPackages =
     (with pkgs; [
       gsettings-desktop-schemas
+      gnupg
 
       # socials
       nheko
@@ -56,9 +57,15 @@
       digikam
     ])
     ++ (with pkgs.kdePackages; [
+      kcharselect
+      kgpg
+      skanlite
       #kamoso
       tokodon
       konversation
+
+      kalarm
+      ktimer
 
       arianna
       falkon
