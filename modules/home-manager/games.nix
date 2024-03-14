@@ -13,6 +13,6 @@
     unciv
     crawl
     wesnoth
-    mindustry-wayland
+    #mindustry-wayland
   ];
 }
