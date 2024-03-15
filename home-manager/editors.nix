@@ -8,7 +8,6 @@
 # Editors
 {
   imports = [
-    inputs.neovim-flake.homeManagerModules.default
   ];
 
   # Sets up the variables so that vim is the default editor
@@ -22,7 +21,6 @@
 
     # Language servers
     #nodejs
-    inputs.nil.packages.${pkgs.system}.nil
     #rust-analyzer
     #nodePackages.npm
     #ccls
@@ -69,44 +67,17 @@
     # astroNvim
     # astronvim.enable = true;
 
-    # Emacs
-    emacs = {
-      enable = false;
-    };
-
-    # Visual Studio Code
     vscode = {
       enable = true;
+      package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
         dracula-theme.theme-dracula
-        asvetliakov.vscode-neovim
-        yzhang.markdown-all-in-one
-        ms-vsliveshare.vsliveshare
-        bbenoist.nix
-        # ms-pyright.pyright
-        ms-python.python
+        vscodevim.vim
         ms-vscode.cpptools
-        ms-vscode-remote.remote-ssh
-        ms-toolsai.jupyter
-        jnoortheen.nix-ide
-        kamadorueda.alejandra
+        yzhang.markdown-all-in-one
       ];
-      /*
-      userSettings = {
-        "nix.enableLanguageServer" = true;
-        "nix.serverPath" = lib.getExe pkgs.nil;
-        # "nix.formatterPath" = lib.getExe pkgs.alejandra;
-        "alejandra.program" = lib.getExe pkgs.alejandra;
-        "[nix]" = {
-          # appears to be buggy at the moment
-          "editor.stickyScroll.enabled" = false;
-        };
-        "vscode-neovim.neovimExecutablePaths.linux" = "/etc/profiles/per-user/marmar/bin/nvim";
-      };
-      */
     };
   };
-  # xdg.configFile."nvim/coc-settings.json".text = builtins.readFile ./../../dotfiles/config/my-coc-settings.json;
 
   # Symlink for {,doom-}emacs configuration
   xdg.configFile = {
@@ -115,16 +86,11 @@
       recursive = true;
       source = ./../dotfiles/config/emacs;
     };
-    */
 
     "doom" = {
       recursive = true;
       source = ./../dotfiles/config/doom;
     };
-  };
-
-  # For the doom command
-  home.shellAliases = {
-    doom = "/home/marmar/.config/emacs/bin/doom";
+    */
   };
 }

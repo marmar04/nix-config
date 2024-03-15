@@ -1,5 +1,5 @@
 # This is the base config that every system should have installed
-{programsdb, ...}: {
+{
   inputs,
   lib,
   config,
@@ -8,6 +8,8 @@
 }: {
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware), use something like:
+
+    inputs.nh.nixosModules.default
 
     # You can also split up your configuration and import pieces of it here.
   ];
@@ -22,6 +24,8 @@
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
+
+      (import inputs.emacs-overlay)
 
       # Or define it inline, for example:
       # (final: prev: {
@@ -63,16 +67,8 @@
           colorVariants = ["green"];
         };
       })
-
-      /*
-      (self: super: {
-        catppuccin-kde = super.catppuccin-kde.override {
-          flavour = ["mocha"];
-          # accents = ["green"];
-        };
-      })
-      */
     ];
+
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -81,6 +77,13 @@
         "python-2.7.18.6"
       ];
     };
+  };
+
+  # configure nh (nix helper)
+  nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
   };
 
   nix = {
@@ -107,21 +110,15 @@
     '';
   };
 
-  # FIXME: Add the rest of your current configuration
-
   security = {
     polkit.enable = true;
-
-    pam.services = {
-      swaylock = {};
-      gtklock = {};
-    };
   };
 
   # zram configuration
   zramSwap = {
     enable = true;
-    # priority = 10;
+    algorithm = "zstd";
+    priority = 10;
   };
 
   networking = {
@@ -140,7 +137,9 @@
   };
 
   systemd = {
+    # make startup time faster
     services.NetworkManager-wait-online.enable = false;
+
     tmpfiles = {
       rules = [
         "L+ /lib/${builtins.baseNameOf pkgs.stdenv.cc.bintools.dynamicLinker} - - - - ${pkgs.stdenv.cc.bintools.dynamicLinker}"
@@ -162,7 +161,32 @@
   location.provider = "geoclue2";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
+  i18n = {
+    defaultLocale = "en_GB.UTF-8";
+    supportedLocales = [
+      "C.UTF-8/UTF-8"
+      "en_US.UTF-8/UTF-8"
+      "en_GB.UTF-8/UTF-8"
+      "en_SG.UTF-8/UTF-8"
+      "ms_MY.UTF-8/UTF-8"
+    ];
+    extraLocaleSettings = {
+      LC_TIME = "ms_MY.UTF-8";
+      LC_MONETARY = "ms_MY.UTF-8";
+      LC_TELEPHONE = "ms_MY.UTF-8";
+      LC_ADDRESS = "ms_MY.UTF-8";
+      LC_MEASUREMENT = "ms_MY.UTF-8";
+    };
+
+    inputMethod = {
+      enabled = "ibus";
+      ibus = {
+        engines = with pkgs.ibus-engines; [bamboo hangul libthai typing-booster uniemoji];
+        panel = "${pkgs.kdePackages.plasma-desktop}/libexec/kimpanel-ibus-panel";
+      };
+    };
+  };
+
   console = {
     # font = "Lat2-Terminus16";
     # keyMap = "us";
@@ -176,8 +200,19 @@
       extraBackends = [pkgs.hplipWithPlugin];
     };
 
+    usbStorage.manageStartStop = true;
+
     # Enable bluetooth support
-    bluetooth.enable = true;
+    bluetooth = {
+      enable = true;
+      settings = {
+        General = {
+          # to remove some errors in journald
+          Experimental = true;
+          KernelExperimental = true;
+        };
+      };
+    };
 
     # Disable pulseaudio
     pulseaudio.enable = lib.mkForce false;
@@ -225,6 +260,34 @@
 
       displayManager.gdm.enable = lib.mkDefault false;
       displayManager.lightdm.enable = lib.mkDefault false;
+
+      excludePackages = with pkgs; [
+        xterm
+      ];
+    };
+
+    # remapping keys
+    keyd = {
+      enable = true;
+      keyboards = {
+        default = {
+          ids = ["*"];
+          settings = {
+            main = {
+              capslock = "overload(control, esc)";
+              esc = "capslock";
+            };
+          };
+        };
+        #   externalKeyboard = {
+        #     ids = [ "1ea7:0907" ];
+        #     settings = {
+        #       main = {
+        #         esc = capslock;
+        #       };
+        #     };
+        #   };
+      };
     };
 
     # Have dbus
@@ -233,7 +296,8 @@
     # Enable printing
     printing = {
       enable = true;
-      drivers = [pkgs.hplip];
+      allowFrom = ["all"];
+      drivers = with pkgs; [hplip];
     };
 
     # Enable sound with pipewire
@@ -249,36 +313,59 @@
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
+
+    # for security credentials
+    gnome.gnome-keyring.enable = true;
+
+    tailscale = {
+      enable = true;
+    };
   };
 
   # Fonts
   fonts = {
     fontDir.enable = true;
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       corefonts
       #liberation_ttf
+      eb-garamond
+      lato
+      monocraft #gamification
       fira-code
       fira
-      jetbrains-mono
       fira-code-symbols
-      powerline-fonts
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-      font-awesome
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly" "JetBrainsMono"];})
       source-code-pro
     ];
-
-    fontconfig.defaultFonts = {
-      monospace = ["JetBrains Mono"];
-    };
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # emacs
+    (pkgs.emacsWithPackagesFromUsePackage {
+      package = pkgs.emacs; # replace with pkgs.emacsPgtk, or another version if desired.
+      config = ./../../../dotfiles/config/emacs/init.el;
+      # config = path/to/your/config.org; # Org-Babel configs also supported
+
+      defaultInitFile = true;
+      alwaysEnsure = true;
+
+      # Optionally provide extra packages not in the configuration file.
+      extraEmacsPackages = epkgs: [
+        epkgs.use-package
+      ];
+    })
+    # cpp
+    codeblocks
+    gdb
     clang
+    clang-tools
+    gnumake
+    vscode-langservers-extracted
     # system
+    pika-backup
     bucklespring-libinput
     glib
     hplip
@@ -299,7 +386,7 @@
     ispell
     curl
     wget
-    nnn
+    aria
     w3m
     termusic
     pandoc
@@ -307,6 +394,7 @@
     cht-sh
     moc
     ytfzf
+    porsmo # pomodoro timer
     unzip
     killall
     fd
@@ -320,8 +408,6 @@
     inxi
     tealdeer
     compsize
-    winePackages.minimal
-    exfat
     # coding
     zeal
     yabasic
@@ -329,7 +415,7 @@
 
   boot = {
     initrd.systemd.enable = true;
-    plymouth.enable = true;
+    plymouth.enable = lib.mkDefault false;
 
     tmp.cleanOnBoot = true;
   };
@@ -338,9 +424,17 @@
     tmux = {
       enable = true;
       clock24 = true;
+      terminal = "screen-256color";
+      # make it like byobu
+      shortcut = "a";
       keyMode = "vi";
+      escapeTime = 0;
       customPaneNavigationAndResize = true;
+
+      plugins = with pkgs.tmuxPlugins; [catppuccin];
     };
+
+    usbtop.enable = true;
 
     command-not-found.dbPath = "/etc/programs.sqlite";
   };
@@ -349,19 +443,21 @@
 
   # Enable wayland on firefox
   environment = {
+    localBinInPath = true;
+
     # Dash is just an example, you can use whatever you want
     binsh = "${pkgs.dash}/bin/dash";
     shells = with pkgs; [fish bash zsh];
 
     pathsToLink = ["/share/zsh"];
 
-    etc = {
-      "programs.sqlite".source = programsdb.packages.${pkgs.system}.programs-sqlite;
+    variables = {
+      EDITOR = "emacsclient -nw";
+      VISUAL = "emacsclient -c";
     };
 
-    shellAliases = {
-      yt-embed-sub = "yt-dlp -f bestvideo+bestaudio --embed-subs --write-auto-sub";
-      yt-best-quality = "yt-dlp -f bestvideo+bestaudio";
+    sessionVariables = {
+      FLAKE = "/home/marmar/nix-config";
     };
   };
 

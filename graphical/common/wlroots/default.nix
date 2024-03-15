@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   ...
 }: let
@@ -37,14 +38,13 @@
     in ''
       export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
       gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome_schema gtk-theme 'Catppuccin-Mocha-Compact-Green-Dark'
+      gsettings set $gnome_schema gtk-theme 'Breeze-Dark'
       gsettings set org.gnome.desktop.interface color-scheme prefer-dark
     '';
   };
 in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    inputs.xremap.nixosModules.default
   ];
 
   # to import home-manager modules
@@ -67,22 +67,6 @@ in {
 
     # Enable blueman to access bluetooth
     blueman.enable = true;
-
-    # To remap caps lock to escape
-    xremap = {
-      userName = "marmar";
-      config = {
-        keymap = [
-          {
-            name = "caps to escape";
-            remap = {
-              "CapsLock" = "Esc";
-              "Esc" = "CapsLock";
-            };
-          }
-        ];
-      };
-    };
   };
 
   programs = {
@@ -100,7 +84,15 @@ in {
 
   # Soma packages
   environment.systemPackages = with pkgs; [
-    fuzzel
+    systemsettings
+    breeze-qt5
+    breeze-gtk
+
+    # idle purposes
+    wlopm
+    chayang
+
+    tofi
     cliphist
     gammastep
     playerctl
@@ -112,7 +104,6 @@ in {
     flameshot
     dbus-sway-environment
     configure-gtk
-    wayland
     xdg-utils # for openning default programs when clicking links
     glib # gsettings
     swaybg
@@ -122,6 +113,18 @@ in {
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     clipman
     mako # notification system developed by swaywm maintainer
+
+    # socials
+    nheko
+    gajim
+    tokodon
+
+    # qt apps
+    falkon
+    kristall
+    minitube
+    libsForQt5.kasts
+    elisa
   ];
 
   # Enable wayland on firefox
@@ -144,6 +147,8 @@ in {
       gtklock = {};
     };
   };
+
+  qt.platformTheme = lib.mkForce "kde";
 
   xdg = {
     mime = {

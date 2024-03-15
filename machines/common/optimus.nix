@@ -20,19 +20,19 @@ in {
   environment.systemPackages = [nvidia-offload];
 
   # To get projectors to work by using specialisation
-  specialisation = {
-    external-display.configuration = {
-      system.nixos.tags = ["external-display"];
-      hardware.nvidia = {
-        prime.offload.enable = lib.mkForce false;
-        # Disable power management of the card
-        powerManagement = {
-          enable = lib.mkForce false;
-          finegrained = lib.mkForce false;
-        };
-      };
-    };
-  };
+  #specialisation = {
+  #  external-display.configuration = {
+  #    system.nixos.tags = ["external-display"];
+  #    hardware.nvidia = {
+  #      prime.offload.enable = lib.mkForce false;
+  #      # Disable power management of the card
+  #      powerManagement = {
+  #        enable = lib.mkForce false;
+  #        finegrained = lib.mkForce false;
+  #      };
+  #    };
+  #  };
+  #};
 
   hardware.nvidia = {
     prime = {

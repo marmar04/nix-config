@@ -20,10 +20,6 @@
   # TODO: change with own everforest base 16 theme
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
-  home.packages = with pkgs; [
-    sway-contrib.grimshot
-  ];
-
   # swayidle config
   services = {
     swayidle = {
@@ -36,7 +32,9 @@
         {
           timeout = 600;
           command = ''${pkgs.sway}/bin/swaymsg "output * power off"'';
+          #command = "wlopm --off \*";
           resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * power on"'';
+          #resumeCommand = "wlopm --on \*";
         }
       ];
       events = [
@@ -69,6 +67,7 @@
         {command = "nm-applet --indicator";}
         {command = "gammastep-indicator -l 2.9:101.6";}
         {command = "blueman-applet";}
+        {command = "emacs --daemon";}
       ];
 
       # Default terminal
@@ -103,9 +102,9 @@
 
       gaps.outer = 5;
 
-      modifier = "Mod1";
+      modifier = "Mod4";
 
-      menu = "${pkgs.fuzzel}/bin/fuzzel";
+      menu = "${pkgs.tofi}/bin/tofi-drun --drun-launch=true";
 
       input = {
         "type:keyboard" = {
@@ -272,10 +271,13 @@
         "${mod}+underscore" = "move container to scratchpad";
 
         # For screenshots with grimshot
-        "Mod4+p" = "grimshot --notify copy output";
-        "Mod4+Shift+p" = ''grimshot --notify save output screenshot$(date +"%FT%H%M%S-%N").png'';
-        "Print" = "grimshot --notify copy area";
-        "${mod}+Mod4+Shift+p" = ''grimshot --notify save area screenshot$(date +"%FT%H%M%S-%N").png'';
+        "Mod4+p" = "{pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy output";
+        "Mod4+Shift+p" = ''{pkgs.sway-contrib.grimshot}/bin/grimshot --notify save output screenshot$(date +"%FT%H%M%S-%N").png'';
+        "Print" = "{pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
+        "Mod1+Mod4+Shift+p" = ''{pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area screenshot$(date +"%FT%H%M%S-%N").png'';
+
+        "Mod1+Shift+p" = "{pkgs.cliphist}/bin/cliphist list | {pkgs.tofi}/bin/tofi-run | {pkgs.cliphist}/bin/cliphist decode | wl-copy";
+        "Mod1+Shift+d" = "{pkgs.cliphist}/bin/cliphist list | {pkgs.tofi}/bin/tofi-run | {pkgs.cliphist}/bin/cliphist delete"
       };
     };
 
@@ -304,8 +306,6 @@
       # Set up cliphist
       exec cliphist wipe
       exec wl-paste --watch cliphist store &
-      bindsym Mod1+Shift+p exec cliphist list | fuzzel -d | cliphist decode | wl-copy
-      bindsym Mod1+Shift+d exec cliphist list | fuzzel -d | cliphist delete
 
       # Binding keys to functions
       # bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle

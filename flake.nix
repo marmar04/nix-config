@@ -19,6 +19,12 @@
       };
     };
 
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     # nix helper
     nh = {
       url = "github:viperML/nh";
@@ -39,48 +45,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hy3 = {
-      url = "github:outfoxxed/hy3";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    neovim-flake = {
-      url = "github:notashelf/neovim-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nil.follows = "nil";
-        flake-utils.follows = "flake-utils";
-      };
-    };
+    # window manager
+    niri.url = "github:sodiboo/niri-flake";
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
-      };
-    };
-
-    stylix = {
-      url = "github:danth/stylix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
-
-    # Remap keys
-    xremap = {
-      url = "github:xremap/nix-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        hyprland.follows = "hyprland";
-        home-manager.follows = "home-manager";
       };
     };
 
@@ -95,24 +67,6 @@
       url = "github:nix-community/NUR";
     };
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-
-    # Nix Language server
-    nil = {
-      url = "github:oxalica/nil";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-
     # For command-not-found
     programsdb = {
       url = "github:wamserma/flake-programs-sqlite";
@@ -124,7 +78,7 @@
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
-    nix-colors.url = "github:misterio77/nix-colors";
+    #nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {
@@ -204,11 +158,10 @@
                 ];
             }
 
-            # everything to do with hyprland
             ./graphical/plasma
 
             # > Our main nixos configuration file <
-            (import ./nixos/configuration.nix inputs)
+            (import ./profiles/common/graphical inputs)
             (import ./machines/roguenix/nixos/configuration.nix inputs)
             # (import ./unstable/unstable.nix inputs)
           ];
@@ -236,10 +189,10 @@
             }
 
             # For sway environment
-            #./graphical/sway
-            ./graphical/gnome
+            ./graphical/plasma
+            #./graphical/gnome
 
-            (import ./nixos/configuration.nix inputs)
+            (import ./profiles/common/graphical inputs)
             (import ./machines/elitenix/nixos/configuration.nix inputs)
           ];
       };
@@ -268,7 +221,7 @@
             }
 
             # > Our main nixos configuration file <
-            (import ./nixos/configuration.nix inputs)
+            (import ./profiles/common/graphical inputs)
             ./machines/oldnix/nixos/configuration.nix
             # (import ./unstable/unstable.nix inputs)
 

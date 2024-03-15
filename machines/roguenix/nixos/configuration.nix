@@ -31,7 +31,7 @@
   networking.hostName = "roguenix";
 
   boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
     # extraModulePackages = with config.boot.kernelPackages; [tuxedo-keyboard];
 
@@ -41,9 +41,9 @@
       "nowatchdog"
 
       # for keyboard lights
-      "tuxedo_keyboard.mode=0"
-      "tuxedo_keyboard.brightness=255"
-      "tuxedo_keyboard.color_left=0xa6e3a1"
+      #"tuxedo_keyboard.mode=0"
+      #"tuxedo_keyboard.brightness=255"
+      #"tuxedo_keyboard.color_left=0xa6e3a1"
     ];
 
     # Mount NTFS drives with ntfs-3g
@@ -79,11 +79,17 @@
   };
 
   # for keyboard monitoring
-  hardware.tuxedo-keyboard.enable = true;
+  hardware = {
+    tuxedo-keyboard.enable = true;
+    tuxedo-rs = {
+      enable = true;
+      tailor-gui.enable = true;
+    };
+  };
 
   services = {
     xserver = {
-      displayManager.gdm.enable = false;
+      displayManager.gdm.enable = lib.mkDefault false;
       displayManager.lightdm.enable = false;
 
       # xkbOptions = "compose:ralt";
@@ -99,30 +105,6 @@
       configfiles = [./kmonad.kbd];
     };
     */
-
-    # remapping keys
-    keyd = {
-      enable = true;
-      keyboards = {
-        default = {
-          ids = ["*"];
-          settings = {
-            main = {
-              capslock = "overload(control, esc)";
-              esc = "capslock";
-            };
-          };
-        };
-        #   externalKeyboard = {
-        #     ids = [ "1ea7:0907" ];
-        #     settings = {
-        #       main = {
-        #         esc = capslock;
-        #       };
-        #     };
-        #   };
-      };
-    };
 
     power-profiles-daemon.enable = true;
     # thermald.enable = true;
@@ -196,7 +178,7 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtWU/an7RwitlGTKlRWCigWlcFPsdo5g7Wp+wKmEtRn m.ameerrafiqi@gmail.com"
         ];
         # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-        extraGroups = ["video" "uinput" "input" "wheel" "networkmanager" "audio" "scanner" "lp" "libvirtd"];
+        extraGroups = ["video" "uinput" "input" "wheel" "networkmanager" "audio" "scanner" "libvirtd" "lp"];
       };
     };
 

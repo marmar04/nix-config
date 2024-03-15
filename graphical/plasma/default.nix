@@ -6,27 +6,35 @@
   ...
 }: {
   services = {
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd startplasma-wayland";
-          user = "greeter";
+    xserver = {
+      enable = lib.mkForce true;
+
+      displayManager = {
+        defaultSession = "plasma";
+
+        sddm = {
+          enable = true;
+          wayland.enable = true;
+          autoNumlock = true;
+          settings = {
+            Theme = {
+              CursorTheme = "Breeze";
+              CursorSize = 24;
+            };
+            # enables autologin
+            Autologin = {
+              User = "marmar";
+              Session = "plasma";
+            };
+          };
         };
       };
-    };
 
-    xserver = {
-      /*
-      displayManager.gdm = {
-        enable = lib.mkForce true;
-        wayland = true;
-        defaultSession = "plasmawayland";
+      desktopManager.plasma6 = {
+        enable = true;
       };
-      */
-
-      desktopManager.plasma5.enable = true;
     };
+    power-profiles-daemon.enable = true;
   };
 
   programs = {
@@ -35,23 +43,43 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    #plasma5Packages.bismuth
+  environment.systemPackages =
+    (with pkgs; [
+      gsettings-desktop-schemas
+      gnupg
 
-    wl-clipboard
-    libsForQt5.kamoso
-    komikku
+      # socials
+      nheko
+      kaidan
 
-    gsettings-desktop-schemas
+      kristall
+      minitube
+      digikam
+    ])
+    ++ (with pkgs.kdePackages; [
+      kcharselect
+      kgpg
+      skanlite
+      #kamoso
+      tokodon
+      konversation
 
-    digikam
-    neochat
-    tokodon
-    kcalc
-    kate
-    rsibreak
-    libsForQt5.krecorder
-  ];
+      kalarm
+      ktimer
+
+      arianna
+      falkon
+      kcalc
+      kasts
+      krecorder
+      alligator
+      akregator
+      kate
+      neochat
+      kleopatra
+      plasmatube
+      audiotube
+    ]);
 
   # Enable wayland on firefox
   environment = {
@@ -59,7 +87,7 @@
       MOZ_ENABLE_WAYLAND = "1";
 
       # Electron apps use wayland
-      NIXOS_OZONE_WL = "1";
+      #NIXOS_OZONE_WL = "1";
 
       # WARNING: breaks gtk theming and cursor size
       # use kde filepicker when available
@@ -71,6 +99,12 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.plasma5Packages.xdg-desktop-portal-kde];
+    config = {
+      common = {
+        default = ["kde"];
+      };
+    };
+    xdgOpenUsePortal = true;
+    extraPortals = [pkgs.kdePackages.xdg-desktop-portal-kde];
   };
 }
