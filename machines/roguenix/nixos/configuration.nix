@@ -22,7 +22,7 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-    ./../../common/optimus.nix
+    #./../../common/optimus.nix
 
     # You can also split up your configuration and import pieces of it here.
   ];
@@ -39,6 +39,8 @@
       "ahci.mobile_lpm_policy=3"
       "quiet"
       "nowatchdog"
+
+      "nouveau.config=NvGspRm=1"
 
       # for keyboard lights
       #"tuxedo_keyboard.mode=0"
