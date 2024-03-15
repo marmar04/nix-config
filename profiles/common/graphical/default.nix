@@ -72,6 +72,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     appimage-run
+    android-tools
     winetricks
     winePackages.waylandFull
     # games
