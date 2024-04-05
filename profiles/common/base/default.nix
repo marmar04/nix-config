@@ -223,10 +223,6 @@
 
   # Enable services
   services = {
-    kmscon = {
-      enable = true;
-    };
-
     usbmuxd.enable = true;
 
     thermald.enable = true;
@@ -370,17 +366,12 @@
     glib
     hplip
     easyeffects
-    xsane
+    #xsane
     # skanlite
     libimobiledevice
     ifuse
     # cli
-    alsa-utils
-    dash
     coreutils
-    lesspipe
-    poppler_utils
-    epr
     gnuplot
     fortune
     ispell
@@ -388,11 +379,9 @@
     wget
     aria
     w3m
-    termusic
     pandoc
     tuir
     cht-sh
-    moc
     ytfzf
     porsmo # pomodoro timer
     unzip
@@ -403,14 +392,12 @@
     nix-du
     neofetch
     htop
-    lolcat
     ncdu
     inxi
     tealdeer
     compsize
     # coding
     zeal
-    yabasic
   ];
 
   boot = {
