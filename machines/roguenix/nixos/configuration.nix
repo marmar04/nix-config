@@ -23,6 +23,9 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
     #./../../common/optimus.nix
+    ./../../../profiles/coding/cpp
+    ./../../../profiles/coding/webdev
+    ./../../../profiles/coding/database
 
     # You can also split up your configuration and import pieces of it here.
   ];
