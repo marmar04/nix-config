@@ -83,49 +83,52 @@ in {
   };
 
   # Soma packages
-  environment.systemPackages = with pkgs; [
-    systemsettings
-    breeze-qt5
-    breeze-gtk
+  environment.systemPackages =
+    (with pkgs; [
+      systemsettings
+      breeze-qt5
+      breeze-gtk
 
-    # idle purposes
-    wlopm
-    chayang
+      alsa-utils
+      lesspipe
+      proppler_utils
+      epr
+      tofi
+      cliphist
+      gammastep
+      playerctl
+      pavucontrol
+      pamixer
+      # alacritty # gpu accelerated terminal
+      wdisplays
+      wf-recorder
+      flameshot
+      dbus-sway-environment
+      configure-gtk
+      xdg-utils # for openning default programs when clicking links
+      glib # gsettings
+      swaybg
+      swaylock-effects
+      grim # screenshot functionality
+      slurp # screenshot functionality
+      wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+      clipman
+      mako # notification system developed by swaywm maintainer
 
-    tofi
-    cliphist
-    gammastep
-    playerctl
-    pavucontrol
-    pamixer
-    # alacritty # gpu accelerated terminal
-    wdisplays
-    wf-recorder
-    flameshot
-    dbus-sway-environment
-    configure-gtk
-    xdg-utils # for openning default programs when clicking links
-    glib # gsettings
-    swaybg
-    swaylock-effects
-    grim # screenshot functionality
-    slurp # screenshot functionality
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    clipman
-    mako # notification system developed by swaywm maintainer
+      # socials
+      nheko
+      gajim
+      tokodon
 
-    # socials
-    nheko
-    gajim
-    tokodon
-
-    # qt apps
-    falkon
-    kristall
-    minitube
-    libsForQt5.kasts
-    elisa
-  ];
+      # qt apps
+      kristall
+      minitube
+    ])
+    ++ (with pkgs.kdePackages; [
+      falkon
+      kasts
+      elisa
+    ]);
 
   # Enable wayland on firefox
   environment = {
