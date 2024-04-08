@@ -135,22 +135,24 @@
     # Run unpatched dynamic libraries
     nix-ld.enable = true;
 
-    #chromium = {
-    #  enable = true;
-    #  plasmaBrowserIntegrationPackage = pkgs.kdePackages.plasma-browser-integration;
-    #  extensions = [
-    #    "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
-    #    "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
-    #  ];
-    #};
+    chromium = {
+      enable = true;
+      #plasmaBrowserIntegrationPackage = pkgs.kdePackages.plasma-browser-integration;
+      extensions = [
+        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+        "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
+        "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
+      ];
+    };
 
     # for captive portal (hotel wi-fi)
     captive-browser = {
       enable = true;
+      package = pkgs.chromium;
       interface = "wlo1";
       browser = lib.concatStringsSep " " [
         ''env XDG_CONFIG_HOME="$PREV_CONFIG_HOME"''
-        ''${pkgs.ungoogled-chromium}/bin/chromium''
+        ''${pkgs.chromium}/bin/chromium''
         ''--user-data-dir=''${XDG_DATA_HOME:-$HOME/.local/share}/chromium-captive''
         ''--proxy-server="socks5://$PROXY"''
         ''--host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE localhost"''
