@@ -88,7 +88,7 @@
     gnome.adwaita-icon-theme
     # browsers
     firefox-wayland
-    ungoogled-chromium
+    chromium
     ladybird
     tor-browser
     # communication
