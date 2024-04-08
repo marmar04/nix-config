@@ -51,6 +51,7 @@
       # socials
       nheko
       kaidan
+      teams-for-linux
 
       kristall
       minitube
