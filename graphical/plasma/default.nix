@@ -88,7 +88,7 @@
       MOZ_ENABLE_WAYLAND = "1";
 
       # Electron apps use wayland
-      #NIXOS_OZONE_WL = "1";
+      NIXOS_OZONE_WL = "1";
 
       # WARNING: breaks gtk theming and cursor size
       # use kde filepicker when available
