@@ -58,8 +58,13 @@
       digikam
     ])
     ++ (with pkgs.kdePackages; [
+      ocean-sound-theme
+      oxygen-sounds
+      sierra-breeze-enhanced
+
       kcharselect
       kgpg
+      kbackup
       skanlite
       #kamoso
       tokodon
@@ -76,6 +81,9 @@
       alligator
       akregator
       kate
+      #kdevelop
+      #kdev-python
+      #kdev-php
       neochat
       kleopatra
       plasmatube
