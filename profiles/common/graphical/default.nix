@@ -76,7 +76,13 @@
     gnome.adwaita-icon-theme
     # browsers
     firefox-wayland
-    chromium
+    (chromium.override {
+      commandLineArgs = [
+        "--enable-features=VaapiVideoDecodeLinuxGL"
+        "--ignore-gpu-blocklist"
+        "--enable-zero-copy"
+      ];
+    })
     ladybird
     tor-browser
     # communication
