@@ -324,6 +324,7 @@
 
     packages = with pkgs; [
       corefonts
+      vistafonts
       #liberation_ttf
       eb-garamond
       lato
