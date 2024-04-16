@@ -18,18 +18,6 @@
     # You can also split up your configuration and import pieces of it here.
   ];
 
-  home-manager.sharedModules = [
-    {
-      home.file.".local/share/icons/hicolor/16x16/apps/google-chrome.png".source = "${pkgs.google-chrome}/share/icons/hicolor/16x16/apps/google-chrome.png";
-      home.file.".local/share/icons/hicolor/24x24/apps/google-chrome.png".source = "${pkgs.google-chrome}/share/icons/hicolor/24x24/apps/google-chrome.png";
-      home.file.".local/share/icons/hicolor/32x32/apps/google-chrome.png".source = "${pkgs.google-chrome}/share/icons/hicolor/32x32/apps/google-chrome.png";
-      home.file.".local/share/icons/hicolor/48x48/apps/google-chrome.png".source = "${pkgs.google-chrome}/share/icons/hicolor/48x48/apps/google-chrome.png";
-      home.file.".local/share/icons/hicolor/64x64/apps/google-chrome.png".source = "${pkgs.google-chrome}/share/icons/hicolor/64x64/apps/google-chrome.png";
-      home.file.".local/share/icons/hicolor/128x128/apps/google-chrome.png".source = "${pkgs.google-chrome}/share/icons/hicolor/128x128/apps/google-chrome.png";
-      home.file.".local/share/icons/hicolor/256x256/apps/google-chrome.png".source = "${pkgs.google-chrome}/share/icons/hicolor/256x256/apps/google-chrome.png";
-    }
-  ];
-
   # Enable services
   services = {
     # Enable flatpak
