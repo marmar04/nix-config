@@ -311,6 +311,7 @@
       "kdeglobals"."General"."XftSubPixel".value = "none";
       "kdeglobals"."General"."fixed".value = "JetBrains Mono,10,-1,5,50,0,0,0,0,0";
       "kdeglobals"."KDE"."SingleClick".value = false;
+      "kdeglobals"."KDE"."widgetStyle".value = "Breeze";
       "kdeglobals"."KFileDialog Settings"."Allow Expansion".value = false;
       "kdeglobals"."KFileDialog Settings"."Automatically select filename extension".value = true;
       "kdeglobals"."KFileDialog Settings"."Breadcrumb Navigation".value = false;
@@ -882,6 +883,7 @@
       "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."Image".value = "/home/marmar/.config/wallpaper/lockscreen.png";
       "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."PreviewImage".value = "/home/marmar/.config/wallpaper/lockscreen.png";
       "ksmserverrc"."General"."loginMode".value = "emptySession";
+      "ksplashrc"."KSplash"."Engine".value = "none";
       "kwalletrc"."Wallet"."Close When Idle".value = false;
       "kwalletrc"."Wallet"."Close on Screensaver".value = false;
       "kwalletrc"."Wallet"."Enabled".value = true;
