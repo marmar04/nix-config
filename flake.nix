@@ -25,12 +25,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    # nix helper
-    nh = {
-      url = "github:viperML/nh";
-      inputs.nixpkgs.follows = "nixpkgs"; # override this repo's nixpkgs snapshot
-    };
-
     # TODO: Add any other flake you might need
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -40,13 +34,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #hyprland = {
+    #  url = "github:hyprwm/Hyprland";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     # window manager
-    niri.url = "github:sodiboo/niri-flake";
+    #niri.url = "github:sodiboo/niri-flake";
+
+    # an anime game launcher
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
@@ -84,9 +84,9 @@
   outputs = {
     self,
     nixpkgs,
+    kmonad,
     home-manager,
     neovim-flake,
-    kmonad,
     programsdb,
     ...
   } @ inputs: let
@@ -144,7 +144,6 @@
           (builtins.attrValues nixosModules)
           ++ [
             kmonad.nixosModules.default
-
             # home-manager module
             home-manager.nixosModules.home-manager
             {
@@ -174,8 +173,6 @@
         modules =
           (builtins.attrValues nixosModules)
           ++ [
-            kmonad.nixosModules.default
-
             # home-manager module
             home-manager.nixosModules.home-manager
             {
@@ -205,8 +202,6 @@
           (builtins.attrValues nixosModules)
           ++ [
             # hyprland.nixosModules.default
-            kmonad.nixosModules.default
-
             # home-manager module
             home-manager.nixosModules.home-manager
             {
