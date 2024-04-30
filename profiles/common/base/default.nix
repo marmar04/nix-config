@@ -310,6 +310,21 @@
     tailscale = {
       enable = true;
     };
+
+    # set up p2p networking
+    i2pd = {
+        enable = true;
+        enableIPv6 = true;
+        bandwidth = 1024;
+        proto = {
+            sam.enable = true;
+            http.enable = true;
+            i2pControl.enable = true;
+        };
+        websocket.enable = true;
+
+        # package = pkgs.i2p;
+    };
   };
 
   # Fonts
