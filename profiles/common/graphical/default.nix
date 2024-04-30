@@ -67,7 +67,6 @@
     #vinegar
     lutris
     katawa-shoujo
-    rigsofrods
     freeciv_qt
     # themes
     #gradience
@@ -75,7 +74,7 @@
     papirus-icon-theme
     gnome.adwaita-icon-theme
     # browsers
-    firefox-wayland
+    #firefox-wayland
     (chromium.override {
       commandLineArgs = [
         "--enable-features=VaapiVideoDecodeLinuxGL"
@@ -83,7 +82,7 @@
         "--enable-zero-copy"
       ];
     })
-    ladybird
+    #ladybird
     tor-browser
     # communication
     #localsend
@@ -129,8 +128,18 @@
     # Run unpatched dynamic libraries
     nix-ld.enable = true;
 
+    firefox = {
+      enable = true;
+      package = pkgs.firefox-wayland.overrideAttrs (self: {
+        desktopItem = self.desktopItem.override (self: {
+          exec = "env DRI_PRIME=1 ${self.exec}";
+        });
+      });
+    };
+
     chromium = {
       enable = true;
+
       #plasmaBrowserIntegrationPackage = pkgs.kdePackages.plasma-browser-integration;
       extensions = [
         "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
