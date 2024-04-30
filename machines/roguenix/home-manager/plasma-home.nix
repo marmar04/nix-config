@@ -303,7 +303,7 @@
       "kded5rc"."Module-smbwatcher"."autoload".value = false;
       "kded5rc"."Module-statusnotifierwatcher"."autoload".value = true;
       "kded5rc"."PlasmaBrowserIntegration"."shownCount".value = 100;
-      "kdeglobals"."DirSelect Dialog"."DirSelectDialog Size".value = "844,598";
+      "kdeglobals"."DirSelect Dialog"."DirSelectDialog Size".value = "820,584";
       "kdeglobals"."General"."AccentColor".value = "61,212,37";
       "kdeglobals"."General"."BrowserApplication".value = "firefox.desktop";
       "kdeglobals"."General"."LastUsedCustomAccentColor".value = "61,212,37";
