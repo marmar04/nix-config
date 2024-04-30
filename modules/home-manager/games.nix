@@ -12,7 +12,6 @@
     minetest
     unciv
     crawl
-    wesnoth
     #mindustry-wayland
   ];
 }
