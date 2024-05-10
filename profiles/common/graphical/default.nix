@@ -63,11 +63,6 @@
     android-tools
     winetricks
     winePackages.waylandFull
-    # games
-    #vinegar
-    lutris
-    katawa-shoujo
-    freeciv_qt
     # themes
     #gradience
     #adw-gtk3
