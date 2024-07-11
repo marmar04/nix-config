@@ -7,9 +7,7 @@
   ...
 }: {
   imports = [
-    # If you want to use modules from other flakes (such as nixos-hardware), use something like:
-
-    # You can also split up your configuration and import pieces of it here.
+    inputs.lix-module.nixosModules.default
   ];
 
   nixpkgs = {
@@ -72,6 +70,8 @@
       # Disable if you don't want unfree packages
       allowUnfree = true;
       permittedInsecurePackages = [
+        "electron-28.3.3"
+        "electron-27.3.11"
         "python-2.7.18.6"
       ];
     };
@@ -311,19 +311,15 @@
       enable = true;
     };
 
-    # set up p2p networking
-    i2pd = {
-        enable = true;
-        enableIPv6 = true;
-        bandwidth = 1024;
-        proto = {
-            sam.enable = true;
-            http.enable = true;
-            i2pControl.enable = true;
-        };
-        websocket.enable = true;
-
-        # package = pkgs.i2p;
+    # for tor network
+    privoxy = {
+      enable = true;
+      enableTor = true;
+    };
+    tor = {
+      enable = true;
+      client.enable = true;
+      torsocks.enable = true;
     };
   };
 
@@ -371,8 +367,9 @@
     gnumake
     vscode-langservers-extracted
     # system
-    pika-backup
+    pass-wayland
     bucklespring-libinput
+    byobu
     glib
     hplip
     easyeffects
@@ -380,6 +377,10 @@
     # skanlite
     libimobiledevice
     ifuse
+    # cli clients
+    toot
+    iamb
+    neomutt
     # cli
     coreutils
     gnuplot
@@ -398,7 +399,7 @@
     killall
     fd
     ripgrep
-    spotdl
+    #spotdl
     nix-du
     neofetch
     htop
@@ -424,6 +425,8 @@
         clean.enable = true;
         clean.extraArgs = "--keep-since 4d --keep 3";
     };
+
+    mosh.enable = true;
 
     tmux = {
       enable = true;
