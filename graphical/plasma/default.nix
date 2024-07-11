@@ -41,16 +41,21 @@
     kdeconnect = {
       enable = true;
     };
+
+    gnupg.agent.enable = true;
   };
 
   environment.systemPackages =
     (with pkgs; [
       gsettings-desktop-schemas
-      gnupg
 
       # socials
+      newsflash
       nheko
       kaidan
+      element-desktop
+      vesktop
+      nextcloud-client
       teams-for-linux
 
       kristall
