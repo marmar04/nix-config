@@ -62,7 +62,8 @@
     appimage-run
     android-tools
     winetricks
-    winePackages.waylandFull
+    wine64Packages.waylandFull
+    bottles
     # themes
     #gradience
     #adw-gtk3
