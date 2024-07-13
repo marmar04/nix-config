@@ -359,6 +359,7 @@
         epkgs.use-package
       ];
     })
+    inputs.nvix.packages.${system}.default
     # cpp
     codeblocks
     gdb
