@@ -42,7 +42,7 @@
         };
 
         colors = {
-          alpha = 0.9;
+          alpha = 1.0;
           foreground = "cdd6f4"; # Text
           background = "1e1e2e"; # Base
           regular0 = "45475a"; # Surface 1
