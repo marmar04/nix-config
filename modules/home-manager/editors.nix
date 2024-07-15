@@ -87,7 +87,6 @@
       ];
       extraPackages = with pkgs; [
         rnix-lsp
-        gcc
         vimPlugins.packer-nvim
         ripgrep
         fd
