@@ -24,6 +24,8 @@
     ./hardware-configuration.nix
     #./../../common/optimus.nix
     ./../../../profiles/coding/cpp
+    ./../../../profiles/coding/rust
+    ./../../../profiles/coding/haskell
     ./../../../profiles/coding/webdev
     ./../../../profiles/coding/database
     ./../../../profiles/math
