@@ -165,17 +165,17 @@
       "ms_MY.UTF-8/UTF-8"
     ];
     extraLocaleSettings = {
-      LC_TIME = "ms_MY.UTF-8";
-      LC_MONETARY = "ms_MY.UTF-8";
-      LC_TELEPHONE = "ms_MY.UTF-8";
-      LC_ADDRESS = "ms_MY.UTF-8";
-      LC_MEASUREMENT = "ms_MY.UTF-8";
+      LC_TIME = "en_SG.UTF-8";
+      LC_MONETARY = "en_SG.UTF-8";
+      LC_TELEPHONE = "en_SG.UTF-8";
+      LC_ADDRESS = "en_SG.UTF-8";
+      LC_MEASUREMENT = "en_SG.UTF-8";
     };
 
     inputMethod = {
       enabled = "ibus";
       ibus = {
-        engines = with pkgs.ibus-engines; [bamboo hangul libthai typing-booster uniemoji];
+        engines = with pkgs.ibus-engines; [bamboo libthai typing-booster uniemoji];
         panel = "${pkgs.kdePackages.plasma-desktop}/libexec/kimpanel-ibus-panel";
       };
     };
