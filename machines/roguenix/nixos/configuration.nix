@@ -1,6 +1,6 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{kmonad, ...}: {
+{
   inputs,
   lib,
   config,
@@ -22,12 +22,13 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-    #./../../common/optimus.nix
+    ./../../common/optimus.nix
     ./../../../profiles/coding/cpp
+    ./../../../profiles/coding/java
     ./../../../profiles/coding/rust
     ./../../../profiles/coding/haskell
     ./../../../profiles/coding/webdev
-    ./../../../profiles/coding/database
+    #./../../../profiles/coding/database
     ./../../../profiles/math
     ./../../../profiles/games
 
@@ -42,12 +43,16 @@
 
     # extraModulePackages = with config.boot.kernelPackages; [tuxedo-keyboard];
 
+    # Enable "Silent Boot"
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+
     kernelParams = [
       "ahci.mobile_lpm_policy=3"
       "quiet"
       "nowatchdog"
 
-      "nouveau.config=NvGspRm=1"
+      #"nouveau.config=NvGspRm=1"
 
       # for keyboard lights
       #"tuxedo_keyboard.mode=0"
@@ -89,9 +94,9 @@
 
   # for keyboard monitoring
   hardware = {
-    tuxedo-keyboard.enable = true;
+    tuxedo-keyboard.enable = false;
     tuxedo-rs = {
-      enable = true;
+      enable = false;
       tailor-gui.enable = true;
     };
   };
