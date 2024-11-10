@@ -52,7 +52,7 @@
       jetbrains-mono
 
       # for japanese characters
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
     ];
   };
 
@@ -68,7 +68,7 @@
     #gradience
     #adw-gtk3
     papirus-icon-theme
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
     # browsers
     #firefox-wayland
     (chromium.override {
@@ -84,21 +84,24 @@
     #localsend
     keepassxc
     thunderbird
-    tdesktop
-    calibre
+    logseq
+    #tdesktop
+    #calibre
     #config.nur.repos.nltch.spotify-adblock
     # download
     persepolis
-    transmission-gtk
+    transmission_4-gtk
     czkawka
     # notes
     xournalpp
     sioyek
     # cli
     networkmanagerapplet
+    steam-run
+    gamescope
     # media
     #graphviz
-    blender
+    #blender
     kdenlive
     gimp
     krita
@@ -126,11 +129,13 @@
 
     firefox = {
       enable = true;
-      package = pkgs.firefox-wayland.overrideAttrs (self: {
-        desktopItem = self.desktopItem.override (self: {
-          exec = "env DRI_PRIME=1 ${self.exec}";
-        });
-      });
+      package = pkgs.firefox-wayland;
+      #package = (pkgs.firefox-wayland.override {extraNativeMessagingHosts = [pasff-host];});
+      #package = pkgs.firefox-wayland.overrideAttrs (self: {
+      #  desktopItem = self.desktopItem.override (self: {
+      #    exec = "env DRI_PRIME=1 ${self.exec}";
+      #  });
+      #});
     };
 
     chromium = {
@@ -165,6 +170,7 @@
 
     steam = {
       enable = true;
+      extraCompatPackages = with pkgs; [ proton-ge-bin ];
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     };

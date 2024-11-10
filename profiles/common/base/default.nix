@@ -72,7 +72,9 @@
       permittedInsecurePackages = [
         "electron-28.3.3"
         "electron-27.3.11"
+        "olm-3.2.16"
         "python-2.7.18.6"
+        "jitsi-meet-1.0.8043"
       ];
     };
   };
@@ -172,13 +174,18 @@
       LC_MEASUREMENT = "en_SG.UTF-8";
     };
 
-    inputMethod = {
-      enabled = "ibus";
-      ibus = {
-        engines = with pkgs.ibus-engines; [bamboo libthai typing-booster uniemoji];
-        panel = "${pkgs.kdePackages.plasma-desktop}/libexec/kimpanel-ibus-panel";
-      };
-    };
+    #inputMethod = {
+      #enable = false;
+      #type = "fcitx5";
+
+      #fcitx5 = {
+      #  waylandFrontend = true;
+      #};
+      #ibus = {
+      #  engines = with pkgs.ibus-engines; [bamboo libthai typing-booster uniemoji];
+      #  panel = "${pkgs.kdePackages.plasma-desktop}/libexec/kimpanel-ibus-panel";
+      #};
+    #};
   };
 
   console = {
@@ -188,13 +195,14 @@
   };
 
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
+
     sane = {
       enable = true;
       extraBackends = [pkgs.hplipWithPlugin];
     };
 
-    usbStorage.manageStartStop = true;
+    usbStorage.manageShutdown = true;
 
     # Enable bluetooth support
     bluetooth = {
@@ -210,6 +218,8 @@
 
     # Disable pulseaudio
     pulseaudio.enable = lib.mkForce false;
+
+    steam-hardware.enable = true;
 
     # Enable opentabletdriver
     # opentabletdriver.enable = true;
@@ -236,17 +246,17 @@
       enableCDMA = true;
     };
 
+    # Enable touchpad support (enabled default in most desktopManager).
+    libinput.enable = true;
+
     xserver = {
       # Enable X server
       enable = lib.mkDefault false;
 
       # digimend.enable = true;
 
-      # Enable touchpad support (enabled default in most desktopManager).
-      libinput.enable = true;
-
       # Configure keymap in X11
-      layout = "us";
+      xkb.layout = "us";
 
       displayManager.gdm.enable = lib.mkDefault false;
       displayManager.lightdm.enable = lib.mkDefault false;
@@ -345,28 +355,28 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # emacs
-    (pkgs.emacsWithPackagesFromUsePackage {
-      package = pkgs.emacs; # replace with pkgs.emacsPgtk, or another version if desired.
-      config = ./../../../dotfiles/config/emacs/init.el;
-      # config = path/to/your/config.org; # Org-Babel configs also supported
+    emacs
+    #(pkgs.emacsWithPackagesFromUsePackage {
+    #  package = pkgs.emacs; # replace with pkgs.emacsPgtk, or another version if desired.
+    #  config = ./../../../dotfiles/config/emacs/init.el;
+    #  # config = path/to/your/config.org; # Org-Babel configs also supported
 
-      defaultInitFile = true;
-      alwaysEnsure = true;
+    #  defaultInitFile = true;
+    #  alwaysEnsure = true;
 
-      # Optionally provide extra packages not in the configuration file.
-      extraEmacsPackages = epkgs: [
-        epkgs.use-package
-      ];
-    })
-    inputs.nvix.packages.${system}.default
+    #  # Optionally provide extra packages not in the configuration file.
+    #  extraEmacsPackages = epkgs: [
+    #    epkgs.use-package
+    #  ];
+    #})
+    # broken for now
+    #inputs.nvix.packages.${system}.default
     # cpp
     codeblocks
     gdb
     clang
     clang-tools
     gnumake
-    vscode-langservers-extracted
     # system
     pass-wayland
     bucklespring-libinput
@@ -403,11 +413,13 @@
     #spotdl
     nix-du
     neofetch
+    fastfetch
     htop
     ncdu
     inxi
     tealdeer
-    compsize
+    #compsize
+    distrobox
     # coding
     zeal
   ];
@@ -441,6 +453,8 @@
 
       plugins = with pkgs.tmuxPlugins; [catppuccin];
     };
+
+    screen.enable = true;
 
     usbtop.enable = true;
 
