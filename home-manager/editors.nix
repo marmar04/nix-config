@@ -68,8 +68,8 @@
     # astronvim.enable = true;
 
     vscode = {
-      enable = true;
-      package = pkgs.vscodium;
+      enable = false;
+      package = pkgs.vscode;
       extensions = with pkgs.vscode-extensions; [
         dracula-theme.theme-dracula
         vscodevim.vim
@@ -77,20 +77,5 @@
         yzhang.markdown-all-in-one
       ];
     };
-  };
-
-  # Symlink for {,doom-}emacs configuration
-  xdg.configFile = {
-    /*
-    "emacs" = {
-      recursive = true;
-      source = ./../dotfiles/config/emacs;
-    };
-
-    "doom" = {
-      recursive = true;
-      source = ./../dotfiles/config/doom;
-    };
-    */
   };
 }
