@@ -6,34 +6,31 @@
   ...
 }: {
   services = {
-    xserver = {
-      enable = lib.mkForce true;
+    displayManager = {
+      defaultSession = "plasma";
 
-      displayManager = {
-        defaultSession = "plasma";
-
-        sddm = {
-          enable = true;
-          wayland.enable = true;
-          autoNumlock = true;
-          settings = {
-            Theme = {
-              CursorTheme = "Breeze";
-              CursorSize = 24;
-            };
-            # enables autologin
-            Autologin = {
-              User = "marmar";
-              Session = "plasma";
-            };
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+        autoNumlock = true;
+        settings = {
+          Theme = {
+            CursorTheme = "Breeze";
+            CursorSize = 24;
+          };
+          # enables autologin
+          Autologin = {
+            User = "marmar";
+            Session = "plasma";
           };
         };
       };
-
-      desktopManager.plasma6 = {
-        enable = true;
-      };
     };
+
+    desktopManager.plasma6.enable = true;
+
+    xserver.enable = lib.mkForce true;
+
     power-profiles-daemon.enable = true;
   };
 
@@ -50,7 +47,7 @@
       gsettings-desktop-schemas
 
       # socials
-      newsflash
+      #newsflash
       nheko
       kaidan
       element-desktop
@@ -58,6 +55,12 @@
       nextcloud-client
       teams-for-linux
 
+      (vivaldi.overrideAttrs
+        (oldAttrs: {
+          dontWrapQtApps = false;
+          dontPatchELF = true;
+          nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
+        }))
       kristall
       minitube
       digikam
@@ -72,6 +75,7 @@
       kbackup
       skanlite
       #kamoso
+      #kmail
       tokodon
       konversation
 
@@ -79,7 +83,7 @@
       ktimer
 
       arianna
-      falkon
+      #falkon
       kcalc
       kasts
       krecorder
