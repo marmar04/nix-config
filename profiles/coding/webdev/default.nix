@@ -29,6 +29,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     hugo
-    vscode-langservers-extracted
+    #vscode-langservers-extracted
   ];
 }

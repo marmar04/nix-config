@@ -28,7 +28,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    zlib-ng
+    zlib # for `stack build`
     ghc
     haskellPackages.stack
   ];
