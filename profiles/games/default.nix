@@ -14,7 +14,7 @@
 
   # Useful other development tools
   environment.systemPackages = with pkgs; [
-    lutris
+    #lutris
     minetest
     superTuxKart
     katawa-shoujo
