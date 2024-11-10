@@ -61,17 +61,14 @@
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # keyboard remapping
-    kmonad = {
-      url = "github:kmonad/kmonad?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #kmonad = {
+    #  url = "github:kmonad/kmonad?dir=nix";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     # Nix User Repository
     nur = {
@@ -95,7 +92,6 @@
   outputs = {
     self,
     nixpkgs,
-    kmonad,
     home-manager,
     neovim-flake,
     programsdb,
@@ -154,7 +150,6 @@
         modules =
           (builtins.attrValues nixosModules)
           ++ [
-            kmonad.nixosModules.default
             # home-manager module
             home-manager.nixosModules.home-manager
             {
@@ -172,7 +167,8 @@
 
             # > Our main nixos configuration file <
             (import ./profiles/common/graphical inputs)
-            (import ./machines/roguenix/nixos/configuration.nix inputs)
+            #(import ./machines/roguenix/nixos/configuration.nix inputs)
+            ./machines/roguenix/nixos/configuration.nix
             # (import ./unstable/unstable.nix inputs)
           ];
       };
