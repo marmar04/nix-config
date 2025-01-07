@@ -96,7 +96,7 @@
       neochat
       kleopatra
       plasmatube
-      audiotube
+      #audiotube
     ]);
 
   # Enable wayland on firefox
