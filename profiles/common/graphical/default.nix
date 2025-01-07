@@ -93,6 +93,7 @@
     transmission_4-gtk
     czkawka
     # notes
+    joplin-desktop
     xournalpp
     sioyek
     # cli
