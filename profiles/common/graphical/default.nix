@@ -85,7 +85,7 @@
     keepassxc
     thunderbird
     logseq
-    #tdesktop
+    tdesktop
     #calibre
     #config.nur.repos.nltch.spotify-adblock
     # download
