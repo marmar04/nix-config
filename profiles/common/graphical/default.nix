@@ -11,7 +11,7 @@
 
     ./../base
 
-    inputs.nur.nixosModules.nur
+    inputs.nur.modules.nixos.default
 
     inputs.home-manager.nixosModules.home-manager
 
