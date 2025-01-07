@@ -216,9 +216,6 @@
       };
     };
 
-    # Disable pulseaudio
-    pulseaudio.enable = lib.mkForce false;
-
     steam-hardware.enable = true;
 
     # Enable opentabletdriver
