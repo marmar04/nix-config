@@ -347,7 +347,8 @@
       fira-code
       fira
       fira-code-symbols
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly" "JetBrainsMono"];})
+      nerd-fonts.symbols-only
+      nerd-fonts.jetbrains-mono
       source-code-pro
     ];
   };
