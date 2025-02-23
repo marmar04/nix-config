@@ -70,7 +70,7 @@
     vscode = {
       enable = false;
       package = pkgs.vscode;
-      extensions = with pkgs.vscode-extensions; [
+      profiles.default.extensions = with pkgs.vscode-extensions; [
         dracula-theme.theme-dracula
         vscodevim.vim
         ms-vscode.cpptools
