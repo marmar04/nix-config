@@ -103,13 +103,12 @@
     # media
     #graphviz
     #blender
-    kdenlive
+    kdePackages.kdenlive
     gimp
     krita
     inkscape
     darktable
     # rawtherapee
-    mpv
     #freetube
     gsettings-desktop-schemas
     # coding
