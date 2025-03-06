@@ -79,6 +79,16 @@
       };
     };
 
+    mpv = {
+      enable = true;
+      config = {
+        fs = "yes";
+        ontop = "yes";
+        ytdl-raw-options = "sub-lang=\"en\",write-sub=";
+        alang = "my,en";
+      };
+    };
+
     btop = {
       enable = true;
       settings = {
