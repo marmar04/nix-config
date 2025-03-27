@@ -28,7 +28,7 @@
     ./../../../profiles/coding/rust
     ./../../../profiles/coding/haskell
     ./../../../profiles/coding/webdev
-    #./../../../profiles/coding/database
+    ./../../../profiles/coding/database
     ./../../../profiles/math
     ./../../../profiles/games
 
