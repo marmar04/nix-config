@@ -84,7 +84,7 @@
     #localsend
     keepassxc
     thunderbird
-    logseq
+    #logseq
     tdesktop
     #calibre
     #config.nur.repos.nltch.spotify-adblock
