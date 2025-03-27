@@ -20,28 +20,6 @@
     # Feel free to split up your configuration and import pieces of it here.
   ];
 
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      # outputs.overlays.additions
-      # outputs.overlays.modifications
-      # outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # (import self.inputs.emacs-overlay)
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-  };
-
   # Set your username
   home = {
     username = "marmar";
