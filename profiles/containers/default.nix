@@ -3,6 +3,10 @@
   # Enable common container config files in /etc/containers
   virtualisation.containers.enable = true;
   virtualisation = {
+    # For virt-manager
+    libvirtd.enable = true;
+    spiceUSBRedirection.enable = true;
+
     podman = {
       enable = true;
 
@@ -14,6 +18,8 @@
     };
   };
 
+  programs.virt-manager.enable = true;
+
   # Useful other development tools
   environment.systemPackages = with pkgs; [
     dive            # look into docker image layers
@@ -21,4 +27,6 @@
     #docker-compose # start group of containers for dev
     podman-compose  # start group of containers for dev
   ];
+
+  users.groups.libvirtd.members = ["marmar"];
 }
