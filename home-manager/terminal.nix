@@ -125,7 +125,7 @@
         plugins = ["tmux"];
         theme = "robbyrussell";
       };
-      initExtra = ''
+      initContent = ''
         eval "$(direnv hook zsh)"
 
         nixify() {

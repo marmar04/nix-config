@@ -477,7 +477,7 @@
     };
 
     sessionVariables = {
-      FLAKE = "/home/marmar/nix-config";
+      NH_FLAKE = "/home/marmar/nix-config";
     };
   };
 
