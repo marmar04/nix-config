@@ -68,7 +68,7 @@
     ++ (with pkgs.kdePackages; [
       ocean-sound-theme
       oxygen-sounds
-      sierra-breeze-enhanced
+      #sierra-breeze-enhanced
 
       kcharselect
       kgpg
