@@ -255,13 +255,14 @@
       # Configure keymap in X11
       xkb.layout = "us";
 
-      displayManager.gdm.enable = lib.mkDefault false;
       displayManager.lightdm.enable = lib.mkDefault false;
 
       excludePackages = with pkgs; [
         xterm
       ];
     };
+
+    displayManager.gdm.enable = lib.mkDefault false;
 
     # remapping keys
     keyd = {

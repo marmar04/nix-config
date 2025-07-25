@@ -103,12 +103,13 @@
 
   services = {
     xserver = {
-      displayManager.gdm.enable = lib.mkDefault false;
       displayManager.lightdm.enable = false;
 
       # xkbOptions = "compose:ralt";
       # layout = "us";
     };
+
+    displayManager.gdm.enable = lib.mkDefault false;
 
     fstrim.enable = true;
 
