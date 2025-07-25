@@ -28,8 +28,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # cpp
     bluej
     netbeans
+    jetbrains.idea-community
+
+    jdt-language-server
+    jdk23
   ];
 }
