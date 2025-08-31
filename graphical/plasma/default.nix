@@ -90,6 +90,7 @@
       alligator
       akregator
       kate
+      calligra
       #kdevelop
       #kdev-python
       #kdev-php
