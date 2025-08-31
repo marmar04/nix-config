@@ -59,6 +59,15 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # to run beamng.drive linux executable
+    (let base = appimageTools.defaultFhsEnvArgs; in
+     buildFHSEnv (base // {
+        name = "fhs";
+        profile = "export FHS=1";
+        runScript = "bash";
+        targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
+        extraOutputsToInstall = ["dev"];
+    }))
     appimage-run
     android-tools
     winetricks
