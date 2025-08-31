@@ -7,7 +7,6 @@
   ...
 }: {
   imports = [
-    inputs.lix-module.nixosModules.default
   ];
 
   nixpkgs = {
@@ -22,6 +21,15 @@
       # neovim-nightly-overlay.overlays.default
 
       (import inputs.emacs-overlay)
+
+      (final: prev: {
+        inherit (final.lixPackageSets.stable)
+          nixpkgs-review
+          #nix-direnv
+          nix-eval-jobs
+          nix-fast-build
+          colmena;
+      })
 
       # Or define it inline, for example:
       # (final: prev: {
@@ -90,6 +98,9 @@
   };
 
   nix = {
+    # use lix instead of nixcpp
+    package = pkgs.lixPackageSets.stable.lix;
+
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
