@@ -81,6 +81,12 @@
     };
   };
 
+  services.syncthing = {
+    enable = true;
+    overrideDevices = false;
+    overrideFolders = false;
+  };
+
   # For linking the files in config folder
   xdg = {
     configFile = {
