@@ -94,8 +94,9 @@
     keepassxc
     thunderbird
     #logseq
+    signal-desktop
     tdesktop
-    #calibre
+    calibre
     #config.nur.repos.nltch.spotify-adblock
     # download
     persepolis
@@ -124,9 +125,7 @@
     zeal
     # utilities
     gparted
-    libreoffice-qt
-    xmind
-    cpu-x
+    libreoffice-qt6
   ];
 
   programs = {
