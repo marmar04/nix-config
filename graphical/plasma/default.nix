@@ -81,6 +81,7 @@
 
       kalarm
       ktimer
+      filelight
 
       arianna
       #falkon
