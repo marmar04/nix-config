@@ -78,6 +78,8 @@
     #adw-gtk3
     papirus-icon-theme
     adwaita-icon-theme
+    # llama.cpp frontend to play with small local ai models
+    jan
     # browsers
     #firefox-wayland
     (chromium.override {
