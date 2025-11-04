@@ -389,7 +389,6 @@
     gnumake
     # system
     pass-wayland
-    bucklespring-libinput
     byobu
     glib
     hplip
