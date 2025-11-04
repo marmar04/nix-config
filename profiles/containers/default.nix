@@ -7,6 +7,8 @@
     libvirtd.enable = true;
     spiceUSBRedirection.enable = true;
 
+    #waydroid.enable = true;
+
     podman = {
       enable = true;
 
