@@ -348,7 +348,7 @@
 
     packages = with pkgs; [
       corefonts
-      vistafonts
+      vista-fonts
       #liberation_ttf
       eb-garamond
       lato
@@ -409,7 +409,7 @@
     ispell
     curl
     wget
-    aria
+    aria2
     w3m
     pandoc
     tuir

@@ -47,7 +47,7 @@
   fonts = {
     packages = with pkgs; [
       # emoji support
-      noto-fonts-emoji
+      noto-fonts-color-emoji
 
       jetbrains-mono
 
@@ -97,12 +97,13 @@
     thunderbird
     #logseq
     signal-desktop
-    tdesktop
+    telegram-desktop
     calibre
     #config.nur.repos.nltch.spotify-adblock
     # download
     persepolis
     transmission_4-gtk
+    handbrake
     czkawka
     # notes
     joplin-desktop
@@ -139,7 +140,7 @@
 
     firefox = {
       enable = true;
-      package = pkgs.firefox-wayland;
+      package = pkgs.firefox;
       #package = (pkgs.firefox-wayland.override {extraNativeMessagingHosts = [pasff-host];});
       #package = pkgs.firefox-wayland.overrideAttrs (self: {
       #  desktopItem = self.desktopItem.override (self: {
