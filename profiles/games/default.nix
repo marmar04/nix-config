@@ -15,7 +15,7 @@
   # Useful other development tools
   environment.systemPackages = with pkgs; [
     #lutris
-    minetest
+    luanti
     superTuxKart
     katawa-shoujo
     freeciv_qt
