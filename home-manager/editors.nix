@@ -50,7 +50,7 @@
     # Vim
     vim = {
       enable = true;
-      packageConfigurable = pkgs.vim_configurable;
+      packageConfigurable = pkgs.vim-full;
       plugins = with pkgs.vimPlugins; [vim-nix YouCompleteMe vimsence catppuccin-vim yuck-vim];
       extraConfig =
         /*
