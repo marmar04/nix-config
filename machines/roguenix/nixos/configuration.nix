@@ -23,6 +23,7 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
     ./../../common/optimus.nix
+    ./../../../profiles/coding/python
     ./../../../profiles/coding/cpp
     ./../../../profiles/coding/java
     ./../../../profiles/coding/rust
