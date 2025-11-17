@@ -29,8 +29,8 @@
   programs = {
     git = {
       enable = true;
-      userName = "Muhammad Ameer Rafiqi";
-      userEmail = "m.ameerrafiqi@gmail.com";
+      settings.user.name = "Muhammad Ameer Rafiqi";
+      settings.user.email = "m.ameerrafiqi@gmail.com";
     };
 
     direnv = {
