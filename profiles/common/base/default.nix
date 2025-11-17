@@ -408,6 +408,7 @@
     ispell
     curl
     wget
+    wget2
     aria2
     w3m
     pandoc
