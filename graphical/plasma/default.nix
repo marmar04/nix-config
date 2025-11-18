@@ -47,13 +47,9 @@
       gsettings-desktop-schemas
 
       # socials
-      #newsflash
-      nheko
-      kaidan
       element-desktop
       vesktop
       nextcloud-client
-      teams-for-linux
 
       (vivaldi.overrideAttrs
         (oldAttrs: {
@@ -61,20 +57,16 @@
           dontPatchELF = true;
           nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
         }))
-      kristall
-      minitube
       digikam
     ])
     ++ (with pkgs.kdePackages; [
       ocean-sound-theme
       oxygen-sounds
-      #sierra-breeze-enhanced
 
       kcharselect
       kgpg
       kbackup
       skanlite
-      #kamoso
       #kmail
       tokodon
       konversation
@@ -84,7 +76,6 @@
       filelight
 
       arianna
-      #falkon
       kcalc
       kasts
       krecorder
@@ -92,13 +83,8 @@
       akregator
       kate
       calligra
-      #kdevelop
-      #kdev-python
-      #kdev-php
-      neochat
+      #neochat
       kleopatra
-      plasmatube
-      #audiotube
     ]);
 
   # Enable wayland on firefox
