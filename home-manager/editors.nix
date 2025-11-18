@@ -11,10 +11,10 @@
   ];
 
   # Sets up the variables so that vim is the default editor
-  home.sessionVariables = {
-    EDITOR = "vim";
-    VISUAL = "vim";
-  };
+  #home.sessionVariables = {
+  #  EDITOR = "vim";
+  #  VISUAL = "vim";
+  #};
 
   home.packages = with pkgs; [
     ycmd
