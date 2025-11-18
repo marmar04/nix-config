@@ -466,6 +466,23 @@
 
     screen.enable = true;
 
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      configure = {
+        customRC = ''
+        set nocompatible
+        filetype on
+        filetype plugin on
+        filetype indent on
+        syntax on
+        set number
+        set cursorline
+        set cursorcolumn
+        '';
+      };
+    };
+
     usbtop.enable = true;
 
     command-not-found.dbPath = "/etc/programs.sqlite";
