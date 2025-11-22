@@ -152,10 +152,19 @@
     chromium = {
       enable = true;
 
-      #plasmaBrowserIntegrationPackage = pkgs.kdePackages.plasma-browser-integration;
+      extraOpts = {
+        # enable manifest v2 extension support
+	      "ExtensionManifestV2Availability" = 2;
+      };
+
       extensions = [
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
-        "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
+        #"cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+        #"gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
+        "ddkjiahejlhfcafbddmgiahcphecmpfh" # ublock origin lite
+        "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # privacy badger
+        "ldpochfccmkkmhdbclfhpagapcfdljkj" # decentraleyes
+        "nngceckbapebfimnlniiiahkandclblb" # bitwarden
+        "mdjildafknihdffpkfmmpnpoiajfjnjd" # consent o matic
         "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
       ];
     };
