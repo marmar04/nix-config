@@ -19,19 +19,8 @@
   home.packages = with pkgs; [
     ycmd
 
-    # Language servers
-    #nodejs
-    #rust-analyzer
-    #nodePackages.npm
-    #ccls
-    #haskell-language-server
-    #nodePackages.pyright
-    #python310Packages.jedi
-    #python310Packages.jedi-language-server
-    #python311Packages.python-lsp-server
     # For doom emacs latex integration
     texlive.combined.scheme-medium
-    jupyter
     php
     sqlite
 
