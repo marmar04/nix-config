@@ -28,14 +28,18 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    python313Full
-
-    # anaconda
-    conda-shell
-
-    #jetbrains.idea-community
-
-    jdt-language-server
-    jdk23
+    # For jupyter notebooks (jupyter lab)
+    (python3.withPackages (ps: with ps; [
+      numpy # these two are
+      scipy # probably redundant to pandas
+      seaborn
+      sklearn-compat
+      kneed
+      matplotlib
+      jupyterlab
+      pandas
+      statsmodels
+      scikit-learn
+    ]))
   ];
 }
