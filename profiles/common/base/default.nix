@@ -393,14 +393,8 @@
     glib
     hplip
     easyeffects
-    #xsane
-    # skanlite
     libimobiledevice
     ifuse
-    # cli clients
-    toot
-    iamb
-    neomutt
     # cli
     coreutils
     gnuplot
@@ -414,15 +408,12 @@
     pandoc
     tuir
     cht-sh
-    ytfzf
     porsmo # pomodoro timer
     unzip
     killall
     fd
     ripgrep
-    #spotdl
     nix-du
-    neofetch
     fastfetch
     htop
     ncdu
@@ -490,7 +481,6 @@
 
   # List environment variables:
 
-  # Enable wayland on firefox
   environment = {
     localBinInPath = true;
 
@@ -500,10 +490,10 @@
 
     pathsToLink = ["/share/zsh"];
 
-    variables = {
-      EDITOR = "emacsclient -nw";
-      VISUAL = "emacsclient -c";
-    };
+    #variables = {
+    #  EDITOR = "emacsclient -nw";
+    #  VISUAL = "emacsclient -c";
+    #};
 
     sessionVariables = {
       NH_FLAKE = "/home/marmar/nix-config";

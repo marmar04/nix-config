@@ -48,9 +48,7 @@
     packages = with pkgs; [
       # emoji support
       noto-fonts-color-emoji
-
       jetbrains-mono
-
       # for japanese characters
       noto-fonts-cjk-sans
     ];
@@ -74,14 +72,11 @@
     wine64Packages.waylandFull
     bottles
     # themes
-    #gradience
-    #adw-gtk3
     papirus-icon-theme
     adwaita-icon-theme
     # llama.cpp frontend to play with small local ai models
     jan
     # browsers
-    #firefox-wayland
     (chromium.override {
       commandLineArgs = [
         "--enable-features=VaapiVideoDecodeLinuxGL"
@@ -89,20 +84,15 @@
         "--enable-zero-copy"
       ];
     })
-    #ladybird
     tor-browser
     # communication
-    #localsend
     keepassxc
     thunderbird
-    #logseq
     signal-desktop
     telegram-desktop
     calibre
-    #config.nur.repos.nltch.spotify-adblock
     # download
     persepolis
-    transmission_4-gtk
     handbrake
     czkawka
     # notes
@@ -114,7 +104,6 @@
     steam-run
     gamescope
     # media
-    #graphviz
     #blender
     kdePackages.kdenlive
     gimp
