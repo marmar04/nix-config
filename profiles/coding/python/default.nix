@@ -40,6 +40,7 @@
       pandas
       statsmodels
       scikit-learn
+      scikit-image
     ]))
   ];
 }
