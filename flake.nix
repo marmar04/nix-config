@@ -25,17 +25,6 @@
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
 
-    nvix = {
-      url = "github:niksingh710/nvix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    plasma-manager = {
-      url = "github:pjones/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     # TODO: Add any other flake you might need
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -44,11 +33,6 @@
       url = "github:marmar04/darkmatter-grub2-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    #hyprland = {
-    #  url = "github:hyprwm/Hyprland";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
 
     # window manager
     #niri.url = "github:sodiboo/niri-flake";
@@ -93,7 +77,6 @@
     self,
     nixpkgs,
     home-manager,
-    neovim-flake,
     programsdb,
     ...
   } @ inputs: let

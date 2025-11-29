@@ -10,10 +10,8 @@
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors), use something like:
     # inputs.nix-colors.homeManagerModule
-    inputs.plasma-manager.homeManagerModules.plasma-manager
 
     # Feel free to split up your configuration and import pieces of it here.
-    ./plasma-home.nix
   ];
 
   # Set your username
@@ -24,9 +22,8 @@
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  home.packages = with pkgs; [
-    zeal # for language documentation
-  ];
+  #home.packages = with pkgs; [
+  #];
 
   # Enable home-manager and git
   # programs.home-manager.enable = true;
