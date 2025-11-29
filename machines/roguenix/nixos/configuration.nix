@@ -30,6 +30,7 @@
     ./../../../profiles/coding/haskell
     ./../../../profiles/coding/webdev
     ./../../../profiles/coding/database
+    ./../../../profiles/coding/forensics
     ./../../../profiles/math
     ./../../../profiles/games
 
