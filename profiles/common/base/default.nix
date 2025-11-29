@@ -421,8 +421,6 @@
     tealdeer
     #compsize
     distrobox
-    # coding
-    zeal
   ];
 
   boot = {
