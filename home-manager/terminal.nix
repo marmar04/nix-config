@@ -123,6 +123,10 @@
         #if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
         #  tmux a -t default || exec tmux new -s default && exit;
         #fi
+
+        # Bind alt+arrow
+        bindkey "^[[1;3C" forward-word
+        bindkey "^[[1;3D" backward-word
       '';
     };
 
