@@ -30,6 +30,7 @@
   environment.systemPackages = with pkgs; [
     # For jupyter notebooks (jupyter lab)
     (python3.withPackages (ps: with ps; [
+      python-lsp-server #pylsp
       numpy # these two are
       scipy # probably redundant to pandas
       seaborn
@@ -41,6 +42,10 @@
       statsmodels
       scikit-learn
       scikit-image
+      pycrypto
+      torch
+      torchvision
+      #kagglehub
     ]))
   ];
 }
