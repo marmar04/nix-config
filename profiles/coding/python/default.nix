@@ -54,6 +54,7 @@
       pycrypto
       torch
       torchvision
+      opencv4
       #kagglehub
     ]))
   ];
