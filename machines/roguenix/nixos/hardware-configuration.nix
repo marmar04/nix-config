@@ -46,6 +46,21 @@
     fsType = "vfat";
   };
 
+  # External hdd
+  fileSystems."/run/media/marmar/Tina" = {
+    device = "/dev/disk/by-uuid/72fecad1-0cd2-4f92-961c-aa08a8fc7372";
+    fsType = "btrfs";
+    options = [ "compress-force=zstd:15" "noauto" "autodefrag" ];
+    neededForBoot = false;
+  };
+
+  fileSystems."/run/media/marmar/Datasets" = {
+    device = "/dev/disk/by-uuid/b95edda2-a5b1-4ace-998f-d21b6230ee7f";
+    fsType = "btrfs";
+    options = [ "compress-force=zstd:15" "noauto" "autodefrag" ];
+    neededForBoot = false;
+  };
+
   swapDevices = [
     {device = "/dev/disk/by-uuid/d7f2e43d-2734-4314-88bc-1ddb0fbc31fa";}
   ];
