@@ -126,6 +126,7 @@
     enable = true;
     algorithm = "zstd";
     priority = 10;
+    memoryPercent = 80;
   };
 
   networking = {
