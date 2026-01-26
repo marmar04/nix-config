@@ -98,9 +98,9 @@
 
   # for keyboard monitoring
   hardware = {
-    tuxedo-drivers.enable = true;
+    tuxedo-drivers.enable = false;
     tuxedo-rs = {
-      enable = true;
+      enable = false;
       tailor-gui.enable = true;
     };
   };
