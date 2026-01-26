@@ -91,19 +91,19 @@
   in rec {
     # Your custom packages
     # Acessible through 'nix build', 'nix shell', etc
-    packages = forAllSystems (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-      import ./pkgs {inherit pkgs;});
+    #packages = forAllSystems (system: let
+    #  pkgs = nixpkgs.legacyPackages.${system};
+    #in
+    #  import ./pkgs {inherit pkgs;});
 
     # Formatter
     # Can be accessed through nix fmt
-    formatter = forAllSystems (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-        pkgs.alejandra
-    );
+    #formatter = forAllSystems (
+    #  system: let
+    #    pkgs = nixpkgs.legacyPackages.${system};
+    #  in
+    #    pkgs.alejandra
+    #);
 
     # Devshell for bootstrapping
     # Acessible through 'nix develop' or 'nix-shell' (legacy)
