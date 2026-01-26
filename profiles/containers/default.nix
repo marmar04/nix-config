@@ -4,7 +4,10 @@
   virtualisation.containers.enable = true;
   virtualisation = {
     # For virt-manager
-    libvirtd.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+    };
     spiceUSBRedirection.enable = true;
 
     #waydroid.enable = true;
@@ -28,6 +31,7 @@
     podman-tui      # status of containers in the terminal
     #docker-compose # start group of containers for dev
     podman-compose  # start group of containers for dev
+    #virtiofsd       # Filesystem expose for virtual machines
   ];
 
   users.groups.libvirtd.members = ["marmar"];
