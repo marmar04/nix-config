@@ -61,6 +61,20 @@
     neededForBoot = false;
   };
 
+  fileSystems."/run/media/marmar/Mizuki" = {
+    device = "/dev/disk/by-uuid/88524716-e689-4661-aebe-44e56ef876b8";
+    fsType = "btrfs";
+    options = [ "compress-force=zstd:15" "noauto" "autodefrag" ];
+    neededForBoot = false;
+  };
+
+  fileSystems."/run/media/marmar/Kusanagi" = {
+    device = "/dev/disk/by-uuid/4ae91e8d-2985-44b3-a55f-2e0cb5a7c6ec";
+    fsType = "btrfs";
+    options = [ "compress-force=zstd:15" "noauto" "autodefrag" ];
+    neededForBoot = false;
+  };
+
   swapDevices = [
     {device = "/dev/disk/by-uuid/d7f2e43d-2734-4314-88bc-1ddb0fbc31fa";}
   ];
