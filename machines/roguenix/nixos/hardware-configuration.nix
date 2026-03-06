@@ -75,6 +75,13 @@
     neededForBoot = false;
   };
 
+  fileSystems."/run/media/marmar/Allen" = {
+    device = "/dev/disk/by-uuid/113b01fa-fbae-4b15-972a-ff04e765e3d7";
+    fsType = "btrfs";
+    options = [ "compress-force=zstd:15" "noauto" "autodefrag" ];
+    neededForBoot = false;
+  };
+
   swapDevices = [
     {device = "/dev/disk/by-uuid/d7f2e43d-2734-4314-88bc-1ddb0fbc31fa";}
   ];
