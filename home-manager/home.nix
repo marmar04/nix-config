@@ -47,10 +47,12 @@
       settings = {
         prefer-free-formats = true;
         downloader = "aria2c";
+        format-sort = "res:1080";
+        #yt-dlp -S "res:480"
         output = "%(title)s.%(ext)s";
         embed-thumbnail = false;
         write-subs = true;
-        write-auto-subs = true;
+        #write-auto-subs = true;
         sponsorblock-mark = "all";
         sponsorblock-remove = "sponsor";
         write-description = false;
