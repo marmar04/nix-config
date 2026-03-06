@@ -9,8 +9,10 @@
     displayManager = {
       defaultSession = "plasma";
 
+      plasma-login-manager.enable = true;
+
       sddm = {
-        enable = true;
+        enable = false;
         wayland.enable = true;
         autoNumlock = true;
         settings = {
