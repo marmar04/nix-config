@@ -16,7 +16,7 @@
   environment.systemPackages = with pkgs; [
     #lutris
     luanti
-    superTuxKart
+    supertuxkart
     katawa-shoujo
     freeciv_qt
     #vinegar
