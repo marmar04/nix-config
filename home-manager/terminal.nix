@@ -84,6 +84,13 @@
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
+      history = {
+        append = true;
+        saveNoDups = true;
+        save = 1000000000;
+        size = 100000;
+        ignorePatterns = [ "rm *" ];
+      };
       oh-my-zsh = {
         enable = true;
         plugins = ["tmux"];
