@@ -29,6 +29,7 @@
   programs = {
     git = {
       enable = true;
+      signing.format = null;
       settings.user.name = "Muhammad Ameer Rafiqi";
       settings.user.email = "m.ameerrafiqi@gmail.com";
     };
