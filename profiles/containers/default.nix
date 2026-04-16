@@ -35,7 +35,11 @@
     #docker-compose # start group of containers for dev
     podman-compose  # start group of containers for dev
     #virtiofsd       # Filesystem expose for virtual machines
+    dnsmasq
   ];
+
+  # allow network bridge through firewall
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
 
   users.groups.libvirtd.members = ["marmar"];
 }
