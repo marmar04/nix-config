@@ -47,6 +47,7 @@
   environment.systemPackages =
     (with pkgs; [
       gsettings-desktop-schemas
+      nil
 
       # socials
       element-desktop
@@ -60,6 +61,8 @@
           nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [pkgs.kdePackages.wrapQtAppsHook];
         }))
       digikam
+      kphotoalbum
+      kmymoney
     ])
     ++ (with pkgs.kdePackages; [
       ocean-sound-theme
@@ -85,8 +88,10 @@
       akregator
       kate
       calligra
-      #neochat
+      marknote
+      neochat
       kleopatra
+      ktorrent
     ]);
 
   # Enable wayland on firefox
