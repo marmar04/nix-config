@@ -65,6 +65,7 @@
       config = {
         fs = "yes";
         ontop = "yes";
+        volume = 50;
         ytdl-raw-options = "sub-lang=\"en\",write-sub=";
         alang = "my,en";
       };
