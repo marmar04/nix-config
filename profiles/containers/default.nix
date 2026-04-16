@@ -12,6 +12,9 @@
 
     #waydroid.enable = true;
 
+    # enable vmware because qemu has network problems
+    vmware.host.enable = true;
+
     podman = {
       enable = true;
 
