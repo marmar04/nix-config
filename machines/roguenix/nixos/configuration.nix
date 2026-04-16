@@ -37,7 +37,8 @@
     # You can also split up your configuration and import pieces of it here.
   ];
 
-  nixpkgs.config.cudaSupport = true;
+  # Compile everything with cuda support
+  #nixpkgs.config.cudaSupport = true;
 
   # Set your hostname
   networking.hostName = "roguenix";
